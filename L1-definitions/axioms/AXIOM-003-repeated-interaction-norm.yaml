@@ -8,6 +8,8 @@ statement: |
   共享行为期望（规范）必然涌现——这是交互信息积累的逻辑必然，
   不是文化现象。
 
+人话摘要: "两个人反复打交道、又都记得上回发生过什么,自然就会对'对方大概会怎么做'形成共同的默契和规矩——这不是文化教出来的,是打交道多了必然长出来的。"
+
 formal_statement: |
   ∀{A, B} ⊆ Agents, ∀T (sufficiently long):
     (repeated_interaction(A, B, T) ∧ memory(A, T) ∧ memory(B, T))

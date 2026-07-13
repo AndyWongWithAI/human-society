@@ -7,6 +7,8 @@ statement: |
   Agent 持有的信息若不投入能量维持或刷新，随时间必然衰减——
   准确度下降、细节丢失、最终变得不可用。
 
+人话摘要: "记住的东西不时常温习、记录不去维护,就会随时间慢慢模糊、走样、最后没法用——信息会自然衰减,保鲜是要花力气的。"
+
 formal_statement: |
   ∀i ∈ Information, ∀a ∈ Agents, ∀Δt > 0:
     (holds(a, i, t) ∧ ¬invest(a, energy, maintain(i), [t, t+Δt]))

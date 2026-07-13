@@ -7,6 +7,8 @@ statement: |
   当多个 Agent 需要同一有限资源来实现各自目标时，
   竞争必然存在——这是逻辑必然性，不是经验偶然。
 
+人话摘要: "多个人都要同一份不够分的资源,竞争就必然存在——不是谁性格问题,是结构决定的。"
+
 formal_statement: |
   ∀R ∈ Resources, ∀{A₁, A₂, ...} ⊆ Agents:
     (finite(R) ∧ ∀Aᵢ: requires(Aᵢ, R, goal(Aᵢ)))

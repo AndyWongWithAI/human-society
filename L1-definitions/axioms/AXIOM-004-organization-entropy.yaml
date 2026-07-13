@@ -36,6 +36,8 @@ statement: |
   将必然向无序退化——结构模糊、规则失效、成员流失、
   最终组织不复存在。
 
+人话摘要: "任何组织,只要不持续花精力去维护它的协调规矩(谁干什么、怎么配合),就会自然涣散——结构变乱、规矩失灵、人走光,最后散伙。"
+
 formal_statement: |
   ∀O ∈ Organizations, ∀Δt > 0:
     (¬invest(O, energy, maintain_coordination, [t, t+Δt]))
