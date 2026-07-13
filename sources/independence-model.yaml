@@ -1,0 +1,30 @@
+version: 1
+created: 2026-07-13
+
+source_pairs:
+  evo_bio__game_theory:
+    independence: 0.4
+    overlap_domains:
+      - "evolutionary game theory (ESS, replicator dynamics)"
+      - "cooperation evolution (kin selection ↔ repeated PD)"
+      - "signaling theory"
+    note: "核心数学结构共享。在合作/信号主题上几乎是一棵树。"
+
+  evo_bio__cultural_universals:
+    independence: 0.6
+    overlap_domains:
+      - "evolutionary psychology (跨文化验证演化假说)"
+      - "human behavioral ecology"
+    note: "理论框架 vs 田野数据，方法论路径不同。"
+
+  game_theory__cultural_universals:
+    independence: 0.5
+    overlap_domains:
+      - "跨文化行为实验 (ultimatum game, public goods game)"
+    note: "gt 提供范式，cu 提供样本。"
+
+default_independence: 0.6
+
+calibration_note: >
+  初始估计值。v1 系数在 ±0.2 范围内有启发性意义，
+  不宜过度解读小数差异。随验证经验校准。
