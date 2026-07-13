@@ -62,7 +62,7 @@ def check_refs(es):
                 if isinstance(v, str) and not _ref_exists(v, ids):
                     errs.append(f"{eid}: depends_on 引用 '{v}' 不存在")
         elif isinstance(deps, dict):
-            for sub_k in ("concepts", "l0_constraints", "axioms", "theorems"):
+            for sub_k in ("concepts", "l0_constraints", "axioms", "theorems", "bridging", "deductions"):
                 for v in (deps.get(sub_k) or []):
                     if isinstance(v, str) and not _ref_exists(v, ids):
                         errs.append(f"{eid}: depends_on.{sub_k} 引用 '{v}' 不存在")
@@ -79,18 +79,20 @@ def check_refs(es):
 
 
 def check_circular_deps(es):
-    """检测定理间的循环依赖。"""
-    # 构建定理依赖图：theorem_id → {依赖的定理 IDs}
+    """检测推导依赖的循环：定理→定理、推论→推论(Rule D)。"""
+    # 构建依赖图：entity_id → {它依赖的 定理/推论 IDs}
+    # 覆盖 depends_on.theorems (L1) 与 depends_on.deductions (L3, Rule D)。
     g = {}
     for p, e in es.items():
         eid = e.get("id", "")
-        if not eid.startswith("THEOREM-"):
+        if not eid:
             continue
         deps = e.get("depends_on", {})
+        edges = set()
         if isinstance(deps, dict):
-            g[eid] = set(deps.get("theorems", []))
-        else:
-            g[eid] = set()
+            edges |= set(deps.get("theorems", []) or [])
+            edges |= set(deps.get("deductions", []) or [])
+        g[eid] = edges
 
     # DFS 检测循环
     WHITE, GRAY, BLACK = 0, 1, 2
@@ -129,6 +131,12 @@ def check_circular_deps(es):
 def check_status(es):
     errs = []
     valid_l2_status = {"candidate", "verified", "weakly_verified", "rejected"}
+    # Rule D confidence_floor：推论 id→status 映射 + 秩/上限表
+    ded_status = {e.get("id", ""): e.get("status", "")
+                  for p, e in es.items() if "L3-deductions/corollaries" in p}
+    RANK = {"verified": 3, "verified*": 2, "candidate": 1, "rejected": 0}
+    # 父状态给子推论施加的状态上限：rejected 父 → 子退回 candidate(不得 verified)
+    CAP = {"verified": 3, "verified*": 2, "candidate": 1, "rejected": 1}
     for p, e in es.items():
         eid = e.get("id", "?")
         if "L3-deductions/corollaries" in p:
@@ -139,6 +147,18 @@ def check_status(es):
                 errs.append(f"{eid}: 缺少 falsification_trace.primary_suspect")
             if not e.get("real_world_anchors"):
                 errs.append(f"{eid}: 缺少 real_world_anchors")
+            # Rule D: confidence_floor — 子推论状态不得高于任一父前提允许的上限
+            deps = e.get("depends_on", {})
+            parents = deps.get("deductions", []) if isinstance(deps, dict) else []
+            caps = [(par, CAP[ded_status[par]], ded_status[par])
+                    for par in (parents or [])
+                    if par in ded_status and ded_status[par] in CAP]
+            if caps:
+                weakest = min(caps, key=lambda c: c[1])
+                if RANK.get(st, 0) > weakest[1]:
+                    errs.append(
+                        f"{eid}: confidence_floor 违反 — status='{st}' 高于父前提 "
+                        f"'{weakest[0]}'(status={weakest[2]}) 允许的上限")
         if "L1-definitions/axioms" in p:
             nt = e.get("negation_test", {})
             if nt.get("verdict") not in ("passes", "fails", "contested"):

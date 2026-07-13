@@ -175,6 +175,89 @@ rule_c_empirical_test:
       检验者找的是经验反例（不符合预测的真实案例）。
     sequencing: "Rule B 必须在 Rule C 之前——逻辑上未通过的推论不值得浪费经验数据去检验"
 
+# === 规则 D：推论链的置信度传播 ===
+
+rule_d_deduction_chaining:
+  title: "推论可以从其他推论推出——但置信度沿依赖链单调传播，且链必须无环"
+  status: canonical
+  established: 2026-07-13
+
+  position: |
+    Rule A/B/C 处理【单条推论】与其前提(L1×L2)、逻辑、经验的关系。
+    Rule D 处理【推论与推论之间】的关系——一条推论把另一条推论当作前提使用。
+    这是本体系从"平铺的观察清单"升级为"可垒塔的演绎系统"的机制，
+    也是欧几里得式公理系统的核心生成力：定理 5 可以用定理 3，垒成塔。
+    但塔越高，根越承重。因此 Rule D 的全部内容就是为"不确定性的继承"
+    立三条硬纪律，防止塔变成"根一晃全晃"的纸牌屋。
+
+  two_forms:
+    - form: chaining
+      name: "串联"
+      description: "新推论 DED-B 把 DED-A 当作前提之一使用。"
+      example: "DED-001(深度天花板) → 疆域扩张必然触发某种行政分层适应。"
+    - form: composite
+      name: "交互"
+      description: "新推论描述两条(或多条)推论【相遇时】才出现的结果——单看任一条都推不出。"
+      example: "DED-001 的深度天花板 × DED-002 的规范成文化门槛 → 挤出哪种适应。"
+      note: "交互型是 Rule D 最有价值的产出：新知识来自组合本身，而非任一前提。"
+
+  layering_reconciliation: |
+    DED→DED 不违背分层原则。宪法禁止的是【循环依赖】与【下层依赖上层】，
+    不是【层内的有向无环推导秩序】。L1 层内部早已如此——
+    THEOREM-hierarchy-depth-limit 依赖 AXIOM-002，两者同为 L1。
+    L3 层内部同样允许一个"推论→推论"的有向无环子图(DAG)。
+    合法：一条永不回头的箭头链。违规：任何环，或箭头指回 L2/L1 之下。
+
+  disciplines:
+    - id: acyclic
+      rule: "推论依赖必须无环。DED-A 依赖 DED-B 时，DED-B 不得直接或间接依赖 DED-A。"
+      why: "环意味着循环论证——A 靠 B 成立、B 又靠 A 成立，整条链没有独立地基。"
+      enforcement: "depends_on 增加 deductions 键；validate.py 的环检测必须覆盖 deduction→deduction 边(现仅覆盖 THEOREM-)。"
+
+    - id: confidence_floor
+      rule: "一条推论的状态不得高于它【最弱的推论前提】。取下限，不取上限。"
+      table:
+        - "父全部 verified → 子最高可 verified"
+        - "父含 verified* → 子最高 verified*"
+        - "父含 contested/rejected → 子退回 candidate，不得 verified"
+      propagation: |
+        父状态降级时，其所有(直接与间接)后代自动打旗、强制重审——
+        不因'曾经 verified'而豁免。这正是 DED-001 布干达险情的教训：
+        若当时已有推论挂在 DED-001 下，那面假警报会连累整条链跟着降级。
+      why: "结论不可能比它最弱的前提更可信。这是演绎的基本约束，不是保守。"
+
+    - id: independent_anchor
+      rule: "派生推论仍须尽量提供【自己的】real_world_anchors / 经验检验，不得【只】靠父推论撑重。"
+      why: |
+        这是控制脆弱性的命根子。若子推论有独立经验锚，父推论万一被证伪，
+        子推论未必跟着倒——它自己还承一部分重。让每层塔砖自己也承重，
+        塔才不是纸牌屋。无独立锚的派生推论【必须诚实标记】"置信度完全继承
+        自父"，使其脆弱性对读者可见。
+
+  provenance_rule:
+    rule: "depends_on 必须区分【基础前提】(axioms/theorems/bridging = L1×L2)与【派生前提】(deductions = L3)。"
+    why: "让'这条推论有多少重量压在其他推论上'一眼可见——纯 L1×L2 锚定的推论最稳，依赖越多 L3 前提越脆。"
+
+  status_semantics:
+    foundational_deduction: "只依赖 L1×L2、无 deductions 前提的推论(现有 DED-001/002/003)。地基最稳。"
+    derived_deduction: "有 ≥1 个 deductions 前提的推论。其 status 受 confidence_floor 约束。"
+
+  file_structure_delta:
+    depends_on_add: "deductions: [DED-XXX, ...]  # 派生前提；空或缺省 = foundational"
+    validator_enforcement:
+      status: "已落地 2026-07-13 (scripts/validate.py)。Rule D 三条纪律现由 validator 强制，派生推论门已开。"
+      enforced:
+        - "check_refs: depends_on 的 ref 检查已覆盖 deductions 与 bridging(此前遗漏)。"
+        - "check_circular_deps: 已从'仅 THEOREM- 建图'扩展到覆盖 deduction→deduction 边。"
+        - "check_status: 已新增 confidence_floor——子推论 status 不得高于任一父前提允许的上限(rejected 父 → 子上限 candidate)。"
+      test: "9 项合成违规样本对抗测试全过(正例捕获 + 反例无误报)。"
+
+  relationship_to_other_rules: |
+    Rule D 不是第四个"验证步骤"，而是一条"组合规则"：它规定推论如何合法地
+    互相引用。一条 derived deduction 仍要各自走完 Rule A(操作化) → Rule B(审查)
+    → Rule C(经验检验)，ICV 仍可横切施加。Rule D 额外叠加的唯一约束是
+    confidence_floor 与 acyclic——即它的状态天花板被父推论钳住。
+
 # === 独立多模型交叉验证协议 (ICV) — 横切机制，服务 Rule B 与 Rule C ===
 
 independent_cross_verification:
@@ -284,7 +367,7 @@ file_structure:
     - id: "DED-XXX"
     - type: deduction
     - layer: L3-deductions
-    - status: "candidate | verified | rejected"
+    - status: "candidate | verified | verified* | rejected"
     - term: "..."
     - statement: "..."
     - operationalization: "规则 A：关键概念的操作化定义"
@@ -293,7 +376,7 @@ file_structure:
     - excluded_outcomes: "推论明确排除的结果"
     - real_world_anchors: "supporting + counterexamples + boundary_cases"
     - adversarial_review: "规则 B：审查报告"
-    - depends_on: "..."
+    - depends_on: "基础前提(axioms/theorems/bridging=L1×L2) + 派生前提(deductions=L3, Rule D)"
     - domain: "[...]"
 
 # === 与 L1/L2 的关系 ===
@@ -301,11 +384,12 @@ file_structure:
 layer_comparison:
   L1_axioms: "提出 → negation_test → passes/fails"
   L2_bridging: "提出 → 三来源 IEA 投票 → verified/contested"
-  L3_deductions: "提出 → Rule A 操作化(硬门槛) → Rule B 对抗式审查 → candidate/verified/rejected → Rule C 经验检验(可选,verified后) → 置信度上升/contested"
+  L3_deductions: "提出 → Rule A 操作化(硬门槛) → Rule B 对抗式审查 → candidate/verified/rejected → Rule C 经验检验(可选,verified后) → 置信度上升/contested。推论间可 Rule D 链式推导(置信度取下限、依赖无环)。"
 
 verification_full_chain:
   step_1: "Rule A: 操作化定义 — 硬门槛，不过则无法进入审查"
   step_2: "Rule B: 对抗式审查 — 审查者挑战逻辑+反例，作者回应，裁决 verified/needs_revision/rejected"
   step_3: "Rule C: 经验检验 — verified 后的可选步骤，历史/考古/人类学数据检验真实世界的反例"
   cross_cutting: "ICV 独立多模型交叉验证 — 横切 Rule B/C 的独立源机制，用不同血统模型把'自审(相关错误)'升级为'部分独立(不相关错误)'。不是第 4 步，是承重墙的加固件。"
+  composition: "Rule D 推论链 — 不是验证步骤而是组合规则：推论可从推论推出(串联/交互)，但依赖必须无环、状态取父前提下限、派生推论仍尽量自带独立经验锚。"
   philosophy: "Rule B 审查逻辑的内在一致性 → Rule C 检验经验的外在对应。逻辑上无懈可击 ≠ 经验上成立。两者互补构成完整的验证闭环。ICV 则攻击闭环的元问题：验证者自身是否独立。"

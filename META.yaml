@@ -17,7 +17,7 @@ methodology:
   l0: 物理约束。不可违反的现实边界条件。来源于物理学，不需验证。
   l1: 定义层。概念定义 + 公理 + 定理。对抗式 negation_test。
   l2: 桥接层。经验命题，连接 L1 抽象结构到真实人类社会。多来源 IEA 加权验证。
-  l3: 推论层。L1 × L2 → 关于现实世界的命题。Rule A 操作化(硬门槛) → Rule B 对抗式审查 → Rule C 经验检验(可选)。横切 ICV 独立多模型交叉验证攻击"验证者自身是否独立"。锚点 + 可证伪 + 追责路径。
+  l3: 推论层。L1 × L2 → 关于现实世界的命题。Rule A 操作化(硬门槛) → Rule B 对抗式审查 → Rule C 经验检验(可选)。Rule D 允许推论从推论推出(链式,无环,置信度取父前提下限)。横切 ICV 独立多模型交叉验证攻击"验证者自身是否独立"。锚点 + 可证伪 + 追责路径。
   sources: [evolutionary_biology, game_theory, cultural_universals]
   verification: iea_weighted_voting
 
