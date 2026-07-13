@@ -1,0 +1,30 @@
+id: CONCEPT-resource
+term: "资源 (Resource)"
+definition: |
+  Agent 用以缩小当前状态与目标状态之差距的任何可支配要素。
+
+  必要特征:
+  (a) 工具性——资源本身不一定是目标，它的价值在于能促成目标达成
+  (b) 可支配——Agent 能够获取、控制或转化它
+  (c) 有限性——给定时刻，Agent 可获取的资源总量是有限的
+      （来自 PHY-002 能量守恒 + PHY-003 空间排他）
+
+  资源可以是:
+  - 物质性的：能量、材料、空间、工具
+  - 信息性的：知识、技能、关系信息
+  - 时间本身（Agent 的时间是有限的——PHY-003-d）
+
+  资源不预设:
+  - 可交换性（资源不必是可交易的）
+  - 可量化性（有些资源难以度量但不因此不是资源）
+  - 稀缺程度（"不稀缺"的资源仍然是资源，只要它有用）
+
+logical_implications:
+  - "Agent 追求目标 ⇒ Agent 需要资源"             # 从 (a) + CONCEPT-goal
+  - "多 Agent 有限资源 ⇒ 潜在竞争"                 # 从 (c) + CONCEPT-agent
+  - "资源有限 ⇒ Agent 必须选择如何分配"            # 从 (c) + CONCEPT-goal(d)
+  - "目标不同 ⇒ 同一物项对不同 Agent 的资源价值不同" # 从 (a) + CONCEPT-goal
+
+domain: [基础概念]
+depends_on: [CONCEPT-agent, CONCEPT-goal]
+created: 2026-07-13
