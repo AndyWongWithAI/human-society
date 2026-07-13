@@ -175,6 +175,92 @@ rule_c_empirical_test:
       检验者找的是经验反例（不符合预测的真实案例）。
     sequencing: "Rule B 必须在 Rule C 之前——逻辑上未通过的推论不值得浪费经验数据去检验"
 
+# === 独立多模型交叉验证协议 (ICV) — 横切机制，服务 Rule B 与 Rule C ===
+
+independent_cross_verification:
+  title: "用不同血统的模型充当部分独立的对抗源"
+  status: canonical
+  established: 2026-07-13
+  established_by: ICV-001
+
+  problem_it_solves: |
+    本体系的承重墙是"对抗式验证"（Rule B 的独立寻找反例、Rule C 的
+    intercoder reliability）。但在单研究者+单模型执行时，所谓"独立
+    审查"退化为自审：审查者与作者共享同一套权重、先验、训练数据——
+    错误高度相关，盲区完全重叠。相关的错误无法互相抵消，自审因此
+    是"假的承重墙"。ICV 是把假墙变成"部分的、被测量的墙"的机制。
+
+  core_principle: |
+    要的是【不相关】，不是【更聪明】。
+    一个更笨但血统不同的模型，会漏掉聪明审查者能抓的东西，但它的
+    错误与主循环模型【不相关】——而不相关的错误正是集成/投票提升
+    可靠性的唯一原理。因此 ICV 只利用外部模型那条主循环没有的性质：
+    不同盲区、不同记忆、不知道作者想要什么答案。
+
+  lineage_rule:
+    rule: "优先选与主循环模型【不同血统】的模型；同血统模型仅作相关性对照。"
+    rationale: |
+      同血统模型（如主循环是 deepseek-v4-pro 时的 deepseek-v4-flash）
+      与作者错误相关，独立价值低——但可作【对照】：若同血统模型同意
+      作者、而异血统模型不同意，则证明分歧来自血统特有的先验。
+    example: "ICV-001: 主循环=deepseek-v4-pro；独立源=glm-5.2(智谱)+sensenova-6.7-flash-lite(商汤)；对照=deepseek-v4-flash(同血统)。"
+
+  four_disciplines:
+    - id: blind
+      rule: "蒙住外部模型：只给操作化定义 + 原始数据，绝不给作者的判定/结论/期望答案。"
+      why: "一旦泄露作者的答案，外部模型输出就与作者重新相关，独立性瞬间归零。"
+    - id: signal_not_verdict
+      rule: "外部模型的输出是【信号】不是【裁决】：它挑战→触发作者去查；它同意→什么都不确认。最终裁决仍归作者。"
+      why: "笨模型的裁决是噪声。独立性只保在'举旗'一步，不在'收旗'一步——这个边界必须诚实承认。"
+    - id: panel
+      rule: "尽量用多个不同血统的模型组成小组，看多方分歧，而非信任单一外部模型。"
+      why: "若两个'独立'模型彼此高度一致（见 interpretation），它们可能共享偏见，实际只算一个独立声音。"
+    - id: measure_independence
+      rule: "必须测量独立性本身：记录外部模型多久捞出一个作者没想到的东西/与作者不一致。"
+      why: "让协议自身可证伪。若外部模型几乎从不与作者分歧→它与作者相关、无用，须如实声明；若时常分歧→拿到可量化的独立价值。"
+
+  plugs_into:
+    rule_b: "独立挑战源——外部模型盲测'结论是否从前提推出''有没有 X 性质的反例案例'，补充作者自审抓不到的逻辑反例。"
+    rule_c: "盲编码第二/第三编码者——外部模型独立编码同一批案例，产出真实的 intercoder reliability (Cohen's κ)，直接攻击'单编码者无信度'这条悬挂标记。"
+
+  interpretation:
+    kappa_bands: "Landis-Koch: <0 差, 0-0.20 轻微, 0.21-0.40 尚可, 0.41-0.60 中等, 0.61-0.80 显著, 0.81-1 几近完美。本体系沿用 κ≥0.7 作为'编码协议可操作'的门槛。"
+    level_agreement: "序数量（如层级数）用'落入作者区间''±1 内''平均绝对偏差'三项，而非仅精确匹配。"
+    externals_agree_more_than_author: |
+      关键诊断信号：若多个独立外部模型【彼此】的一致度显著高于它们
+      与【作者】的一致度，有两种解读，必须同时摆出、不可只取其一：
+      (a) 这些外部模型彼此相关（共享语料/对齐惯例）→ 高度一致是共同
+          偏见而非确证，实际只是"一个独立声音"；
+      (b) 作者才是异类 → 作者编码带有外部模型都不共享的、作者特有的
+          系统性偏差（可能是确认偏误）。
+      解读 (b) 是 ICV 最有价值的产出——它是自审绝对产生不了的信号。
+    directional_bias: "若外部模型与作者不一致时【方向系统性一致】（如总是编得更高），这是系统性偏差而非随机噪声，须定位到具体案例并追查。"
+
+  honest_ceiling: |
+    ICV 不能把承重墙变'真'。真正独立的专家仍是另一回事。ICV 做的是：
+    把'0 个独立来源'升级成'N 个部分独立、错误可测量不相关的来源'。
+    墙从【假的】变成【部分的、被测量的】——不是变【结实】。
+    且裁决仍是作者，独立性只保在'举旗'一步。这个边界写死在协议里。
+
+  tool:
+    script: "scripts/blind_coder.py"
+    description: "可复用工具：从 ~/.claude/secrets.json 读密钥(不入库)，ping 存活→盲编码→算 κ/一致率/偏差→存原始编码。血统与独立性在 MODELS 表中标注。"
+    reusability: "换一批案例/定义即可复用于任何 Rule C 编码任务或 Rule B 盲测。"
+
+  record_structure:
+    location: "L3-deductions/cross-verification/ICV-XXX-<target>.yaml"
+    required_fields:
+      - id: "ICV-XXX"
+      - target: "被交叉验证的推论/检验 ID"
+      - date
+      - type: cross_verification
+      - status: "conducted | inconclusive"
+      - models_used: "血统 + 独立/对照标注"
+      - reliability_results: "κ + 层级一致 + 独立模型互检"
+      - material_findings: "外部模型抓到的、指向数据/推论的具体信号"
+      - interpretation: "两种解读并陈 + 方向性偏差定位"
+      - created
+
 # === 推论文件结构 ===
 
 file_structure:
@@ -205,4 +291,5 @@ verification_full_chain:
   step_1: "Rule A: 操作化定义 — 硬门槛，不过则无法进入审查"
   step_2: "Rule B: 对抗式审查 — 审查者挑战逻辑+反例，作者回应，裁决 verified/needs_revision/rejected"
   step_3: "Rule C: 经验检验 — verified 后的可选步骤，历史/考古/人类学数据检验真实世界的反例"
-  philosophy: "Rule B 审查逻辑的内在一致性 → Rule C 检验经验的外在对应。逻辑上无懈可击 ≠ 经验上成立。两者互补构成完整的验证闭环。"
+  cross_cutting: "ICV 独立多模型交叉验证 — 横切 Rule B/C 的独立源机制，用不同血统模型把'自审(相关错误)'升级为'部分独立(不相关错误)'。不是第 4 步，是承重墙的加固件。"
+  philosophy: "Rule B 审查逻辑的内在一致性 → Rule C 检验经验的外在对应。逻辑上无懈可击 ≠ 经验上成立。两者互补构成完整的验证闭环。ICV 则攻击闭环的元问题：验证者自身是否独立。"
