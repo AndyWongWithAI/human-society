@@ -1,7 +1,7 @@
 id: DED-001
 type: deduction
 layer: L3-deductions
-status: verified
+status: verified*
 
 term: "组织深度天花板推论 (Organizational Depth Ceiling Corollary)"
 
@@ -285,6 +285,29 @@ adversarial_review:
     实验室-组织迁移差距、r 不对称性）已标注。三条新挑战不构成
     推翻威胁。悬挂标记：证伪条件的实践可达性有待历史/考古学检验。
 
+# === 经验检验与交叉验证 ===
+
+empirical_verification:
+  empirical_test: EMP-TEST-001
+  cross_verification: ICV-001
+  status_history: "verified (Rule B 两轮) → EMP-TEST-001 无反例 → ICV-001 发现疑似反例 → verified* (调查中)"
+  verified_star_reason: |
+    降 verified* 的触发源是 ICV-001（独立多模型交叉验证）。
+    布干达王国是 DED-001 的承重检验案例（纯口头社会，无形式化信息系统）。
+    作者在 EMP-TEST-001 中将其有效层级编码为 7（把 Bataka 氏族链算平行
+    系统排除），恰在 5-7 天花板内，判为边界案例。但 ICV-001 中两个与
+    主循环【不同血统】的独立模型（商汤、智谱）拿到同一角色表，都独立
+    编码为 8——落入证伪区（≥8 级纯口头），使布干达成为【疑似反例】。
+    且 ICV-001 发现作者层级编码存在系统性偏低偏差（外部模型只编更高、
+    从不更低）。依 Rule C result_to_status「发现疑似反例」条目，DED-001
+    从 verified 降为 verified*，启动布干达行政史深度调查。
+  pending_investigation: |
+    深查前殖民布干达的真实有效层级（7 vs 8）：Bataka 氏族链算不算主治理
+    链的一级？gombolola/miruka 中间层是前殖民既有还是1900年协定后才层级化？
+    Katikkiro 是否构成独立一级？国王对村级的约束是否真实（可能反使有效层级<7）？
+    调查裁决后回写：若确认 ≤7 → 回 verified；若确认 =8 且纯口头 → 降 contested，
+    触发 Rule B 重审（修订天花板数值或适用范围）。
+
 depends_on:
   axioms: [AXIOM-002]
   theorems: [THEOREM-hierarchy-depth-limit]
@@ -294,3 +317,4 @@ depends_on:
 domain: [组织理论, 管理学, 信息论社会学]
 created: 2026-07-13
 revised: 2026-07-13
+revision_note: "2026-07-13: 经 ICV-001 交叉验证发现布干达疑似反例, status verified→verified*, 布干达行政史深查中。"
