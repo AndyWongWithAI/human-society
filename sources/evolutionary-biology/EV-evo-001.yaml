@@ -1,0 +1,22 @@
+id: EV-evo-001
+discipline: evolutionary-biology
+topic: "觅食决策与认知约束"
+claim: |
+  在信息不完备和计算成本约束下，自然选择倾向于演化出简单启发式规则
+  而非完整最优解搜索算法。动物（包括人类）在生态时间尺度上使用
+  "快速且俭省"（fast and frugal）的启发式来做出适应性决策——
+  不是因为最优解不存在，而是因为计算最优解的代价（时间、能量、
+  机会成本）超过了精确优化带来的边际收益。
+
+evidence_type: empirical
+strength: strong
+
+references:
+  - "Gigerenzer, G. & Goldstein, D. G. (1996). Reasoning the fast and frugal way."
+  - "Stephens, D. W. & Krebs, J. R. (1986). Foraging Theory."
+  - "Kacelnik, A. & Bateson, M. (1996). Risky theories—the effects of variance on foraging decisions."
+
+supports_bridging: [BR-L2-001]
+independence_note: "核心证据来源——演化视角为有限理性提供了终极（演化）因"
+
+created: 2026-07-13

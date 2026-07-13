@@ -1,0 +1,58 @@
+id: BR-L2-002
+status: verified
+term: 亲缘利他 (Kin Altruism)
+statement: '人类对遗传亲属的利他行为（付出个人代价以使对方受益的行为）
+
+  的强度和频率，与双方之间的亲缘系数正相关——
+
+  共享基因比例越高，触发利他行为所需的收益/代价比阈值越低。
+
+  '
+bridges_to:
+  concepts:
+  - CONCEPT-cooperation
+  - CONCEPT-agent
+  - CONCEPT-goal
+  axioms: []
+bridges_field: 合作的生物基础——从 L1 抽象'自愿协调'到具体的生物触发条件
+applicable_sources:
+- evolutionary-biology:
+    rationale: Hamilton's rule (rB > C) —— 亲缘选择是演化生物学 最坚实的理论之一。从社会性昆虫到灵长类，亲缘利他在全动物界
+      得到广泛验证。人类学研究（如食物分享模式）与此一致。
+- game_theory:
+    rationale: 亲缘利他可以通过 inclusive fitness 模型形式化。 但博弈论对此命题的独立贡献较弱——数学框架来自演化生物学。
+- cultural_universals:
+    rationale: 所有已知人类社会都有亲属制度（kinship system）—— 区分亲疏远近的命名和规范体系。亲属之间的互助义务在所有 文化中都被制度化——尽管具体形式（母系/父系/双系）各异。
+falsifiability: '若发现一个人类群体，其:
+
+  (a) 对非亲属的利他行为频率 ≥ 对直系亲属（r=0.5）的利他行为频率；
+
+  (b) 且这种模式不能用亲属已经不需要帮助来解释；
+
+  (c) 且这种模式在多个人类群体中被独立复现——
+
+  则本命题被证伪。
+
+  '
+created: 2026-07-13
+source_anchors: []
+cross_verification:
+  votes:
+    evolutionary_biology:
+      status: agree
+      weight: 1.0
+      evidence: []
+      note: Hamilton's rule是演化生物学最坚实的理论之一。全动物界广泛验证。
+    game_theory:
+      status: uncertain
+      weight: 0.0
+      evidence: []
+      note: 博弈论的数学框架(inclusive fitness model)来自evo。独立经验贡献薄弱——本质上是同一理论传统的数学表述，而非独立验证。
+    cultural_universals:
+      status: agree
+      weight: 0.6
+      evidence: []
+      note: 亲属制度和亲缘互助义务在所有文化中普遍。独立于演化生物学的理论框架。
+  iea: 1.6
+  verdict: verified
+  verdict_note: IEA=1.6。gt标记为uncertain——其贡献主要是evo理论的数学形式化，缺乏独立经验证据。

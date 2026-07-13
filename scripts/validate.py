@@ -66,6 +66,13 @@ def check_refs(es):
                 for v in (deps.get(sub_k) or []):
                     if isinstance(v, str) and not _ref_exists(v, ids):
                         errs.append(f"{eid}: depends_on.{sub_k} 引用 '{v}' 不存在")
+        # bridges_to: L2 桥接命题引用 L1 实体
+        bridges = e.get("bridges_to")
+        if isinstance(bridges, dict):
+            for sub_k in ("concepts", "axioms", "theorems"):
+                for v in (bridges.get(sub_k) or []):
+                    if isinstance(v, str) and not _ref_exists(v, ids):
+                        errs.append(f"{eid}: bridges_to.{sub_k} 引用 '{v}' 不存在")
     for e in errs: print(f"❌ {e}")
     print("✅ 引用完整性: 通过" if not errs else "")
     return errs
@@ -121,6 +128,7 @@ def check_circular_deps(es):
 
 def check_status(es):
     errs = []
+    valid_l2_status = {"candidate", "verified", "weakly_verified", "rejected"}
     for p, e in es.items():
         eid = e.get("id", "?")
         if "L3-deductions/corollaries" in p:
@@ -132,11 +140,15 @@ def check_status(es):
             nt = e.get("negation_test", {})
             if nt.get("verdict") not in ("passes", "fails", "contested"):
                 errs.append(f"{eid}: negation_test.verdict 缺失/无效")
-        if "L2-bridging" in p and e.get("status") == "verified":
-            cv = e.get("cross_verification", {})
-            iea = cv.get("iea")
-            if iea is not None and iea < 1.2:
-                errs.append(f"{eid}: IEA={iea} 但状态为 verified (需 ≥1.2)")
+        if "L2-bridging" in p:
+            st = e.get("status", "")
+            if st not in valid_l2_status:
+                errs.append(f"{eid}: status='{st}' 无效 (需为 candidate|verified|weakly_verified|rejected)")
+            if st == "verified":
+                cv = e.get("cross_verification", {})
+                iea = cv.get("iea")
+                if iea is not None and iea < 1.2:
+                    errs.append(f"{eid}: IEA={iea} 但状态为 verified (需 ≥1.2)")
     for e in errs: print(f"❌ {e}")
     print("✅ 状态检查: 通过" if not errs else "")
     return errs

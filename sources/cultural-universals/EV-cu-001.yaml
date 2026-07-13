@@ -1,0 +1,27 @@
+id: EV-cu-001
+discipline: cultural_universals
+topic: "内群体偏好与民族中心主义的跨文化普遍性"
+claim: |
+  在所有被研究的人类文化中，都存在"我们 vs 他们"的区分体系。
+  成员对自己所属的文化群体表现出系统性的偏好——
+  在信任、合作、资源分配中给予内群体成员优待。
+
+  Brown (1991) 的人类普适性清单中将"民族中心主义"(ethnocentrism)
+  列为普适性特征。Tajfel 的最小群体范式（minimal group paradigm）
+  在多种文化中被复现——即使群体划分是基于任意标准（如随机颜色标签、
+  抛硬币结果），内群体偏好仍然出现。具体的群体边界标准
+  （血缘/语言/地域/宗教）因文化而异，但内群体偏好的存在
+  是跨文化恒定的。
+
+evidence_type: empirical
+strength: strong
+
+references:
+  - "Brown, D. E. (1991). Human Universals."
+  - "Tajfel, H. (1970). Experiments in intergroup discrimination."
+  - "Brewer, M. B. (1999). The psychology of prejudice: Ingroup love or outgroup hate?"
+
+supports_bridging: [BR-L2-006]
+independence_note: "文化普适性提供了跨文化的经验确证——独立于演化和博弈论的解释框架"
+
+created: 2026-07-13

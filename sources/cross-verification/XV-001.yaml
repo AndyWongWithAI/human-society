@@ -1,0 +1,52 @@
+id: XV-001
+target_bridging: BR-L2-001
+date: 2026-07-13
+verdict: verified
+
+summary: |
+  6条L2候选命题的第一轮交叉验证。全部通过IEA≥1.2阈值。
+  IEA范围: 1.5-1.9。
+  无disagree票(一票否决未触发)。
+  两条命题有独立性风险标注(BR-L2-002: gt不确定, BR-L2-006: evo不确定)。
+
+details:
+  - target: BR-L2-001 (有限理性)
+    iea: 1.9
+    verdict: verified
+    notes: 三来源一致。gt与evo共享Simon理论源头，权重已折扣(0.4)
+
+  - target: BR-L2-002 (亲缘利他)
+    iea: 1.6
+    verdict: verified
+    notes: gt标记为uncertain——数学框架派生自evo，非独立经验验证
+
+  - target: BR-L2-003 (大规模非亲缘合作)
+    iea: 1.9
+    verdict: verified
+    notes: evo内部有群体选择争议但不影响"大规模合作存在"的共识
+
+  - target: BR-L2-004 (层级普适性)
+    iea: 1.9
+    verdict: verified
+    notes: gt贡献偏理论性(效率证明)而非经验性(不预测阈值)
+
+  - target: BR-L2-005 (互惠利他)
+    iea: 1.9
+    verdict: verified
+    notes: ⚠️ 严重独立性风险——evo和gt共享演化博弈论框架。实质独立来源≈2
+
+  - target: BR-L2-006 (内群体偏好)
+    iea: 1.5
+    verdict: verified
+    notes: evo标记为uncertain(群体选择争议)。gt和cu各自独立验证
+
+stats:
+  total: 6
+  verified: 6
+  weakly_verified: 0
+  contested: 0
+  rejected: 0
+  iea_range: [1.5, 1.9]
+  independence_concerns: 2
+
+created: 2026-07-13

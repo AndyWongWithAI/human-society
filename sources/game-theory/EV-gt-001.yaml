@@ -1,0 +1,23 @@
+id: EV-gt-001
+discipline: game_theory
+topic: "重复博弈中的互惠策略"
+claim: |
+  在重复囚徒困境和类似博弈中，条件性合作策略（如 tit-for-tat:
+  首轮合作、此后复制对手上一轮行动）在广泛参数范围内是稳健的
+  演化稳定策略。Axelrod (1984) 的计算机锦标赛和后续大量实验
+  证实: (a) 重复互动是合作涌现的必要条件；(b) 简单的条件性策略
+  胜过复杂的计算策略；(c) 人类实验对象在重复博弈中自发采用
+  条件性合作策略。
+
+evidence_type: empirical
+strength: strong
+
+references:
+  - "Axelrod, R. (1984). The Evolution of Cooperation."
+  - "Fehr, E. & Gächter, S. (2000). Cooperation and punishment in public goods experiments."
+  - "Nowak, M. A. (2006). Five rules for the evolution of cooperation."
+
+supports_bridging: [BR-L2-005]
+independence_note: "博弈论为互惠提供了近因机制——与演化生物学形成互补"
+
+created: 2026-07-13

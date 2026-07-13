@@ -1,0 +1,65 @@
+id: BR-L2-001
+status: verified
+term: 有限理性 (Bounded Rationality)
+statement: '人类个体的信息处理能力受到生物约束：
+
+  (a) 无法穷尽所有可能选项——注意力和工作记忆有限；
+
+  (b) 无法精确计算每种选项的长远后果——认知能力有限；
+
+  (c) 在约束条件下追求满意解（satisficing）而非理论最优解。
+
+  '
+bridges_to:
+  concepts:
+  - CONCEPT-agent
+  - CONCEPT-choice
+  - CONCEPT-information
+  axioms:
+  - AXIOM-002
+bridges_field: Agent 行动能力的生物约束
+applicable_sources:
+- evolutionary-biology:
+    rationale: 有限理性的演化起源——自然选择偏好启发式而非最优解， 因为最优解的计算成本在生态时间尺度上不可负担。 觅食决策、捕食者规避、配偶选择均表现出
+      satisficing 模式。
+- game_theory:
+    rationale: bounded rationality 是行为博弈论的标准前提。 Simon (1955) 的开创性工作。实验经济学反复验证人类偏离
+      完全理性预测的模式。
+- cultural_universals:
+    rationale: 跨文化认知心理学研究——基本认知偏差（如损失厌恶、 框架效应）在所有被研究文化中出现，尽管表现强度不同。
+falsifiability: '若发现一个人类群体，其个体在不确定条件下做出决策时:
+
+  (a) 能列举并评估所有可能选项（无遗漏）；
+
+  (b) 能精确计算每种选项的远期期望效用；
+
+  (c) 不依赖任何启发式简化——
+
+  则本命题被证伪。
+
+  '
+created: 2026-07-13
+source_anchors:
+- source_id: EV-evo-001
+  support: strong
+cross_verification:
+  votes:
+    evolutionary_biology:
+      status: agree
+      weight: 1.0
+      evidence:
+      - EV-evo-001
+      note: '觅食理论+生态理性为有限理性提供终极因。证据强度: strong。'
+    game_theory:
+      status: agree
+      weight: 0.4
+      evidence: []
+      independence_note: 与evo共享Simon理论源头。独立贡献主要在实验经济学验证。
+    cultural_universals:
+      status: agree
+      weight: 0.5
+      evidence: []
+      note: 跨文化认知心理学——基本认知偏差在所有被研究文化中出现。
+  iea: 1.9
+  verdict: verified
+  verdict_note: IEA=1.9，三来源交叉验证通过。gt权重因与evo的理论重叠被折扣(0.4)。

@@ -1,0 +1,60 @@
+id: BR-L2-005
+status: verified
+term: 互惠利他 (Reciprocal Altruism)
+statement: '人类在重复互动条件下会自发发展出互惠行为模式——
+
+  "你帮我，我帮你"——即使双方没有遗传亲缘关系。
+
+  这种互惠利他不需要显式协议或中央权威来维持；
+
+  它可以从重复交互中涌现（AXIOM-003 的经验验证）。
+
+  '
+bridges_to:
+  concepts:
+  - CONCEPT-cooperation
+  - CONCEPT-exchange
+  - CONCEPT-interaction
+  axioms:
+  - AXIOM-003
+  theorems:
+  - THEOREM-cooperation-precondition
+bridges_field: AXIOM-003 和 THEOREM-cooperation-precondition 的经验基础
+applicable_sources:
+- evolutionary-biology:
+    rationale: Trivers (1971) 提出互惠利他理论。在吸血蝙蝠 （食物反刍分享）、灵长类（ grooming 交换）、鱼类 （清洁鱼互惠）中均有证据。人类狩猎采集社会中的食物分享
+      遵循互惠逻辑——今天我给你，因为昨天你给了我。
+- game_theory:
+    rationale: 'Axelrod (1984) 的囚徒困境锦标赛——tit-for-tat 在重复博弈中胜出。Folk theorem: 在无限重复博弈中，
+      合作是均衡策略之一。实验经济学: 公共物品博弈中， 重复互动显著提高合作率。'
+- cultural_universals:
+    rationale: '礼物经济（gift economy）在所有已知社会中都存在。 Marcel Mauss: 礼物赠送-接受-回赠的三重义务是跨文化普适的。
+      互惠伦理（''以德报德、以怨报怨''）出现在所有道德体系中。'
+falsifiability: "若发现一个人类群体:\n(a) 成员之间存在频繁的重复互动（同一个人际网络中）；\n(b) 且该群体已经稳定存在超过一代人（>20\
+  \ 年）；\n(c) 但成员之间从未发展出任何互惠模式——\n    每次互动都是独立的、不参考过往交互历史的——\n则本命题被证伪。\n"
+created: 2026-07-13
+source_anchors:
+- source_id: EV-gt-001
+  support: strong
+cross_verification:
+  votes:
+    evolutionary_biology:
+      status: agree
+      weight: 1.0
+      evidence: []
+      note: Trivers(1971)互惠利他理论。吸血蝙蝠食物反刍、灵长类grooming交换、鱼类清洁站——跨物种证据丰富。
+    game_theory:
+      status: agree
+      weight: 0.4
+      evidence:
+      - EV-gt-001
+      independence_note: '⚠️ 与evo重叠极高——演化博弈论共享ESS/replicator dynamics数学框架。Axelrod的tit-for-tat本质上验证了Trivers的理论预测。独立贡献:
+        实验经济学中的行为验证。'
+    cultural_universals:
+      status: agree
+      weight: 0.5
+      evidence: []
+      note: 礼物经济在所有已知社会存在。Mauss的'给予-接受-回赠'三重义务是跨文化普适的。
+  iea: 1.9
+  verdict: verified
+  verdict_note: IEA=1.9但悬挂严重独立性风险——evo和gt在此领域几乎是一棵树(演化博弈论)。实质独立来源≈2而非3。

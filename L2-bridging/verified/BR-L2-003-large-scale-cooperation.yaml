@@ -1,0 +1,65 @@
+id: BR-L2-003
+status: verified
+term: 大规模非亲缘合作 (Large-Scale Non-Kin Cooperation)
+statement: '人类社会独特地能够在大大超越亲缘群体的规模上建立和维持合作关系——
+
+  数百、数千乃至数百万个体共同参与一个合作体系（如国家、宗教、市场）。
+
+  这种大规模合作依赖于共享规范、抽象制度和对"想象秩序"
+
+  （imagined orders）的集体信仰——而非仅依赖于个体间的直接互惠或亲缘利他。
+
+  '
+bridges_to:
+  concepts:
+  - CONCEPT-cooperation
+  - CONCEPT-norm
+  - CONCEPT-group
+  - CONCEPT-organization
+  axioms:
+  - AXIOM-003
+  theorems:
+  - THEOREM-cooperation-precondition
+bridges_field: 从 L1 抽象合作条件到人类特有的大规模合作机制
+applicable_sources:
+- evolutionary-biology:
+    rationale: 人类是唯一显示出'超社会性'(ultrasociality)的灵长类—— 在非亲属之间的大规模合作。演化生物学家提出群体选择、 文化群体选择等机制来解释这一独特现象。
+- game_theory:
+    rationale: '大规模合作是一个公地悲剧/囚徒困境问题。 博弈论提供了解决方案的形式化: 制度性安排（监督、惩罚、 声誉机制）如何将单次博弈转化为重复博弈的影子。
+      但博弈论本身不解释''为什么只有人类做到了''。'
+- cultural_universals:
+    rationale: '所有已知人类社会都有: - 宗教/世界观（超自然信仰+共享叙事） - 法律/规则体系（明确的行为规范+执行机制） - 交换系统（礼物/贸易/货币）
+      这些''想象秩序''的普遍存在支持了本命题。'
+falsifiability: '若发现一个大规模人类社会（N > 1000）:
+
+  (a) 成员之间维持着稳定的合作关系（如共同防御、资源分配）；
+
+  (b) 且不存在任何共享规范、制度或想象秩序；
+
+  (c) 且合作仅通过两两直接互惠维持——
+
+  则本命题被证伪。
+
+  '
+created: 2026-07-13
+source_anchors: []
+cross_verification:
+  votes:
+    evolutionary_biology:
+      status: agree
+      weight: 1.0
+      evidence: []
+      note: 人类是唯一显示超社会性(ultrasociality)的灵长类。群体选择/文化群体选择机制虽有争议，但大规模合作的现象本身是共识。
+    game_theory:
+      status: agree
+      weight: 0.4
+      evidence: []
+      note: 公地悲剧/囚徒困境的形式化。制度性解决方案(监督、惩罚、声誉)的理论框架。
+    cultural_universals:
+      status: agree
+      weight: 0.5
+      evidence: []
+      note: 所有复杂社会都有宗教/法律/货币等'想象秩序'。人类学提供了独立的跨文化证据。
+  iea: 1.9
+  verdict: verified
+  verdict_note: IEA=1.9。evo内部虽有群体选择争议，但对'大规模合作存在'这一事实无分歧。

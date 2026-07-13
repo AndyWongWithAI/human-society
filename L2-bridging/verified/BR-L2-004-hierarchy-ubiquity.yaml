@@ -1,0 +1,53 @@
+id: BR-L2-004
+status: verified
+term: 层级普适性 (Hierarchy Ubiquity)
+statement: '当人类群体的规模超过大约 150 人（Dunbar''s number——个体能维持
+
+  稳定社交关系的认知上限）时，群体必然出现某种形式的层级结构——
+
+  将决策权归并到少数人手中——以降低全对等协调的信息成本。
+
+  '
+bridges_to:
+  concepts:
+  - CONCEPT-hierarchy
+  - CONCEPT-organization
+  - CONCEPT-information
+  axioms:
+  - AXIOM-002
+  theorems:
+  - THEOREM-hierarchy-depth-limit
+bridges_field: 从 L1 层级深度极限到可观测的人类组织规模-层级关联
+applicable_sources:
+- evolutionary-biology:
+    rationale: 灵长类脑容量与社会群体规模的相关性是稳健的。 Dunbar's number (~150) 在狩猎采集族群、军队连队、 学术合作网络等多种人类组织中得到反复验证。
+      层级在灵长类中普遍存在——从狒狒到黑猩猩都有支配等级。
+- game_theory:
+    rationale: 协调博弈的形式化——n 人协调成本随 n 增长呈 O(n²)。 层级将协调复杂度从 O(n²) 降为 O(n log n) 或更低。
+      但博弈论不预测层级的'出现阈值'——阈值是经验性的。
+- cultural_universals:
+    rationale: 所有已知的复杂社会（超越狩猎采集族群规模）都有层级。 酋邦、王国、帝国——层级是社会复杂化的伴随现象。 但文化普适性不提供因果机制——它只确认相关性。
+falsifiability: "若发现一个人类群体:\n(a) 规模 > 200 人；\n(b) 维持了至少一代人（>20 年）的稳定存在；\n(c) 完全没有层级结构——所有决策全对等参与，无任何常态化的\n\
+  \    决策权不对称——\n则本命题被证伪。\n"
+created: 2026-07-13
+source_anchors: []
+cross_verification:
+  votes:
+    evolutionary_biology:
+      status: agree
+      weight: 1.0
+      evidence: []
+      note: 灵长类支配等级普遍。Dunbar's number(~150)在多种人类组织中得到验证。
+    game_theory:
+      status: agree
+      weight: 0.4
+      evidence: []
+      note: 协调博弈——n人协调成本O(n²)，层级降至O(n log n)。但具体~150阈值来自evo/神经科学，非博弈论。
+    cultural_universals:
+      status: agree
+      weight: 0.5
+      evidence: []
+      note: 所有超越狩猎采集规模的社会都出现层级。酋邦→王国→帝国是社会复杂化的伴随现象。
+  iea: 1.9
+  verdict: verified
+  verdict_note: IEA=1.9。gt的贡献偏理论性(证明层级效率)而非经验性(不预测阈值)。已通过权重折扣反映。
