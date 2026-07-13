@@ -53,16 +53,16 @@ def check_status(es):
     errs = []
     for p, e in es.items():
         eid = e.get("id", "?")
-        if "deductions/corollaries" in p:
+        if "L3-deductions/corollaries" in p:
             if not e.get("falsification_trace", {}).get("primary_suspect"):
                 errs.append(f"{eid}: 缺少 falsification_trace.primary_suspect")
             if not e.get("real_world_anchors"):
                 errs.append(f"{eid}: 缺少 real_world_anchors")
-        if "L0-definitions/axioms" in p:
+        if "L1-definitions/axioms" in p:
             nt = e.get("negation_test", {})
             if nt.get("verdict") not in ("passes", "fails", "contested"):
                 errs.append(f"{eid}: negation_test.verdict 缺失/无效")
-        if "L1-bridging" in p and e.get("status") == "verified":
+        if "L2-bridging" in p and e.get("status") == "verified":
             cv = e.get("cross_verification", {})
             iea = cv.get("iea")
             if iea is not None and iea < 1.2:
