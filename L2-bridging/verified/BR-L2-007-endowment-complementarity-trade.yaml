@@ -1,0 +1,84 @@
+id: BR-L2-007
+status: verified
+term: 禀赋互补驱动贸易 (Endowment Complementarity Drives Trade)
+
+人话摘要: "两拨人手里的东西越是'你有我没、我有你没'(禀赋互补),他们之间越会做买卖;贸易的密度跟着这种互补程度走。反过来,大家东西都一样,就没什么好换的。"
+
+statement: |
+  人类群体之间自愿交换(贸易)的强度，随双方资源禀赋的互补程度上升而上升。
+  (a) 当两方各自富产/擅长对方稀缺的资源时，贸易在他们之间出现并随互补
+      程度加深而加密；
+  (b) 当双方禀赋高度同质（都有一样的东西、都缺一样的东西）时，贸易动机
+      微弱，资源配置更多通过竞争或掠夺完成。
+  这把 THEOREM-exchange-competition-alternative 的"禀赋差异"前提从逻辑层
+  落到真实人类群体。
+
+bridges_to:
+  concepts: [CONCEPT-exchange, CONCEPT-resource]
+  theorems: [THEOREM-exchange-competition-alternative]
+bridges_field: 交换动机的经验基础——禀赋异质性
+
+applicable_sources:
+- evolutionary-biology:
+    rationale: |
+      人类行为生态学：分工与生态位互补是交换的生态基础。不同生态位/
+      技能的个体与群体通过转让各自富余的产物获得净收益，是觅食社会
+      普遍观察到的模式（如性别分工的食物分享、专业化狩猎-采集）。
+- game_theory:
+    rationale: |
+      比较优势与 gains from trade：当双方机会成本不同时，专业化 + 交换
+      使双方都改善（Ricardo 比较优势的博弈论表述）。与演化生物学共享
+      演化博弈论框架，独立性打折。
+- cultural_universals:
+    rationale: |
+      考古与跨文化贸易网络证据：史前贸易路线（黑曜石、盐、金属、贝壳）
+      系统性地沿生态边界分布——即禀赋互补的相邻区域之间。方法论上
+      （物质文化溯源）独立于演化理论。
+
+falsifiability: |
+  若发现 (a) 禀赋高度同质的相邻群体之间自发形成密集贸易；或
+  (b) 禀赋高度互补的相邻群体之间系统性地没有贸易（且非因交通阻断或
+  彼此敌对），则本命题被削弱。
+
+cross_verification:
+  votes:
+    evolutionary_biology:
+      status: agree
+      weight: 1.0
+      evidence: []
+      note: |
+        人类行为生态学的分工-交换文献（食物分享、专业化）。证据强度:
+        moderate-strong。诚实标注:暂无专门 EV 证据文件，引文在 rationale。
+    game_theory:
+      status: agree
+      weight: 0.4
+      evidence: []
+      independence_note: |
+        比较优势/gains from trade 是标准结果，但与 evo 共享演化博弈论
+        框架，独立系数 0.4。
+    cultural_universals:
+      status: agree
+      weight: 0.6
+      evidence: []
+      note: |
+        史前贸易网沿生态边界分布（黑曜石、盐、金属）。物质文化溯源
+        方法独立于演化理论，独立系数 0.6。
+  iea: 2.0
+  verdict: verified
+  verdict_note: |
+    IEA = 1.0 + 0.4 + 0.6 = 2.0 ≥ 1.8 → verified（至少两个准独立来源:
+    演化理论 + 考古/物质文化记录）。无有资格的反对票。
+  instrument_disclosure: |
+    本次三路投票由单一 LLM 执行（非独立人类专家）。按 independence-model.yaml
+    的 instrument_correlation:报告的 IEA=2.0 是"学科独立性"上限，"仪器有效
+    独立性"低于此。本命题因有独立的考古物质证据支撑，仪器忧虑被部分缓解。
+  honest_note: |
+    本命题偏教科书（比较优势）。这不是缺陷——L2 砖的职责是当经验锚，
+    新颖性应体现在其上的推论，而非砖本身。
+
+depends_on:
+  concepts: [CONCEPT-exchange, CONCEPT-resource]
+  theorems: [THEOREM-exchange-competition-alternative]
+
+domain: [交换理论, 经济人类学]
+created: 2026-07-14

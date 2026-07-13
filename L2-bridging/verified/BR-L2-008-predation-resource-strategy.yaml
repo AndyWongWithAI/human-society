@@ -1,0 +1,81 @@
+id: BR-L2-008
+status: verified
+term: 掠夺是真实且普遍的资源获取策略 (Predation as a Real, Ubiquitous Resource Strategy)
+
+人话摘要: "人不是只会做买卖——当'抢的代价'低于'抢到的好处'时,靠武力直接夺取(劫掠、掠夺、征服)是一种真实存在、跨文化反复出现的策略。这是'换 vs 抢'里那个'抢'的对手,必须先坐实它是真选项。"
+
+statement: |
+  以武力非自愿夺取他方资源（掠夺、劫掠、征服）是人类社会中普遍存在的
+  一条资源获取路径。其发生频率随"夺取净收益"上升——即随
+  （抢到的资源价值 − 抢的成本与失败风险 − 遭报复的预期损失）上升。
+  这为"交换 vs 掠夺"的选择结构坐实了掠夺这一真实选项，
+  否则"交换替代掠夺"无对手可替代。
+
+bridges_to:
+  concepts: [CONCEPT-competition, CONCEPT-conflict, CONCEPT-resource]
+  axioms: [AXIOM-001]
+  theorems: [THEOREM-conflict-cost]
+bridges_field: 资源获取的暴力路径——掠夺的经验实在性
+
+applicable_sources:
+- evolutionary-biology:
+    rationale: |
+      种内资源竞争与联盟性攻击（coalitionary aggression）在人类及近缘
+      物种中有据；史前考古的系统性暴力证据（战伤骨骼、防御工事、
+      屠杀遗址）表明以暴力夺取资源贯穿人类史，非现代产物。
+- game_theory:
+    rationale: |
+      掠夺 vs 生产的博弈（appropriation-vs-production、鹰鸽模型、
+      "权力的悖论"）:当夺取成本低于生产/交换成本时，掠夺是理性策略。
+      与 evo 共享演化博弈论框架，独立性打折。
+- cultural_universals:
+    rationale: |
+      战争与劫掠的跨文化普遍性:民族志记录中掠夺、突袭、征服广泛存在
+      （游牧对定居的劫掠、部落 warfare、跨文化战争频率研究）。田野
+      方法独立于演化理论。
+
+falsifiability: |
+  若发现人类社会普遍地从不使用武力夺取资源——即使在夺取成本很低、
+  收益很高、报复风险很小的条件下也一律选择自愿交换——则本命题被削弱。
+  （注意:本命题不主张掠夺是主导策略，只主张它是真实且随净收益上升的选项。）
+
+cross_verification:
+  votes:
+    evolutionary_biology:
+      status: agree
+      weight: 1.0
+      evidence: []
+      note: |
+        联盟性攻击 + 史前暴力考古（Keeley、Bowles、LeBlanc 等）。
+        证据强度: strong。诚实标注:暂无专门 EV 文件，引文在 rationale。
+    game_theory:
+      status: agree
+      weight: 0.4
+      evidence: []
+      independence_note: |
+        appropriation-vs-production / 鹰鸽 / Hirshleifer "权力悖论"。
+        与 evo 共享演化博弈论框架，独立系数 0.4。
+    cultural_universals:
+      status: agree
+      weight: 0.6
+      evidence: []
+      note: |
+        跨文化战争/劫掠普遍性（Ember & Ember 跨文化研究等）。田野
+        民族志方法独立于演化理论，独立系数 0.6。
+  iea: 2.0
+  verdict: verified
+  verdict_note: |
+    IEA = 1.0 + 0.4 + 0.6 = 2.0 ≥ 1.8 → verified（演化理论 + 考古/
+    民族志记录两个准独立来源）。无有资格的反对票。
+  instrument_disclosure: |
+    三路投票由单一 LLM 执行。按 instrument_correlation:IEA=2.0 是学科
+    独立性上限，仪器有效独立性低于此。本命题有独立的考古暴力证据支撑，
+    仪器忧虑被部分缓解。
+
+depends_on:
+  concepts: [CONCEPT-competition, CONCEPT-conflict, CONCEPT-resource]
+  axioms: [AXIOM-001]
+  theorems: [THEOREM-conflict-cost]
+
+domain: [冲突理论, 经济人类学]
+created: 2026-07-14
