@@ -75,6 +75,106 @@ rule_b_review_separation:
     审查者必须独立寻找反例。作者负责支持证据，
     审查者负责反例。两者同时呈现在推论文件中。
 
+# === 规则 C：经验检验（对抗式审查通过后的可选第三步） ===
+
+rule_c_empirical_test:
+  title: "verified 推论应尽可能经历经验检验"
+
+  position: |
+    对抗式审查（Rule B）检验推论的内在逻辑——推导链是否成立、
+    操作化是否可执行、证伪路径是否明确。
+    经验检验（Rule C）检验推论的外在对应——真实世界的数据
+    是否与推论的预测一致。
+    两者互补：逻辑上无懈可击的推论可能在经验上被反例推翻。
+
+  trigger_condition: |
+    满足以下全部条件时建议启动经验检验：
+    (a) 推论状态为 verified 或 verified*
+    (b) 推论的至少一个证伪条件在实践上可达——
+        存在可获取的历史/考古/人类学/组织学数据
+    (c) 检验的边际信息增益 > 0——
+        即检验有可能改变我们对推论置信度的判断
+    不满足条件时不应强行检验——"无法检验"比"质量低劣的检验"更诚实。
+
+  test_design_standards:
+    sample_selection:
+      rule: "样本选择必须在检验开始前声明，禁止在结果出来后调整样本"
+      requirements:
+        - "明确总体（population）和样本（sample）的关系"
+        - "声明纳入/排除标准，包括边界案例的处理规则"
+        - "如果样本非随机（如便利抽样），诚实声明并讨论偏差方向"
+        - "样本量 N 的记录不能被事后修改"
+
+    coding_scheme:
+      rule: "所有分类判定（层级计数、系统类型等）必须有预先声明的编码方案"
+      requirements:
+        - "每个变量的编码规则必须在检验开始前写定"
+        - "边界案例必须单独标记，不得强行归类"
+        - "灰色地带（如'半形式化信息系统'）必须诚实报告，不得二值化掩盖"
+        - "如果可行，使用双编码者 + intercoder reliability 报告"
+
+    boundary_case_handling:
+      rule: "边界案例是对推论最有信息价值的检验对象，必须重点分析而非回避"
+      requirements:
+        - "边界案例必须在结果汇总表中突出标记"
+        - "必须分析：边界案例在哪种编码方案下会成为反例"
+        - "如果编码方案的微小变动会改变检验结论，必须诚实声明"
+
+    excluded_outcome:
+      rule: "检验也必须声明自己的'排除结果'——什么情况下检验本身被视为失败"
+      requirements:
+        - "明确：发现什么会使检验结论翻转"
+        - "不应事后修改排除标准以适应数据"
+
+  result_to_status:
+    rule: "经验检验结果影响推论的置信度，但不自动改变 verified 状态"
+
+    outcomes:
+      - outcome: "无反例存活"
+        description: "检验样本中未发现证伪推论的结果"
+        effect: "verified 维持。推论的经验置信度上升。可以记录为 verified 的支撑证据。"
+
+      - outcome: "发现疑似反例"
+        description: "至少一个案例在特定编码方案下构成反例"
+        effect: |
+          推论添加 verified* 标记（如尚未有）。
+          启动深度调查：反例的编码是否可靠？是否有遗漏的控制变量？
+          调查结果写入检验报告的 follow_up 字段。
+
+      - outcome: "发现确凿反例"
+        description: "经深度调查确认反例成立——满足推论的排除结果条件"
+        effect: |
+          推论 status 从 verified 降为 contested。
+          触发 Rule B 重新审查——作者必须修订推论以容纳反例，
+          或限制推论的适用范围，或承认推论被证伪。
+          修订后的推论重新走 Rule A → Rule B 流程。
+
+      - outcome: "检验本身质量不足"
+        description: "样本量过小、编码不可靠、数据不足以支撑结论"
+        effect: "推论状态不变。检验报告标记为 inconclusive。不产生虚假的信心。"
+
+  file_structure:
+    location: "L3-deductions/empirical-tests/EMP-TEST-XXX-<deduction-id>.yaml"
+    required_fields:
+      - id: "EMP-TEST-XXX"
+      - target: "被检验的推论 ID"
+      - date: "检验日期"
+      - type: empirical_test
+      - status: "conducted | inconclusive"
+      - test_design: "样本选择理由 + 编码方案 + 排除结果"
+      - results: "案例数据 + 汇总 + 核心发现"
+      - limitations: "样本局限 + 编码歧义 + 定义灰色地带"
+      - conclusion: "对推论置信度的影响 + 下一步"
+      - created: "日期"
+
+  relationship_to_rule_b:
+    conceptual: "审查对抗逻辑，检验对抗经验——两者是同一种对抗式哲学在不同层面的应用"
+    practical: |
+      经验检验的"反例发现"角色 = Rule B 中审查者"独立寻找反例"的经验版本。
+      审查者找的是逻辑反例（推导跳跃、概念混淆、伪完备分类）；
+      检验者找的是经验反例（不符合预测的真实案例）。
+    sequencing: "Rule B 必须在 Rule C 之前——逻辑上未通过的推论不值得浪费经验数据去检验"
+
 # === 推论文件结构 ===
 
 file_structure:
@@ -99,4 +199,10 @@ file_structure:
 layer_comparison:
   L1_axioms: "提出 → negation_test → passes/fails"
   L2_bridging: "提出 → 三来源 IEA 投票 → verified/contested"
-  L3_deductions: "提出 → 概念操作化 + 审查分离 → candidate/verified/rejected"
+  L3_deductions: "提出 → Rule A 操作化(硬门槛) → Rule B 对抗式审查 → candidate/verified/rejected → Rule C 经验检验(可选,verified后) → 置信度上升/contested"
+
+verification_full_chain:
+  step_1: "Rule A: 操作化定义 — 硬门槛，不过则无法进入审查"
+  step_2: "Rule B: 对抗式审查 — 审查者挑战逻辑+反例，作者回应，裁决 verified/needs_revision/rejected"
+  step_3: "Rule C: 经验检验 — verified 后的可选步骤，历史/考古/人类学数据检验真实世界的反例"
+  philosophy: "Rule B 审查逻辑的内在一致性 → Rule C 检验经验的外在对应。逻辑上无懈可击 ≠ 经验上成立。两者互补构成完整的验证闭环。"
