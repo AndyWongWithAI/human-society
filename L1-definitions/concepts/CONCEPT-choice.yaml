@@ -33,7 +33,7 @@ logical_implications:
   - "每次行动是选择的结果"                          # 行动 = 选中方案
 
 domain: [基础概念]
-depends_on: [CONCEPT-agent, CONCEPT-goal, CONCEPT-resource]
+depends_on: [CONCEPT-agent, CONCEPT-goal, CONCEPT-resource, CONCEPT-information]
 l0_constraints:
   - PHY-002: "能量预算约束可行选择集——Agent 不能选择超出其能量预算的行动方案"
   - PHY-003-d: "时间不可逆 ⇒ 选择 A 意味着永久失去了在该时刻选择 B 的机会——选择有不可恢复的机会成本"

@@ -39,7 +39,7 @@ logical_implications:
   - "组织内存在竞争与合作的共存"                     # 对内合作 + 对外竞争 + 内部分配竞争
 
 domain: [基础概念]
-depends_on: [CONCEPT-agent, CONCEPT-goal, CONCEPT-resource, CONCEPT-relation, CONCEPT-cooperation, CONCEPT-position]
+depends_on: [CONCEPT-agent, CONCEPT-goal, CONCEPT-resource, CONCEPT-relation, CONCEPT-cooperation, CONCEPT-position, CONCEPT-information]
 l0_constraints:
   - PHY-001: "组织是高度有序的结构 ⇒ 熵增不断侵蚀之 ⇒ 组织需要持续能量输入来维持——'不维护就崩溃'不是管理口号，是热力学"
   - PHY-002: "组织的能量预算约束其规模、复杂度和寿命——能获取多少能量决定能维持多大的秩序"

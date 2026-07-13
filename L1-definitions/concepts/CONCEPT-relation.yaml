@@ -35,7 +35,7 @@ logical_implications:
   - "关系是资源"                                  # 关系帮助 Agent 达成目标 → 是资源的一种
 
 domain: [基础概念]
-depends_on: [CONCEPT-agent, CONCEPT-interaction, CONCEPT-goal, CONCEPT-resource]
+depends_on: [CONCEPT-agent, CONCEPT-interaction, CONCEPT-goal, CONCEPT-resource, CONCEPT-information]
 l0_constraints:
   - PHY-001: "关系信息（'B 上次做了什么'、'B 是否可信'）会随时间衰减——没有持续交互来刷新，关系退化"
   - PHY-002: "维持关系消耗能量——沟通、协调、互动的每一次都需要能量投入"
