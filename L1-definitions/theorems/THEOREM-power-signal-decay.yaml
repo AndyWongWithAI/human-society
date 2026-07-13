@@ -1,0 +1,60 @@
+id: THEOREM-power-signal-decay
+term: "权力信号衰减定理 (Power Signal Decay Theorem)"
+type: theorem
+layer: L1-definitions
+
+statement: |
+  Agent A 对 Agent B 的权力（影响 B 选择的能力）依赖于 B
+  持有"A 有权力影响我"这一信息。该信息服从熵增——
+  若不通过持续的信号（展示、执行、提醒）来刷新，必然衰减，
+  导致 A 对 B 的实际影响力下降。
+
+derivation: |
+  from_axioms: [AXIOM-002]
+  from_concepts: [CONCEPT-power, CONCEPT-information, CONCEPT-interaction]
+
+  steps:
+    1. "权力依赖于 B 的信息状态"
+       CONCEPT-power 将权力定义为"A 影响 B 选择的能力"。
+       为使 A 能影响 B，B 必须知道（或相信）A 具有这种影响力。
+       如果 B 不知道 A 可以施加影响，B 就不会将 A 的反应
+       纳入自己的选择计算——A 的权力在 B 身上失效。
+
+       B 持有的"A 有权力影响我"这一信念是信息
+       （CONCEPT-information: Agent 可用于决策的环境状态表征）。
+       B 在做选择时调用这一信息来预测"A 会怎么回应我的行动"。
+
+    2. "信息无能量维护则衰减 (AXIOM-002)"
+       B 持有的权力信息编码在 B 的物理记忆中。
+       按 AXIOM-002，无能量投入维护 ⇒ 该信息衰减：
+       - 细节丢失（A 到底能做什么？模糊了）
+       - 置信度下降（A 真的会回应吗？不确定了）
+       - 情境关联减弱（上次 A 展示权力是在什么情况下？记不清了）
+
+    3. "权力信息的维护需要 A 投入能量——持续发信号"
+       为对抗衰减，A 必须定期刷新 B 的权力信息。
+       刷新方式包括：
+       - 展示（demonstration）：实际执行权力——让 B 看到后果
+       - 信号（signaling）：展示权力基础——显示武力、展示财富、显示人脉
+       - 叙事（narrative）：通过故事/传说维持权力形象——即使不实际展示
+
+       每种方式都消耗 A 的能量。展示消耗最多（实际行动成本），
+       叙事消耗最少但衰减最快（仅靠故事维持的权力最脆弱）。
+
+    4. "未使用的权力会自然衰减"
+       如果 A 长期不对 B 施加影响，B 的"A 有权力"信息衰减，
+       A 的实际影响力下降。这不是心理现象——是信息熵增的物理必然。
+       "被遗忘的权力"不是比喻——它是 AXIOM-002 在权力域的直接推论。
+
+  corollary: |
+    持续展示权力的 Agent 比长期不展示的 Agent 维持更强的实际控制力，
+    即使两者的"客观权力基础"（资源/武力/合法性）完全相同。
+    权力不仅是"拥有"的，更是"持续做"的。
+
+depends_on:
+  axioms: [AXIOM-002]
+  concepts: [CONCEPT-power, CONCEPT-information, CONCEPT-interaction]
+  l0_constraints: [PHY-001]
+
+domain: [权力动力学, 信息衰减]
+created: 2026-07-13

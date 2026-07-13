@@ -1,0 +1,63 @@
+id: THEOREM-cooperation-precondition
+term: "合作前提定理 (Cooperation Precondition Theorem)"
+type: theorem
+layer: L1-definitions
+
+statement: |
+  合作需要参与各方对彼此的未来行动持有可靠的相互期望——
+  即共享的"你将配合我，我也将配合你"的行为预期。
+  这种相互期望是 AXIOM-003（重复交互→规范）的产物。
+  因此，合作在没有既有关系或先前交互的 Agent 之间
+  是脆弱的——它们缺乏支持合作的共享信息基础。
+
+derivation: |
+  from_axioms: [AXIOM-003]
+  from_concepts: [CONCEPT-cooperation, CONCEPT-interaction,
+                  CONCEPT-information, CONCEPT-relation]
+
+  steps:
+    1. "合作需要协调——参与者必须彼此适配行动"
+       CONCEPT-cooperation(a): "参与方的行动不是独立的、并发的，
+       而是彼此适配的。A 的行动考虑到 B 将做什么，反之亦然。"
+       协调 = A 的行动方案依赖于 A 对 B 将做什么的预测。
+
+    2. "对 B 的行动的预测 = A 持有的关于 B 的信息"
+       预测建立在信息之上（CONCEPT-information: Agent 用于决策的
+       环境状态表征）。A 预测"B 会配合"需要 A 有信息支持这个预测。
+       信息来源只有两个：
+       (a) 与 B 的先前交互（直接经验）→ 共享交互历史
+       (b) 关于 B 的间接信息（声誉、规范、第三方信息）
+
+    3. "共享交互历史是最可靠的相互期望来源 (AXIOM-003)"
+       AXIOM-003: 重复交互 → 共享行为期望涌现。
+       当 A 和 B 有交互历史时，双方各自从历史中提取了关于对方
+       行为模式的期望。这些期望是可靠的——因为它们来自实际交互数据，
+       且已被反复验证。
+
+    4. "无既有关系 ⇒ 缺乏共享信息 ⇒ 合作脆弱"
+       如果 A 和 B 没有交互历史（陌生人），他们缺少支持合作预测的
+       共享信息。在此情况下：
+       - 双方不知道对方是否会配合
+       - 双方不知道对方是否知道自己会配合
+       - 这种不确定性本身就是协调障碍
+
+       合作仍可能发生——通过显式承诺、第三方担保、或对一般规范的依赖——
+       但这些替代机制本質上是在弥补共享交互信息的缺失。
+       它们比直接交互历史更脆弱（更易被欺骗）且更昂贵（需要额外信号）。
+
+  corollary: |
+    (a) 已有关系的 Agent 之间更容易发起和维持合作——
+        关系提供了合作的"信息基础设施"。
+    (b) 陌生人之间的合作需要额外机制（承诺、担保、规范依赖）
+        来替代缺失的共享交互信息，这些机制增加了合作的启动成本。
+    (c) 一次性合作（单次囚徒困境）之所以困难，正是因为
+        缺乏 AXIOM-003 的前提——没有重复交互就没有期望涌现。
+
+depends_on:
+  axioms: [AXIOM-003]
+  concepts: [CONCEPT-cooperation, CONCEPT-interaction,
+             CONCEPT-information, CONCEPT-relation]
+  l0_constraints: []
+
+domain: [合作理论, 信息经济学]
+created: 2026-07-13

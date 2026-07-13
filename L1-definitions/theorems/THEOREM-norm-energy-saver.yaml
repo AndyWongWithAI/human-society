@@ -1,0 +1,64 @@
+id: THEOREM-norm-energy-saver
+term: "规范节能定理 (Norm as Energy-Saving Mechanism Theorem)"
+type: theorem
+layer: L1-definitions
+
+statement: |
+  共享规范通过提供预制的行为模板，降低每次交互的协调信息成本——
+  规范是组织维持有序结构的节能机制。规范越丰富和稳定的群体，
+  维持同等秩序水平所需的每位成员能量投入越低。
+
+derivation: |
+  from_axioms: [AXIOM-003, AXIOM-004]
+  from_concepts: [CONCEPT-norm, CONCEPT-organization, CONCEPT-interaction,
+                  CONCEPT-information]
+
+  steps:
+    1. "每次交互需要协调信息"
+       当两个 Agent 交互时，他们需要协调——即使是最基本的交互
+       （如并排行走不碰撞），也需要双方预期对方的行动
+       （CONCEPT-interaction: 交互是双向因果）。
+
+       没有共享规范时，每次交互都需要 ad-hoc 协商：
+       "你做什么？我做什么？怎么分配？怎么解决分歧？"
+       每一步协商都消耗能量（时间、注意力、通信）
+
+    2. "共享规范 = 预制的行为模板"
+       规范（CONCEPT-norm）是共享的行为期望。
+       当规范存在时，交互不再需要从头协商——
+       双方都知道"这种情况下应该怎么做"。
+       规范相当于预编译的交互程序——一次定义，多次使用。
+
+    3. "规范涌现后 → 交互的能量成本下降"
+       从 AXIOM-003：重复交互 → 规范涌现。
+       规范涌现后，每次交互节省了 ad-hoc 协商的能量成本。
+       节省量 = (无规范时每次交互的协商成本 - 有规范时的执行成本)
+              × 交互次数
+
+       对于高频交互（如组织的日常协调），节省量极大。
+       对于低频交互（如偶遇陌生人），节省量小——
+       这可能解释了为什么陌生人之间的交互更"费力"。
+
+    4. "规范帮助组织抵抗熵增 (AXIOM-004)"
+       AXIOM-004 断言组织需要能量维持秩序。
+       规范通过降低每次协调的能量成本，提高了组织能量预算的效率——
+       同样的能量投入能维持更大或更持久的组织。
+       在这个意义上，规范是组织的"热力学优化"：
+       不是改变能量总量，而是提高能量的利用效率。
+
+  corollary: |
+    当一个群体的规范瓦解时（由于规范维护不足或外部冲击），
+    维持同等秩序水平的能量成本会急剧上升——
+    每次交互都需要更多的协商、监控和执行成本。
+    这可以解释为什么"秩序崩溃"往往呈加速态势：
+    规范瓦解 → 能量成本上升 → 用于维持规范的能量减少 →
+    更多规范瓦解 → 正反馈循环。
+
+depends_on:
+  axioms: [AXIOM-003, AXIOM-004]
+  concepts: [CONCEPT-norm, CONCEPT-organization, CONCEPT-interaction,
+             CONCEPT-information]
+  l0_constraints: [PHY-001, PHY-002]
+
+domain: [规范理论, 组织理论, 热力学社会应用]
+created: 2026-07-13

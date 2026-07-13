@@ -1,0 +1,58 @@
+id: THEOREM-relation-information-asset
+term: "关系信息资产定理 (Relation as Information Asset Theorem)"
+type: theorem
+layer: L1-definitions
+
+statement: |
+  Agent A 和 B 之间的关系是一种信息资产——它存储了两者交互历史中
+  积累的共享信息，降低了每次新交互的协调成本。关系的"强度"可被理解
+  为 A 和 B 之间累积的共享交互信息的量。
+
+derivation: |
+  from_axioms: [AXIOM-002, AXIOM-003]
+  from_concepts: [CONCEPT-relation, CONCEPT-interaction, CONCEPT-information, CONCEPT-norm]
+
+  steps:
+    1. "交互产生信息 (CONCEPT-interaction)"
+       每次 A 和 B 交互，双方各自获取关于对方的信息——
+       对方的行为模式、偏好、可信度。
+       CONCEPT-interaction(b) 明确：交互是双向因果，
+       每个参与方都从交互中接收信息。
+
+    2. "重复交互 → 信息积累 → 共享期望 (AXIOM-003)"
+       当交互重复发生，双方积累的信息形成共享行为期望——
+       一种仅存在于 A 和 B 之间的微型规范。
+       "B 上次这样做时..." → "B 这次大概也会..."
+
+    3. "共享信息降低协调成本"
+       有交互历史的 A 和 B 再次交互时，不需要像陌生人那样
+       从头协商基本期望。共享信息提供了"预编译"的行为模板：
+       - 知道对方的典型行为模式 → 减少预测成本
+       - 知道对方的偏好 → 减少谈判成本
+       - 知道对方的可信度 → 减少监控成本
+       每次新交互节省的能量 = 无关系时的协商成本 - 有关系时的边际成本
+
+    4. "关系 = 共享交互信息的持久存储"
+       关系不是交互本身——关系是交互信息的累积存储。
+       CONCEPT-relation 将关系定义为"通过重复交互形成的、
+       具有一定稳定性和可预期性的互动模式"。
+       "稳定性"和"可预期性"的本质是：A 和 B 各自持有关于对方的
+       信息，且这些信息足够一致（共享），使得双方能准确预测对方行为。
+
+    5. "关系的衰减——信息熵增 (AXIOM-002)"
+       按 AXIOM-002，关系信息（共享的交互历史记忆）必然衰减。
+       关系的"强度"衰减 = 共享信息的 fidelity 下降。
+       持续交互刷新信息 → 关系维持。交互停止 → 信息衰减 → 关系弱化。
+
+  corollary: |
+    陌生人之间的首次交互比熟人之间的同等交互消耗更多能量——
+    不是心理隐喻，是信息论必然。陌生人需要从零开始交换信息
+    来建立行为期望；熟人已经持有共享信息，只需增量更新。
+
+depends_on:
+  axioms: [AXIOM-002, AXIOM-003]
+  concepts: [CONCEPT-relation, CONCEPT-interaction, CONCEPT-information, CONCEPT-norm]
+  l0_constraints: [PHY-001]
+
+domain: [关系理论, 信息经济学]
+created: 2026-07-13

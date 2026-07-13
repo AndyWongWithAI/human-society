@@ -55,20 +55,69 @@ def check_refs(es):
             for v in (e.get(k) or []):
                 if isinstance(v, str) and not _ref_exists(v, ids):
                     errs.append(f"{eid}: {k} 引用 '{v}' 不存在")
-        # depends_on: 扁平列表（概念）或嵌套 dict（定理）
+        # depends_on: 扁平列表（概念）或嵌套 dict（定理/公理）
         deps = e.get("depends_on")
         if isinstance(deps, list):
             for v in deps:
                 if isinstance(v, str) and not _ref_exists(v, ids):
                     errs.append(f"{eid}: depends_on 引用 '{v}' 不存在")
         elif isinstance(deps, dict):
-            for sub_k in ("concepts", "l0_constraints"):
+            for sub_k in ("concepts", "l0_constraints", "axioms", "theorems"):
                 for v in (deps.get(sub_k) or []):
                     if isinstance(v, str) and not _ref_exists(v, ids):
                         errs.append(f"{eid}: depends_on.{sub_k} 引用 '{v}' 不存在")
     for e in errs: print(f"❌ {e}")
     print("✅ 引用完整性: 通过" if not errs else "")
     return errs
+
+
+def check_circular_deps(es):
+    """检测定理间的循环依赖。"""
+    # 构建定理依赖图：theorem_id → {依赖的定理 IDs}
+    g = {}
+    for p, e in es.items():
+        eid = e.get("id", "")
+        if not eid.startswith("THEOREM-"):
+            continue
+        deps = e.get("depends_on", {})
+        if isinstance(deps, dict):
+            g[eid] = set(deps.get("theorems", []))
+        else:
+            g[eid] = set()
+
+    # DFS 检测循环
+    WHITE, GRAY, BLACK = 0, 1, 2
+    color = {n: WHITE for n in g}
+    cycle = []
+
+    def dfs(n, path):
+        color[n] = GRAY
+        for m in g.get(n, set()):
+            if m not in color:
+                continue  # 引用了不存在的定理（由 check_refs 报告）
+            if color[m] == GRAY:
+                # 找到循环：从 path 中 m 的位置开始
+                idx = path.index(m) if m in path else 0
+                cycle.extend(path[idx:] + [m])
+                return True
+            if color[m] == WHITE:
+                if dfs(m, path + [m]):
+                    return True
+        color[n] = BLACK
+        return False
+
+    for n in g:
+        if color[n] == WHITE:
+            if dfs(n, [n]):
+                break
+
+    if cycle:
+        chain = " → ".join(cycle)
+        print(f"❌ 循环依赖: {chain}")
+        return [f"循环依赖: {chain}"]
+
+    print("✅ 无循环依赖")
+    return []
 
 def check_status(es):
     errs = []
@@ -97,7 +146,7 @@ def main():
     es = load()
     if not es: print("\n尚无实体。"); return
     print(f"\n{len(es)} 个实体\n")
-    errs = check_ids(es) + check_refs(es) + check_status(es)
+    errs = check_ids(es) + check_refs(es) + check_circular_deps(es) + check_status(es)
     print(f"\n{'='*40}")
     if errs: print(f"❌ {len(errs)} 个错误"); sys.exit(1)
     else: print("✅ 全部通过")

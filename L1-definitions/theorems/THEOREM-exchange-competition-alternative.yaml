@@ -1,0 +1,60 @@
+id: THEOREM-exchange-competition-alternative
+term: "交换替代竞争定理 (Exchange as Competition Alternative Theorem)"
+type: theorem
+layer: L1-definitions
+
+statement: |
+  当 Agent 各自控制对方所需的不同资源时，交换（而非竞争）
+  可以成为资源配置的替代机制——Agent 通过自愿交换获取所需资源，
+  避免了竞争的资源消耗和冲突风险。交换将"争夺同一资源"
+  转化为"交换不同资源"。
+
+derivation: |
+  from_axioms: [AXIOM-001]
+  from_concepts: [CONCEPT-exchange, CONCEPT-competition, CONCEPT-resource,
+                  CONCEPT-choice]
+
+  steps:
+    1. "AXIOM-001: 有限资源 + 多 Agent → 竞争"
+       在没有交换机制的情况下，Agent A 需要资源 R₁ 和 R₂，
+       Agent B 也需要 R₁ 和 R₂。两者都需要同一资源 →
+       竞争 R₁ 和 R₂ (AXIOM-001)。
+
+    2. "交换改变资源获取的路径"
+       交换（CONCEPT-exchange）允许 Agent 通过转让自己控制的资源
+       来获取对方控制的资源——而不是直接争夺同一资源。
+
+       情景 A（无交换）：A 和 B 都直接争夺 R₁ 和 R₂ → 双重竞争
+       情景 B（有交换）：A 专注获取 R₁（自己有优势），B 专注获取 R₂
+       → A 用多余的 R₁ 换 B 多余的 R₂ → 双方都获得 R₁ + R₂，
+       但避免了对两种资源的双重竞争
+
+    3. "交换是竞争的替代，但不是竞争的消除"
+       交换没有消除竞争——它转移了竞争的位置：
+       - 交换前：A 和 B 各自竞争获取自己擅长的资源（竞争仍然存在）
+       - 交换中：A 和 B 就交换比例进行谈判（分配竞争——谁多得、谁少得）
+       - 交换后：双方都比不交换更好（帕累托改进）
+
+       竞争从"争夺同一资源"变成了"各自争夺自己擅长的资源 +
+       在交换中争夺有利的交换比例"。但后者的总资源消耗可能更低。
+
+    4. "交换的前提：资源禀赋差异"
+       交换替代竞争需要 Agent 之间在资源获取能力上存在差异
+       （来自 PHY-003-c: 地理不均匀，或 Agent 的能力差异）。
+       如果所有 Agent 在获取所有资源上完全同质，
+       交换没有优势——每个人都直接获取同样的资源，
+       没有交换的动机。
+
+  corollary: |
+    交换网络（市场）的密度与资源禀赋的差异程度正相关。
+    极端同质化的 Agent 群体（每人获取同样的资源、有同样的需求）
+    不会产生交换——所有资源配置通过竞争和分配完成。
+    极端异质化的群体（每人擅长不同的资源）产生密集的交换网络。
+
+depends_on:
+  axioms: [AXIOM-001]
+  concepts: [CONCEPT-exchange, CONCEPT-competition, CONCEPT-resource, CONCEPT-choice]
+  l0_constraints: [PHY-002, PHY-003-c]
+
+domain: [交换理论, 竞争动力学]
+created: 2026-07-13

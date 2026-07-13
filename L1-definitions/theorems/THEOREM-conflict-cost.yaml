@@ -1,0 +1,66 @@
+id: THEOREM-conflict-cost
+term: "冲突成本定理 (Conflict Cost Theorem)"
+type: theorem
+layer: L1-definitions
+
+statement: |
+  冲突（直接对抗性交互）比规范约束下的竞争消耗更多的双方总资源。
+  这个能量成本差——在重复交互条件下——为竞争规范化提供了
+  选择性压力：避免冲突的竞争形式在经济上更可持续。
+
+derivation: |
+  from_axioms: [AXIOM-001, AXIOM-003, AXIOM-004]
+  from_concepts: [CONCEPT-conflict, CONCEPT-competition, CONCEPT-norm,
+                  CONCEPT-resource]
+  from_theorems: [THEOREM-competition-norm]
+
+  steps:
+    1. "冲突消耗双方资源"
+       CONCEPT-conflict(c): "冲突本身消耗双方资源（能量、时间、
+       信息、关系），且常常比合作更昂贵 (PHY-002)"。
+       冲突中的资源消耗包括：
+       - 直接消耗：战斗/争论本身的生理和时间成本
+       - 机会成本：投入冲突的资源不能用于目标达成
+       - 风险暴露：冲突升级可能导致更大的损失（受伤、死亡、关系破裂）
+       - 外部性：冲突可能吸引第三方介入，增加不确定性和成本
+
+    2. "竞争的资源消耗可以更低"
+       CONCEPT-competition 定义的竞争不需要直接对抗——
+       竞争者可以各自独立地试图获取资源，不消耗能量在彼此的对抗上。
+       间接竞争（两个食草动物吃同一片草）的资源消耗仅限于获取行为本身。
+
+    3. "直接交互 + 重复 → 规范约束竞争形式 (THEOREM-competition-norm)"
+       当竞争者在同一环境中直接交互且重复时，
+       竞争规范化定理适用：关于竞争行为的共享期望（规范）必然涌现。
+
+    4. "规范的形成受成本差驱动"
+       在重复交互的竞争者之间，存在一个能量成本差：
+       - 冲突路径：每次资源争夺 = 直接对抗的成本
+       - 规范化路径：遵守竞争规范的成本（规范执行成本）
+
+       如果冲突路径的累积成本 > 规范化路径的累积成本，
+       选择规范化路径的竞争者（那些避免不必要冲突的 Agent）
+       在长期资源竞争中具有优势——他们保留了更多资源用于目标达成。
+       这不是"理性设计"——是自然选择：投入冲突的 Agent
+       比避免无谓冲突的 Agent 在长期中积累更少资源。
+
+    5. "但这不意味着冲突消失"
+       冲突可以重新出现当：
+       - 竞争规范瓦解（THEOREM-norm-energy-saver corollary: 规范瓦解的正反馈循环）
+       - 单次争夺的收益超过所有未来规范化竞争的总收益（"一次性大赌注"）
+       - 一方积累了压倒性优势，使冲突成本对己方接近零（"碾压"）
+
+  corollary: |
+    频繁发生直接冲突的群体（内部规范薄弱或瓦解）的经济产出
+    低于同等资源条件下竞争规范化的群体——不是因为"冲突不好"，
+    而是因为冲突消耗了本可用于生产的能量 (PHY-002)，
+    而规范通过降低协调成本（THEOREM-norm-energy-saver）释放了这些能量。
+
+depends_on:
+  axioms: [AXIOM-001, AXIOM-003, AXIOM-004]
+  concepts: [CONCEPT-conflict, CONCEPT-competition, CONCEPT-norm, CONCEPT-resource]
+  theorems: [THEOREM-competition-norm]
+  l0_constraints: [PHY-002]
+
+domain: [冲突理论, 竞争动力学]
+created: 2026-07-13

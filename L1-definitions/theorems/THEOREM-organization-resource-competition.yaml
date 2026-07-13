@@ -1,0 +1,53 @@
+id: THEOREM-organization-resource-competition
+term: "组织资源竞争定理 (Organization Resource Competition Theorem)"
+type: theorem
+layer: L1-definitions
+
+statement: |
+  多个组织在同一有限资源环境中运作时，它们必然为维持自身
+  所需的资源而相互竞争。这层竞争是组织生存的底层约束——
+  不是偶然的市场现象，而是热力学+稀缺性的逻辑必然。
+
+derivation: |
+  from_axioms: [AXIOM-001, AXIOM-004]
+  from_concepts: [CONCEPT-organization, CONCEPT-resource, CONCEPT-competition]
+
+  steps:
+    1. "每个组织需要持续能量输入来维持其有序结构 (AXIOM-004)"
+       组织是高度有序的社会结构。熵增 (PHY-001) 持续侵蚀这种秩序。
+       维持秩序需要做功——能量投入。这包括：
+       - 协调信息流（成员之间的通信）
+       - 成员激励（成员参与组织需要能量回报）
+       - 边界维护（区分成员与非成员，抵御外部干扰）
+
+    2. "能量/资源是有限的 (PHY-002 + AXIOM-001)"
+       组织所需的各种资源——成员的时间、物质资源、
+       信息——都是有限的。能量守恒决定了资源总量有上限。
+
+    3. "多个组织 + 有限维持资源 ⇒ 组织间竞争 (AXIOM-001)"
+       AXIOM-001 断言：有限资源 + 多 Agent ⇒ 竞争必然存在。
+       这里的 Agent 是组织——组织作为一个整体行动（通过其成员）。
+       有限资源是维持组织所需的能量。竞争必然存在。
+
+    4. "组织竞争的特殊性"
+       组织间的竞争不同于个体间竞争：
+       - 组织可以死亡——竞争失败 = 无法获取足够维持能量 →
+         结构退化 (AXIOM-004) → 组织解体
+       - 组织可以通过扩大规模来增强竞争力（更多成员 →
+         更多能量获取能力），但规模扩大也增加维持成本——
+         存在最优规模
+       - 组织可以合并（两个组织整合资源，减少竞争损耗）
+
+  corollary: |
+    组织的最优规模受两个力平衡的约束：
+    (a) 规模收益——更大的组织能获取更多资源（竞争力更强）
+    (b) 维持成本——更大的组织需要更多能量来维持内部协调
+    平衡点由环境中的资源丰度和竞争强度决定。
+
+depends_on:
+  axioms: [AXIOM-001, AXIOM-004]
+  concepts: [CONCEPT-organization, CONCEPT-resource, CONCEPT-competition]
+  l0_constraints: [PHY-001, PHY-002]
+
+domain: [组织理论, 竞争动力学]
+created: 2026-07-13
