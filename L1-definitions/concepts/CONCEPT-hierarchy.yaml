@@ -41,4 +41,8 @@ logical_implications:
 
 domain: [基础概念]
 depends_on: [CONCEPT-organization, CONCEPT-choice, CONCEPT-resource]
+l0_constraints:
+  - PHY-001: "层级制造信息梯度——信息从底层向上汇总时衰减，从顶层向下传达时失真——熵增的双向侵蚀"
+  - PHY-003-a: "通信延迟限制了层级的有效深度——每一层增加信号延迟，超出某深度则指挥链失效"
+  - PHY-002: "层级本身消耗能量（管理层不直接生产但消耗资源）——层级的收益（协调效率）必须大于其能量成本"
 created: 2026-07-13

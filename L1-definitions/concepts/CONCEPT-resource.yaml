@@ -27,4 +27,8 @@ logical_implications:
 
 domain: [基础概念]
 depends_on: [CONCEPT-agent, CONCEPT-goal]
+l0_constraints:
+  - PHY-002: "资源的根本有限性源自能量守恒——能量不能被创造，物质资源的转化也需要能量"
+  - PHY-003-c: "资源在空间中分布不均匀——地理的位置决定可获取的资源类型和数量"
+  - PHY-001: "获取和转化资源的任何过程都有热力学效率上限——没有完美的资源利用"
 created: 2026-07-13

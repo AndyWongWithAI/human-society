@@ -34,4 +34,8 @@ logical_implications:
 
 domain: [基础概念]
 depends_on: [CONCEPT-agent, CONCEPT-goal, CONCEPT-resource]
+l0_constraints:
+  - PHY-002: "能量预算约束可行选择集——Agent 不能选择超出其能量预算的行动方案"
+  - PHY-003-d: "时间不可逆 ⇒ 选择 A 意味着永久失去了在该时刻选择 B 的机会——选择有不可恢复的机会成本"
+  - PHY-003-b: "Agent 的空间位置限制了当前可感知的选项范围——远处的选项不在视线内"
 created: 2026-07-13

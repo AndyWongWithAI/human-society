@@ -29,4 +29,8 @@ logical_implications:
 
 domain: [基础概念]
 depends_on: [CONCEPT-agent, CONCEPT-goal, CONCEPT-resource]
+l0_constraints:
+  - PHY-002: "资源的有限性（能量守恒）⇒ 竞争不可能被完全消除——只要资源有限+多 Agent，竞争必然存在"
+  - PHY-003-b: "空间的排他性 ⇒ 领土是天然的竞争对象——两个人不能同时占据同一块地"
+  - PHY-003-c: "资源地理分布不均 ⇒ 不同位置的 Agent 面临不同的竞争压力"
 created: 2026-07-13

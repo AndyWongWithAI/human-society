@@ -35,4 +35,7 @@ logical_implications:
 
 domain: [基础概念]
 depends_on: [CONCEPT-agent, CONCEPT-goal, CONCEPT-competition, CONCEPT-cooperation]
+l0_constraints:
+  - PHY-002: "Agent 的能量/资源约束限定了其可以持有的立场范围——不切实际的立场（需要远超自身资源的投入）会被淘汰"
+  - PHY-003-c: "地理不均匀 ⇒ 不同位置的 Agent 对同一议题有不同利害——'立场取决于你站在哪里'"
 created: 2026-07-13

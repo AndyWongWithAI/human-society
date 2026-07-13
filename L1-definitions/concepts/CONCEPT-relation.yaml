@@ -36,4 +36,8 @@ logical_implications:
 
 domain: [基础概念]
 depends_on: [CONCEPT-agent, CONCEPT-interaction, CONCEPT-goal, CONCEPT-resource]
+l0_constraints:
+  - PHY-001: "关系信息（'B 上次做了什么'、'B 是否可信'）会随时间衰减——没有持续交互来刷新，关系退化"
+  - PHY-002: "维持关系消耗能量——沟通、协调、互动的每一次都需要能量投入"
+  - PHY-003-a: "关系的信息维护有延迟——A 只能知道自己与 B 的互动历史，不能实时知晓 B 的状态变化"
 created: 2026-07-13

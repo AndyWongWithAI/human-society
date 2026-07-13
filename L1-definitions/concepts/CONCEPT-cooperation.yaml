@@ -39,4 +39,8 @@ logical_implications:
 
 domain: [基础概念]
 depends_on: [CONCEPT-agent, CONCEPT-goal, CONCEPT-choice, CONCEPT-interaction]
+l0_constraints:
+  - PHY-001: "合作是一种低熵状态（高度有序的协调）⇒ 需要持续能量输入来维持——熵增不断侵蚀合作的秩序"
+  - PHY-002: "合作的协调成本（通信、监控、协商）消耗能量——合作的净收益必须超过协调的能量成本"
+  - PHY-003-a: "协调信息传递有延迟——合作规模受通信速度约束。Agent 越多，同步协调越难"
 created: 2026-07-13

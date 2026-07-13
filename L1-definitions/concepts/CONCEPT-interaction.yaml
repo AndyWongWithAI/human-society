@@ -29,4 +29,9 @@ logical_implications:
 
 domain: [基础概念]
 depends_on: [CONCEPT-agent]
+l0_constraints:
+  - PHY-002: "交互消耗参与各方的能量——信息传递和行动执行都需要能量输入"
+  - PHY-003-a: "信息在 Agent 之间传递有速度上限和延迟——交互不是瞬时的"
+  - PHY-003-b: "物理交互需要空间接近——Agent 之间的物理距离约束了可发生的交互集合"
+  - PHY-001: "交互中传递的信息在传递过程中会衰减/失真——没有完美的通信"
 created: 2026-07-13

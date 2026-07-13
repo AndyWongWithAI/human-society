@@ -25,4 +25,7 @@ logical_implications:
 
 domain: [基础概念]
 depends_on: [CONCEPT-agent]
+l0_constraints:
+  - PHY-002: "达成任何目标需要消耗能量。目标的'成本'最终溯源到物理能量"
+  - PHY-003-d: "目标追求需要时间。时间的不可逆性意味着延迟达成目标有实际的不可恢复的代价"
 created: 2026-07-13

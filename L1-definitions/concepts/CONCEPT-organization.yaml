@@ -40,4 +40,9 @@ logical_implications:
 
 domain: [基础概念]
 depends_on: [CONCEPT-agent, CONCEPT-goal, CONCEPT-resource, CONCEPT-relation, CONCEPT-cooperation, CONCEPT-position]
+l0_constraints:
+  - PHY-001: "组织是高度有序的结构 ⇒ 熵增不断侵蚀之 ⇒ 组织需要持续能量输入来维持——'不维护就崩溃'不是管理口号，是热力学"
+  - PHY-002: "组织的能量预算约束其规模、复杂度和寿命——能获取多少能量决定能维持多大的秩序"
+  - PHY-003-a: "通信延迟约束组织的空间跨度——地理上分散的组织需要更多能量来维持协调信息流"
+  - PHY-003-b: "组织边界存在物理基础——空间排他性 ⇒ 组织不能无限扩张成员而不稀释协调"
 created: 2026-07-13
