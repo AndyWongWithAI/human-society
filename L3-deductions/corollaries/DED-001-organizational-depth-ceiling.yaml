@@ -1,7 +1,7 @@
 id: DED-001
 type: deduction
 layer: L3-deductions
-status: verified*
+status: verified
 
 term: "组织深度天花板推论 (Organizational Depth Ceiling Corollary)"
 
@@ -290,7 +290,7 @@ adversarial_review:
 empirical_verification:
   empirical_test: EMP-TEST-001
   cross_verification: ICV-001
-  status_history: "verified (Rule B 两轮) → EMP-TEST-001 无反例 → ICV-001 发现疑似反例 → verified* (调查中)"
+  status_history: "verified (Rule B 两轮) → EMP-TEST-001 无反例 → ICV-001 发现疑似反例(降 verified*) → 布干达深查裁定 6 级(疑似反例不成立) → 回 verified"
   verified_star_reason: |
     降 verified* 的触发源是 ICV-001（独立多模型交叉验证）。
     布干达王国是 DED-001 的承重检验案例（纯口头社会，无形式化信息系统）。
@@ -298,15 +298,31 @@ empirical_verification:
     系统排除），恰在 5-7 天花板内，判为边界案例。但 ICV-001 中两个与
     主循环【不同血统】的独立模型（商汤、智谱）拿到同一角色表，都独立
     编码为 8——落入证伪区（≥8 级纯口头），使布干达成为【疑似反例】。
-    且 ICV-001 发现作者层级编码存在系统性偏低偏差（外部模型只编更高、
-    从不更低）。依 Rule C result_to_status「发现疑似反例」条目，DED-001
-    从 verified 降为 verified*，启动布干达行政史深度调查。
-  pending_investigation: |
-    深查前殖民布干达的真实有效层级（7 vs 8）：Bataka 氏族链算不算主治理
-    链的一级？gombolola/miruka 中间层是前殖民既有还是1900年协定后才层级化？
-    Katikkiro 是否构成独立一级？国王对村级的约束是否真实（可能反使有效层级<7）？
-    调查裁决后回写：若确认 ≤7 → 回 verified；若确认 =8 且纯口头 → 降 contested，
-    触发 Rule B 重审（修订天花板数值或适用范围）。
+    依 Rule C「发现疑似反例」，DED-001 一度降 verified*，启动深度调查。
+  resolution: |
+    布干达行政史深度调查（Reid 2002、Southwold 1961、Twaddle 1969、
+    Low & Pratt 1960 等一手史学）裁定：前殖民布干达有效层级 = 6
+    （区间 5-7，置信度：对"≤7、非8"为高）。8 级不成立，原因：
+    (1) bataka 氏族链与 bakungu/batongole 领土链是【平行两套】，真正治理
+        走领土链、王权靠取代氏族权扩张——两模型编 8 几乎肯定是把平行氏族链
+        叠加到领土链（违反平行不叠加规则）；
+    (2) 整齐嵌套的 gombolola/miruka 两层主要是【1900 年协定标准化的产物】，
+        前殖民县以下只有 1（至多2）层——两模型编 8 的另一来源是把殖民结构
+        倒投影回前殖民（时间错置）。
+    结论：疑似反例【不成立】，布干达 6（或至多7）级仍在 5-7 天花板内。
+    推论存活——且这是证据本身（殖民才层级化 + 氏族链平行 + batongole 辐射式
+    压平）自然得出，不是为保护推论而压低层数。
+    附带修正：作者原编码 7 略偏高，中心估计应为 6（EMP-TEST-001 已回写）。
+  meta_lesson: |
+    关键反转：真相(6) < 作者(7) < 两模型(8)。作者反而比两个"独立"模型
+    更接近真相。这否证了 ICV-001 当时的解读(b)"作者是偏低的异类"，转而
+    支持解读(a)"两模型彼此相关、共享系统性上偏"（被'非洲王国=六层金字塔'
+    的教科书图式带偏）。教训：ICV 的信号只能举旗触发调查，不能自行裁决；
+    "和作者不一样" ≠ "更正确"；一组相关的更笨模型可以一起自信地错。
+  residual_uncertainty: |
+    布干达裁决依赖单次（同血统）研究通道，部分县以下细节引自二手综述。
+    6 vs 7 之间仍有摆动（取决于 Katikkiro 是否算独立一级、县以下 1 层还是
+    2 层），但两者都在天花板内，不影响推论。真正的 8 无诚实支撑。
 
 depends_on:
   axioms: [AXIOM-002]
@@ -317,4 +333,4 @@ depends_on:
 domain: [组织理论, 管理学, 信息论社会学]
 created: 2026-07-13
 revised: 2026-07-13
-revision_note: "2026-07-13: 经 ICV-001 交叉验证发现布干达疑似反例, status verified→verified*, 布干达行政史深查中。"
+revision_note: "2026-07-13: ICV-001 交叉验证触发布干达疑似反例(一度降 verified*)→ 布干达深查裁定6级(区间5-7,非8)→ 疑似反例不成立, 回 verified。元教训: 两'独立'模型共享上偏, 作者反而更接近真相。"

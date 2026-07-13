@@ -467,3 +467,22 @@ amendment:
     follow_up 与 DED-001.empirical_verification.pending_investigation）。
     信息系统编码 κ=0.58/0.69 未过0.7门槛，本检验的"信息系统有/无"判定
     也带中等不确定度。
+
+  resolution:
+    date: 2026-07-13
+    verdict: |
+      布干达深度调查（Reid 2002、Southwold 1961、Twaddle 1969、Low & Pratt
+      1960 等一手史学）裁定：前殖民布干达有效层级 = 6（区间 5-7，非 8）。
+      疑似反例【不成立】——两模型编 8 系(1)把平行的 bataka 氏族链叠加到
+      领土链（违反平行不叠加），或(2)把1900年协定标准化的六层结构倒投影回
+      前殖民（时间错置）。布干达 6（至多7）级仍在 5-7 天花板内。
+    coding_correction: |
+      布干达有效层级由作者原编码 7 修正为 6（区间 5-7）。作者原编码方向
+      正确（正确排除了平行氏族链），数值略偏高（把 gombolola/miruka 都当
+      前殖民层）。
+    reversal_on_icv_signal: |
+      重大反转：真相(6) < 作者(7) < 两模型(8)。作者反而比两个"独立"模型更
+      接近真相。ICV amendment 中"作者层级编码系统性偏低"的解读被否证——
+      在承重案例上，是两模型【共享系统性上偏】(教科书六层金字塔图式)，
+      而非作者偏低。详见 ICV-001.resolution.meta_lesson_for_icv。
+    net_effect: "DED-001 从 verified* 回 verified。本检验'0反例'结论成立(布干达非反例)，但编码方案偏软的教训保留。"
