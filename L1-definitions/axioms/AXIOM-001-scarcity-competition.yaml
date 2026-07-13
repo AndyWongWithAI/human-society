@@ -1,0 +1,76 @@
+id: AXIOM-001
+term: "稀缺性-竞争公理 (Scarcity-Competition Axiom)"
+type: definitional_axiom
+layer: L1-definitions
+
+statement: |
+  当多个 Agent 需要同一有限资源来实现各自目标时，
+  竞争必然存在——这是逻辑必然性，不是经验偶然。
+
+formal_statement: |
+  ∀R ∈ Resources, ∀{A₁, A₂, ...} ⊆ Agents:
+    (finite(R) ∧ ∀Aᵢ: requires(Aᵢ, R, goal(Aᵢ)))
+    ⇒ ∃ competition over R
+
+derived_from_concepts:
+  - CONCEPT-resource: |
+      资源是有限的 (c)，多 Agent + 有限资源 ⇒ 潜在竞争 (logical_implications)
+  - CONCEPT-agent: |
+      Agent 行动服务于目标 (d)，Agent 需要资源来缩小当前状态与目标的差距
+  - CONCEPT-competition: |
+      竞争的定义——两个及以上 Agent 对同一有限资源存在互不相容的需求 (a)(b)(c)
+  - CONCEPT-goal: |
+      Agent 有目标——想要达到的状态 (a)，目标驱动资源需求
+
+l0_grounding:
+  - PHY-002: "能量和物质的根本有限性——能量守恒意味着资源不能被创造，只能被转化。
+    这是稀缺性的物理根源。在一个能量无限的宇宙中，不存在真正的资源竞争。"
+
+negation_test:
+  proposer_argument: |
+    "否定本公理意味着：存在有限资源 + 多个 Agent 都需要它 + 但竞争不存在。
+    这要求以下三者之一成立：
+    (a) 资源虽然有限，但 Agent 们不以之为目标——矛盾，因为前提是'都需要它'
+    (b) Agent 虽然需要该资源，但不采取行动获取——矛盾，Agent 定义要求行动服务于目标
+    (c) 虽然都在获取，但一方获取不影响另一方——矛盾，因为资源是有限的（互不相容）
+    三种情况均不可成立。竞争是资源有限 + 多 Agent 的逻辑必然。"
+
+  challenger_argument: |
+    "这个推理链条忽略了一个关键可能性：协调。
+    有限资源 + 多 Agent 不一定导致竞争——Agent 们可以协调分配，
+    通过某种规则决定谁得到什么。竞争不是唯一的逻辑出口，
+    协调和分配规则是另一种可能。
+
+    此外，'竞争'概念的定义包含'互不相容的需求'（CONCEPT-competition(c)），
+    但互不相容 ≠ 实际竞争行为。两个 Agent 可以都对同一资源有需求，
+    但通过事先约定（A 今天取，B 明天取）消除了实际的竞争行为。
+    本公理混淆了'需求的互不相容性'（definitional）和'竞争行为的必然性'（声称的）。"
+
+  proposer_rebuttal: |
+    "Challenger 的协调论证反过来支持了本公理：
+    协调之所以被需要，正是因为竞争（互不相容的需求）存在。
+    如果资源充足到无需协调，竞争确实不存在——但这恰好是本公理的前提
+    （'有限资源'）所排除的。
+
+    关于'需求互不相容 ≠ 竞争行为'：
+    本公理断言的是竞争的'存在'（作为 Agent 之间的结构关系），
+    不是竞争的'行为表现'。两个食草动物吃同一片草，即使它们从未看见对方，
+    竞争仍然存在（CONCEPT-competition(c) 明确说'即使 Agent 不知道对方存在，
+    竞争仍然发生'）。竞争是需求结构的属性，不是行为选择。
+
+    Challenger 的'协调替代竞争'观察是对的——但这恰好证明了竞争的存在
+    （协调是应对竞争的手段），而非否定了竞争的存在。"
+
+  verdict: passes
+  verdict_rationale: |
+    Challenger 的协调论证是正确的观察，但它将"竞争的应对机制"误认为"竞争的缺席"。
+    协调之所以存在，正是因为竞争（互不相容的需求结构）先于协调存在。
+    本公理断言的是竞争作为结构属性必然存在，而非竞争行为必然发生。
+    Proposer rebuttal 有效击败了挑战。
+
+  unresolved: false
+  contested_by: []
+  date: 2026-07-13
+
+domain: [基础公理]
+created: 2026-07-13

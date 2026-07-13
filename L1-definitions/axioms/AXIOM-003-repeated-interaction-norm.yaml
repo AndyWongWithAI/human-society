@@ -1,0 +1,100 @@
+id: AXIOM-003
+term: "重复交互-规范涌现公理 (Repeated Interaction → Norm Emergence Axiom)"
+type: definitional_axiom
+layer: L1-definitions
+
+statement: |
+  当 Agent 之间重复交互，且能够存储和调用过往交互的信息时，
+  共享行为期望（规范）必然涌现——这是交互信息积累的逻辑必然，
+  不是文化现象。
+
+formal_statement: |
+  ∀{A, B} ⊆ Agents, ∀T (sufficiently long):
+    (repeated_interaction(A, B, T) ∧ memory(A, T) ∧ memory(B, T))
+    ⇒ ∃ shared_expectations(A, B, T)
+
+derived_from_concepts:
+  - CONCEPT-interaction: |
+      交互产生信息——A 的行动对 B 产生可观测效果 (b)，
+      "交互 ⇒ 存在信息从 A 流向 B" (logical_implications)
+  - CONCEPT-information: |
+      信息是 Agent 可用于决策的环境状态表征。
+      Agent 存储信息 ⇒ 过往交互的模式被记住
+  - CONCEPT-norm: |
+      规范是"在一组 Agent 之间共享的行为期望" (a)，
+      "重复交互 ⇒ 规范可自发涌现" (logical_implications(d))
+  - CONCEPT-agent: |
+      Agent 能感知环境状态 (b)，包括其他 Agent 的行为模式
+
+negation_test:
+  proposer_argument: |
+    "否定本公理等于声称：Agent 重复交互 + 记住每次交互的结果 +
+    但不对对方未来的行为形成任何期望。这要求 Agent 在决策时不使用
+    已存储的信息——即信息被存储但不被调用。但这与 CONCEPT-agent(d)
+    '行动服务于目标'矛盾：如果 Agent 拥有关于 B 过去行为的信息，
+    使用该信息能更好地预测 B 的未来行为进而更好地达成自身目标，
+    不使用该信息就是非理性的——违反 Agent 的定义。
+
+    因此，只要 Agent 是目标驱动的 (CONCEPT-agent) +
+    交互产生信息 (CONCEPT-interaction) +
+    信息可被存储和调用 (CONCEPT-information)，
+    共享行为期望的形成是逻辑必然。"
+
+  challenger_argument: |
+    "这个推理有两个隐性假设：
+
+    1. **单一均衡假设**：共享期望的形成需要 Agent 对'对方会怎么做'
+    达成一致。但重复交互可以产生多种行为模式——
+    A 预期 B 会做 X，B 预期 A 会做 Y，X ≠ Y——
+    这是'不一致的期望'，不是'共享的期望'。
+    本公理假设期望必然收敛到共享，但收敛不是逻辑必然。
+
+    2. **静态环境假设**：如果交互发生的环境在不断变化
+    （每次交互的条件不同），过去的交互信息对预测未来的帮助可能很弱。
+    Agent 可能选择不依赖过去的信息——这不是非理性，
+    而是对环境不稳定性的理性适应。在不稳定环境中，
+    '不形成稳定期望'可能是最优策略。
+
+    3. **单次交互的远距离后果**：即使 Agent 形成了期望，
+    这些期望可能是高度情境化的（'上次在河边遇到 B 时它攻击了我'），
+    而不一定能泛化为跨情境的规范（'B 是攻击性的'）。
+    从具体期望到抽象规范的跳跃不是逻辑必然。"
+
+  proposer_rebuttal: |
+    "针对 challenger 的三点：
+
+    1. **不一致期望 ≠ 无期望**。A 预期 X，B 预期 Y——
+    双方各自形成了期望。这些期望在第一次不一致的交互中会被更新。
+    重要的是：期望的'存在'是必然的，期望的'准确性'是需要时间收敛的。
+    本公理断言的是涌现（emergence），不是瞬时收敛。
+
+    2. **不稳定环境中'不形成期望'**——这正是 challenger 自相矛盾之处。
+    '这个环境不稳定'本身就是一个期望（元期望）！
+    Agent 形成了'过去信息对未来无预测力'的期望——
+    这仍然是共享行为期望的一种形式（'我们都不按过去的模式预期对方'）。
+    不存在'不形成任何期望'的状态——那相当于 Agent 不进行任何预测，
+    而不预测的 Agent 无法行动（行动需要预期结果）。
+
+    3. **情境化期望 → 泛化规范**——challenger 正确指出情境化期望
+    不等于抽象规范。但本公理不要求规范必须是抽象的。
+    共享行为期望（shared behavioral expectations）包括情境化的期望
+    （'在这种地方遇到 B 时要小心'）。规范的抽象程度是程度问题，
+    不是存在问题。
+
+    核心主张不变：重复交互 + 记忆 ⇒ 期望必然涌现。
+    期望的内容和抽象程度是经验问题，期望的存在是逻辑问题。"
+
+  verdict: passes
+  verdict_rationale: |
+    Challenger 的三点质疑都是有效的边界讨论，但均未击中核心主张。
+    (1) 不一致期望仍是期望——不影响'期望存在'的必然性。
+    (2) '环境不稳定'本身就是一种元期望——不形成期望的状态不存在。
+    (3) 情境化期望 vs 抽象规范——公理不要求抽象程度，只要共享期望存在即可。
+    公理通过。
+
+  unresolved: false
+  contested_by: []
+  date: 2026-07-13
+
+domain: [基础公理]
+created: 2026-07-13
