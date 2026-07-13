@@ -1,7 +1,35 @@
 id: AXIOM-004
-term: "组织熵增公理 (Organization Entropy Axiom)"
-type: definitional_axiom
+term: "组织熵增命题 (Organization Entropy — derived)"
+type: derived_axiom   # 2026-07-13 元审查重标：原 definitional_axiom
 layer: L1-definitions
+
+# === 认识论重标 (META-REVIEW-001, 2026-07-13) ===
+# 本条原列为与 AXIOM-001/003 并列的【地基公理】。第一性原理元审查判定：
+# 它并非独立地基，而是可从 AXIOM-002(信息熵增) + CONCEPT-organization 定义
+# 【派生】的结果(见下方 derivation)。地基公理应互相独立——本条不是。
+# 保留 id=AXIOM-004 与原路径仅为【引用稳定】(设计原则#4：避免打断
+# THEOREM-conflict-cost / organization-resource-competition / norm-energy-saver
+# 三处引用)；type 已由 definitional_axiom 降为 derived_axiom 以诚实反映派生地位。
+# 其物理承载【继承自 AXIOM-002】，非独立向热力学借威望。
+epistemic_status:
+  reclassified_from: definitional_axiom
+  reclassified_to: derived_axiom
+  derives_from: [AXIOM-002, CONCEPT-organization]
+  reason: >
+    地基公理应互相独立。本条的物理必然性并非独立成立，而是 AXIOM-002
+    (信息不维持则必衰减) 作用在"组织协调机制本质是信息"这一定义上的直接后果。
+    故它是定理性的派生结果，不是地基。
+  id_retained_for: "引用稳定 (设计原则#4：固定路径避免打断 3 处 THEOREM 引用)"
+  established_by: META-REVIEW-001
+
+derivation:
+  from_axioms: [AXIOM-002]
+  from_concepts: [CONCEPT-organization, CONCEPT-information]
+  steps:
+    - "CONCEPT-organization: 组织核心是协调机制(规则/程序/惯例)——本质是信息(谁做什么、何时、怎么做)。[定义]"
+    - "AXIOM-002: 信息不投入能量维持则必然衰减。[已验证的物理承载]"
+    - "∴ 组织协调信息不维持则衰减 ⇒ 协调能力下降 ⇒ 组织秩序退化。"
+    - "承重链只经 AXIOM-002 的信息衰减;【不】依赖'成员时间/注意力=热力学能量'的类比等式。"
 
 statement: |
   任何组织（有序的社会结构）若不持续投入能量维持其协调机制，
@@ -102,5 +130,15 @@ negation_test:
   contested_by: []
   date: 2026-07-13
 
-domain: [基础公理]
+# === 承重澄清 (META-REVIEW-001, 2026-07-13) ===
+warrant_clarification: >
+  上方 negation_test 是历史对抗记录，保留不改。但须诚实标注其承重点：
+  proposer_rebuttal 中"自维持=能量投入""成员时间/注意力是能量"等表述，按本体系
+  Rule A 的 physics_language_rule 属【隐喻滑坡】——社会"熵"不是热力学熵，一个涣散
+  组织并未增加可测的物理熵。这些能量等式【不是】本条的真实承载。真实承载是上方
+  derivation：AXIOM-002(信息必衰减)作用于"协调机制本质是信息"。若本条曾以 L3 推论
+  身份提交，其能量类比会被 physics_language_rule 判红旗——这正是把它从地基公理
+  降为派生结果(derived_axiom)的另一佐证。
+
+domain: [组织理论, 派生命题]
 created: 2026-07-13

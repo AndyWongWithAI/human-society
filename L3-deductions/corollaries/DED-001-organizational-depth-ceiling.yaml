@@ -285,6 +285,28 @@ adversarial_review:
     实验室-组织迁移差距、r 不对称性）已标注。三条新挑战不构成
     推翻威胁。悬挂标记：证伪条件的实践可达性有待历史/考古学检验。
 
+# === 区分效度 (criterion 4 了结, META-REVIEW-001, 2026-07-13) ===
+
+discriminant_validity:
+  status: discharged
+  question: "本推论的预测是否区别于已有标准理论？(L3 质量标准第 4 条:区分效度)"
+  honest_answer: >
+    数字层面【不区别】:5-7 级天花板与 Graicunas 控制幅度、Miller 7±2、韦伯官僚制的
+    经验结论一致。DED-001 未做出任何标准组织理论没做过的【新预测】。
+  contribution_type: explanatory_unification
+  what_it_actually_does: >
+    贡献是【解释性统一(consilience)】、不是新发现:把"5-7 级"这一 Graicunas/Miller
+    只【描述】、不从第一性原理【导出】的经验规律，约化到信息保真衰减 r^(2n)
+    (AXIOM-002/PHY-001)。这与"从统计力学导出理想气体定律""从牛顿引力导出开普勒定律"
+    同型——没预测新东西，却把散落经验规律约化到更基本原理，是科学中最受推崇的一类
+    非平凡演绎。
+  nontriviality_verdict: >
+    以"结论是否平凡地内含于前提(L0×L1)"为准，DED-001 非平凡(结论不显然内含);
+    以"是否区别于其他理论"为准，DED-001 不区别，但【这不是缺陷】——统一型项目的正确
+    产出就是复现已知结果，那是效度检验、不是新颖性缺失。故成功标准第 3 条(非平凡推论)
+    【算兑现】，但定位须诚实钉为"解释性统一，非新经验预测"。
+  caveat: "本条不得在任何地方暗示发现式新颖。real_world_anchors 是 confirming anchors，非首创声明。"
+
 # === 经验检验与交叉验证 ===
 
 empirical_verification:
