@@ -132,6 +132,9 @@ def check_status(es):
     for p, e in es.items():
         eid = e.get("id", "?")
         if "L3-deductions/corollaries" in p:
+            st = e.get("status", "")
+            if st not in ("candidate", "verified", "verified*", "rejected"):
+                errs.append(f"{eid}: status='{st}' 无效 (需为 candidate|verified|verified*|rejected)")
             if not e.get("falsification_trace", {}).get("primary_suspect"):
                 errs.append(f"{eid}: 缺少 falsification_trace.primary_suspect")
             if not e.get("real_world_anchors"):

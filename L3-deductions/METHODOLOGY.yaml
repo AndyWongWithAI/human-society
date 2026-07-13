@@ -1,0 +1,102 @@
+id: L3-METHODOLOGY
+type: methodology
+layer: L3-deductions
+status: canonical
+date: 2026-07-13
+
+purpose: |
+  L3 是整个体系的"价值证明"——展示 L0+L1+L2 的架构能否产出
+  关于人类社会的非显而易见的、可检验的洞察。
+
+quality_criteria:
+  - "逻辑有效性 — 推导链是否真的从前提推出结论"
+  - "非平凡性 — 结论是否在前提之外增加了新知识"
+  - "可操作化 — 关键概念能否被测量或识别（硬门槛）"
+  - "区分效度 — 推论的预测是否区别于已有的标准理论"
+
+# === 规则 A：操作化（硬门槛） ===
+
+rule_a_operationalization:
+  title: "每条推论必须为所有关键概念提供操作化定义"
+  scope: "关键概念 = 推论中承担因果功能的非定义性概念"
+
+  requirements:
+    - "该概念对应哪个可观测指标"
+    - "该指标的测量/计数方法"
+    - "测量方法的局限性（诚实声明）"
+
+  fallback_a:
+    condition: "关键概念在现有技术下无法操作化"
+    action: "提供代理指标（proxy），并论证代理指标与概念的关系"
+
+  fallback_b:
+    condition: "代理指标也不可用"
+    action: "将推论标记为'定性框架'，声明当前不可直接检验"
+
+  physics_language_rule: |
+    不接受使用物理学术语（能量、熵）描述社会现象而不提供
+    社会层面的操作化定义。如果借用 L0 物理概念，必须在推论中
+    明确"维护投入 ≠ 热力学能量"并给出社会层面的可操作化方案。
+
+# === 规则 B：审查分离 ===
+
+rule_b_review_separation:
+  title: "每条推论必须经历对抗式审查才能从 candidate 升为 verified"
+
+  process:
+    - step: 1
+      actor: author
+      action: "完成推论（包括推导链、操作化定义、支持锚点）"
+
+    - step: 2
+      actor: reviewer
+      action: "执行对抗式审查"
+      tasks:
+        - "挑战推导链的逻辑跳跃"
+        - "独立寻找反例（不限于作者提供的案例）"
+        - "检验操作化定义的可操作性"
+        - "检验证伪条件在实践上是否可达"
+
+    - step: 3
+      actor: author
+      action: "对每条挑战做出回应（接受/反驳/限定）"
+
+    - step: 4
+      actor: reviewer
+      action: "做出裁决：verified / needs_revision / rejected"
+
+    - step: 5
+      condition: "如需修订"
+      action: "作者修订后重新提交审查"
+
+  audit_trail: "审查报告和推论文件一起保存，形成审计链"
+
+  key_principle: |
+    审查者必须独立寻找反例。作者负责支持证据，
+    审查者负责反例。两者同时呈现在推论文件中。
+
+# === 推论文件结构 ===
+
+file_structure:
+  required_fields:
+    - id: "DED-XXX"
+    - type: deduction
+    - layer: L3-deductions
+    - status: "candidate | verified | rejected"
+    - term: "..."
+    - statement: "..."
+    - operationalization: "规则 A：关键概念的操作化定义"
+    - derivation: "from_l1 + from_l2 + steps"
+    - falsifiability: "..."
+    - excluded_outcomes: "推论明确排除的结果"
+    - real_world_anchors: "supporting + counterexamples + boundary_cases"
+    - adversarial_review: "规则 B：审查报告"
+    - depends_on: "..."
+    - domain: "[...]"
+
+# === 与 L1/L2 的关系 ===
+
+layer_comparison:
+  L1_axioms: "提出 → negation_test → passes/fails"
+  L2_bridging: "提出 → 三来源 IEA 投票 → verified/contested"
+  L3_deductions: "提出 → 概念操作化 + 审查分离 → candidate/verified/rejected"
