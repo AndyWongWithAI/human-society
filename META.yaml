@@ -1,0 +1,23 @@
+project: human-society-axiomatics
+version: 3.0
+architecture: L0-L1-double-layer
+
+epistemology:
+  completeness_claim: "阶段性"
+  known_limits:
+    - 哥德尔不完备性
+    - 涌现不可约性
+    - 观察者偏误
+    - 历史偶然性
+  execution_honesty: >
+    制衡机制（对抗式辩论、多来源验证、IEA 加权）在单研究者执行时
+    退化为自我检查。不否定其价值——它们强制记录判断过程。
+    透明的记录 > 假装客观。
+
+methodology:
+  l0: 定义性公理，对抗式 negation_test。真值来自概念定义。
+  l1: 桥接命题，多来源 IEA 加权验证。可证伪修正。
+  sources: [evolutionary_biology, game_theory, cultural_universals]
+  verification: iea_weighted_voting
+
+created: 2026-07-13
