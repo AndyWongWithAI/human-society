@@ -1,0 +1,231 @@
+id: ADV-REVIEW-011
+target: DED-006
+date: 2026-07-14
+type: adversarial_review
+layer: L3-deductions
+round: 1
+
+人话摘要: "对新推论 DED-006(信任天花板→制度外化)的第一轮挑刺。独立 AI 判'需修改(有救,非归零)'。好消息:两块承重砖缺一不可、不是把 North/已有砖换个说法重述、也没犯 DED-004 那种死病。三个真问题:(1)最响的判别锚'小人口长途商帮'被过度推销——商帮人头少但做的是大市场,所以它只排除了'纯人口'解释,没排除'市场范围'这个更强的对手;真正能分离'半径 vs 规模'的其实是另一格'半径内却高产出却不外化'。(2)推论写了'突破半径要独立于制度来测'这条自律,却没像 DED-005 的卡拉哈里降雨那样真掏出独立证据兑现——门装了栓没上。(3)'外化'这个类别定得太松,几乎任何上规模的匿名交易都带某种声誉机制、都被算成外化,导致'纯人情撑起匿名交易'这个证伪条件近乎因定义不可满足。作者全盘接受,按 5 条清单修订。"
+
+# === 触发源 ===
+
+trigger:
+  source: DED-006 首次提交(candidate),交换/经济领域第二条推论(候选一:路 A 先补 L2 砖 BR-L2-009/010 再推)
+  reason: |
+    按 Rule B 派独立子 Agent 对抗式审查,明令尽力击杀、默认怀疑,并特别拷问三点:
+    非平凡性(C/D 是否缺一不可 / 是否 BR-L2-003·North 的重述)、判别性("驱动量=半径
+    而非规模"能否在二者高度共变时真被分离)、不可证伪护身符(是否重蹈 DED-004 覆辙)。
+
+# === 挑战者 ===
+
+challenger:
+  identity: "独立对抗式审查者(子 Agent, general-purpose, 全新独立上下文)"
+  date: 2026-07-14
+  verdict_given: needs_revision
+  one_line: |
+    核心逻辑成立、C/D 缺一不可、非平凡性对 BR-L2-003 站得住、结构上已规避 DED-004 死病
+    与 DED-005 round-1 的条件双重身份——但它正卡在 DED-005 当年 round-1/2 的位置:自律
+    写了栓没上(护身符条款无独立测量兑现),且判别锚被过度推销(商帮只分离弱版规模)。
+
+# === 三要害裁决 ===
+
+challenges:
+  - id: C1
+    title: "非平凡性 / brick=conclusion —— 通过,附诚实降权"
+    severity: info
+    detail: |
+      逐格判空:C=BR-L2-009 缺不了(无天花板则无阈值/无可逆/半径无从定义);D=BR-L2-010
+      也缺不了(删 D 则预测退化为'超限即萎缩',而这是假的——制度确使能了陌生人贸易)。
+      非 BR-L2-003 重述(BR-L2-003 把想象秩序绑在【人口规模】,DED-006 恰恰反对此)。
+      非同义反复(CAN→MUST 靠 step4 选择压力这一【新增前提】架桥)。
+      但须诚实降权:THEOREM-cooperation-precondition corollary(b) 已在 L1 写明"陌生人
+      合作需第三方担保等替代机制"——D 的逻辑内核部分【预载】;D 真正增量只是"制度化
+      替代确能扩到规模"。应写明,否则 D 承重看起来比实际满。
+
+  - id: C2
+    title: "判别性:判别锚被过度推销(决定性修订项)"
+    severity: high
+    detail: |
+      核心卖点"驱动量=半径突破而非人口/产出"要求分离半径与规模。作者的分离手段"小人口
+      长途商帮"有猫腻:商帮是【小 Agent 人数】,但运营的【市场范围/交换量是大的】。而
+      outcome 测的是【该交换领域】的履约构成,相关"规模"是市场广度/交换量,不是商帮人头。
+      "半径突破(匿名×广度)"与"市场范围"很可能是同一变量的两种测法。故商帮只 de-confound
+      了"人头数"(弱版规模),没 de-confound"市场范围/产出"(强版规模)。标它 strong 是过度
+      推销。真正能分离的是 Cell B:"半径内高产出却不外化"——falsifiability(b) 的可判定性
+      几乎全压在 Cell B 上,而 Cell B 恰是护身符高危区(须独立确认对手真非匿名)。
+
+  - id: C3
+    title: "护身符:方向正确但自律未兑现(DED-005 r1/r2 病,非 DED-004 死病)"
+    severity: high
+    detail: |
+      非 DED-004 死病:结构上已学到 DED-005 round-1 教训(经验量/被预测量分离、突破不由
+      结果反推),anti_talisman_clause 写得正确,护身符未生效为死循环。但写了自律≠兑现
+      (DED-005 r2:"只装门未上栓")。逐一查 measurement/锚点,【无一承重锚兑现"独立于制度
+      测出半径突破"】:trust_radius 的 WVS 工具只覆盖当代,而承重锚全是历史案例;
+      network_reach 的地理广度可由物源考古独立测(这条认),但【匿名度】这条承重维度极难
+      ——远距货物可经"逐跳熟人接力(down-the-line)"流动,判每跳是否匿名需交易级记录,而
+      这些记录(契约/公证)本身就是被预测的制度 ⇒ 残余循环 + 幸存者偏差。对照 DED-005
+      round-2 真掏出卡拉哈里降雨斑驳,DED-006 没有等价物。boundary_case(高信任宗族网)
+      因此有沦为"凡高额无制度即事后宣称还在半径内"万能挡箭牌的风险。
+
+# === 通用检验四条 ===
+
+general_checks:
+  condition_define_vs_predict: "结构干净(吸收 DED-005 r1 教训),但这份干净依赖 C3 的独立测量真能做到;测量未兑现时分离只是纸面。结构过、实质悬。"
+  self_discipline_cashed: "未兑现(主要缺陷)。anti_talisman + '可独立于制度测得'是断言,无一锚点示范之。唯 reversibility 锚(西罗马)诚实降为 weak/多因,这条兑现了。"
+  scope_hook_independent: "弱于 DED-005。DED-005 排除钩子='资源是否被夺取'(清爽独立于结果);DED-006 钩子='是否突破半径',其独立可测性正是 C3 欠账。"
+  counterexample_hunt: "见下。"
+
+# === 反例猎捕 ===
+
+counterexample_hunt:
+  clean_kill_found: false
+  near_misses:
+    - case: "正统犹太钻石行(47街/安特卫普,Bernstein)"
+      why_not: "高额握手成交、少用法院,但对手【非匿名】——靠紧密族群声誉 + 逐出 + 拉比仲裁。属有界社区声誉执行,DED-006 已把'商帮声誉'归半人格化外化。支持带保留,非反例。"
+    - case: "哈瓦拉(hawala)"
+      why_not: "跨洲大额、端点匿名、无书面合同;但匿名的两端点不需彼此信任——各自把信任外包给 hawaladar 系统,而中介网络本身是有界重复声誉(半径内)。是'向中介外化',非纯人际信任撑匿名。支持带保留,非反例。"
+  real_finding: |
+    找不到干净击杀的原因【部分是构造性的】:DED-006 的"非人格化制度"类别弹性过大(声誉、
+    社区责任、商帮全算外化)。任何上规模的匿名交换必带某种声誉/中介机制,一律被编码为
+    "外化",于是 falsifiability(a)"纯人际信任撑起匿名交换"近乎因定义不可满足。这是真的
+    可证伪性隐忧,回喂 C3:externalize/interpersonal 边界需一个独立于结果的更锐利判据。
+
+# === 最小修订清单 ===
+
+minimal_revision_list:
+  - "兑现独立匿名测量(对标 DED-005 卡拉哈里):为至少一个承重历史锚掏出独立于制度的匿名度/广度证据(如集市参与者的族群/语言/地理来源多样性,取自人名学/物源考古/同位素而非执行制度本身);未兑现前把'半径突破'测量诚实降级'历史锚独立性待更强数据'(照抄 DED-005 对牧民/农业的降权)。"
+  - "给商帮锚降级:从'关键判别锚 strong'改为'仅 de-confound 人头数,未 de-confound 市场范围/产出';明写 falsifiability(b) 判别重量主要压在 Cell B(半径内高产出不外化),且以第 1 条独立匿名测量为前提。"
+  - "锐化 externalize/interpersonal 边界:给独立于结果的判据——执行是否【要求成交双方彼此】有可追溯私人/亲缘/社区纽带(半径内)vs 依赖不取决于二者相互关系的第三方系统(外化);据此重审哈瓦拉/钻石行并诚实标注,使 falsifiability(a) 成为非空可满足的真证伪条件。"
+  - "(次要)诚实钉清 D 的边际贡献:D 逻辑内核已被 THEOREM-cooperation-precondition corollary(b) 部分预载,真正增量是'制度化替代确能扩到规模'——它才是'外化'腿区别于纯'萎缩'的动力源。"
+  - "(次要)statement 的'【要求】'措辞对齐 derivation 的对冲(净收益>制度成本 且 有竞争选择压),否则给读者比推导更硬的必然性。"
+
+# === 作者响应 ===
+
+author:
+  identity: "推论作者"
+  date: 2026-07-14
+  response: "全部接受,按 5 条最小清单修订。"
+  reasoning: |
+    审查逻辑无懈可击,尤其 C2/C3:作者把判别功劳记给商帮(只分离人头数弱版规模),又把
+    anti_talisman 写成断言而未兑现——正是 DED-005 走过的'只装门未上栓'。C3 的类别弹性
+    发现最锋利:externalize 太松使 falsifiability(a) 近乎不可满足,故新增独立于结果的
+    boundary_criterion 把它救成真证伪条件。
+  revisions_made: "见 DED-006 的 adversarial_review.author_response_round_1.revisions_made。"
+
+# === 裁决 ===
+
+verdict: needs_revision
+verdict_rationale: |
+  不判 rejected:核心逻辑成立、C/D 缺一不可、非平凡性对 BR-L2-003 站得住、结构上已规避
+  DED-004 死病与 DED-005 r1 条件双重身份。不判 verified:自律写了栓没上(护身符无独立
+  测量兑现)、判别锚过度推销、externalize 类别弹性使 (a) 近乎不可满足。作者已全部接受
+  并重写。修订版仍 candidate,须 round-2 确认——重点复核:独立匿名测量是否真兑现(还是
+  又一次断言)、boundary_criterion 是否真把 (a) 救成非空、商帮降级是否落实。
+
+# === round-2 确认审查 ===
+
+round_2_confirmation:
+  status: needs_revision
+  reviewer: "独立子 Agent (general-purpose, 全新独立上下文, 与 round-1 不同实例)"
+  date: 2026-07-14
+  人话摘要: "第二轮复核。5 条修订大体到位:好消息——最担心的'拿广度多样性偷换逐笔匿名度、假装兑现了独立测量'没有发生(作者老实说'广度只到 moderate、逐笔匿名度待数据');'纯人际信任撑起匿名交易'这个证伪条件也被新判据真正救成'可满足'(审查者攻不穿)。但发现一个必须修的新毛病:救这个证伪条件用的是【非黑即白】的二分判据,可推论别处是【三档】(熟人圈内/半熟的社区声誉圈/完全非人格化)。二分把'靠社区声誉+逐出执行'整块塞进'熟人圈内',结果把马格里布商人联盟、行会这些经济史公认的'外化制度'误判成'熟人圈内',跟推论自己引用的 Greif 案例打架。等于把弹性从证伪条件那头挪到了预测分类这头。作者接受,把判据改成三档,冲突消除,送第三轮。"
+  five_fixes:
+    - {fix: 独立匿名测量, verdict: landed, reason: "诚实部分兑现:广度多样性 moderate,逐笔匿名度诚实降级'待数据',明说'不与卡拉哈里同级'。无偷换假象(反而过度自曝)。"}
+    - {fix: 商帮锚降级, verdict: landed, reason: "strong→moderate,明写只排除人口不排除市场范围,判别重量改压 Cell B,三项全落实。"}
+    - {fix: boundary_criterion 救活falsifiability_a, verdict: partially, reason: "非空性 landed 且攻不穿(构造的匿名·纯人情·无第三方系统案例判据会计入、不被吸收);但判据二分与三档谱系不匹配 = required 新不一致。"}
+    - {fix: D边际贡献钉清, verdict: landed, reason: "step 3 诚实写明预载于 THEOREM-cooperation-precondition corollary(b),增量='制度化替代确能扩到规模'。"}
+    - {fix: statement措辞对齐, verdict: landed, reason: "正式 statement 已收敛为'净收益>制度成本+竞争压力'的条件倾向。仅人话摘要仍留硬'必须'(minor)。"}
+  head_hunts:
+    breadth_swaps_anonymity:
+      happened: false
+      reasoning: "作者在 limitations/honest_note/discriminant_validity 三处反复声明兑现的是广度(moderate)、逐笔匿名度待数据、'不与卡拉哈里同级'。诚实部分兑现+降级,非偷换。头号猎捕落空。"
+    boundary_criterion_attackable:
+      non_emptiness: unbreakable
+      internal_consistency: broken
+      reasoning: "非空性攻不穿:一对确无相互纽带、不属任何共同声誉体的真匿名对手纯靠人情大额成交=可描述、判据会计入的真证伪子。但内部一致性被攻穿:二分判据把'共同社区声誉/逐出'划半径内,与 Greif 马格里布锚(半人格化外化)及 limitations 的三档谱系直接冲突。"
+  new_defects:
+    - id: binary-criterion-vs-three-tier-spectrum
+      severity: required
+      title: "boundary_criterion 二分 vs 谱系三档,过度吸收真外化"
+      detail: |
+        判据字面'执行依赖共同社区声誉/逐出 ⇒ 半径内不计外化',但 Greif 马格里布联盟
+        (跨地中海陌生人、共同教派联盟、多边声誉+逐出)恰是'共同社区声誉+逐出'——按判据=
+        半径内;而该锚明写它是半人格化【外化】。同一案例判据判半径内、锚判半-外化,直接冲突。
+        行会/离散侨商声誉网同理被误划半径内。二分无'半人格化'档位,把中间档整块塞进半径内,
+        系统性【低估外化】,把真涌现案例(i)误编码成支持(ii),扭曲预测。这是本轮修订引入的
+        新不一致(谱系此前披露过,但'判据二分与谱系冲突'这层未披露)。
+      fix: "判据改三档(A 半径内=双边/密集社区纽带;B 半人格化=多边社区声誉/行会/联盟,计入外化中间档;C 非人格化=第三方系统对任意陌生人普适),与谱系及 Greif 锚对齐;马格里布归 B。(a) 非空不受影响(社区型本非 (a) 候选)。"
+    - id: hunyahua-zhaiyao-must
+      severity: minor
+      title: "人话摘要仍留硬'必须'"
+      detail: "line 8 人话摘要与已对冲的 statement 口径不一,对齐即可。"
+    - id: breadth-not-discriminant
+      severity: minor
+      title: "广度兑现≈市场范围,不推进判别"
+      detail: "兑现的广度维恰是 C2 混淆维,不缩小'半径 vs 规模'缺口;承重的匿名度栓仍未插。应在 discriminant_validity 明说,以免读者误读为已缩小 C2。"
+  verdict: needs_revision
+  verdict_rationale: "近乎 verified:头号猎捕落空、非空性攻不穿、核心逻辑稳。但 boundary_criterion 二分/三档不一致是 required——不修则判别性预测的分类基准错误。"
+  author_response:
+    verdict: "全部接受,1 required + 2 minor 全部修订。"
+    revisions_made: "见 DED-006 的 adversarial_review.author_response_round_2.revisions_made。"
+  meta_lesson:
+    headline: "用【二分】判据去救一个本是【三档】的分类变量,救活了 falsifiability(a),却在中间档制造新误分类——同一把刀,把'社区声誉'整块划进半径内,就把真外化(联盟/行会)误判成半径内。"
+    lesson: |
+      救分类变量的弹性时,判据的【档位数必须匹配被救对象的档位数】,否则弹性只是从证伪
+      条件那头挪到了预测分类这头。这是继"射程钩子须独立于结果"(DED-005 r3)之后,分类
+      变量治理的又一条:【判据的粒度要与被分类对象的真实粒度对齐,粗粒度判据会在被它抹平
+      的那一档偷偷制造误分类。】
+
+round_3_confirmation:
+  status: verified
+  reviewer: "独立子 Agent (general-purpose, 全新独立上下文, 与 round-1/2 不同实例)"
+  date: 2026-07-14
+  人话摘要: "第三轮轻量确认。只核对 round-2 那颗 required 螺丝(把外化的分类判据从二分改三档)拧紧没、有没有拧出新毛病。结论:拧紧了——马格里布联盟正确归入'半熟社区声誉圈(外化中间档)',跟推论自己引的 Greif 案例不再打架;'纯人情撑起匿名交易'这个证伪条件仍然可满足。最关键的对抗点是——三档里 A(熟人圈)和 B(社区声誉圈)的界线会不会又变成能事后随意滑动的软肋?审查者攻了,攻不穿:因为一个案例无论算 A 还是算 B,都【不是】'真匿名+无制度',都无法冒充证伪案例——这跟 round-2 的二分能把真外化吞进熟人圈有本质区别。只剩两处散文里的'旧二分词汇残渣'(把'声誉'和'非人格化'按老二分用),作者顺手对齐即可,不阻断。判 verified。"
+  three_fixes:
+    - {fix: boundary_criterion三档化, verdict: landed, reason: "A(双边/密集社区)/B(多边社区声誉·行会·联盟=外化中间档)/C(第三方系统普适),与 limitations 谱系及 Greif 锚一致;马格里布归 B,round-2 硬冲突消除;falsifiability(a)'无 A/B/C 任一档'仍非空。"}
+    - {fix: 人话摘要对冲, verdict: landed, reason: "硬'必须'改'多半会(前提划算+竞争压)',与 statement 一致,无残留。"}
+    - {fix: discriminant广度声明, verdict: landed, reason: "明写广度兑现≈市场范围、不推进'半径 vs 规模'判别、匿名度栓仍未插,三要素全在。"}
+  key_attack_ab_boundary:
+    slippable: false
+    reasoning: |
+      A/B 界线对密集族群网确有真实渐变(钻石行标'A~B 之间'即坐在渐变线上),但弹性被封在
+      无害区,攻不穿:(1)A、B 两档【都】取消 (a) 候选资格——无论滑向哪档都≠真匿名无制度,
+      故 A/B 滑动无法吞掉真证伪案例(与 round-2 二分能吞 Maghribi 有本质区别);(2)无任何
+      案例被 criterion 与锚判成对立档(round-2 是同一 Maghribi 被判对立档的硬矛盾);(3)滑动
+      至多让钻石在'(ii)支持'与'(i)支持'间偏移,已三重对冲。属诚实承认渐变,非可事后滑动软肋。
+  new_defects:
+    - id: residual-binary-vocabulary
+      severity: minor
+      title: "散文残留旧二分词汇(非阻断,作者已顺手对齐)"
+      detail: |
+        statement (i)(ii) 的'人情/声誉'、falsifiability(a) 的'非人格化制度'沿用旧二分口径,
+        若读者按新三档把'非人格化'读成 C-only,可能误把纯 B 案例当证伪子。权威判据(line 84
+        '无 A/B/C'、limitations 谱系)均正确、可自解,故 minor 非硬矛盾。作者 round-3 后已把
+        '声誉'限定 A 档、'非人格化制度'改'外化制度(B/C)',完成 harmonize。
+  verdict: verified
+  verdict_rationale: "required 三档化干净落实、与谱系及 Greif 锚一致、falsifiability(a) 保持非空;A/B 界线弹性攻不穿;两处 minor 全 landed,残留二分措辞已对齐。可升 verified。"
+  meta_lesson:
+    headline: "升分类变量判据的档位数还不够——散文里旧二分的词汇残渣('人情/声誉'↔'非人格化')会像幽灵继续按二分暗示读者。"
+    lesson: |
+      判据档位对齐后,还须把全文引用该变量的措辞一并对齐,否则'档位已三、口径仍二',
+      权威判据虽对、散文仍能把人带偏。这是分类变量治理的收尾条:判据与其全部散文引用
+      必须同粒度。
+
+# === 元教训 ===
+
+meta_lesson:
+  headline: "'写了 anti_talisman_clause'不等于'过了护身符关'——护身符条款是不是摆设,只看承重锚有没有掏出'独立于结果'的那把栓(DED-005 的卡拉哈里降雨)。DED-006 门装好栓在手里没插上;而它最响的判别锚(小人口商帮)分离的是弱版规模(人头),不是强版规模(市场范围),真正判别力被悄悄挪到最难独立测量的那一格。"
+  lesson: |
+    1. 判别性主张("是 X 驱动而非 Y")必须找到一个 X 与 Y 【真被分离】的锚——若拿来的锚
+       里 X、Y 仍共变,那锚只是看着有力。商帮"小人口大市场"是典型:分离了人头,没分离
+       市场范围。选锚要盯"哪一维被固定、哪一维被变动"。
+    2. 分类变量(此处 externalize vs interpersonal)若边界太松,会把证伪条件【吸干】——
+       任何案例都能塞进有利那类。救法:给一个【独立于结果】的分类判据(执行是否依赖双方
+       相互纽带),让不利那类重新变得可满足。这是 DED-005 round-3"射程钩子须独立于结果"
+       教训在【分类变量】上的推广。
+    3. 护身符条款是【承诺】,兑现它需要在锚里【示范】一次独立测量。承诺与兑现之间的距离,
+       就是 DED-005 从 round-1 走到 verified 的那两轮。
+
+review_date: 2026-07-14
+created: 2026-07-14

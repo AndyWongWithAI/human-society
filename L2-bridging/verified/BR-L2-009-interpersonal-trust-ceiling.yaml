@@ -1,0 +1,93 @@
+id: BR-L2-009
+status: verified
+term: 人际信任有界且随社会距离衰减 (Interpersonal Trust Is Bounded and Decays with Social Distance)
+
+人话摘要: "一个人能真正'知根知底、放心托付'的对象是有限的——出了熟人圈,信任就随社会距离(血亲→熟人→同乡→匿名陌生人)一路陡降。这不是道德问题,是认知与信息维护的硬约束:了解一个人、维护一段关系都要花心力,心力有限,所以'人情信任'铺不到无限多人身上。这是'交换规模一旦超过熟人圈就必须另想办法'那道天花板。"
+
+statement: |
+  人对他人的人际信任(愿意在缺乏正式保障时依赖对方履约)是【有界】的,且随
+  【社会距离】(血亲 → 熟人 → 弱关系 → 匿名陌生人)系统性衰减:
+  (a) 单个 Agent 能稳定维持可靠人际信任的对象【数量有上限】——受限于认知容量与
+      关系维护所需能量(THEOREM-relation-information-asset:关系是需持续交互刷新的
+      信息资产;AXIOM-002:信息无维护则衰减)。
+  (b) 信任强度随社会距离【下降】:对有共享交互史/共同身份者高,对匿名陌生人低
+      (THEOREM-group-identity-decay:共享身份随距离与维护不足而衰减)。
+  故"人际信任"无法随交换网络无限扩张而等比铺开——它有一道随规模与匿名度逼近的
+  天花板。
+  (注:这是【有界 + 衰减】的软约束,不是某个精确人数的硬悬崖。)
+
+bridges_to:
+  concepts: [CONCEPT-relation, CONCEPT-information, CONCEPT-group, CONCEPT-cooperation]
+  axioms: [AXIOM-002]
+  theorems: [THEOREM-relation-information-asset, THEOREM-group-identity-decay, THEOREM-cooperation-precondition]
+bridges_field: 从 L1"关系是需维护的信息资产 / 身份随距离衰减"到可观测的人类信任半径上限
+
+applicable_sources:
+- evolutionary-biology:
+    rationale: |
+      社会脑假说(social brain hypothesis, Dunbar):灵长类新皮层大小限制可维持的
+      稳定社会关系数量,人类估计~150。信任与合作心理经亲缘利他 + 互惠利他演化而来,
+      二者本质都【绑定于可追踪的有限对象】(亲属、反复交互的伙伴),对匿名陌生人
+      无演化默认信任。灵长类梳理群体规模上限亦为旁证。
+- game_theory:
+    rationale: |
+      重复博弈维持合作依赖【监督与记忆】:可追踪伙伴越多,监督成本越高、背叛越难
+      被惩罚,故可支撑的信任网络规模有上限。匿名/大群体中"未来之影"变薄,信任随之
+      衰减(与 AXIOM-003 一致)。与 evo 共享演化博弈论框架,独立性打折。
+- cultural_universals:
+    rationale: |
+      跨文化的"信任半径"(radius of trust, Fukuyama):各社会普遍存在对内(亲族/乡邻)
+      高信任、对匿名外人低信任的落差;World Values Survey 等一致显示"亲缘/熟人信任"
+      远高于"一般化信任"。调查与田野方法独立于演化理论。
+
+falsifiability: |
+  若发现人类普遍地对匿名陌生人给予与对亲密熟人【无差别】的人际信任,且不需要任何
+  正式制度/声誉/担保支撑——即信任既不随社会距离衰减、也不受可维持关系数量约束——
+  则本命题被削弱。
+  (注:本命题不主张某个精确上限值,只主张【有界 + 随距离衰减】;故"Dunbar 数不准"
+   不构成对本命题的证伪,只有"信任无界且不衰减"才是。)
+
+cross_verification:
+  votes:
+    evolutionary_biology:
+      status: agree
+      weight: 1.0
+      evidence: []
+      note: |
+        社会脑假说 / Dunbar's number;亲缘 + 互惠利他绑定有限可追踪对象。证据强度:
+        moderate-strong。诚实标注:Dunbar 精确数值(150)有争议,但"信任/关系有认知
+        上限"这一【有界性】稳健;暂无专门 EV 文件,引文在 rationale。
+    game_theory:
+      status: agree
+      weight: 0.4
+      evidence: []
+      independence_note: |
+        重复博弈的监督-记忆约束 + 匿名下未来之影变薄。与 evo 共享演化博弈论框架,
+        独立系数 0.4。
+    cultural_universals:
+      status: agree
+      weight: 0.6
+      evidence: []
+      note: |
+        radius of trust(Fukuyama)、WVS 内群/一般化信任落差。调查/田野方法独立于
+        演化理论,独立系数 0.6。
+  iea: 2.0
+  verdict: verified
+  verdict_note: |
+    IEA = 1.0 + 0.4 + 0.6 = 2.0 ≥ 1.8 → verified(社会脑/演化 + 跨文化调查两个准独立
+    来源)。无有资格的反对票。
+  instrument_disclosure: |
+    三路投票由单一 LLM 执行。按 instrument_correlation,IEA=2.0 是学科独立性上限,
+    仪器有效独立性低于此。本命题有独立的调查数据(WVS 类)与灵长类脑量数据支撑,
+    仪器忧虑被部分缓解。
+  honest_note: |
+    本命题的"有界"是【软约束】(容量上限 + 随距离连续衰减),非精确人数的硬悬崖。
+    把它当硬悬崖用是过度解读——下游推论只可依赖"有界 + 衰减",不可依赖某个具体阈值。
+
+depends_on:
+  concepts: [CONCEPT-relation, CONCEPT-information, CONCEPT-group, CONCEPT-cooperation]
+  axioms: [AXIOM-002]
+  theorems: [THEOREM-relation-information-asset, THEOREM-group-identity-decay, THEOREM-cooperation-precondition]
+
+domain: [信任理论, 关系理论, 认知人类学]
+created: 2026-07-14

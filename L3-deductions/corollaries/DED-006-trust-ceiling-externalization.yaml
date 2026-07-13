@@ -1,0 +1,337 @@
+id: DED-006
+type: deduction
+layer: L3-deductions
+status: verified
+
+term: "信任天花板-制度外化推论 (Trust-Ceiling → Institutional Externalization Corollary)"
+
+人话摘要: "人只能对有限的熟人真正'放心托付',出了熟人圈信任就陡降(那是天花板)。可陌生人之间没交情又想做买卖怎么办?把信任外包给制度——第三方执法、声誉登记、标准合同、抵押货币(那是天花板外的出路)。推论:一个社会的交易网一旦捅破熟人圈这道天花板,想在这块继续做大,就【多半会】把信任外化成制度(前提是这么做划算、又有竞争压),否则这块的陌生人生意就萎缩回熟人规模。关键是:逼出制度的,是'交易对手变陌生、网络铺太广'这件事本身,【不是】人多不多、产出高不高——所以人口不多的长途商帮也会搞出制度,而人多但都在熟人圈里转的社会未必要。而且它可逆:网络一散,又退回靠人情。"
+
+statement: |
+  人际信任有界且随社会距离衰减(BR-L2-009),给"靠人情支撑的交换"设了一道
+  【信任半径】天花板;非人格化制度能替代人际信任、支撑陌生人交换(BR-L2-010)。据此:
+
+  【核心】当一个社会的交换需求把交换网络推【过】人际信任半径(交易对手大量匿名、
+    非亲非熟)时,若要在该领域继续把交换做大——【且超限交换的净收益盖过建立制度的成本、
+    又存在竞争选择压力】——就会把信任外化到非人格化制度(第三方执行 / 声誉登记 /
+    标准契约 / 抵押货币);否则该领域的非亲非熟交换被压回人际网络规模。
+    (措辞诚实,round-1 后收敛:此处非无条件"必须",而是"净收益 > 制度成本 + 竞争压力"下的
+     系统性倾向,与 derivation step 4/5 的对冲一致。)
+
+  【驱动量】触发外化的是"交换网络突破人际信任半径"这一事件本身(≈ 交易对手匿名度 ×
+    网络广度),【不是】单纯的人口规模或产出总量。
+
+  【预测】
+    (i)   外化制度(B 半人格化 / C 非人格化)系统性地在"交换伙伴超出人际信任半径"的场景
+          涌现——【即使人口不大】(长途贸易离散社群、跨群体集市);其形态由所填的信任缺口
+          (执行/信息/承诺)选择。
+    (ii)  交换规模始终在人际半径【以内】的社会或领域,不发展(徒增成本的)外化制度(B/C),
+          继续靠 A 档人情/双边声誉。
+    (iii) 同一社会、同一交换领域,随交换规模【跨越】天花板而涌现该类制度、随网络
+          【收缩】(瓦解、退回本地)而回退到人际依赖(招牌预测,可逆)。
+
+  【与现有理论的判别】本推论不等同于"分工/市场范围"(Smith)、"人口规模⇒复杂度"或
+    "国家建构"论:它主张驱动量是【信任半径突破】——故预测【小人口的长途陌生人贸易
+    也触发外化】(证明非纯规模),而【半径内的大产出社会未必外化】(证明非纯产出),
+    且外化【可逆】。这是比"制度降低交易成本"更强的结构预测。
+
+# === 规则 A：操作化定义 ===
+
+operationalization:
+  trust_radius:
+    definition: "人际信任半径——一个 Agent/社群能靠人际信任(无正式保障即愿依赖对方履约)覆盖的对象范围。天花板的【位置】。"
+    measurement: |
+      WVS 类"熟人信任 vs 一般化(匿名)信任"落差;亲缘/社区网络的规模;对匿名对象的
+      默认信任水平。可【独立于是否存在制度】测得。
+    limitations: "是软约束(容量上限 + 随距离连续衰减),非精确人数;只用'有界+衰减',不钉具体阈值(继承 BR-L2-009)。"
+
+  exchange_network_reach:
+    definition: "交换网络触及——交易对手的匿名度 × 地理/社会广度。即该领域交换在多大程度上落在信任半径【之外】。"
+    measurement: |
+      两维【分开】测:
+      (1) 地理/社会广度——可由【物源考古】(货物产地:黑曜石/双耳瓶/钱币产地)、参与者的
+          族群/语言/地理来源多样性(人名学、墓葬同位素、"外邦人"聚居区)独立测,【不依赖】
+          是否已出现制度。
+      (2) 匿名度(承重且更难)——理想指标是"成交双方无先前/亲缘纽带的占比"。诚实警告
+          (round-1 审查揭出):远距货物可经【逐跳熟人接力(down-the-line)】流动,地理远
+          ≠ 每跳匿名;而逐笔匿名的直接证据(契约/登记)往往【就是被预测的制度本身】,存在
+          残余循环 + 幸存者偏差。故匿名度的独立测量当前仅在少数场景可兑现(见 real_world_
+          anchors.independent_anonymity_evidence),其余诚实降级"待更强数据"。
+    limitations: "匿名度是承重维度但独立测量最弱;广度可独立测。混合网络按主导成分标注。此弱点经 round-1 审查揭出,已诚实纳入,不再伪称'匿名度可径直独立测'。"
+
+  impersonal_institution_presence:
+    definition: "非人格化制度在该交换领域的存在与使用强度:第三方执行机构、声誉登记/公证、标准化契约、抵押担保与货币媒介。"
+    measurement: "史料/考古/档案:法庭与执行机构、公证与登记、契约文书、票据信用、货币与度量衡标准化的存在与使用频度。"
+    limitations: "半人格化过渡形态(如社区责任制、商帮声誉)介于人情与非人格化之间,按其'依赖私人关系的程度'排序,不二分。"
+
+  outcome_externalization_degree:
+    definition: "该交换领域的履约保障中,【非人格化制度】承担的比重 vs 【人际信任/关系】承担的比重,取一段时期。"
+    measurement: "违约时实际诉诸什么:私人关系/声誉圈 vs 第三方制度;交易达成主要凭'认识对方'还是凭'制度兜底'。取时间窗内主导模式。"
+    boundary_criterion: |
+      【round-1 新增,round-2 改为三档以匹配谱系(审查 C3 + round-2 required)】区分外化
+      程度的独立于结果判据,按"履约执行依赖双方私人关系/共同体身份的程度"分【三档】(与
+      impersonal_institution_presence.limitations 的谱系一致,【不二分】):
+        (A) 半径内人际信任(不计外化):执行要求成交双方【本身】有可追溯的双边/亲缘/密集
+            社区纽带(彼此认识,或经紧密网络间接可担保)。例:钻石行同族密集网络。
+        (B) 半人格化(部分外化,中间档):双方【彼此不认识】,但同属一个【有界、身份可追溯】
+            的声誉/逐出共同体,执行靠共同体的多边声誉与逐出机制。例:马格里布联盟、行会、
+            离散侨商声誉网。计入外化(中间档),【不】划半径内。
+        (C) 非人格化(完全外化):执行【不取决于】任何共同体成员身份,对任意匿名陌生人普适。
+            例:正式法院/契约执行、货币、平台评分。
+      排序(依赖双方私人关系/身份程度递减):A > B > C。判据【独立于结果】(看执行机制结构,
+      不看交易成没成)。
+      它使 falsifiability(a) 成为【非空、可满足】的真证伪条件——最强形式:一对【确无任何
+      相互纽带、且不属任何共同声誉体】的真匿名对手,长期纯靠人际信任大额成交、无 A/B/C 任何
+      一档制度兜底,即证伪。
+      (round-2 修正:原二分把"共同社区声誉/逐出"整块划进半径内,会把马格里布联盟、行会等
+       真外化【误划半径内】,与 Greif 锚[半人格化→非人格化]及谱系自相矛盾、系统性低估外化;
+       现归入中间档 B,冲突消除。)
+    honest_threshold_note: |
+      【诚实硬约束】"是否突破天花板"必须由 trust_radius 与 exchange_network_reach
+      【独立于制度是否出现】比较得出;不得因"出现了制度"就倒推"一定突破了半径",
+      也不得因"没出现制度"就倒推"一定在半径内"。违则触犯 anti_talisman_clause。
+
+# === 推导链 ===
+
+derivation:
+  from_l1:
+    axioms: [AXIOM-002, AXIOM-003]
+    theorems: [THEOREM-relation-information-asset, THEOREM-group-identity-decay,
+               THEOREM-cooperation-precondition, THEOREM-exchange-competition-alternative]
+  from_l2:
+    bridging: [BR-L2-003, BR-L2-009, BR-L2-010]
+
+  steps:
+    1. "天花板存在(BR-L2-009)"
+       人际信任有界 + 随社会距离衰减 ⇒ 靠人情支撑的交换有规模/匿名度上限(信任半径)。
+
+    2. "超限则交换缺信任基础(THEOREM-cooperation-precondition)"
+       交易对手超出信任半径 ⇒ 陌生人合作脆弱、缺共享信息基础 ⇒ 该交换将流产,
+       除非引入替代机制(该定理 corollary b:陌生人合作需替代机制)。
+
+    3. "替代可得(BR-L2-010)"
+       非人格化制度能把履约保障从'了解此人'转移到'制度惩罚违约',填补信任缺口,
+       使陌生人交换变可行。
+       【round-1 诚实钉清:D 的边际贡献】THEOREM-cooperation-precondition corollary(b)
+       在 L1 分析层已写明"陌生人合作需替代机制(承诺/第三方担保/规范)"——D 的逻辑内核
+       部分【预载】于该定理。D 的真正经验增量是:制度化替代【确能扩到规模】(非仅原则上
+       可能且更脆弱)。正是这一增量,让 step 5 的招牌预测多出"外化"这条腿,区别于纯"萎缩"。
+
+    4. "选择压力(THEOREM-exchange-competition-alternative + 交换净收益)"
+       若超限交换净收益大:采用替代制度者能吃到该领域超限交换的收益;不采用者被压回
+       半径内。故存在系统性采用压力——但采用【不免费】(BR-L2-010 b),故只在净收益
+       盖过制度成本处发生。
+
+    5. "合成 + 可逆 + 驱动量归因"
+       交换网络突破信任半径 + 超限净收益 > 制度成本 ⇒ 系统性外化;驱动量是【半径突破
+       (匿名 × 广度)】而非人口/产出;网络收缩则外化回退。
+       非平凡性:天花板(C=BR-L2-009)与替代(D=BR-L2-010)【缺一不可】——单有 C 只
+       给出"人情有上限"、单有 D 只给出"制度能替代",唯有二者合成才给出"阈值 + 可逆 +
+       领域特定 + 由半径而非规模驱动"的联合预测。
+
+# === 可证伪性 ===
+
+falsifiability: |
+  本推论可被以下发现证伪：
+  (a) 一个社会或交换领域,交换网络明确【突破】了人际信任半径(对手大量匿名非亲非熟)、
+      且超限交换净收益高,却长期【既不外化到任何外化制度(B 半人格化 / C 非人格化)、也不
+      萎缩回半径内】——靠纯人际信任(A 档,无任何 B/C 制度兜底)稳定支撑大规模匿名交换。
+      ⇒ 证伪核心。
+  (b) 非人格化制度的涌现与"信任半径突破"【无】系统关联,只随人口规模/产出总量走
+      (半径内的大社会普遍外化、突破半径的小网络普遍不外化)。⇒ 证伪"驱动量是半径而
+      非规模"这一判别性主张。
+
+falsification_trace:
+  primary_suspect: "招牌预测(外化 vs 回退)压在'由半径突破驱动'这条腿(BR-L2-009 天花板 + 选择压力)。最先受检:'半径突破'能否【独立于制度是否出现】测得(exchange_network_reach vs trust_radius)。"
+  secondary_suspect: "BR-L2-010 的'可替代'落地——非人格化制度是否真【替代】(而非仅伴随)人际信任。"
+  unlikely_suspect: "交换有净收益(THEOREM-exchange-competition-alternative)——极少是根源。"
+  note: "本推论刻意规避 DED-005 round-1 的'条件双重身份'病:trust_radius 与 network_reach 是【可独立测的经验量】,outcome 是被预测量,二者不互当定义;'突破天花板'不由结果反推(见 anti_talisman_clause)。"
+
+# === 排除的结果 ===
+
+excluded_outcomes:
+  - outcome: "突破半径 + 高净收益,却既不外化也不萎缩,纯人情撑起大规模匿名交换"
+    description: "交易对手大量匿名非亲非熟、超限交换净收益高,却长期不诉诸任何非人格化制度、也不退回熟人规模。若存在,推论核心被证伪。"
+  - outcome: "外化只随人口/产出走,与半径突破无关"
+    description: "非人格化制度的有无只跟社会规模/产出相关,与'交换是否突破信任半径'无系统关联。若如此,判别性主张(驱动量=半径)被证伪。"
+
+anti_talisman_clause: |
+  【防不可证伪护身符 — 诚实硬约束】判定"是否突破了信任半径"时,必须【独立于结果
+  (是否出现制度)】地测量 exchange_network_reach 与 trust_radius 并比较;不得因
+  "出现了非人格化制度"就倒推"必然突破了半径",也不得因"半径内却没外化"事后开脱说
+  "那一定还在半径内"。同理,"外化未发生是因为净收益不够盖过制度成本"这类解释,须由
+  可独立观测的成本/收益量支撑,不得纯由结果反推。否则本推论沦为不可证伪的循环
+  (DED-004 病根)。
+
+# === 现实锚点 ===
+
+real_world_anchors:
+  supporting:
+    - anchor: "长途贸易离散社群 (亚美尼亚 / 马格里布 / 华商)"
+      evidence: |
+        小 Agent 人数的商帮,因交易对手跨地匿名、非亲非熟,发展出身份可追溯的声誉执行、
+        商帮内部裁决、跨地契约与信用工具。
+      discriminant_scope: |
+        【round-1 修订:诚实限定判别力(审查 C2)】此锚只 de-confound"人头数"这个【弱版
+        规模】——商帮 Agent 人数少却运营于【大市场范围/大交换量】,故它【未】de-confound
+        "市场范围/产出"这个【强版规模】(很可能与"匿名×广度"是同一变量的两种测法)。因此它
+        只排除"纯人口"解释,不排除"市场范围"解释。判别性的真正承重不在此锚,而在 Cell B
+        (半径内高产出却不外化,见 boundary_cases 与 discriminant_validity),且以匿名度的
+        独立测量为前提。
+      confidence: "moderate(仅排除纯人口解释,不排除市场范围解释——round-1 降级)"
+
+    - anchor: "Greif:马格里布 → 热那亚商人 (半人格 → 非人格化)"
+      evidence: |
+        随贸易网络扩大、跨越紧密熟人圈,履约保障从'社区责任/声誉'(半人格化)走向
+        '个人法律责任 + 正式第三方执行'(非人格化)。外化程度随网络突破半径而上升。
+      confidence: moderate-strong
+
+    - anchor: "中世纪 law-merchant / 集市法庭 / 公证登记 (含跨区集市/口岸的参与者多样性)"
+      evidence: |
+        跨群体集市(陌生人云集、对手匿名)催生快速第三方执行(商人法庭)、公证与登记——
+        半径突破处涌现非人格化执行,形态对准'执行缺口'。
+      independent_anonymity_evidence: |
+        【round-1 修订:兑现"独立于制度测匿名/广度"这把锁(对标 DED-005 卡拉哈里,审查 C3)】
+        跨区集市/口岸(香槟集市、地中海 emporia、外邦商人"nations"聚居区)参与者的【族群/
+        语言/地理来源多样性】可由【人名学(名录里多族裔人名)、货物物源考古、墓葬同位素、
+        外邦人聚居区分布】独立测得——这些来源【不依赖】是否存在法庭/契约制度,故能在
+        "不看有没有制度"的前提下坐实"对手来自互不相识的多个群体"。
+      honest_note: |
+        诚实边界:上述独立证据坐实的是【参与者群体多样性 + 网络广度】,对【逐笔成交是否
+        匿名】仍较间接(down-the-line 接力问题)。故"半径突破"的独立测量在此为【moderate】,
+        不与 DED-005 卡拉哈里(strong)同级;逐笔匿名度的独立测量诚实标注"待更强数据"。
+        全推论的"半径突破独立可测"据此从断言降为"广度可独立测、逐笔匿名度待数据"。
+      confidence: moderate
+
+    - anchor: "货币与度量衡标准化"
+      evidence: "匿名交换扩张伴随非人格化交换媒介(标准货币/度量衡),降低对'了解对方'的依赖。支持'制度填补信息/承诺缺口'。"
+      confidence: moderate
+
+  reversibility_anchor:
+    - anchor: "长途贸易网络瓦解后的回退 (如西罗马崩溃后)"
+      evidence: |
+        长途贸易网络瓦解 ⇒ 交换退回本地熟人圈 ⇒ 对正式非人格化执行的依赖回退、
+        人身依附/庄园型人际关系回潮。作为(iii)可逆预测的锚。
+      honest_note: "诚实标注:此回退多因(政治秩序崩解、人口、安全),非纯信任机制;只作可逆方向的【弱】支持,不作强锚。"
+      confidence: weak-moderate
+
+  counterexamples: []
+
+  boundary_cases:
+    - case: "高信任同质社会 / 宗族商业网络在半径内维持大额交换而少用正式制度"
+      analysis: |
+        某些密集亲缘/宗族/同乡网络能撑起相当大额的交换却少用正式非人格化制度——表面
+        像'规模大却不外化'的反例。处理:须【独立确认】其交换对手其实【未超出信任半径】
+        (靠密集亲缘 + 声誉,对手非真匿名)。若确认在半径内,则属预测(ii)的【支持】
+        (半径内不外化),非反例。若发现对手确已匿名却仍纯靠人情撑起,则命中 falsifiability(a)。
+        判定关键回到 anti_talisman_clause:半径内/外须独立测,不由结果反推。
+      status: boundary_case
+
+    - case: "现代数字平台声誉 (支付宝/eBay/评分系统)"
+      analysis: |
+        把非人格化制度推到极致:陌生人靠平台担保/评分交易。支持 BR-L2-010 与预测(i)。
+        边界界定:'平台声誉'是制度化的非人格化信任(不依赖私人关系),计入外化,非反例。
+      status: boundary_case
+
+    - case: "钻石行/族群'握手交易' 与 哈瓦拉 (round-1 反例猎捕的近失案例,按 boundary_criterion 重判)"
+      analysis: |
+        审查者猎捕 falsifiability(a) 时的两个近失案例,按 outcome.boundary_criterion
+        (执行是否要求成交双方彼此有可追溯纽带)重判:
+        - 钻石行(47街/安特卫普,Bernstein):高额、握手、少用正式法院——同族密集网络,
+          成员多有可追溯的亲缘/社区纽带 ⇒ 档 A(半径内)到档 B(半人格化)之间的密集社区
+          执行,对手【非匿名】⇒ 属预测(ii)"半径内/低外化"的【支持】,非反例。
+        - 哈瓦拉:端点大额、彼此匿名——双方并不互相信任,而是各自把信任外包给 hawaladar
+          中介系统;中介网络内部是有界重复声誉共同体(档 B 半人格化)。⇒ "向中介层(B档)
+          外化"的混合态,【支持】D、非反例。
+        二者都不命中 falsifiability(a),因为 (a) 要求"确无任何相互纽带的匿名对手,纯靠
+        人际信任、无任何第三方系统,长期大额成交"——由 boundary_criterion 保证这是【非空
+        可满足】的真条件,而非因类别弹性被吸收。
+      status: boundary_case
+
+# === 判别效度 ===
+
+discriminant_validity: |
+  与 Smith(分工/市场范围)、North(制度降低交易成本)、国家建构论 高度共鸣,但本推论
+  的【独有可证伪预测】是:驱动量 = 信任半径突破(匿名 × 广度),【可逆】,【领域特定】
+  ——小人口长途贸易触发外化、半径内大产出社会未必触发。North 讲"制度降成本"却不预测
+  "由信任半径这一特定阈值触发且可逆"。故本推论是更强的结构预测,非重述已知理论。
+  诚实:新意在【阈值 + 可逆 + 驱动量归因】,不在"制度使能陌生人交换"本身(那是 BR-L2-010/
+  North 已有的)。按 critique_failure_modes,"撞车 North ⇒ 平凡"是概念偷换,不成立。
+
+  【round-1 修订:判别力的真正承重(审查 C2)】"驱动量=半径而非规模"的可证伪重量【主要
+  压在 Cell B】:"半径【内】却高产出的社会/领域,不外化(继续靠人情/声誉)"。唯这一格能
+  把"半径"与"市场范围/产出"分离——它固定了"半径内"却变动了"产出"。商帮锚只排除弱版规模
+  (人头),不排除强版规模(市场范围,商帮运营于大市场),故判别重量不在商帮而在 Cell B,
+  且以 exchange_network_reach 匿名度的独立测量(见操作化与锚点的诚实降级)为前提;该前提
+  未完全兑现前,判别性主张的强度诚实标注为"广度可分离、逐笔匿名度待数据"。
+
+  【round-2 补充诚实声明】law-merchant 锚兑现的"广度/多样性"独立测量 ≈ 市场范围(恰是 C2
+  点名的混淆维),故它【不推进】"半径 vs 规模"的判别;做判别的逐笔匿名度维、以及承载判别
+  重量的 Cell B,仍压在"待数据"的独立匿名度测量上。读者勿把广度兑现误读为已缩小 C2 缺口。
+
+# === 对抗式审查 (Rule B) ===
+
+adversarial_review:
+  round_1:
+    reviewer: "独立子 Agent (general-purpose, 全新独立上下文)"
+    verdict: needs_revision
+    key_findings:
+      - "非平凡性【通过】:C(BR-L2-009)/D(BR-L2-010)缺一不可;非 BR-L2-003 重述(后者绑人口规模,本推论恰反对);非同义反复(CAN→MUST 靠选择压力新增前提)。附诚实降权:D 逻辑内核部分预载于 THEOREM-cooperation-precondition corollary(b)。"
+      - "C2(判别锚过度推销):'小人口商帮'只 de-confound 人头数(弱版规模),未 de-confound 市场范围/产出(商帮运营大市场)。判别真正承重在 Cell B(半径内高产出不外化),非商帮。"
+      - "C3(护身符方向对但自律未兑现,非 DED-004 死病):anti_talisman 写得对,但无一承重锚像 DED-005 卡拉哈里那样兑现'独立于制度测匿名度突破';匿名度受 down-the-line + 幸存者偏差之困。"
+      - "反例猎捕未得干净击杀,但揭出真隐忧:'外化'类别弹性过大(声誉/社区责任/商帮全算外化)⇒ falsifiability(a)近乎因定义不可满足。"
+    non_recurrence_of_ded004: "确认非 DED-004 死病——结构已规避条件双重身份,护身符未生效为死循环;卡在 DED-005 r1/r2 的'只装门未上栓'位置。"
+    full_record: ADV-REVIEW-011
+  author_response_round_1:
+    verdict: "全部接受,按 5 条最小清单修订。"
+    revisions_made:
+      - "兑现独立匿名测量:law-merchant/集市锚补 independent_anonymity_evidence(参与者族群/语言/地理来源多样性,由人名学/物源/同位素独立测);诚实降级'逐笔匿名度待数据'(对标 DED-005 对牧民/农业的降权)。"
+      - "商帮锚从 strong 降为 moderate,明写只排除纯人口、不排除市场范围;判别重量改压 Cell B。"
+      - "outcome 新增 boundary_criterion(执行是否要求双方彼此有可追溯纽带),独立于结果区分外化 vs 半径内;据此重判钻石行(半径内支持)/哈瓦拉(向中介外化),救活 falsifiability(a) 为非空。"
+      - "derivation step 3 诚实钉清 D 的边际贡献(增量='制度化替代确能扩到规模')。"
+      - "statement 的'【要求】'对齐 derivation 对冲(净收益>制度成本 + 竞争压力)。"
+  round_2:
+    reviewer: "独立子 Agent (general-purpose, 全新独立上下文, 与 round-1 不同实例)"
+    verdict: needs_revision
+    verdict_note: "近乎 verified。头号猎捕'广度偷换逐笔匿名度'落空(作者诚实部分兑现+降级,非伪称);falsifiability(a) 非空性攻不穿。但 boundary_criterion 用【二分】救一个本是【三档】的分类变量,把'共同社区声誉/逐出'整块划半径内,与 Greif 锚+谱系自相矛盾、系统性低估外化(required)。"
+    key_findings:
+      - "①独立匿名测量 landed(诚实部分兑现:广度 moderate、逐笔匿名度诚实降级'待数据',无偷换);②商帮降级 landed 干净;④D 边际贡献 landed;⑤statement 对冲 landed。"
+      - "③boundary_criterion:救活 falsifiability(a) 非空【landed 且攻不穿】,但判据【二分】与推论别处的【三档谱系】不匹配 ⇒ required 级内部不一致。"
+      - "required 新问题:'共同社区声誉/逐出=半径内'过度吸收真外化——马格里布联盟/行会/离散侨商声誉网(经济史公认的非人格化/半人格化外化)被误划半径内,与本文件 Greif 锚(半人格化→非人格化)及 impersonal_institution_presence.limitations 的谱系直接冲突,系统性低估外化、扭曲预测。"
+      - "minor:人话摘要仍留硬'必须';广度兑现≈市场范围(不推进判别),应明说以免误读为已缩小 C2 缺口。"
+    non_recurrence: "确认核心逻辑、C/D 缺一不可、非平凡性、非 DED-004 死病均稳;大体是真进步。"
+    full_record: "见 ADV-REVIEW-011.round_2_confirmation"
+  author_response_round_2:
+    verdict: "全部接受,按三点(1 required + 2 minor)修订。"
+    revisions_made:
+      - "required:boundary_criterion 重画为【三档】(A 半径内 / B 半人格化=多边社区声誉·行会·联盟 / C 非人格化),与谱系及 Greif 锚对齐;马格里布归入 B,冲突消除;falsifiability(a) 最强形式明确为'无 A/B/C 任一档制度'。"
+      - "minor:人话摘要'必须'改'多半会(前提划算+竞争压)',对齐 statement。"
+      - "minor:discriminant_validity 明写广度兑现≈市场范围、不推进'半径 vs 规模'判别,匿名度栓仍未插。"
+      - "boundary_cases 的钻石行/哈瓦拉按三档重标(钻石行=A~B 密集社区;哈瓦拉=向 B 档中介外化)。"
+  round_3:
+    reviewer: "独立子 Agent (general-purpose, 全新独立上下文, 与 round-1/2 不同实例)"
+    verdict: verified
+    verdict_note: |
+      轻量确认。required(三档化)干净落实——与谱系及 Greif 锚一致、马格里布正确归 B、
+      falsifiability(a) 保持非空;两处 minor(人话摘要对冲、discriminant 广度声明)全 landed。
+    key_attacks_that_failed:
+      - "A/B 界线弹性:攻不穿——A、B 两档【都】取消 (a) 候选资格(无论滑向哪档都≠真匿名无制度),故 A/B 滑动无法吞掉真证伪案例(与 round-2 二分能吞 Maghribi 有本质区别);且无 criterion 与锚互殴的硬矛盾。"
+      - "残留二分措辞:真实存在(statement (i)(ii)、falsifiability(a) 沿用旧'人情/声誉↔非人格化制度'二分词汇),但权威判据(boundary_criterion/limitations)已正确、可自解,属 minor 非阻断。作者已顺手对齐。"
+    residual_minor_fixed: "statement (i)(ii) 与 falsifiability(a) 的'声誉'限定为 A 档、'非人格化制度'改'外化制度(B/C)',与三档判据 harmonize(round-3 后顺手完成)。"
+    new_defects: "无 required/critical;三档判据与 boundary_cases/falsifiability/excluded_outcomes/derivation 自洽。"
+    full_record: "见 ADV-REVIEW-011.round_3_confirmation"
+    meta_lesson: "沙化分类变量判据时,升【判据本体】档位还不够——散文里旧二分的词汇残渣会继续按二分暗示读者;判据档位对齐后,须把全文引用该变量的措辞一并对齐。"
+    status_note: "独立审查判 verified;按'按规矩走'(2026-07-14 用户授权),status 由 candidate 升 verified。三轮审查(r1 needs_revision → r2 needs_revision → r3 verified)全档于 ADV-REVIEW-011。"
+
+depends_on:
+  axioms: [AXIOM-002, AXIOM-003]
+  theorems: [THEOREM-relation-information-asset, THEOREM-group-identity-decay,
+             THEOREM-cooperation-precondition, THEOREM-exchange-competition-alternative]
+  bridging: [BR-L2-003, BR-L2-009, BR-L2-010]
+  concepts: [CONCEPT-exchange, CONCEPT-relation, CONCEPT-information, CONCEPT-norm,
+             CONCEPT-cooperation, CONCEPT-group]
+
+domain: [制度经济学, 信任理论, 经济人类学]
+created: 2026-07-14
+revised: 2026-07-14
+revision_note: "2026-07-14 三轮修订。round-1(ADV-REVIEW-011):兑现独立匿名测量并诚实降级逐笔匿名度;商帮锚 strong→moderate、判别重压 Cell B;新增 boundary_criterion 救活 falsifiability(a);钉清 D 边际贡献;statement 对齐对冲。round-2:boundary_criterion 二分改三档(A半径内/B半人格化/C非人格化)以匹配谱系、消除与 Greif 锚冲突;人话摘要'必须'改'多半会';discriminant_validity 明写广度兑现不推进判别。round-3(verified):三档化确认落实、A/B 界线弹性攻不穿;顺手把 statement/falsifiability 残留二分措辞('声誉'限定 A 档、'非人格化制度'改'外化制度 B/C')对齐三档。status 由 candidate 升 verified。"

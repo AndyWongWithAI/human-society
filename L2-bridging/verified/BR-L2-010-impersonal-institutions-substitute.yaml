@@ -1,0 +1,89 @@
+id: BR-L2-010
+status: verified
+term: 非人格化制度能替代人际信任支撑陌生人交换 (Impersonal Institutions Can Substitute for Interpersonal Trust in Stranger Exchange)
+
+人话摘要: "熟人之间靠交情办事;陌生人之间没交情,怎么放心交易?答案是把'信任'外包给制度——第三方执法、声誉登记、标准合同、抵押/货币。这些'非人格化'安排让互不相识的人也能安全交易,等于用制度替掉了人情。它是天花板之外那条'另想办法'的路。注意:本砖只说这条路【走得通】,不说它【一定会被走】——那留给推论在具体条件下预测。"
+
+statement: |
+  在缺乏人际信任的陌生人之间,一组【非人格化制度】能替代人际信任、支撑交换:
+  第三方执行(法庭/权威/行会)、声誉登记与信息中介、标准化契约、抵押担保与货币。
+  其机制是【把履约保障从"我了解你这个人"转移到"违约会被一个不依赖私人关系的系统
+  惩罚/曝光"】——使 THEOREM-cooperation-precondition 所说的"陌生人合作替代机制"
+  得以制度化落地。
+  (a) 这些制度【能】在匿名/一次性/跨群体的交换中,支撑本会因缺信任而流产的交易;
+  (b) 它们【不免费】:建立与运行消耗资源,且各自只填补特定信任缺口(执行缺口、
+      信息缺口、承诺缺口)。
+  本命题只主张"可替代"(capability),不主张"总会被采用",也不主张"完全替代人际信任"。
+
+bridges_to:
+  concepts: [CONCEPT-exchange, CONCEPT-norm, CONCEPT-cooperation, CONCEPT-information]
+  axioms: [AXIOM-003]
+  theorems: [THEOREM-cooperation-precondition, THEOREM-relation-information-asset]
+bridges_field: 从 L1"陌生人合作需替代机制"到可观测的非人格化交换制度
+
+applicable_sources:
+- game_theory:
+    rationale: |
+      机制设计与重复博弈的制度化:第三方执行、声誉机制(Kandori 社区执行、
+      Milgrom-North-Weingast 的 law-merchant 模型)、抵押担保,把一次性陌生人博弈
+      转化为有惩罚影子的可执行博弈。本命题最直接、最强的形式化来源。
+- cultural_universals:
+    rationale: |
+      经济史与跨文化制度证据:Greif 的马格里布 vs 热那亚商人、社区责任制;地中海/
+      中国/北非商帮的声誉与行会执行;票据信用、公证、度量衡与货币标准化在多个文明
+      独立出现。物质与档案方法独立于博弈论。
+- evolutionary-biology:
+    rationale: |
+      文化演化(Henrich、Boyd-Richerson):具第三方惩罚规范与市场型制度的社会能把
+      合作扩展到陌生人并在竞争中扩张(市场整合与亲社会性的跨文化相关研究)。与 gt
+      部分共享"制度即扩展合作"逻辑,独立性打折;其群体选择成分尚有争议。
+
+falsifiability: |
+  若发现陌生人之间的大规模交换普遍地【无需】任何非人格化制度(无第三方执行、无
+  声誉/契约/担保),仅靠临时人际信任即可稳定支撑;或这些制度被证明【不能】在匿名
+  交换中替代人际信任(引入后陌生人交易并不因此变得可行)——则本命题被削弱。
+
+cross_verification:
+  votes:
+    game_theory:
+      status: agree
+      weight: 1.0
+      evidence: []
+      note: |
+        机制设计/重复博弈制度化:第三方执行、声誉(Kandori)、law-merchant
+        (Milgrom-North-Weingast)、抵押担保。本命题最强来源,作锚点。证据强度:strong。
+    cultural_universals:
+      status: agree
+      weight: 0.5
+      evidence: []
+      note: |
+        Greif 马格里布/热那亚、社区责任制、票据信用、公证行会、货币度量衡标准化
+        跨文明独立出现。经济史/档案方法独立于博弈论,独立系数 0.5。
+    evolutionary_biology:
+      status: agree
+      weight: 0.4
+      evidence: []
+      independence_note: |
+        文化演化(Henrich):第三方惩罚规范 + 市场制度扩展陌生人合作。与 gt 共享
+        "制度扩展合作"逻辑,且群体选择成分有争议,独立系数 0.4、诚实降权。
+  iea: 1.9
+  verdict: verified
+  verdict_note: |
+    IEA = 1.0(gt) + 0.5(cultural) + 0.4(evo) = 1.9 ≥ 1.8 → verified(博弈论形式化 +
+    经济史档案两个准独立来源为主)。无有资格的反对票。
+  instrument_disclosure: |
+    三路投票由单一 LLM 执行。IEA=1.9 是学科独立性上限,仪器有效独立性低于此。本命题
+    有独立的经济史档案证据(Greif 等)支撑,仪器忧虑被部分缓解。
+  honest_note: |
+    本命题偏"制度经济学教科书"(North/Greif)。这不是缺陷——L2 砖的职责是当经验锚,
+    新颖性应体现在其上的推论(交换规模突破信任上限 ⇒ 制度外化的阈值/可逆/领域特定
+    预测),而非砖本身。且本命题只声称"可替代",不声称"必被采用"——后者留给推论去在
+    杠杆条件下预测。
+
+depends_on:
+  concepts: [CONCEPT-exchange, CONCEPT-norm, CONCEPT-cooperation, CONCEPT-information]
+  axioms: [AXIOM-003]
+  theorems: [THEOREM-cooperation-precondition, THEOREM-relation-information-asset]
+
+domain: [制度经济学, 交换理论, 经济史]
+created: 2026-07-14
