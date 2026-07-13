@@ -37,7 +37,7 @@ logical_implications:
   - "群体的身份信息会衰减"                          # PHY-001——需要仪式/符号/叙事维护
 
 domain: [基础概念]
-depends_on: [CONCEPT-agent, CONCEPT-information, CONCEPT-relation, CONCEPT-position]
+depends_on: [CONCEPT-agent, CONCEPT-information, CONCEPT-relation, CONCEPT-goal, CONCEPT-choice]
 l0_constraints:
   - PHY-001: "群体身份信息随时间衰减——没有仪式、符号、叙事的持续维护，群体凝聚力退化"
   - PHY-003-b: "个体注意力和归属感的有限性 ⇒ 一个人深度认同的群体数量有上限"

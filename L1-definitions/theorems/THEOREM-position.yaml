@@ -1,0 +1,40 @@
+id: THEOREM-position
+term: "立场定理 (Position Theorem)"
+type: theorem
+layer: L1-definitions
+
+statement: |
+  如果一个 Agent 有目标，且该 Agent 面临一个将影响其目标达成
+  的议题（该议题涉及 ≥2 个 Agent），则该 Agent 必然对该议题
+  持有立场——即支持某种结果的取向。
+
+derivation: |
+  从以下概念和约束中直接导出：
+
+  1. Agent 有目标（CONCEPT-goal: Agent 想要达到的状态）
+  2. 议题 = 一个事件/决策，其结果将影响 ≥1 个 Agent 的目标达成
+  3. Agent 能够评估"哪种议题结果更有利于我的目标"
+     （来自 CONCEPT-choice: Agent 在选项中选择偏好项）
+  4. 这种评估结果 = 立场
+
+  立场不需要"额外的东西"——它是目标 + 信息 + 多 Agent 议题结构
+  的逻辑必然产物。没有目标的 Agent 不会有立场（但所有 Agent
+  按定义都有目标）。没有议题就不会有立场被激活。
+
+  形式化:
+    ∀a ∈ Agents, ∀i ∈ Issues:
+      (affects(i, goal(a)) ∧ involves_multiple_agents(i))
+      ⇒ ∃ position(a, i)
+
+depends_on:
+  concepts: [CONCEPT-agent, CONCEPT-goal, CONCEPT-choice, CONCEPT-information]
+  l0_constraints: [PHY-002, PHY-003-c]
+
+notes: |
+  立场曾被列为 L1 概念（CONCEPT-position），经第一性原理审查后
+  降级为定理。理由是：立场的全部必要特征都可以从 agent + goal +
+  choice + information 中导出，它没有引入任何不可约简的新结构。
+  它不是原语——它是推导产物。
+
+created: 2026-07-13
+formerly: CONCEPT-position

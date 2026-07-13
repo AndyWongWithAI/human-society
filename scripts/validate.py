@@ -28,6 +28,16 @@ def check_ids(es):
     print(f"✅ ID 唯一性: {len(es)} 实体" if not errs else "")
     return errs
 
+import re
+
+def _ref_exists(ref, ids):
+    """检查引用是否存在。支持子约束引用（PHY-003-a → PHY-003）。"""
+    if ref in ids:
+        return True
+    # 尝试去掉尾部 -[a-z] 后缀（子约束引用）
+    base = re.sub(r"-[a-z]$", "", ref)
+    return base in ids
+
 def check_refs(es):
     ids = set(e["id"] for e in es.values())
     ref_fields = ["bridges_to_concept", "target_bridging", "source_id",
@@ -39,12 +49,23 @@ def check_refs(es):
         eid = e.get("id", "?")
         for k in ref_fields:
             v = e.get(k)
-            if isinstance(v, str) and v and v not in ids:
+            if isinstance(v, str) and v and not _ref_exists(v, ids):
                 errs.append(f"{eid}: {k}='{v}' 不存在")
         for k in list_fields:
             for v in (e.get(k) or []):
-                if isinstance(v, str) and v not in ids:
+                if isinstance(v, str) and not _ref_exists(v, ids):
                     errs.append(f"{eid}: {k} 引用 '{v}' 不存在")
+        # depends_on: 扁平列表（概念）或嵌套 dict（定理）
+        deps = e.get("depends_on")
+        if isinstance(deps, list):
+            for v in deps:
+                if isinstance(v, str) and not _ref_exists(v, ids):
+                    errs.append(f"{eid}: depends_on 引用 '{v}' 不存在")
+        elif isinstance(deps, dict):
+            for sub_k in ("concepts", "l0_constraints"):
+                for v in (deps.get(sub_k) or []):
+                    if isinstance(v, str) and not _ref_exists(v, ids):
+                        errs.append(f"{eid}: depends_on.{sub_k} 引用 '{v}' 不存在")
     for e in errs: print(f"❌ {e}")
     print("✅ 引用完整性: 通过" if not errs else "")
     return errs
