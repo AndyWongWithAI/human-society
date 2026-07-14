@@ -184,7 +184,14 @@ ${fixes.map((f, i) => `  ${i + 1}) ${f}`).join('\n')}
 if (verdict === 'verified') {
   phase('Finalize')
   await agent(
-    `把 ${DED_PATH} 的 status 由 candidate 改为 verified;更新 review_summary(r1..r${round} 轨迹 + 一句话为何 verified + 指向 ${REVIEW_PATH});补 revised 日期与 revision_note 摘要。跑 \`cd ${REPO} && python scripts/validate.py\` 确认无 ❌ YAML、状态检查通过。返回 {done, validatorOk, note}。`,
+    `把 ${DED_PATH} 的 status 由 candidate 改为 verified。
+
+更新 review_summary —— 【严格 ≤3 行,只留结论+指针,禁止复述每轮 required/整改细节(那是双存,归 ADV-REVIEW)】,照此模板(用 \`|\` 块标量):
+  1) r1 <verdict> → r2 <verdict> → … → 定论 verified(只写裁决词,别写每轮改了啥)
+  2) 一句话为何 verified(核心载重新意 + 反例猎捕无活反例)
+  3) 全档见 ADV-REVIEW-${b.reviewNum}。
+
+补 revised 日期与 revision_note(一行摘要即可)。跑 \`cd ${REPO} && python scripts/validate.py\` 确认无 ❌ YAML、状态检查通过。返回 {done, validatorOk, note}。`,
     { label: `finalize:${b.id}`, phase: 'Finalize', schema: REVISE_OUT, agentType: 'general-purpose' }
   )
 }

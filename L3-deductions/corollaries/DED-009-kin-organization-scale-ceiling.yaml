@@ -287,25 +287,9 @@ discriminant_validity: |
   之外另立【连续溢出】度量。新意在①②③,不在"需要额外机制"或 (i) 本身。
 
 review_summary: |
-  状态:verified(经 ADV-REVIEW-014 两轮独立对抗审查,详见
-  /home/hq/research/human-society/L3-deductions/reviews/ADV-REVIEW-014-DED-009.yaml)。
-  [round-1 → needs_revision] 抓到【一条 required】:kin_reach_overshoot 的阈值"足够相关"
-  在 definition 里被写成"r 高到足以让利他梯度绑定"——用【绑定成败】反定义自变量,与
-  measurement 声称的"结构 r×网络"自相矛盾,给 falsifiability(a) 的核心空格留了"按构造恒空
-  =不可证伪(DED-004 病)"读法;另 3 条 should/minor(species B 重标 catch-all、诚实前置
-  (i) 近砖、节段世系锚"公认"收到 telescoping)。反例猎捕净杀=无。
-  [定向整改] 阈值钉为事前、独立于绑定成败的结构 cutoff θ*(真血缘 r×网络可达的谱牒距离/
-  密度门限,明文"绝不用绑得住/绑不住反定义"),falsifiability(a) 加"'超范围'由 θ* 事前判"
-  括注;species B 重标为"一切不借道亲缘通路的替代基质"catch-all(制度为主要实例);诚实
-  前置 (i) 近砖非卖点、载重新意在 (iii)+驱动量+A;节段世系锚收到 telescoping 现象。
-  [round-2 → verified] 复核确认唯一 required(阈值循环)已外科式关死、未引入新 required;
-  审查者亲自另跑全新候选池反例猎捕(冰岛自由邦/十二支派/苏格兰宗族/罗马 gens/易洛魁/帕坦),
-  仍无 scope 内活净反例、数条反哺 species A;未重蹈 DED-004/007。残留仅 should/minor
-  (θ* 的 g/密度自由参数未钉、(i) 臂近解析、族谱 confidence 略慷慨、姻亲并入 θ* 网络项宜显式化),
-  均非"不修则不成立"。
-  一句话:唯一致命的可证伪性硬伤(阈值循环)已关死、两轮反例猎捕均无活反例、载重新意
-  (拟制亲缘=hack 亲缘机器的独立 species + 可逆单调 + 驱动量=血缘可及溢出而非人头)确在
-  BR-L2-002/003/010 之外且可事前测可经验证伪,故 verified。
+  r1 needs_revision → r2 verified。
+  一句话:唯一致命硬伤(阈值"足够相关"用绑定成败反定义自变量→DED-004 不可证伪循环风险)已钉成事前独立结构 cutoff θ*;两轮反例猎捕(冰岛自由邦/十二支派/苏格兰宗族/罗马 gens/易洛魁/帕坦)均无活反例、数条反哺拟制亲缘 species;载重新意(拟制亲缘=hack 亲缘机器的独立 species + 可逆单调 + 驱动量=血缘可及溢出而非人头)确在 BR-L2-002/003/010 之外、可事前测可证伪。
+  全档见 ADV-REVIEW-014。
 
 depends_on:
   axioms: [AXIOM-003]
