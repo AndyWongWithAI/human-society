@@ -1,0 +1,322 @@
+id: ADV-REVIEW-014
+type: adversarial_review
+reviews: DED-009
+layer: L3-deductions
+
+人话摘要: |
+  对 DED-009(亲缘组织的规模天花板 → 拟制亲缘 or 制度外化)的独立对抗审查记录。
+  round-1 裁 needs_revision:核心活、明显吸取了 DED-006/007/008 的死因(测量轴正交、
+  锚无事实错、species 按伞级判据本身二值定义、anti-talisman 真兑现),反例猎捕(Hutterite/
+  kibbutz/采集群聚合/内婚村/魅力型武装团/蒙古/早期伊斯兰/Ostrom 类比)未净到 scope 内活
+  反例——统统落进 A(拟血缘/classificatory kin)或 B(规范/制度/想象秩序)或退化(反支持 ii)
+  或出射程。但抓到【一条 required】:驱动量"血缘可及"的阈值('足够相关')在 definition 里被写
+  成"r 高到足以让利他梯度绑定"(line 65)——用【绑定成败】反定义阈值,与其 measurement 声称的
+  "结构 r×网络"自相矛盾,使 falsifiability(a) 的空格有'按构造为空(=不可证伪, DED-004 病)'的
+  读法。修法外科式:把阈值钉成结构、独立于结果的固定量,(a) 即无歧义可证伪。另 3 条 should/minor。
+
+target: DED-009
+protocol: |
+  Rule B 独立对抗审查(作者≠审查者,全新独立上下文)。红旗 10 条逐项攻 + 反例猎捕(判 verified
+  前必做)+ DED-004(不可证伪循环)/DED-007(测量轴焊死)复发检查。裁决三态照评分卡。
+
+round_1:
+  reviewer: "独立子 Agent (general-purpose, 全新独立上下文, 与作者及前几轮无关)"
+  verdict: needs_revision
+  verdict_note: |
+    这是本系列迄今最接近一次过的候选:作者显式吸收了 DED-006(连续量别二分)、DED-007(测量轴
+    焊死/锚事实错)、DED-008(species 须按【伞级判据本身】定义方能穷尽)三条死因/近死因。三量轴
+    异源正交、五个锚无 DED-007 式事实反转、拟制亲缘的制度签名真兑现、A/B 按"是否借道亲缘利他近端
+    反应通路"这一【结构二值】定义(不是把连续量硬切二分,也不是像 DED-008 pre-fix 那样用不等价的
+    '亲缘网内外'定义 species)。反例猎捕未净到 scope 内活反例。
+    但有【一条 required 未决硬伤】,恰落在文件自认的 primary_suspect 上却未被真正关死:驱动量
+    kin_reach_overshoot 的阈值"足够相关"在 definition(line 65)写成"r 高到【足以让 BR-L2-002 利他
+    梯度绑定】"——这是用【绑定成败】(=被预测的结果侧)反定义自变量的阈值,与同段 measurement 声称
+    的"按结构 r×网络可达性测、独立于是否维系住"直接冲突。两读并存:若阈值=结构固定量,(a) 可证伪、
+    空格是真经验主张;若阈值浮动到"绑不住的地方就算超出",则"超范围×纯真亲缘×维系"按构造恒为空、
+    (i)/(a) 退化为不可证伪循环(DED-004 病)。这一条不修,核心招牌预测的可证伪性悬空。可靠定向修订
+    救活(把阈值钉成结构、独立于结果的固定 cutoff),非推倒重来 ⇒ needs_revision 而非 rejected。
+    (较 DED-008 r1/r2:那两轮各有一个 scope 内活净反例[冰岛/Ostrom]故 needs_revision;本轮【无】
+    活反例,needs_revision 的唯一驱动是上述可证伪性硬伤,标准一致而非放水也非过杀。)
+  red_flag_findings:
+    brick_conclusion: |
+      部分命中(should 级,非致命)。核心 (i)"超血缘可及 ⇒ 需非亲缘绑定力"与 BR-L2-003(人类能在
+      远超亲缘规模上靠共享规范/制度/想象秩序合作)高度重叠——BR-L2-003 的"想象秩序"按 Anderson
+      本就含"想象的血缘共同体(民族=大家庭)",文件自认此重叠(line 226)。真正砖外的载重新意是
+      【(iii) 单调 + 驱动量=血缘可及溢出而非人头/产出 + A 作为 hack 同一台 BR-L2-002 机器的独立
+      机制】,BR-L2-003 用 N>1000【人头】阈值、不给连续溢出度量,故 (iii)/(b) 确在砖外。宜把
+      "载重新意在 (iii)+驱动量+A 机制、(i) 本身近砖"更诚实地前置(现档在 nontriviality/discriminant
+      已做一半)。非平凡内核不在单砖原文 ⇒ 不判 required。
+    nontriviality_cell_check: |
+      攻不穿【但系于上面那条 required】。核心空格"血缘可及外×维系大规模协作×纯真亲缘(无 A 无 B)"
+      预测为空。是否同义反复?关键在:空格为空 = "结构性弱(低 r×网络)的真血缘利他【聚合起来也】
+      撑不住大规模协作"——这【是】BR-L2-002 之外的经验主张(砖只给逐 dyad 衰减、不给聚合天花板会不会
+      咬)。故【只要阈值是结构测的】,空格非同义反复、可被"结构超范围却纯真血缘撑住的大组织"填上。
+      通过——但通过性依赖 required 修好(阈值别浮到绑定成败)。
+    measurement_orthogonality: |
+      不重蹈 DED-007(主干)。承重对:kin_reach_overshoot(谱牒/真血缘 r×网络,禁用"是否互称兄弟/
+      办结拜/联宗"测)vs scaffolding_substrate(制度签名:结拜/收养/联宗文书/共祖神话 [A] vs 第三方
+      执行/契约/声誉 [B],独立于"组织是否存活")——异源正交,anti-talisman 双向禁反推。残留【中度
+      焊点】:阈值定义偷用绑定成败(见 required),类比 DED-008 r1 的"分母偷用实际获授者",改结构
+      cutoff 即除。
+    scope_hook_independent_of_result: |
+      不命中。excluded_outcomes 按【可事前测的渠道】划:创立即非亲缘基质者(陌生人市场/招募陌生人
+      公司)出射程、明面按非亲缘规则组织的科层归 (b)/(iii) 制度端支持——都按创立期基质/明示原则
+      的事前测,不按事后结果开脱。做对了(学到 DED-005 教训)。
+    criterion_tier_match: |
+      不命中。驱动量(溢出比重)连续、(iii) 明列单调、对齐 BR-L2-002 连续梯度、混合态(既联宗又义庄)
+      按并存标注不二分。A/B 的二值是【真结构二值】(借道该通路 yes/no),不是把连续量硬切档。学到
+      DED-006 r2 教训。
+    anti_talisman_cashed: |
+      不命中,真兑现。中国宗族锚:族谱可复原真血缘、并留联宗/嫁异姓文书痕迹 ⇒ 能【独立于是否维系住】
+      测出"超真血缘可及"并把 A(拟制)与真血缘分离(confidence moderate-strong 略慷慨但非造假)。
+      节段世系锚:telescoping 由人类学记录独立识别为虚构。至少一个承重锚真的独立测出驱动量,优于
+      DED-006 r1"只装门未上栓"。
+    anchor_fact_check: |
+      不命中,无 DED-007 式致命事实错。联宗/义庄(范仲淹式共有田产,约 1050)/祠堂/族谱、结拜歃血/
+      义亲/教父母 compadrazgo/黑手党 comparatico、Anderson 想象共同体、现代科层/常备军=B——均史实
+      无误。【minor】节段世系锚称谱系虚构"人类学公认"略过头:telescoping 本身证据扎实,但经典
+      segmentary lineage 模型本身有争议(Kuper 等批评),宜把"公认"收到"telescoping 现象公认"。
+    definition_vs_prediction: |
+      部分命中(=required 的另一面)。"超血缘可及仍维系 ⟺ A or B"有一条【解析臂】(A/B 按'是否借道
+      通路'对'补上绑定力'穷尽,近乎定义)+ 一条【经验臂】((iii) 单调、(b) 驱动量=溢出非人头)。经验臂
+      是真预测,故非纯定义。但解析臂的可证伪性系于阈值是否结构测——见 required。
+    enumeration_and_species: |
+      不命中(主干稳,这是本档最强处、直接补了 DED-008 的坑):A/B 按【伞级判据本身】("绑定力是否
+      借道亲缘利他近端反应通路")二值定义,by-construction 穷尽,不是 DED-008 pre-fix 的不等价旁证。
+      我【主动猎第 N+1 类】:魅力型权威(Weber 卡里斯玛)/纯暴力胁迫/非血缘话术的纯意识形态热忱——
+      逐一测:卡里斯玛纯态短命且必routinize(反支持 ii 退化),制度化后并入 B;组织化暴力=军纪→B;
+      共享信念/想象秩序=BR-L2-003 的'规范/想象秩序'→已在 B(B 的 line 84 含'规范');纯胁迫多非
+      '自愿协作'(出 CONCEPT-cooperation 射程)。【未净到活的第四 species】。但揭出一处 should:文件
+      多处把 B 窄标为"制度外化/BR-L2-003/010",而使二值穷尽成立所需的 B 实为"一切【不借道亲缘通路】
+      的基质"这个 catch-all(含胁迫/卡里斯玛/纯意识形态);宜显式把 B 重标为该 catch-all、"制度"是其
+      主要实例,否则"(A) 拟制 or (B) 制度"在【实质层】不像在【二值层】那样显然穷尽。
+    primary_suspect_aim: |
+      指对(line 152-157 自认最弱腿=前件'纯亲缘维系至某上限'近乎空集、(i)/(a) 难有干净实例),
+      但【欠关死】:诚实退守到 (iii) 可独立检验是对的,却没顺手把 definition 里"足以绑定"的循环
+      措辞改掉——退守救了 (iii),没救 (i)/(a) 的可证伪性。secondary_suspect(kin_reach 须真血缘测、
+      A/B 按基质结构测)方向对但同样漏了阈值这一环。无更致命的它没认的软肋;primary_suspect 准但
+      解决度不足 ⇒ 正是 needs_revision 的形态。
+  counterexample_hunt: |
+    主动构造能填"血缘可及外×维系大规模协作×纯真亲缘(无 A 无 B)"空格的干净案例,认真找历史/
+    跨文化实例:
+    - Hutterite/再洗礼派公社(数百人共产协作):靠共同信仰(想象秩序=B)+ 'brethren' 拟血缘称谓(A)
+      ⇒ A+B,被消化为支持,非反例。
+    - 以色列 kibbutz(数百非亲成员共财共劳):社会主义-锡安主义意识形态(想象秩序=B)+ 强规范/声誉
+      (B);谱牒会显示成员多为异源移民=高溢出;脚手架厚 ⇒ 正是 (iii)/species B 支持锚。
+    - 采集社会季节性群聚(数百非近亲):classificatory kinship(把亲属称谓扩到全体)= 教科书级
+      species A + 分享互惠规范(B) ⇒ 强支持 A,反哺锚。
+    - 内婚村/内婚种姓(密集真近亲通婚使全村真有血缘):文件把'网络可达'并入血缘可及 ⇒ 属'可及内'
+      档、非超范围;且现实中仍配 panchayat/族议(B)。按构造不成反例。
+    - 魅力型武装团/征服集团(蒙古 anda 血盟+nökör / 早期伊斯兰 ummah 'brothers'):A(拟血缘)
+      + 制度(yassa/十进军制 / sharia)=A+B,被消化。纯卡里斯玛前态短命→退化,反支持 (ii)。
+    - Ostrom 长寿公地类比(亲缘密集共同体按规则横向互监):明面'按规则配'的横向问责=规范/第三方
+      性质→落 B;义庄式'按亲缘配'出射程。非本推论的 (a) 反例。
+    结论:【净杀=无】。所有干净候选或落 A(拟血缘/classificatory)、或落 B(规范/制度/想象秩序)、
+    或退化反支持 (ii)、或出射程。falsifiability(a) 核心未被净证伪,反被 A/B 双支撑 + 退化案例正面
+    支持。反例猎捕这一【verified 硬门的第 2 条】本身可通过——needs_revision 的唯一驱动是可证伪性
+    硬伤(第 1 条门未过),不是猎到了活反例。
+  non_recurrence_of_ded004_007: |
+    DED-004(不可证伪循环):【有活回声,即本轮 required】。anti_talisman_clause 与 measurement
+    的方向对(禁用拟制亲缘/存活反推),但 definition line 65"r 高到足以让利他梯度【绑定】"把阈值
+    焊回绑定成败,给 (i)/(a) 留了"按构造恒空=不可证伪"的读法。这不是全面复发(经验臂 (iii)/(b)
+    仍独立可错、anti-talisman 挡住了拟制亲缘那条反推),但是必须关死的一丝循环,否则招牌预测悬空。
+    DED-007(焊死测量轴):主干未复发。三轴异源正交、五锚无事实反转、A/B 由独立制度签名坐实、
+    连续单调对齐 BR-L2-002。残留仅阈值定义的中度焊点(轻于 DED-007,改结构 cutoff 即除),与 DED-008
+    r1 的分母焊点同级。
+  required_fixes:
+    - |
+      [required] 去循环化"足够相关/血缘可及"阈值:把 operationalization.kin_reach_overshoot.
+      definition 里"r 高到【足以让 BR-L2-002 利他梯度绑定】"改为一个【结构、独立于绑定成败】的
+      固定 cutoff(如以真血缘 r×网络可达性设一个可事前测的谱牒距离/网络密度门限),与 measurement
+      的"结构 r×网络"对齐;并在 falsifiability(a) 明确:'超范围'由该结构 cutoff 判、不因'绑没绑住'
+      浮动。使核心空格是真经验主张而非按构造恒空,(a) 无歧义可证伪。
+    - |
+      [should] 显式把 species B 重标为"一切【不借道亲缘利他近端反应通路】的替代基质"这一 catch-all
+      (含互惠/规范/想象秩序/第三方制度,乃至胁迫/卡里斯玛的制度化形态),"制度外化(BR-L2-003/010)"
+      为其主要实例。否则"(A) 拟制 or (B) 制度"在实质层的穷尽性不如二值层显然,魅力型/纯胁迫/纯意识
+      形态无处安放。
+    - |
+      [should] 诚实前置载重新意:核心 (i)"超亲缘需非亲缘绑定"与 BR-L2-003 高度重叠(想象秩序含
+      '想象血缘共同体'),真正砖外的可证伪内容是 (iii) 单调 + 驱动量=血缘可及溢出(非人头,BR-L2-003
+      用 N>1000 人头)+ A 作为 hack 同一台机器的独立机制。把"新意在 (iii)+驱动量+A、(i) 本身近砖"
+      更醒目地写进 nontriviality/discriminant,别让读者以为 (i) 是卖点。
+    - |
+      [minor] 收紧节段世系锚措辞:把谱系虚构"人类学公认"降为"谱系 telescoping/操纵现象公认"
+      (经典 segmentary lineage 模型本身有 Kuper 等争议,telescoping 现象证据才是扎实的那部分)。
+
+author_response_round_1:
+  responded_by: "整改者(定向 Edit,全新独立上下文)"
+  disposition: all_addressed
+  fixes: |
+    1 [required] 去循环化阈值:kin_reach_overshoot.definition 删"r 高到足以让利他梯度绑定"
+      的结果侧反定义,改为事前、独立于绑定成败的结构 cutoff θ*——按真血缘 r×网络可达性钉
+      一条谱牒距离/血缘网络密度线(共祖 g 代内且经稠密可追溯血缘链可达,r×网络可达性 ≥ θ*),
+      θ* 由谱牒/协作网【结构】事前测定,明文"绝不用绑得住/绑不住反定义"。falsifiability(a)
+      加括注:"超范围"由 θ* 事前判、不随"绑没绑住"浮动 ⇒ 核心空格是真经验主张、(a) 无歧义
+      可证伪,DED-004 恒空循环读法关死。
+    2 [should] species B 重标为"一切不借道亲缘利他近端反应通路的替代基质"catch-all(互惠/
+      规范/想象秩序/第三方制度 + 胁迫/卡里斯玛制度化态),"制度外化"为主要实例;statement 二选一/
+      伞级判据(B)/derivation 步3/scaffolding_substrate.def+measurement 全部同步。魅力型/纯胁迫/
+      纯意识形态各有所安,实质层穷尽与二值层一致。
+    3 [should] 诚实前置:discriminant 防平凡化守卫 + nontriviality 防平凡化 均显式写"核心 (i)
+      与 BR-L2-003 高度重叠(其想象秩序含想象血缘共同体=民族即大家庭)、(i) 本身近砖非卖点,
+      载重可证伪新意全在(iii)单调+驱动量=溢出(非 BR-L2-003 的 N>1000 人头)+A 作 hack 同一
+      机器的独立 species"。
+    4 [minor] 节段世系锚"人类学公认"收到"谱系 telescoping/操纵现象人类学证据扎实、广受认可",
+      注明经典 segmentary lineage 模型本身有 Kuper 等批评争议、只承 telescoping、不援引整套模型。
+  note: "只 Edit 受影响段落,未整份重写;瘦身格式保持。改后 scripts/validate.py 无 ❌、引用完整。待 round-2 复核。"
+
+round_2:
+  reviewer: "独立子 Agent (round 2, 全新独立上下文, 与作者及前几轮无关)"
+  verdict: verified
+  verdict_note: |
+    复核确认 round-1 唯一 required(阈值循环)已被外科式关死,且未引入新 required;我另做
+    了一轮【全新的】反例猎捕(不复用 round-1 的候选池),仍无 scope 内活净反例。三条 verified
+    门逐条过:①无 required 级缺陷;②本轮亲自猎捕、净杀=无;③未重蹈 DED-004/007。故判 verified。
+    ——required 修复核验:kin_reach_overshoot.definition 现把阈值钉为结构 cutoff θ*(真血缘
+    r×网络可达性的谱牒距离/密度线),明文"θ* 由结构事前测定、不随绑没绑住浮动、绝不用绑定
+    成败反定义",falsifiability(a) 同步加"'超范围'由 θ* 事前判"括注。round-1 指的"line 65 用
+    绑定成败反定义自变量"这一 DED-004 回声已消除,measurement 的 anti-talisman 双向禁反推
+    (禁用互称兄弟/结拜/联宗测溢出;A/B 由制度签名独立坐实)完整在位。
+    ——诚实定位:这不是"零瑕疵",而是"零 required"。残留三点 should/minor(θ* 的 g/密度自
+    由参数未钉、(i) 臂近解析、族谱 confidence 略慷慨)均非"不修则不成立/不可证伪/事实错",
+    且作者已把载重可证伪性移到不受这些残留影响的 (iii)单调/(b)驱动量/A-species 上,故不阻断
+    verified。判据一致性:较 DED-008 r1/r2(各有冰岛/Ostrom 的 scope 内活净反例故 needs_revision),
+    本档 round-1 无活反例、唯一驱动是已修的循环 required;round-2 我的新猎捕仍无活反例 ⇒ 达门。
+    这不是放水:载重新意(拟制亲缘=hack 亲缘机器的独立 species + 可逆单调 + 驱动量=血缘可及
+    溢出而非人头)确在 BR-L2-002/003/010 之外、且可事前测、可经验证伪。
+  red_flag_findings:
+    brick_conclusion: |
+      部分命中(should,已被作者显式认领,不判 required)。核心 (i)"超血缘可及 ⇒ 需非亲缘
+      绑定力"与 BR-L2-003 高度重叠(其"想象秩序"按 Anderson 含"想象的血缘共同体=民族即大
+      家庭");且 (i) 的空格不可填,近乎由 THEOREM-cooperation-precondition + catch-all B
+      解析强制(见 nontriviality_cell_check)。但非平凡载重内核【不在单砖原文】:①把 BR-L2-003
+      笼统的"规范/制度/想象秩序"一桶,按【绑定力是否借道亲缘利他近端反应通路】劈成 A/B 两支,
+      并识别【拟制亲缘 A = hack 造出天花板的同一台 BR-L2-002 机器】——这条机制性劈分与
+      "A 与制度并列却作用于同一机器"的论断,三砖皆无;②(iii) 连续单调 + 驱动量=血缘可及溢出,
+      BR-L2-003 只给 N>1000【人头】阈值、无连续溢出度量。作者已在 discriminant/nontriviality
+      前置"(i) 近砖非卖点、载重在①②③"。⇒ 内核非砖内,不判 required。
+    nontriviality_cell_check: |
+      攻不穿(载重臂),但揭出 (i) 臂近解析——记为 should、非 required。核心空格
+      "血缘可及外×维系大规模协作×纯真亲缘(无 A 无 B)"预测为空。关键判断:θ* 已改为结构量后,
+      该空格是真经验主张,还是按构造恒空(DED-004 病)?我的裁断——【分层】:
+      (i)/(a) 这一臂【近解析】:θ* 含网络项,"许多真近亲"⟹"稠密可追溯血缘网内"⟹"在 θ* 以内、
+        非溢出";要"成员全在 θ* 外却全是真近亲"自相矛盾。加之 catch-all B(一切非亲缘通路基质)
+        + THEOREM-cooperation-precondition(协作须有某基质),"超范围×维系 ⟹ A or B"近乎被
+        L1 定理强制。故 (i) 臂难以经验证伪——但作者已把它降为"近砖非卖点",不作卖点。
+      载重臂【真可证伪】:(iii) 单调(招牌预测,line 53 自认)+ (b) 驱动量=溢出非人头——这两条
+        【不】被解析强制:固定一个可预注册的 g(如"协作二元组共祖距离 > 2 代/超二从"),按溢出
+        比重对组织排序,检验脚手架强度是否与溢出比重(而非人头/产出)正相关;若脚手架只随人头
+        走,(b) 被证伪。此测可跑(类比 EMP-TEST-001/002 对历史政体编码),故推论【整体】可证伪。
+      结论:(i) 臂近解析是【已披露、有界】的特征,非隐藏的不可证伪内核 ⇒ 非平凡性由载重臂坐实,
+      通过;(i) 的近解析记 should(下)。
+    measurement_orthogonality: |
+      不重蹈 DED-007(主干)。承重对:kin_reach_overshoot(谱牒/真血缘 r×网络,measurement 明文
+      禁用"互称兄弟/结拜/联宗"测)vs scaffolding_substrate(A=亲缘话术制度签名[结拜歃血/收养联宗
+      文书/共祖神话/拟血缘称谓];B=第三方执行/契约/声誉/货币/军纪/卡里斯玛科层化——独立于"组织
+      是否存活")——异源正交,anti-talisman 双向禁反推在位。round-1 的中度焊点(阈值偷用绑定成败)
+      已被 θ* 结构化除。残留【非焊点、系欠钉】:θ* 的 g 代数与网络密度门限是自由参数,未给具体值
+      或范围;这不是"用结果反测自变量"(不是 DED-007 焊死),而是操作化欠完整,记 should。
+    scope_hook_independent_of_result: |
+      不命中(学到 DED-005 教训)。excluded_outcomes 按【可事前测的渠道】划:创立即非亲缘基质者
+      (陌生人市场/招募陌生人公司)出射程、按"创立期协作基质"事前测;明面按非亲缘规则组织的科层
+      按"明示原则"事前测、归 (b)/(iii) 制度端支持。均非事后按结果开脱。boundary_cases(万人宗族
+      /王朝真血缘继承靠官僚制)也【分层】处理:血缘核心归可及内、超范围治理归 B,不整体开脱。做对。
+    criterion_tier_match: |
+      不命中(学到 DED-006 教训)。驱动量(溢出比重)连续;(iii) 明列单调、对齐 BR-L2-002 连续梯度;
+      混合态(既联宗[A]又义庄[B])按"两者并存/主导成分"标注、不二分。A/B 的二值是【真结构二值】
+      (借道亲缘利他近端反应通路 yes/no),非把连续量硬切档——这是 by-construction 穷尽的合法二值,
+      不是 DED-008 pre-fix 那种"用不等价表征切档"。
+    anti_talisman_cashed: |
+      不命中,真兑现。至少一承重锚【独立测出】驱动量:中国宗族——族谱可复原真实可追溯血缘、并留
+      联宗/嫁异姓的【文书痕迹】,故能独立于"是否维系住"测出"协作集超真血缘可及"并把 A(拟制)与
+      真血缘分离;节段世系——telescoping 由人类学记录独立识别为虚构。anti_talisman_clause 明文
+      禁"遇 A、B 皆无却维系就事后硬塞非正式拟制亲缘消化"——护身符防线在位。
+      【我的对抗】族谱本身含联宗伪造,用它测"真血缘"是否被污染?作者防线(line 223):伪造事件留
+      【可区分的文书痕迹】(联宗契/嫁姓录),史学界确能借档案/结构分析把联宗与自然世系分开。故
+      confidence"moderate-strong"略慷慨(宜降 moderate)但非造假 ⇒ 记 minor,不判 required。
+    anchor_fact_check: |
+      不命中,无 DED-007 式致命事实错。核对:范仲淹义庄(约 1050,共有田产+成文族规+第三方管理)✓;
+      compadrazgo(伊比利亚/拉美教父母拟亲)✓;黑手党 comparatico/comparaggio 仪式拟亲 ✓;努尔/
+      贝都因 segmentary telescoping(Evans-Pritchard;经典模型有 Kuper 1982 批评——作者已按 round-1
+      minor 收到"只承 telescoping 现象、不援引整套节段模型")✓;Anderson 想象共同体(民族=手足)✓;
+      现代科层/常备军=B ✓。均史实无误。round-1 的 minor 已修。
+    definition_vs_prediction: |
+      部分命中,与 nontriviality_cell_check 同源(记 should)。"超血缘可及仍维系 ⟺ A or B"有
+      【解析臂】(A/B by-construction 穷尽 + (i) 近由 L1 定理强制)+【经验臂】((iii) 单调、(b) 驱动量
+      =溢出非人头)。经验臂是真预测、可跑,故推论非纯定义。宜更醒目地把"招牌可证伪内容=经验臂
+      (iii)/(b)"钉死,别让 (i) 的解析臂被误读为主可证伪内容(作者 line 53 已标 (iii) 为招牌,基本到位)。
+    enumeration_and_species: |
+      不命中(本档最强处,直补 DED-008 坑)。A/B 按【伞级判据本身】("绑定力是否借道亲缘利他近端
+      反应通路")二值定义、by-construction 穷尽,非 DED-008 pre-fix 的不等价旁证。我【主动猎第 N+1 类】
+      (全新候选,不复用 round-1):
+      - 年龄组/年龄级(马赛/Nyakyusa 年龄村,把非亲同龄人绑成军事协作单元,横切世系):非拟共祖
+        (不称同宗)⇒ 非 A;靠共同入会仪式+规范=想象秩序/规范 ⇒ 落 B。
+      - 婚姻联盟/通婚网(哈布斯堡联姻、宗族间通婚):对非血亲配偶的绑定=经【共同后代=真血亲 r>0】
+        +【嫁娶互惠规范=B】两分解;且作者 measurement 已把"婚姻可达链"并入 θ* 的网络项 ⇒ 婚姻可达
+        者算"可及内",非溢出。非干净第三 species,但【婚姻/姻亲在 θ* 网络项中的处理】只在
+        measurement 一句带过,值得显式化(记 should)——否则姻亲联盟像一条 non-A-non-B 的漏。
+      - 修会(本笃/熙笃会,数千无血缘僧侣跨世纪协作):"brothers"拟亲称谓=A + 成文会规/誓愿=B;
+        且创立即非亲(招募陌生人)⇒ 出射程。双落。
+      - 秘密会社/天地会/三合会:结拜拟亲=A + 誓约/帮规=B。落 A+B。
+      逐一测:全部落 A / B / A+B / 出射程,【未净到活的第四 species】。catch-all B 保证穷尽——这也
+      正是其软肋(近解析,见上),但作为"枚举穷尽"红旗,攻不穿。
+    primary_suspect_aim: |
+      指对且已够格。文件自认最弱腿=前件"以纯亲缘利他为基质维系至某上限"近乎空集、(i)/(a) 难有干净
+      实例——这正是我独立判定的最致命软肋(catch-all B + L1 定理使 (i) 近解析)。作者的诚实退守
+      (退到 (iii) 单调可独立检验)恰好对冲了这条软肋:载重可证伪性【不】依赖 (i)/(a)。无更致命的它
+      没认的软肋;secondary_suspect(kin_reach 须真血缘测、A/B 按基质结构测)方向对且已随 θ* 修复
+      落实。primary_suspect 指对 + 解决度足够 ⇒ 不再是 needs_revision 形态。
+  counterexample_hunt: |
+    本轮【亲自】猎捕(全新候选池,刻意不复用 round-1 的 Hutterite/kibbutz/采集群聚/内婚村/蒙古/
+    早期伊斯兰/Ostrom),目标填最强空格:成员经【结构 θ*】确证超足够相关亲属可及、维系大规模主动
+    协作、却【A、B 俱无】纯靠真血缘利他撑住。逐一:
+    - 冰岛自由邦(无国家、自由农跨远亲协作):靠 Althing 议事会/法律诵者/goði-thingman【自选(非血缘)
+      契约关系】/血仇-赔偿规范维系 ⇒ 规范+议事制度=B;双边亲属属可及内。落 B,非空格反例。
+    - 以色列十二支派联盟(君主制前):以"雅各十二子"共祖【谱系虚构】联结=A(教科书级 telescoping)
+      + 圣约/律法=B。落 A+B——反哺 species A 新锚。
+    - 苏格兰高地宗族(clann=children):大量 sept/冠姓投附者【无真世系】=拟制亲缘 A + 租佃义务=B。
+      落 A+B——反哺 A。
+    - 罗马 gens/clientela + 阿拉伯 mawali 客附:gens 规模化共祖=A + clientela/walā' 客附义务
+      (walā' 本身即【拟制亲缘/收养式】附着=A,或恩庇=B)。落 A/A+B——反哺 A。
+    - 易洛魁联盟(跨部族氏族+大法):跨"民族"的氏族兄弟身份=拟制跨部族亲=A + Gayanashagowa 宪制
+      =B。落 A+B——反哺 A。
+    - 帕坦 khel / 阿拉伯 hamula(可达数千人):平行从表婚(bint 'amm)【致密化真血缘】⇒ 多在 θ* 稠密
+      可追溯血缘网【内】、非溢出;真溢出部分(客附家族)经 walā' 客附=A。落"可及内"/A,非反例。
+    结论:【净杀=无】。全部候选落 A、B、A+B、出射程或"可及内",数条(十二支派/苏格兰 sept/罗马 gens
+    /阿拉伯 mawali/易洛魁)反哺 species A。且本轮猎捕【反证】了 nontriviality_cell_check 的判断:空格
+    难填,部分是因"许多真近亲 ⟹ 稠密网内 ⟹ 可及内"近乎定义——这是 (i) 臂近解析的证据(记 should),
+    【不是】猎到活反例。verified 硬门第 2 条(亲自猎捕、无 scope 内活反例)通过。
+  non_recurrence_of_ded004_007: |
+    DED-004(不可证伪循环):round-1 的活回声(line 65 阈值焊回绑定成败)已被 θ* 结构化关死;
+    measurement/anti_talisman_clause 双向禁反推完整。残留【非全面复发】:(i)/(a) 臂近解析(θ* 网络
+    项 + catch-all B + THEOREM-cooperation-precondition 近乎强制空格不可填)——但这是【已披露、有界】
+    的特征,且作者把招牌可证伪性移到不受此影响的 (iii)/(b)(可跑、可两向出结果),故推论【整体】仍
+    可证伪 ⇒ 门 3 通过,记 should(把 (i) 的近解析地位再显式化 + 建议 EMP 预注册 θ* 的 g/密度)。
+    DED-007(焊死测量轴):主干未复发。三轴异源正交、六锚无事实反转、A/B 由独立制度签名坐实、连续
+    单调对齐 BR-L2-002。残留仅 θ* 的 g/密度欠钉(操作化欠完整,非焊死),记 should。
+  verified_gate:
+    no_required_defect: "过。round-1 唯一 required(循环阈值)已关死;本轮未生成新 required。残留均 should/minor。"
+    personal_counterexample_hunt_no_live: "过。本轮全新候选池亲自猎捕,净杀=无;数条反哺 species A。"
+    no_ded004_007_recurrence: "过。循环阈值已除;(i) 臂近解析为已披露有界特征,载重可证伪性在 (iii)/(b),门 3 达标。"
+  should_notes_nonblocking:
+    - |
+      [should] θ* 操作化欠钉:g 代数与网络密度门限是自由参数,未给具体值/范围。为使 (b)/(iii) 可跑
+      的经验检验免于"你用错了 g"的搪塞,建议(留待 EMP 阶段)预注册一个具体 g(如"协作二元组共祖
+      距离 > 2 代/超二从")与密度阈,类比 EMP-TEST-004 的盲测预注册。不阻断 verified(单调排序对
+      任一合理固定 g 稳健)。
+    - |
+      [should] 把 (i)/(a) 臂"近解析(catch-all B + THEOREM-cooperation-precondition 近乎强制空格不可
+      填)"再显式前置,并把"招牌可证伪内容=经验臂 (iii)单调 + (b)驱动量=溢出非人头"钉死,防读者
+      误把 (i) 当主可证伪内容。作者 line 53 已标 (iii) 为招牌,基本到位,建议在 nontriviality 一处
+      点明"(i) 臂近解析、载重在经验臂"。
+    - |
+      [minor] 中国宗族锚 confidence "moderate-strong" 略慷慨(族谱本身含联宗伪造,复原真血缘需借文书
+      痕迹分离),宜降为 "moderate";不影响 anti-talisman 真兑现的结论。
+    - |
+      [should] 显式化姻亲/婚姻可达链在 θ* 网络项中的处理(现仅 measurement 一句"世系/婚姻可达链"带
+      过)。否则婚姻联盟(通婚网)看似一条 non-A-non-B 的绑定漏;点明"姻亲经共同后代并入真血缘网络
+      项、故算可及内"可堵此漏。
+
+domain: [组织理论, 亲属制度, 演化社会学]
+created: 2026-07-14

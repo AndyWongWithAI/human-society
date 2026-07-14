@@ -26,7 +26,13 @@ export const meta = {
   ],
 }
 
-const b = args || {}
+let b = args || {}
+// harness 有时把对象 args 序列化成 JSON 字符串;兼容两种传法。
+if (typeof b === 'string') {
+  try { b = JSON.parse(b) } catch (e) {
+    return { error: 'args 是字符串但非合法 JSON', raw: String(b).slice(0, 200) }
+  }
+}
 const REPO = b.repo || '/home/hq/research/human-society'
 const MAX = b.maxRounds || 3
 
