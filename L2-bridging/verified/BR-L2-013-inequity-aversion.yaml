@@ -1,0 +1,60 @@
+id: BR-L2-013
+status: verified
+term: 不公平厌恶 (Inequity Aversion)
+statement: |
+  人类(及部分其他灵长类)对不公平的结果分配持续表现出负面反应——
+  不仅排斥自己吃亏的"不利不公平"(disadvantageous inequity),
+  在特定条件下也排斥自己占便宜的"有利不公平"(advantageous inequity);
+  这种反应是自动的、情绪性的,出现在学龄前儿童和传统小规模社会中,
+  并非后天习得的市场逻辑内化。
+人话摘要: "人不光讨厌自己吃亏,有时候连自己占便宜也会不舒服——这种不公平厌恶是刻在脑子里的,连猴子都有;不是长大进了市场才学会计较,而是人天生就对'凭啥你拿的跟我不一样'敏感。"
+bridges_to:
+  concepts:
+  - CONCEPT-fairness
+  - CONCEPT-competition
+  - CONCEPT-cooperation
+  - CONCEPT-exchange
+  axioms:
+  - AXIOM-001
+  theorems:
+  - THEOREM-competition-norm
+  - THEOREM-cooperation-precondition
+bridges_field: 从公平定义(CONCEPT-fairness)落到可观测的跨物种/跨文化心理反应
+applicable_sources:
+- behavioral_economics:
+    rationale: "最后通牒博弈(ultimatum game)是行为经济学中复现最稳健的发现之一:提议者分一笔钱,回应者若拒绝则双方都得零——回应者系统性地拒绝过低报价(通常<20-30%),即使从'理性自利'角度看接受任何正金额都优于拒绝。独裁者博弈(dictator game)中分配者也系统性地给出非零份额。公共品博弈中搭便车者引发惩罚意愿。以上范式在数十个国家被复现。"
+- evolutionary_biology:
+    rationale: "Brosnan & de Waal (2003)的卷尾猴实验:两只猴子完成相同任务后,一只得到黄瓜(低价值)、另一只得到葡萄(高价值)——得到黄瓜的猴子拒绝继续参与或扔掉黄瓜。这一'不公平厌恶'反应在与人类亲缘最近的灵长类中被观测到,暗示其演化根底深远。注意:复制争议存在(部分实验未复现),但核心方向(对不公平的自动负反应)跨物种证据稳健。"
+- cultural_universals:
+    rationale: "Henrich et al. (2005,'Economic Man')在15个传统小规模社会(采集-狩猎/游牧/刀耕火种)中运行最后通牒博弈:所有社会均出现对极低报价的系统性拒绝,尽管拒绝阈值因文化而异(从接近零到接近50%)。这说明不公平厌恶的方向是跨文化恒定的(量化幅度文化可变)。"
+falsifiability: |
+  若发现一个人类群体满足以下全部条件:
+  (a) 成员在分配博弈中面对客观不平等的结果;
+  (b) 且该不平等是"不利的"(自己拿比对方少);
+  (c) 但成员既不表现出负情绪,也不以任何代价(如拒绝/退出/减少未来合作)回应——
+  则本命题被证伪。
+created: 2026-07-14
+source_anchors:
+- source_id: EV-cu-001
+  support: strong
+cross_verification:
+  votes:
+    behavioral_economics:
+      status: agree
+      weight: 1.0
+      evidence: []
+      note: 最后通牒/独裁者/公共品三类博弈的跨实验室复现极为稳健。拒绝过低报价是有代价的公平执行行为——回应者牺牲当期收益以惩罚不公。
+    evolutionary_biology:
+      status: agree
+      weight: 0.6
+      evidence: []
+      note: 卷尾猴/黑猩猩的不公平厌恶实验(Brosnan & de Waal)。方法论与人类实验室实验完全不同(动物行为观察+非语言范式),独立性强。复制争议客观存在,但跨物种证据的方向是一致的。
+    cultural_universals:
+      status: agree
+      weight: 0.5
+      evidence:
+      - EV-cu-001
+      note: 15个传统小规模社会的跨文化最后通牒复现(Henrich et al. 2005)。不同于大学生被试池,方法论独立于标准实验室实验(田野实验+非WEIRD人口)。所有社会均拒绝极端不公,方向普适、幅度文化可变。
+  iea: 2.1
+  verdict: verified
+  verdict_note: IEA=2.1(≥1.8 verified阈值)。行为经济学锚定(1.0)、演化生物学+0.6(动物范式独立于人类实验)、文化普适+0.5(田野实验独立于实验室被试池)。三个源两两准独立,结论干净:不公平厌恶是人类(及部分灵长类)的稳健心理特征。

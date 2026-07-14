@@ -1,0 +1,62 @@
+id: BR-L2-015
+status: verified
+term: 程序公平可替结果公平 (Procedural Fairness Substitutability)
+statement: |
+  当人们判断一个决策过程在程序上是公平的——透明的、
+  不偏袒的、给各方说话机会的、一贯执行的——
+  他们对不利结果的接受度显著上升。
+  程序公平可以部分替代结果公平:一个"程序公正但结果吃亏"的
+  局面比"程序不公且结果吃亏"更能被接受,且这种替代效应
+  在面对面小群体到全国性选举的尺度上都存在。
+人话摘要: "结果输了但过程让人服气,人就能接受;过程不透明又偏袒,就算结果赚了人也觉得不对。程序公平是结果公平的替代品——这就是为什么法院、选举、抽签这些'冷冰冰的制度'能解决纠纷而不打起来:因为大家认程序,虽败也能接受。"
+bridges_to:
+  concepts:
+  - CONCEPT-fairness
+  - CONCEPT-norm
+  - CONCEPT-power
+  - CONCEPT-organization
+  axioms:
+  - AXIOM-003
+  theorems:
+  - THEOREM-competition-norm
+  - THEOREM-conflict-cost
+bridges_field: 从公平定义的"(e)标准依赖"(公平标准可以是程序的而非结果的),落到可观测的程序正义效应
+applicable_sources:
+- social_psychology:
+    rationale: "Tyler & Blader, Lind & Tyler的程序正义(procedural justice)研究传统:在法院、警察、工作场所等真实制度场景中,程序公平感知(是否被尊重对待、是否有发言机会、裁决者是否中立)比结果有利度更能预测对权威的接受度和满意度。元分析支持这一结论的稳健性。"
+- political_science:
+    rationale: "'败者同意'(loser's consent)文献(Anderson et al. 2005):民主选举中败选一方之所以接受结果而非武装抗拒,关键前提是对选举程序公正性的信任。实证发现:对选举公正性的感知是败选者是否接受结果的最强预测变量之一,超过意识形态距离和经济利益。这提供了与法院场景不同的域(选举→政治权力分配),但机制相同(程序公平→接受不利结果)。"
+- behavioral_economics:
+    rationale: "最后通牒博弈的变体实验:当提议者的分配方案是由随机过程(而非自利意图)生成时,回应者对低报价的拒绝率显著下降(Blount 1995,Falk et al. 2008)。'不是他故意少给,是抽签的结果'——程序信息改变了公平判断。注意:该范式与社会心理学的方法论有重叠(均使用实验室实验),但焦点不同(BE关注博弈行为,社会心理学关注制度权威接受)。"
+falsifiability: |
+  若发现一个人群满足以下全部条件:
+  (a) 面临一个能产生不利结果的决策过程;
+  (b) 且该过程的"程序公平"(透明/中立/发言机会/一贯性)
+     可通过独立指标测量;
+  (c) 但程序公平的变异对结果接受度零解释力——
+     即"程序公平但结果不利"者的接受度与"程序不公平且结果不利"者无差异;
+  则本命题被证伪。
+created: 2026-07-14
+source_anchors:
+- source_id: EV-cu-001
+  support: strong
+cross_verification:
+  votes:
+    social_psychology:
+      status: agree
+      weight: 1.0
+      evidence: []
+      note: Tyler/Lind的程序正义研究传统覆盖法院、警察、工作场所——程序公平感知比结果有利度更能预测权威接受。元分析稳健。
+    political_science:
+      status: agree
+      weight: 0.5
+      evidence: []
+      note: "败者同意"文献(Anderson et al.)——完全不同域(选举vs法庭)但机制一致。方法论独立于社会心理学(大规模调查+跨国比较数据vs实验室/问卷),独立性强。
+    behavioral_economics:
+      status: agree
+      weight: 0.4
+      evidence: []
+      note: 最后通牒变体(随机vs人为分配)证实程序信息影响公平判断。方法与社会心理学有部分重叠(均使用实验室实验),独立性低于政治科学,故权重打折扣。
+  iea: 1.9
+  verdict: verified
+  verdict_note: IEA=1.9(≥1.8 verified阈值)。社会心理学锚定(1.0)、政治科学+0.5(选举域独立于法院/工作场所,大规模调查vs实验室)、行为经济学+0.4(范式不同但方法有重叠)。三个源覆盖三个不同域(法院/选举/博弈),交叉稳健:程序公平部分替代结果公平是可靠的经验发现。
