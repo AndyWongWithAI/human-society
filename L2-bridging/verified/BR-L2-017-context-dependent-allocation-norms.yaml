@@ -1,0 +1,60 @@
+id: BR-L2-017
+status: verified
+term: 分配规范随语境切换 (Context-Dependent Allocation Norm Switching)
+statement: |
+  同一群人在不同情境中会切换不同的公平分配标准:
+  共享/共居的情境默认采用"平等分"或"按需要分";
+  交易/生产的情境默认采用"按贡献(绩效)分";
+  且当资源性质从"共享品"变为"稀缺激励品"时,
+  分配标准随之位移——平等退缩、绩效权重上升。
+  这不是"文化差异",而是一个文化内部的语境敏感性。
+人话摘要: "同一家人,分'晚饭'是平均盛,分'谁继承祖宅'就不是平均了。人不是一辈子只认一种公平——分什么、跟谁分、在什么环境下分,会自动换标准。这不是'双标',是人的公平认知本身就嵌在语境里。"
+bridges_to:
+  concepts:
+  - CONCEPT-fairness
+  - CONCEPT-resource
+  - CONCEPT-relation
+  - CONCEPT-exchange
+  - CONCEPT-cooperation
+  axioms:
+  - AXIOM-001
+  theorems:
+  - THEOREM-exchange-competition-alternative
+bridges_field: 从 CONCEPT-fairness(e)标准依赖,落到可观测的分配标准语境切换规律
+applicable_sources:
+- social_psychology:
+    rationale: "Fiske 的关系模型理论(Relational Models Theory, 1991):人类有四种基本关系模型——公共共享(Communal Sharing,按需/平等)、权威排序(Authority Ranking,按等级)、平等匹配(Equality Matching,按均衡轮流)、市场定价(Market Pricing,按贡献/效率)。同一个人在同时存在的不同关系中应用不同模型。Deutsch 的分配正义理论(1975):平等适用于团结目标,公平(equity/绩效)适用于生产力目标——分配规则随社会目标切换。两个理论在方法论上共享社会心理学框架,但来自独立的研究线索(Fiske 来自人类学,Deutsch 来自社会心理学实验)。"
+- cultural_anthropology:
+    rationale: "Sahlins 的互惠谱系(Stone Age Economics, 1972):从'普遍互惠'(亲属间无计算)到'平衡互惠'(熟人间的准时等价交换)到'负互惠'(陌生人间的剥削)构成连续谱——分配公平标准随社会距离改变。Henrich et al.(2010)的跨文化实验:WEIRD 被试在最后通牒博弈中更像'市场定价',而非 WEIRD 被试的分配行为更多受共享/互惠关系模型影响——指示分配的语境敏感性本身是普适特征,只是默认模型在不同文化中权重不同。"
+- behavioral_economics:
+    rationale: "框架效应(framing effect)在独裁者博弈/公共品博弈中的复现:同一博弈被命名为'社区基金'(共享框架)vs'投资池'(市场框架),分配/贡献行为系统性偏移。在实验室中切换框架→切换分配公平标准——证明语境敏感性可在同一被试内被框架操控触发,不是跨文化比较的生态谬误。注意:方法论与社会心理学有重叠,但实验经济学使用激励相容设计(真金白银),增加了外部效度。"
+falsifiability: |
+  若发现以下任一情况则本命题被证伪:
+  (a) 存在一个人类群体,其成员在所有情境中仅使用单一种公平分配标准
+      (平等/绩效/需要),无人能识别或响应情境切换;
+  (b) 或:资源性质的改变(共享品→激励品)零影响成员自陈的公平分配偏好。
+created: 2026-07-14
+source_anchors:
+- source_id: EV-cu-001
+  support: strong
+cross_verification:
+  votes:
+    social_psychology:
+      status: agree
+      weight: 1.0
+      evidence: []
+      note: Fiske(1991)四关系模型+Deutsch(1975)分配正义——分配标准随关系类型/社会目标切换。来自独立的研究线索(人类学vs实验社会心理学),跨方法(民族志+问卷+实验)。
+    cultural_anthropology:
+      status: agree
+      weight: 0.5
+      evidence:
+      - EV-cu-001
+      note: Sahlins 互惠谱系+Henrich et al. WEIRD/非WEIRD对比——分配标准随社会距离和默认关系模型变化。方法论独立于社会心理学(Western实验室实验)——民族志田野为关系模型的生态效度提供了体外证据。
+    behavioral_economics:
+      status: agree
+      weight: 0.4
+      evidence: []
+      note: 框架效应在独裁者/公共品博弈中系统性出现——框架操控→分配标准切换,在实验室中被直接操控复现。与社会心理学共享实验方法论,但使用激励相容设计(真金白银)增强了"不是假回答"的可信度。独立性部分打折。
+  iea: 1.9
+  verdict: verified
+  verdict_note: IEA=1.9(≥1.8 verified 阈值)。社会心理学锚定(1.0)、文化人类学+0.5(民族志独立于实验)、行为经济学+0.4(范式重叠但框架操控复现增强了可信度)。分配标准的语境敏感性本身是普适认知特征,具体哪个标准在哪个情境被触发才是文化变量。

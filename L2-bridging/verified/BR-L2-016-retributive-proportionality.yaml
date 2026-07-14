@@ -1,0 +1,60 @@
+id: BR-L2-016
+status: verified
+term: 报应比例性 (Retributive Proportionality)
+statement: |
+  人类对"惩罚应该跟罪行成比例"的期望跨文化普适——
+  不是只在法律体系里出现,而是从学龄前儿童的道德判断
+  到无国家社会的纠纷处理中都系统性存在。
+  "太轻了不公道"和"太重了不公道"是同一枚硬币的两面:
+  比例性同时约束惩罚不足和惩罚过度。
+人话摘要: "人不光觉得做坏事该罚,还觉得'罚多少得跟罪配'——太轻了不解恨、太重了又成欺负人。这种'以眼还眼'的比例感不是哪本书教的,是跨文化到处都有的直觉,小孩子都有。"
+bridges_to:
+  concepts:
+  - CONCEPT-fairness
+  - CONCEPT-norm
+  - CONCEPT-interaction
+  axioms:
+  - AXIOM-003
+  theorems:
+  - THEOREM-conflict-cost
+  - THEOREM-competition-norm
+bridges_field: 从 CONCEPT-fairness(d)代价执行的"比例性"维度,落到可观测的跨文化/发展心理学证据
+applicable_sources:
+- developmental_psychology:
+    rationale: "学龄前儿童(3-5 岁)已展现比例惩罚的直觉:当被要求分配惩罚时,他们对更严重的违规分配更重的惩罚(Hamlin et al. 2011,婴儿道德认知研究;Smith & Warneken 2016,惩罚比例性发展研究)。比例感出现在幼儿期、先于正式道德教育,说明它是认知禀赋而非文化灌输。"
+- legal_anthropology:
+    rationale: "'以眼还眼'(lex talionis)原则在互不相关的法律传统中独立出现——美索不达米亚(汉谟拉比法典)、希伯来(出埃及记)、罗马(十二铜表法)、伊斯兰教法(qisas)、中国传统(杀人者死,伤人者刑)。尼罗河流域努尔人、巴布亚新几内亚高地等无国家社会的血仇/赔偿制度也是比例性的(杀人赔 X 头牛,伤人赔 Y 头)。跨文化独立复现指示深层认知结构而非偶然历史传播。"
+- behavioral_economics:
+    rationale: "第三方惩罚实验中,旁观者施加的惩罚金额与违规严重度正相关(Fehr & Fischbacher 2004):剥削 50%比剥削 10%招来更重的第三方惩罚。惩罚不配(过度或不足)本身引发第二轮不满——'罚太重'被观测为新的不公(Fehr & Gächter 2002 的反惩罚现象)。注意:与 BR-L2-014(代价第三方惩罚)共享方法学基底,独立性有限;此处的增量贡献是'罚与罪的比例'而非'是否存在惩罚'。"
+falsifiability: |
+  若发现一个人类群体满足以下全部条件:
+  (a) 群体内有关于违规/伤害严重度分级的共享规范(有"更严重"vs"较轻"之分);
+  (b) 且群体成员对违规者有惩罚行为;
+  (c) 但惩罚力度与违规严重度之间无正相关——
+      即"偷只鸡"和"杀人"在成员眼中的应得罪责和实际惩罚一样重;
+  则本命题被证伪。
+created: 2026-07-14
+source_anchors:
+- source_id: EV-cu-001
+  support: strong
+cross_verification:
+  votes:
+    developmental_psychology:
+      status: agree
+      weight: 1.0
+      evidence: []
+      note: 幼儿比例惩罚直觉——出现在文化灌输之前,指示认知禀赋。方法论(婴儿/儿童实验,注视时间/行为选择)独立于成人民族志和法律史。
+    legal_anthropology:
+      status: agree
+      weight: 0.5
+      evidence:
+      - EV-cu-001
+      note: lex talionis 在互不相关的法律传统中独立出现。方法论(历史文献+民族志田野)独立于发展心理学实验。注意:不能排除"比例性只是'公平'概念逻辑蕴含而非独立发现"——这降低了独立性权重。
+    behavioral_economics:
+      status: agree
+      weight: 0.4
+      evidence: []
+      note: 第三方惩罚金额追踪违规严重度。注意:方法学与BR-L2-014高度重叠(同一批实验范式),独立性打折扣;此处的独立贡献是"比例性"而非"惩罚存在性"。
+  iea: 1.9
+  verdict: verified
+  verdict_note: IEA=1.9(≥1.8 verified 阈值)。发展心理学锚定(1.0),法律人类学+0.5(跨文化独立出现)、行为经济学+0.4(方法重叠但统计焦点不同——比例而非存在)。比例惩罚直觉是人类认知禀赋,不是单一文化传统的发明。
