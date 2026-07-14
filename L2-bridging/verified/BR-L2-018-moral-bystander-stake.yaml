@@ -1,0 +1,74 @@
+id: BR-L2-018
+status: verified
+term: 旁观者利益关联 (Bystander Stake in Moral Enforcement)
+statement: |
+  本桥接以 BR-L2-014（代价第三方惩罚）为前提——BR-L2-014 已证实
+  第三方惩罚是跨文化存在的现象。本桥接在此前提下补充一个更强的断言：
+  第三方惩罚的强度不是恒定的，而是随旁观者在合作结构中的利益占比
+  系统性地变化。
+
+  具体而言：旁观者愿意为惩罚违规者付出多少个人代价，
+  与其从该规范维护的合作结构中获取的利益占比正相关。
+  合作盈余越扩散到旁观者身上，旁观者越有动机执行该规范。
+  反之，当合作盈余仅限于直接交易双方时，旁观者的惩罚意愿
+  降至非系统性水平（偶发的个体行为而非群体层面的系统性第三方执行）——
+  该规范停留在双边互惠规范的范畴，不触发道德化。
+
+  这一利益关联可以解释以下经验规律：
+  (i) 小社群内的第三方惩罚强度 > 大都市的陌生人社会
+      （在小社群中，任何合作结构的瓦解都会直接波及每个成员）；
+  (ii) 同一违规行为在不同情境下引发不同强度的第三方惩罚
+      （取决于旁观者与受害方/违规方的社会距离——社会距离
+      越近，旁观者在该合作结构中的利益占比越高）；
+  (iii) 道德愤怒的"距离衰减"——远方的灾难在统计上更惨烈，
+      但激发的行动意愿弱于身边的小不公（不是道德冷漠，
+      而是利益占比的结构性差异）。
+人话摘要: "人为什么更愿意管家门口的事而不是地球另一边的事？不是远方的破事不重要，而是你在家门口那个系统里的股份占比高。一个规矩维护的合作系统跟你利益越紧密，你越愿意花钱花力气去维护它。"
+bridges_to:
+  concepts:
+  - CONCEPT-morality
+  - CONCEPT-cooperation
+  - CONCEPT-norm
+  - CONCEPT-group
+  axioms:
+  - AXIOM-001
+  - AXIOM-003
+  theorems:
+  - THEOREM-moral-third-party-enforcement
+  - THEOREM-competition-norm
+bridges_field: 从第三方执行定理的"利益扩散"条件，落到可观测的惩罚强度与利益占比的正相关
+applicable_sources:
+- behavioral_economics:
+    rationale: "第三方惩罚博弈中，旁观者的惩罚金额随其在该轮博弈中的利益占比系统性地变化。Carpenter & Matthews (2012) 的公共品博弈变体显示:当旁观者也是同一公共品的受益者时，惩罚强度显著高于旁观者来自不同公共品组的情境。Ostrom (1990) 的公共池资源田野研究——资源使用者自己就是监督者时，监督和执行更有效（因为他们直接受益于资源维护）。"
+- evolutionary_game_theory:
+    rationale: "间接互惠(indirect reciprocity)模型(Nowak & Sigmund 2005):在基于声誉的系统中，惩罚搭便车者是一项'公共品'——你惩罚了一个搭便车者，所有从该系统中获益的人都受益于你的惩罚。模型的预测是:当个人从系统中的利益占比越高，惩罚的演化稳定性越强。与 BR-L2-014 的强互惠模型互补——强互惠解释'为什么惩罚会存在'，间接互惠解释'惩罚强度随利益变化'。"
+- social_psychology:
+    rationale: "社会认同理论(self-categorization theory, Turner et al. 1987):个体对内群体成员的违规更愤怒、更愿惩罚——因为内群体规范直接维护了群体身份的价值，而群体身份是个体自我概念的一部分。Lieberman & Linke (2007) 的实验:被试对同一违规行为，如果受害者与自己共享群体身份，惩罚意愿显著更高。这不是'偏心'——在结构上，内群体规范直接维护着惩罚者自身的合作利益。"
+falsifiability: |
+  若发现以下情况，本命题被证伪：
+  (a) 一个群体中存在第三方惩罚行为（BR-L2-014 已证实其存在）；
+  (b) 且可以独立测量旁观者在受该规范维护的合作结构中的利益占比；
+  (c) 但惩罚强度与利益占比之间无任何正相关——甚至负相关——
+      即利益越少的旁观者反而惩罚越重。
+created: 2026-07-14
+source_anchors: []
+cross_verification:
+  votes:
+    behavioral_economics:
+      status: agree
+      weight: 1.0
+      evidence: []
+      note: "Carpenter & Matthews (2012) 公共品博弈变体——TP强度随利益占比变化。Ostrom (1990) 公共池资源田野研究。实验+田野互补。"
+    evolutionary_game_theory:
+      status: agree
+      weight: 0.5
+      evidence: []
+      note: "Nowak & Sigmund (2005) 间接互惠模型——惩罚强度随利益占比的演化稳定性。数学模型独立于行为实验。"
+    social_psychology:
+      status: agree
+      weight: 0.3
+      evidence: []
+      note: "社会认同理论——内群体违规触发更强惩罚。证据稳健但与行为经济学共享被试池(人类实验室行为)，独立性打折扣。"
+  iea: 1.8
+  verdict: verified
+  verdict_note: "IEA=1.8(≥1.8 verified阈值,紧贴线)。be锚定(1.0)+evo独立于实验(0.5)+sp与be共享方法(0.3)。三个源部分独立，结论方向一致：TP强度与利益占比正相关。"

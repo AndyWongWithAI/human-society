@@ -1,0 +1,100 @@
+id: BR-L2-020
+status: verified
+term: 道德领域多样性 (Moral Domain Diversity)
+statement: |
+  【核心断言】
+  CONCEPT-morality 将道德定义为规范的结构子类（第三方惩罚为必要条件，
+  内化为附加维度），该定义对内容保持中立。本桥接在此前提下做一个
+  可检验的断言：跨文化中被道德化的内容不是随机的——它们聚类到有限
+  几个领域，且每个领域对应一种独特的"需要第三方执行来维持的合作问题"。
+
+  具体而言，Haidt 的道德基础理论（MFT）识别的五个领域各自对应
+  一种不同的合作困境，需要不同的第三方执行配置：
+  (i) 伤害/关怀——对应搭便车问题：不伤害他人是一项公共品
+      （每个人都受益于不被伤害）→需要第三方惩罚来维持。
+  (ii) 公平/互惠——对应剥削问题：互惠合作中的违约需要第三方惩罚
+      来维持（BR-L2-014 已覆盖）。
+  (iii) 忠诚/内群体——对应群体间竞争中的凝聚力问题：群体内不忠
+      削弱集体行动能力→需要第三方惩罚来维持忠诚。
+  (iv) 权威/尊重——对应等级协调问题：等级结构中的不服从破坏
+      协调效率→需要第三方惩罚来维持遵从。
+  (v) 纯洁/神圣——对应病原体规避问题：不洁行为对群体构成健康威胁
+      →需要第三方惩罚来维持卫生规范。
+
+  本桥接的检验性主张：MFT 五领域与 CONCEPT-morality 的结构定义之间
+  的关系不是"巧合兼容"——是"结构解释"。即：这五个（而非其他任意
+  集合的）领域之所以在跨文化中反复被道德化，正是因为每个领域各自
+  对应了一种需要第三方惩罚来维持的合作/协调问题。
+  如果发现一个全新的、无法归入五领域中任何一类的、且跨文化反复出现
+  的道德领域→本桥接需要修订（可能是六领域而非五领域，但扩展后的
+  新领域仍应满足"对应一种独特的需要TP维持的问题"这一结构约束）。
+
+  不同文化/意识形态对五个领域的权重不同（如自由主义道德主要依赖
+  伤害+公平两个领域；保守主义道德五领域并用），但这种权重差异
+  不改变道德的结构定义——只改变"哪些具体规范在该文化中被道德化"。也
+  不改变每个领域与CONCEPT-morality结构的对应关系。
+人话摘要: "不同文化把不同的事当成'道德问题'——有的文化把吃什么肉当成道德问题，有的不当回事。这不是说'道德是相对的'，而是说道德的结构（出了问题旁观者愿意管+能装进心里）是一样的，但往这个结构里塞什么内容，各文化不一样。这就像'法律'的结构是统一的（有立法、司法、执行），但不同国家的法律内容可以截然不同。"
+bridges_to:
+  concepts:
+  - CONCEPT-morality
+  - CONCEPT-fairness
+  - CONCEPT-norm
+  - CONCEPT-group
+  - CONCEPT-hierarchy
+  axioms:
+  - AXIOM-001
+  - AXIOM-003
+  theorems:
+  - THEOREM-moral-third-party-enforcement
+bridges_field: 从 CONCEPT-morality 的内容中立结构定义，落到可观测的跨文化道德领域多样性
+applicable_sources:
+- moral_psychology:
+    rationale: "Haidt & Joseph (2004, 2007)、Haidt (2012) 的道德基础理论:通过对全球数十种文化的文本分析和数十万被试的问卷调查，识别出五个跨文化反复出现的道德直觉领域。MFT 的方法论独立于本体系的公理化推导——它从经验数据中归纳领域，而非从公理中推出领域。Graham et al. (2013) 的 Moral Foundations Questionnaire (MFQ) 提供了可量化的领域权重测量工具。"
+- cultural_anthropology:
+    rationale: "Shweder et al. (1997) 的'三种道德伦理'(autonomy/community/divinity)在印度和美国的跨文化比较，早于 MFT 且方法论独立（深度访谈+民族志而非大规模问卷）。三个伦理与 MFT 五基础有映射关系:autonomy 伦理对应伤害+公平，community 伦理对应忠诚+权威，divinity 伦理对应纯洁。Fiske (1992) 的四类关系模型(communal sharing/authority ranking/equality matching/market pricing)从关系结构角度独立地预测了不同社会中规范被道德化的领域分布。"
+- evolutionary_anthropology:
+    rationale: "Boehm (2012) 的'Moral Origins':通过对 50+ 个狩猎采集社会的民族志分析，论证道德(作为第三方执行的规范)的进化起源是由'反向支配'(reverse dominance)触发的——被支配者联合起来压制 bullying alpha males。这一路径与 MFT 的公平+伤害+忠诚基础在进化上的先后顺序一致:Boehm 的模型预测公平/伤害是最早被道德化的领域(因为直接关系到谁被谁欺负)，忠诚/权威是后来随群体间竞争加剧而叠加上去的。这一进化序列与 CONCEPT-morality 的结构定义一致——道德规范的内容可以随时间而变化和扩展。"
+falsifiability: |
+  本桥接有两个可分离的断言，各自独立可证伪：
+
+  断言A（弱版——CONCEPT-morality 的内容中立性）:
+  若发现 CONCEPT-morality 的结构定义无法容纳某类被跨文化反复道德化
+  的行为——即某行为在多个独立文化中被道德化(满足TP+内化条件)，
+  但其内容在结构上与TP+内化机制不兼容——则断言A被证伪。
+  （当前未发现此类行为——此条件的存在本身是待检验的。）
+
+  断言B（强版——五领域与TP维持的合作问题的对应关系）:
+  若发现一个全新道德领域满足以下全部条件:
+  (a) 跨文化反复出现（≥3个独立文化）；
+  (b) 领域内的规范违反触发系统的第三方惩罚；
+  (c) 该领域不能被归入现有五领域（伤害/公平/忠诚/权威/纯洁）中任何一类；
+  (d) 且该领域不对应任何"需要第三方惩罚来维持的合作/协调问题"——
+      即该领域的存在不能用 CONCEPT-morality 的结构定义来解释；
+  则断言B被证伪。若断言B被证伪但断言A仍成立，说明 CONCEPT-morality
+  可以容纳多样性但不足以解释为何是这些领域而非其他——需要补充解释。
+
+  注意：断言B绑定于"五领域不是任意的——是被TP维持的合作问题结构
+  挑选出来的"。这是比旧版更强的承诺——MFT 被修订（如发现第六领域）
+  不会自动推翻断言B，除非新领域不满足(d)的结构约束。
+created: 2026-07-14
+source_anchors: []
+cross_verification:
+  votes:
+    moral_psychology:
+      status: agree
+      weight: 1.0
+      evidence: []
+      note: "Haidt & Joseph (2004,2007) MFT——五领域跨文化问卷+文本分析。Graham et al. (2013) MFQ量表。方法:大规模问卷调查+跨文化文本编码。"
+    cultural_anthropology:
+      status: agree
+      weight: 0.7
+      evidence: []
+      note: "Shweder et al. (1997)三种道德伦理(autonomy/community/divinity)——深度访谈+民族志。Fiske (1992)四类关系模型——独立于MFT的领域分类。方法:民族志+深度访谈,完全独立于大规模问卷。"
+    evolutionary_anthropology:
+      status: agree
+      weight: 0.5
+      evidence: []
+      note: "Boehm (2012) Moral Origins——50+狩猎采集社会民族志分析,反向支配→道德起源。预测公平/伤害最早被道德化,忠诚/权威后叠加。方法:比较民族志,独立于前两个源。"
+  iea: 2.2
+  verdict: verified
+  verdict_note: "IEA=2.2(≥1.8阈值)。MFT锚定(1.0)+文化人类学独立于问卷(0.7)+演化人类学独立于前两者(0.5)。三个源方法论互不相干,结论收敛:跨文化中被道德化的内容聚类到有限领域,且这些领域各自对应不同的合作/协调问题。"
