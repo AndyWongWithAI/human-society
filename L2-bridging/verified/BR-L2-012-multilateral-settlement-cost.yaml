@@ -1,0 +1,89 @@
+id: BR-L2-012
+status: verified
+term: 多边结算成本催生通用媒介 (Multilateral Settlement Cost Favors a Common Medium)
+
+人话摘要: "就算大家彼此都认得、也记得住谁欠谁(记忆在场),但一大群人互相七拐八绕地欠来欠去,要把这张'谁欠谁'的多边大网记清、轧平,本身就很费劲。这时'一个所有人都肯收的东西'(通用媒介)让每笔买卖当场两清,省掉维护那张多边债务网。这个'嫌多边记账麻烦'是【独立于】'东西难换'(D1)和'认不出人'(D2)的第三个逼出货币的原因——战俘营就是例子:配给包齐整(不难换)、战俘也长期关一起(记得住),可人多、多边,照样冒出香烟当通用媒介。"
+
+statement: |
+  当交换网络是【多边】的(众多不同对手、对子少复现)时,维护跨全网的双边债务记账/清算本身
+  有成本(随对手数近似平方增长);一个【所有参与者都肯收】的通用媒介让每笔交换【当场结清】,
+  把 O(N²) 的多边债务压缩为对媒介的单边持有 ⇒ 多边度越高,通用媒介在【结算成本】上的净收益
+  越大。
+  【机制范围(不写进结论)】此机制【不同于】D1(物物匹配困难)与 D2(匿名/不可追踪):它靠的是
+  "多边记账贵",而非"东西难换"或"认不出人",故【即便记忆在场、匹配容易】仍起作用。本砖只主张
+  这一【机制存在且其净收益随多边度上升】;至于"三机制是否可各自解离、是否各自单独充分逼出
+  媒介"是推论 DED-007 的承重命题,【不在本砖】——以免重蹈 BR-L2-011 原稿把结论写进砖的覆辙。
+
+bridges_to:
+  concepts: [CONCEPT-exchange, CONCEPT-information, CONCEPT-norm]
+  axioms: [AXIOM-003]
+  theorems: [THEOREM-relation-information-asset, THEOREM-exchange-competition-alternative]
+bridges_field: 从 L1"交换/关系即信息"到多边结算成本这一独立的通货驱动
+
+applicable_sources:
+- game_theory:
+    rationale: |
+      Kiyotaki-Wright 搜寻货币:多主体随机匹配经济中,一种通用媒介作为均衡涌现,省去双重
+      需求巧合与全网双边记账。清算/netting 理论:多边债务网轧差有成本,通用媒介把 O(N²)
+      的双边债务压缩为对媒介的单边持有,降低结算成本。本命题最强、最直接的形式化来源。
+- cultural_universals:
+    rationale: |
+      战俘营香烟货币(Radford 1945)、监狱经济:成员相对可追踪(长期关押、高重复)却【多边】,
+      仍涌现通用媒介——记忆在场、配给包同质(匹配易),货币仍生 ⇒ 指向多边结算成本这一独立
+      驱动。集市/多边贸易场的通用媒介同理。田野/史料方法独立于博弈论。
+- evolutionary-biology:
+    rationale: |
+      多边关系记账的认知负荷(社会脑上限,同 BR-L2-009):追踪双边"谁欠谁"随对手数近似
+      平方增长,超出个体认知 ⇒ 外部化的通用媒介卸载多边记账。与 gt 部分共享逻辑,独立性
+      打折、诚实降权。
+
+falsifiability: |
+  若发现:(a) 在【身份可追踪、匹配容易】的多边交换网中,通用媒介【从不】涌现,纯多边债务
+  记账总能低成本轧平;或 (b) 通用媒介的涌现与【多边度】无关(多边度高低不影响是否用媒介)——
+  则本命题被削弱。
+
+cross_verification:
+  votes:
+    game_theory:
+      status: agree
+      weight: 1.0
+      evidence: []
+      note: |
+        Kiyotaki-Wright 搜寻货币(多主体匹配下媒介作为均衡)+ 清算/netting 成本理论(多边
+        债务 O(N²) 记账,媒介压缩为单边)。本命题最强来源,作锚点。证据强度:strong。
+    cultural_universals:
+      status: agree
+      weight: 0.5
+      evidence: []
+      note: |
+        战俘营香烟(Radford)、监狱经济:可追踪 + 匹配易却因多边而生媒介。田野/史料独立于
+        博弈论,独立系数 0.5。诚实标注:战俘营记忆非零,取其"匹配易+记忆偏在场却生媒介"的
+        对照力,正是这一点隔离出 D3。
+    evolutionary_biology:
+      status: agree
+      weight: 0.4
+      evidence: []
+      independence_note: |
+        多边记账认知负荷(社会脑,同 BR-L2-009)⇒ 外部化媒介。与 gt 部分共享逻辑,独立系数
+        0.4、诚实降权。
+  iea: 1.9
+  verdict: verified
+  verdict_note: |
+    IEA = 1.0(gt) + 0.5(cultural) + 0.4(evo) = 1.9 ≥ 1.8 → verified(搜寻货币/清算理论 +
+    战俘营/监狱经济档案两个准独立来源为主)。无有资格的反对票。
+  instrument_disclosure: |
+    三路投票由单一 LLM 执行。IEA=1.9 是学科独立性上限,仪器有效独立性低于此。本命题有独立
+    的战俘营/监狱经济经验证据支撑,仪器忧虑被部分缓解。
+  honest_note: |
+    本砖是 round-1 审查从 BR-L2-011 的"匿名多边"里拆出来的独立机制(记 D3),只主张"通用媒介
+    降低多边结算成本"这一机制及其净收益随多边度上升。至于三机制"可各自解离、各自单独充分"是
+    推论 DED-007 的承重命题,【不在本砖】——避免重蹈 BR-L2-011 原稿把结论写进砖的覆辙。战俘营
+    等锚在推论里用于解离,本砖仅用其支持"多边处媒介降结算成本"这一机制面。
+
+depends_on:
+  concepts: [CONCEPT-exchange, CONCEPT-information, CONCEPT-norm]
+  axioms: [AXIOM-003]
+  theorems: [THEOREM-relation-information-asset, THEOREM-exchange-competition-alternative]
+
+domain: [货币理论, 交换理论, 经济人类学]
+created: 2026-07-14

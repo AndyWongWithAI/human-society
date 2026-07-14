@@ -1,0 +1,95 @@
+id: BR-L2-011
+status: verified
+term: 通货替代匿名交换中缺失的记忆/可追踪性 (Money as Substitute for Missing Memory/Traceability in Anonymous Exchange)
+
+人话摘要: "熟人赊账,靠双方记得谁欠谁、以后还见面;可跟一个【认不出、追不到、不会再见】的人打交道,没法赊账——没人记得住、也没'下次'惩罚。这时一枚当场能验、能带走的通货,就替你把'我付过等价'当场结清,替代缺失的记忆/身份可追踪性。注意(round-1 审查后拆分):本砖只管【匿名/记不住】这一个缺口(记 D2);'一大群人多边对付、记账本身麻烦'是另一个【独立】缺口(记 D3,见 BR-L2-011 的姊妹砖 BR-L2-012),两者已拆开、不再焊在一起。"
+
+statement: |
+  通货的一个核心功能,是在【交易对手匿名、身份不可追踪】时充当当场结清的记忆替代:它让
+  认不出、追不到、不会再见的双方也能两清,无需依赖对彼此往来史的记忆,也无需未来之影
+  担保延时对付。
+  (a) 有共享记忆/身份可追踪的圈子内,信用/记账/声誉可支撑延时交换(BR-L2-005 +
+      THEOREM-relation-information-asset),不必然需要流通通货。
+  (b) 匿名/不可追踪使延时对付(赊账)无法执行 ⇒ 需当场两清的媒介替代缺失的记忆。
+
+  【边界(round-1 审查后拆分,防 super-brick)】本砖【只】主张"匿名/不可追踪(D2)"这一个缺口
+  下的记忆替代功能;【多边结算成本(D3)】——即便身份可追踪,多边债务网记账本身有成本——是
+  【独立的另一驱动】,归 BR-L2-012,不并入本砖。本砖也不主张通货是唯一功能(记账单位/价值
+  储藏另计)。之所以拆分:原稿把"匿名多边"焊为一体,会把 D3 藏进 D2 账,使因果归因不可证伪
+  (ADV-REVIEW-012 C2)。
+
+bridges_to:
+  concepts: [CONCEPT-exchange, CONCEPT-information, CONCEPT-norm]
+  axioms: [AXIOM-003]
+  theorems: [THEOREM-relation-information-asset, THEOREM-cooperation-precondition]
+bridges_field: 从 L1"关系即记忆 / 陌生人合作需替代机制"到通货的记忆(可追踪性)替代功能
+
+applicable_sources:
+- game_theory:
+    rationale: |
+      Kocherlakota"货币即记忆"(money is memory)定理:在有完全公共记忆(可追踪谁欠谁)的
+      经济里货币【冗余】——凡货币能达到的配置信用记账都能达到;货币价值恰在替代【缺失】的
+      公共记忆/身份可追踪性。本命题最直接、最强的形式化来源。(注:Kiyotaki-Wright 搜寻货币
+      移至 BR-L2-012,因其核心是多边匹配而非可追踪性。)
+- cultural_universals:
+    rationale: |
+      经济人类学:信用记账在【身份可追踪】的社群广泛存在(美索不达米亚神庙-宫廷记账、村庄
+      赊欠、店铺挂账);商品通货系统性出现在【匿名/陌生人】前沿(长途、跨群体)。田野/档案
+      方法独立于博弈论。
+- evolutionary-biology:
+    rationale: |
+      认知记忆/身份追踪有上限(社会脑,同 BR-L2-009),超限靠个体记忆维系"谁欠谁"不可行,
+      可携带的外部化标记(通货)把记忆卸载到物上。与 gt/记忆理论部分共享逻辑,独立性打折,
+      属推论性重构,诚实降权。
+
+falsifiability: |
+  若发现:(a) 在有完整共享记忆/可追踪身份的紧密圈子内,交换普遍地【必须】依赖流通通货、
+  信用记账无法替代;或 (b) 通货被证明与"身份可追踪性/记忆缺口"无关(可追踪充分但仍普遍
+  流通通货,且非因多边结算成本 D3)——则本命题被削弱。
+
+cross_verification:
+  votes:
+    game_theory:
+      status: agree
+      weight: 1.0
+      evidence: []
+      note: |
+        Kocherlakota"货币即记忆"定理(有公共记忆则货币冗余)。本命题最强、最直接来源,作
+        锚点。证据强度:strong(形式化结果稳健)。
+    cultural_universals:
+      status: agree
+      weight: 0.5
+      evidence: []
+      note: |
+        信用记账在可追踪社群广泛存在、商品通货在匿名前沿。田野/档案方法独立于博弈论,
+        独立系数 0.5。诚实标注:Graeber"反物物起源"论有争议,本砖只取"信用在可追踪处、通货
+        在匿名处"的功能面,不焊"信用严格先于铸币"(那是推论的可证伪预测)。
+    evolutionary_biology:
+      status: agree
+      weight: 0.4
+      evidence: []
+      independence_note: |
+        认知记忆/追踪上限(社会脑,同 BR-L2-009)⇒ 外部化记忆标记。与 gt/记忆理论部分共享
+        逻辑,推论性重构,独立系数 0.4、诚实降权。
+  iea: 1.9
+  verdict: verified
+  verdict_note: |
+    IEA = 1.0(gt) + 0.5(cultural) + 0.4(evo) = 1.9 ≥ 1.8 → verified(记忆理论形式化 +
+    经济人类学档案两个准独立来源为主)。无有资格的反对票。
+  instrument_disclosure: |
+    三路投票由单一 LLM 执行。IEA=1.9 是学科独立性上限,仪器有效独立性低于此。本命题有
+    独立的经济史证据支撑,仪器忧虑被部分缓解。
+  honest_note: |
+    本命题窄化到"匿名/可追踪缺口下的记忆替代"这一【单一功能】,是 round-1 审查后有意拆分——
+    原稿把 D2(记忆)与 D3(多边结算)焊为"匿名多边",使 D3 无法单独证伪。拆分后本砖=纯 D2,
+    BR-L2-012=纯 D3。新颖性在其上的推论 DED-007(三驱动解离),不在砖本身。
+
+depends_on:
+  concepts: [CONCEPT-exchange, CONCEPT-information, CONCEPT-norm]
+  axioms: [AXIOM-003]
+  theorems: [THEOREM-relation-information-asset, THEOREM-cooperation-precondition]
+
+domain: [货币理论, 交换理论, 经济人类学]
+created: 2026-07-14
+revised: 2026-07-14
+revision_note: "2026-07-14 ADV-REVIEW-012(DED-007 round-1)后拆分:原'匿名多边'焊死拆为纯 D2(本砖:匿名/可追踪缺口)+ 纯 D3(BR-L2-012:多边结算成本);Kiyotaki-Wright 移至 BR-L2-012。目的:让 D2/D3 可各自独立证伪,支撑 DED-007 的三驱动解离。"
