@@ -51,7 +51,7 @@ cross_verification:
       status: agree
       weight: 0.5
       evidence: []
-      note: "败者同意"文献(Anderson et al.)——完全不同域(选举vs法庭)但机制一致。方法论独立于社会心理学(大规模调查+跨国比较数据vs实验室/问卷),独立性强。
+      note: "“败者同意”文献(Anderson et al.)——完全不同域(选举vs法庭)但机制一致。方法论独立于社会心理学(大规模调查+跨国比较数据vs实验室/问卷),独立性强。"
     behavioral_economics:
       status: agree
       weight: 0.4

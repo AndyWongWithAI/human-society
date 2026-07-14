@@ -336,6 +336,15 @@ rule_d_deduction_chaining:
       深信之推论的体系才有价值。数据(一条推论)归零、管线(方法论)满分——
       正是宪法"管线质量优先于数据"的实证。
 
+  l4_forward_reference:
+    note: |
+      Rule D 管辖 L3 层内的推论→推论串联与交互。
+      当 2 条以上 L3 推论被组合为关于社会形态或演化轨迹的系统性声明时，
+      产物属于 L4-composites/，受其独立的 METHODOLOGY.yaml 管辖。
+      L4 不是"引用了其他推论的 L3 推论"——它是独立的架构层，
+      主前提是 L3 推论本身，结论是涌现的系统性命题。
+    see: L4-composites/METHODOLOGY.yaml
+
 # === 独立多模型交叉验证协议 (ICV) — 横切机制，服务 Rule B 与 Rule C ===
 
 independent_cross_verification:

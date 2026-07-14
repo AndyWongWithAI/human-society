@@ -16,17 +16,18 @@ python scripts/index.py       # 重生 INDEX.md(实体紧凑索引)。增删改�
 - `validate.py` 是唯一的门。它遍历所有含 `id` 的 YAML(跳过 `docs/ iterations/ __pycache__/` 与 `independence-model.yaml`/`META.yaml`),检查:ID 唯一、引用完整、无循环依赖、状态合法、**Rule D confidence_floor**(子推论 status 不得高于父推论允许的上限)、L3 推论必须有 `falsification_trace.primary_suspect` + `real_world_anchors`、L2 verified 必须 `IEA ≥ 1.2`。退出码非 0 即有错。
 - **没有单元测试框架**;正确性靠 `validate.py` + 独立对抗审查(见下)。
 
-## 四层架构(核心不变量)
+## 五层架构(核心不变量)
 
 ```
-L0 物理约束 → L1 定义层 → L2 桥接层 → L3 推论层
-L0-physical/  L1-definitions/  L2-bridging/  L3-deductions/
+L0 物理约束 → L1 定义层 → L2 桥接层 → L3 推论层 → L4 复合推论层
+L0-physical/  L1-definitions/  L2-bridging/  L3-deductions/  L4-composites/
 ```
 
 - **L0**(物理铁律,如熵增/能量守恒/时空):不验证,被上层大量引用当地基。
 - **L1**(concepts/axioms/theorems/contested):分析性真理,靠定义 + "否定它就没法说话"成立,不靠观察。
 - **L2**(bridges,BR-L2-*):把 L1 接到现实的经验命题,**会错、可被推翻**。
-- **L3**(deductions,DED-*):L1 × L2 → 可检验的现实命题。
+- **L3**(deductions,DED-*):L1 × L2 → 可检验的单机制命题。
+- **L4**(composites,L4-*):L3 推论组合 → 关于社会形态与演化轨迹的系统性命题。必须证明涌现(整体 > 部分之和)。
 
 **依赖铁律(validate.py 强制)**:上层只引下层,下层不引上层,谁也不许绕圈。`composed_of` 逐层(L_n 只引 L_{n-1});物理依赖 L3 可直引 L0。
 
@@ -59,4 +60,4 @@ L2 砖靠多来源加权投票(演化生物学 / 博弈论 / 文化普适),来�
 
 ## 目录速览
 
-`sources/` 跨来源证据材料 · `iterations/iter-*/CONCLUSION.md` 阶段性结论 · `docs/design/` 设计文档 · `docs/plans/` 实施计划 · `docs/pipeline/` 作者清单+审查评分卡。当前各推论状态与计数以 `INDEX.md` 为准(`导读.md` 的"三条已验证"是早期快照,已过时)。
+`sources/` 跨来源证据材料 · `iterations/iter-*/CONCLUSION.md` 阶段性结论 · `docs/design/` 设计文档 · `docs/plans/` 实施计划 · `docs/pipeline/` 作者清单+审查评分卡 · `L4-composites/` 复合推论层。当前各推论状态与计数以 `INDEX.md` 为准(`导读.md` 的"三条已验证"是早期快照,已过时)。

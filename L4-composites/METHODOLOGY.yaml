@@ -1,0 +1,437 @@
+id: L4-METHODOLOGY
+type: methodology
+layer: L4-composites
+status: canonical
+date: 2026-07-14
+
+purpose: |
+  L4 是把多条 L3 单机制推论组合起来的复合推论层。
+  L3 回答"什么机制在运作"；L4 回答"这些机制碰在一起产生什么社会形态"
+  和"这个形态往哪走"。
+
+  L4 不是"L3 推论恰好引用了其他推论"——那是 L3 内部的 Rule D 串联。
+  L4 是独立的架构层：主前提是 L3 推论本身（2 条以上），
+  产出的不是单机制命题，而是关于社会形态、演化轨迹、相变、
+  制度共演的系统性判断。
+
+# === 人话摘要强制（继承自 L3 宪法） ===
+
+plain_language_mandate:
+  inherits: L3-deductions/METHODOLOGY.yaml#plain_language_mandate
+  note: "L4 复合推论同样必须自带人话摘要。复合推论的摘要尤其重要——因为离地基更远、更抽象，更需要一句人能懂的话来锚定。"
+
+# === L4 的定义性约束 ===
+
+what_makes_l4:
+  title: "什么才算 L4 推论（而非 L3 推论恰好引用了其他推论）"
+
+  three_conditions:
+    - condition: primary_premises
+      rule: "主前提是 ≥2 条 L3 推论（必须 verified 或 verified*）。L1/L2 只能作为辅前提。"
+      why: "L4 的组合对象是'已经验证的机制'。如果主前提是 L1/L2 bridge，那是 L3 的事。"
+
+    - condition: systemic_claim
+      rule: "结论必须是关于社会形态、制度配置、演化方向、相变条件的系统性判断——不是单机制命题。"
+      why: "L3 说'A 导致 B'；L4 说'当 A₁、A₂、A₃ 同时在场，社会形态 S 出现，且在压力 P 下往 S' 走'。"
+
+    - condition: emergence
+      rule: "必须证明结论是涌现的——整体严格大于部分之和。"
+      why: "若结论只是各父推论结论的 AND/OR 拼接，那不需要 L4——在 L3 里写一条 chaining deduction 就够了。"
+
+# === 规则 E：涌现（L4 的 defining constraint，替代 L3 的非平凡性） ===
+
+rule_e_emergence:
+  title: "L4 推论必须证明涌现——整体大于部分之和"
+  status: canonical
+  established: 2026-07-14
+
+  position: |
+    L3 的非平凡性检验（逐格判空）检查的是"单条推论是否在前提之外增加了新知识"。
+    L4 的涌现检验检查的是"多条机制的【交互】是否产生了任一机制单独产生不了的结果"。
+    这是两个不同层级的检验——一条推论可以是非平凡的（对 L3 而言），
+    但两条 L3 推论的合取可以是平凡的（对 L4 而言，DED-004 的教训）。
+
+  three_sub_conditions:
+    - id: necessity
+      rule: "去掉任何一条 L3 父推论，L4 的结论就站不住。"
+      test: "逐一移除每条父推论：移除后，结论是否仍然成立？若是，该父推论是'观众砖（spectator brick）'——在场但不出力。"
+      why: "L4 的结论必须依赖每条父推论的机制贡献。挂着不干活的父推论是凑数。"
+
+    - id: novelty
+      rule: "L4 至少有一个命题，不是任何单条父推论的断言，也不是父推论 AND/OR 的平凡组合。"
+      test: |
+        列出所有父推论各自的结论。L4 的每一条核心命题逐一对照：
+        这条命题能直接从某条父推论里读出来吗？
+        能通过 AND/OR 拼接父推论的结论得到吗？
+        如果全部命题都能——那 L4 是平凡合取，不是涌现。
+      why: "涌现在这里的操作化定义就是：合起来推出的东西，分开推不出来。"
+
+    - id: multi_parent_cells
+      rule: "在父推论关键变量的笛卡尔积空间里，至少有一个格子的预测需要 ≥2 条父推论【合力】才能推出。"
+      test: |
+        1. 抽取每条父推论的核心自变量（驱动量）。
+        2. 构建笛卡尔积表格（每条父推论的自变量为轴）。
+        3. 对每个格子，标注：该格的预测由哪条父推论（或哪几条的组合）强制？
+        4. 若所有非平凡格的预测都由单条父推论单独强制 → 该 L4 是平凡合取（DED-004 的 P2 规避耦合）。
+        5. 至少一个格的预测标注为"需要 DED-X + DED-Y 合力"→ 该格是 L4 的非平凡贡献。
+      why: "这条检验直接来自 DED-004 的教训：作者自认为的'交互型贡献'有 2/3 是单父推论即可判空的闲置合取项。"
+      enforcement: "L4 的 Rule B 审查【必须】派独立审查者做多父逐格判空归属分析。作者自证不可信。"
+
+  relationship_to_l3_nontriviality: |
+    L3 的 nontriviality_test 检验"推论是否在前提之外有增量"。
+    L4 的 emergence 检验"交互是否产生了相加得不到的东西"。
+    一条 L4 推论必须同时通过两者：每条父推论本身是非平凡的（L3 已验），
+    且它们的组合是涌现的（L4 验）。
+
+  emergence_strength_tiers:
+    title: "涌现强度分级"
+    status: canonical
+    established: 2026-07-14
+    rationale: |
+      Rule E 的三条件（必要性/新颖性/multi_parent_cells）是涌现的【最低门槛】——
+      排除了观众砖和平凡合取。但通过门槛的推论，其涌现强度可以差异显著。
+      一条推论可以满足"至少一个格需要 ≥2 父推论合力"而不涉及任何机制交互
+      （如多条独立压力并行叠加在同一对象上）。为避免"涌现"概念的语义拉伸，
+      增加以下三级分类。每条 L4 推论必须在 emergence_demonstration 中声明其涌现类型。
+
+    tiers:
+      - tier: interaction
+        label: "交互级涌现（厚涌现 / thick emergence）"
+        definition: |
+          一条父推论的机制【修改了】另一条父推论的机制的运作条件——
+          产生的结果【类型】被改变（非仅量级调整），且该改变不能被任一条
+          父推论单独预测。
+        test: |
+          移除交互项后，结果不仅是"强度减弱"而是"类型不同"。
+          例：L4-005 prediction (iii)——L4-004 的数字信息流侵蚀 L4-003
+          的锁定维护条件→张力释放从"革命（大爆发、低频率）"变为"合法性危机
+          （小爆发、高频率）"——结果类型被改变。
+        evidence_standard: |
+          最高。需要展示机制 A 改变了机制 B 的运作条件（非仅并行运作），
+          且复合输出在类型上不同于各父机制的独立输出。
+        note: |
+          交互级涌现是 L4 最强的贡献形式——它不只在说"A 和 B 同时发生"，
+          而是在说"A 改变了 B 怎么运作"。当前的五条 L4 推论中，仅 L4-005
+          prediction (iii) 声称达到此级（且其桥接前提为 L4-005 自建假说，
+          非父推论原文所有——诚实标注后仍可成立为 novel composite hypothesis）。
+
+      - tier: conjunction
+        label: "合取级涌现（薄涌现 / thin emergence）"
+        definition: |
+          多条父推论各自独立产生自己的压力/约束/方向，这些独立机制在
+          同一对象上并行运作→产生的综合效果（矢量合成）不能被任一条
+          父推论单独推出。但各父推论之间不存在机制互相修改——它们是
+          独立因果链的并行叠加。
+        test: |
+          每个父推论单独给出自己方向的预测；综合效果=多方压力的矢量合。
+          单父推论可以看到"自己的方向"，但看不到"多方向同时拉"的综合格局。
+          例：L4-005 的四向分化——L4-001 给向上推力、L4-004 给向外+向下、
+          L4-002 给"必须变"、L4-003 给"不会顺利变"——四条独立机制合起来
+          才产生"四向同时位移"的综合格局，但任一方向不修改另一方向的运作机制。
+        evidence_standard: |
+          中等。需展示：(a) 每条父推论独立产生自己的压力方向；
+          (b) 综合效果（如四向同时位移）不在任一条父推论中；
+          (c) multi_parent_cells 中至少一个格需要 ≥2 父推论合力。
+        note: |
+          合取级是 L4 最常见的涌现形式。它通过了 Rule E 的最低门槛（非平凡），
+          但不应被包装为"交互"。当前五条 L4 推论的主体贡献多属此级。
+
+      - tier: consilience
+        label: "概念统一级涌现（consilience emergence）"
+        definition: |
+          多条父推论在各自领域内独立运作，L4 的贡献不在于它们之间有机
+          制交互，而在于指出它们【共享同一底层驱动量/结构原理】——
+          将此前被各自独立处理的理论片段统一到一个框架下，揭示它们之间
+          的结构同源性（homology）。
+        test: |
+          各父推论的天花板/机制由同一变量约束；移除"共享驱动量"主张后，
+          各父推论仍然各自成立——但 L4 的 consilience 贡献消失（四条推论
+          退化为四条独立因果链的偶然并行，不再是"同一个现象的不同侧面"）。
+          例：L4-004——四条 L3 推论的天花板函数均由信息技术成本这一变量约束，
+          IT 成本数量级跃迁→四条天花板共移→构成可命名的整体现象（社会复杂度相变）。
+        evidence_standard: |
+          最低（但不意味着价值最低——consilience 在理论统一上的价值可以
+          非常大）。需展示：(a) 各父推论的核心约束变量确实是同一量；
+          (b) 该变量的变化对各父推论的影响是同步/共移的（或对异步性给出解释）；
+          (c) 若各父推论由不同驱动量/时间表推动（falsifiability），consilience 崩解。
+        note: |
+          Consilience 的证伪方式不同于交互/合取——它是被"拆散"而非被"反例填格"。
+          multi_parent_cells 的逐格判空方法论对 consilience 级推论的适用性有限——
+          consilience 的核心贡献不在笛卡尔积的某个特定格里，而在"这些格为什么
+          共享同一个轴"。建议 consilience 级推论在 emergence_demonstration 中
+          显式标注其涌现类型，并用不同于交互/合取的证据策略（如跨维度的同步性检验）。
+
+    enforcement:
+      rule: |
+        每条 L4 推论必须在 emergence_demonstration 中声明其涌现类型
+        （interaction / conjunction / consilience 之一，或混合——
+        如"主体为 conjunction，prediction X 为 interaction"）。
+        validate.py 当前不强制此声明（需 emergence_demonstration 存在但
+        不解析其内容），但 L4 审查评分卡（l4-review-rubric.md）的旗 13
+        （涌现缺失）应将"未声明涌现类型"视为 should 级缺陷。
+
+  emergence_to_status_mapping:
+    title: "涌现强度 → 验证状态映射"
+    status: canonical
+    established: 2026-07-15
+    rationale: |
+      当前所有 L4 推论通过 pipeline 审查后一律标 `verified`。但这掩盖了
+      涌现强度的实质差异——一条仅达到合取级（薄涌现）的推论和一条达到交互级
+      （厚涌现、四个不可替代的机制条件）的推论共享同一标签，会削弱标签的信息量。
+      引入分档。
+    mapping:
+      - status: verified*
+        label: "厚涌现验证"
+        condition: |
+          同时满足：(a) emergence_type = interaction；
+          (b) multi_parent_cells ≥ 2 格需要 ≥2 父推论合力；
+          (c) 核心涌现属性不依赖外部理论注入（external_bridge 仅限辅证，非承重前提）。
+        meaning: "交互级涌现通过对抗审查——不是'更正确'，而是'做出了更强的涌现声称并存活'。"
+
+      - status: verified
+        label: "薄涌现验证"
+        condition: |
+          满足以下至少一项：(a) emergence_type = conjunction 或 consilience；
+          (b) 核心涌现属性依赖外部理论桥接（external_bridge 作为承重前提）；
+          (c) multi_parent_cells 仅 1 格。
+        meaning: "通过了涌现最低门槛（非平凡合取），但涌现强度为薄涌现。"
+
+    note: |
+      verified* 不是"比 verified 更正确"——是"做出了更强的涌现声称并存活"。
+      合取级推论（verified）的价值不一定低于交互级（verified*）——
+      consilience 在理论统一上的贡献可以极大——但状态的区分让读者一眼看到
+      这条推论的涌现强度属于哪个层级，避免"verified"标签的语义膨胀。
+
+  regulator_variable_budget:
+    title: "调节变量预算——硬约束"
+    status: canonical
+    established: 2026-07-15
+    rationale: |
+      Pipeline 对抗审查中，反例常通过引入调节变量来消化（如 L4-006 引入
+      "法律感知合法性"消化北欧反例）。事前加调节变量比事后追加诚实，
+      但累积效应是参数空间膨胀→理论越来越难被证伪（波普尔意义上的"风险性降低"）。
+      为防止"消化反例"异化为"免疫反例"，设定硬约束。
+
+    hard_constraint:
+      rule: "每条 L4 推论最多引入 2 个调节变量。"
+      counting: |
+        调节变量 = 在 falsifiability 或 counterexample digestion 中引入的、
+        非从父推论继承的、用于解释"为什么某反例不成立"的变量。
+        不包括：父推论自带的变量、operationalization 中定义的操作化变量。
+      consequence: |
+        超过 2 个调节变量 → 不是"消化反例"，是"推翻核心逻辑"——
+        该推论的普遍性声称必须降级为条件性成立，
+        或该反例必须被重新归类为"净杀"（→ 推论降级为 candidate 或 rejected）。
+
+    current_budget_status:
+      L4-006: {regulators: ["法律感知合法性"], count: 1, remaining: 1,
+                note: "用于消化北欧反例——C1 的普遍性声称应条件化为'当且仅当法律被感知为缺乏合法性时'"}
+      L4-007: {regulators: [], count: 0, remaining: 2}
+      L4-008: {regulators: ["C的元认知防御"], count: 1, remaining: 1,
+                note: "用于调节绑架成功率——但'元认知防御'本身的操作化尚未建立"}
+      L3_fallout: "L3 推论不设调节变量预算（单机制推论的反例消化空间天然小于 L4 复合推论），但 L3 pipeline 审查中引入的消化路径应在 review_summary 中诚实标注。"
+
+rule_f_dependencies:
+  title: "L4 推论的主前提是 L3 推论——置信度沿两层传播，依赖必须无环"
+  status: canonical
+  established: 2026-07-14
+
+  dependency_structure:
+    primary:
+      key: depends_on.deductions
+      content: "L3 父推论（≥2 条，必须 verified 或 verified*）"
+      rule: "这是 L4 的承重墙。少于 2 条 → 不是复合推论，退回 L3。"
+
+    secondary:
+      key: depends_on (axioms/theorems/bridging/concepts)
+      content: "L0/L1/L2 辅前提（可选）"
+      rule: "与 L3 推论相同的引用规则。不能替代 L3 父推论的位置。"
+
+    tertiary:
+      key: depends_on.composite_deductions
+      content: "其他 L4 推论（可选）"
+      rule: "L4 可以垒在 L4 上，但必须无环（validate.py 强制）。"
+
+  iron_law:
+    rule: "下层不依赖上层。L3 推论不得引用任何 L4 实体。"
+    enforcement: "validate.py 强制——L3 depends_on.composite_deductions 非空 → 报错。"
+
+  confidence_ceiling:
+    inherits: L3-deductions/METHODOLOGY.yaml#rule_d_deduction_chaining.disciplines[confidence_floor]
+    extension: |
+      L4 的状态天花板 = min(所有 L3 父推论的 CAP, 所有 L4 父推论的 CAP)。
+      RANK 与 CAP 表同 L3: verified=3, verified*=2, candidate=1, rejected=0(CAP=1)。
+      L3 父被降级 → 子孙 L4 全部标 re-review（同 L3 Rule D 传播规则）。
+
+    two_layer_propagation: |
+      L4 离经验地基比 L3 更远一步（L0→L1→L2→L3→L4）。
+      这意味着 L4 推论的置信度天花板由两层共同决定：
+      1. L3 父推论的置信度（直接天花板）
+      2. L3 父推论所依赖的 L2 bridge 的置信度（间接天花板——已由 L3 confidence_floor 传导）
+      validate.py 只强制第 1 层（直接天花板）；第 2 层由 L3 的 confidence_floor 间接保证。
+
+  acyclic:
+    rule: "L4→L4 依赖必须无环。validate.py 的 DFS 已覆盖 deduction→deduction 边与 composite_deductions 边。"
+
+# === 规则 G：独立锚点（比 L3 更严） ===
+
+rule_g_independent_anchor:
+  title: "L4 推论必须自带复合/交互特有的经验锚点——不得只靠 L3 父推论的经验证据撑重"
+  status: canonical
+  established: 2026-07-14
+
+  position: |
+    L3 Rule D 已经要求派生推论尽量自带独立锚点。L4 离地基两步远，
+    这个要求必须升级为硬门槛：L4 推论至少要有一个经验锚点是
+    【复合/交互特有的】——即该锚点的现象不能被任何单条 L3 父推论单独解释。
+
+  requirements:
+    - "至少一个 supporting anchor 涉及父推论机制的【可观察交互】（不仅是各自独立运作）。"
+    - "至少一个 anchor 的案例里，父推论机制的交互产生了【可区别于单机制预测】的结果。"
+    - "若确实找不到复合特有锚点（如纯理论推导），必须诚实标记'独立锚点: 无复合特有锚点，置信度完全继承自父推论'——使其脆弱性可见。"
+
+  why: "离地基越远，越不能只靠'楼下撑得住'——每层塔砖自己也承一部分重，塔才不是纸牌屋。"
+
+# === L4 推论文件结构 ===
+
+file_structure:
+  location: "L4-composites/corollaries/L4-NNN-<slug>.yaml"
+
+  required_fields:
+    - id: "L4-NNN"
+    - type: composite_deduction
+    - layer: L4-composites
+    - deduction_form: composite          # L4 固有，不可省略
+    - status: "candidate | verified | verified* | rejected"
+    - term: "中文名 (English Name)"
+    - "人话摘要": "1-2 句，零黑话"
+    - claim_type: "social_form_prediction | trajectory_prediction | phase_transition | co_evolution"
+    - statement: |
+        【Composite claim】...
+        【Parent mechanisms】...
+        【Emergent property】...
+        【Prediction】...
+    - operationalization: "关键概念的操作化定义（规则 A）"
+    - derivation:
+        from_l3: {deductions: [DED-XXX, DED-YYY]}   # 主前提 (≥2)
+        from_l1: {axioms: [...], theorems: [...]}
+        from_l2: {bridging: [...]}
+        from_l4: [L4-NNN, ...]                        # 可选
+        steps: "1. 父机制摘要 2. 交互逻辑 3. 涌现论证 4. 多父逐格判空"
+    - emergence_demonstration:
+        necessity: "为什么每条 L3 父推论是必要的"
+        novelty: "什么命题没有被任何单父推论包含"
+        multi_parent_cells: "哪些格子的预测需要父推论合力"
+    - falsifiability: "..."
+    - falsification_trace: {primary_suspect, secondary_suspect, unlikely_suspect}
+    - excluded_outcomes: [...]
+    - real_world_anchors: {supporting: [...], counterexamples: [...], boundary_cases: [...]}
+    - discriminant_validity: "与本推论竞争的已知理论 + 独特可证伪预测"
+    - review_summary: "≤3 行，审查后由 finalize 填"
+    - depends_on:
+        axioms: [...]
+        theorems: [...]
+        bridging: [...]
+        concepts: [...]
+        deductions: [DED-XXX, DED-YYY]               # L3 父前提
+        composite_deductions: [L4-NNN, ...]           # L4 父前提（可选）
+    - domain: [...]
+    - created: YYYY-MM-DD
+
+  claim_types:
+    - type: social_form_prediction
+      description: "机制 A+B 在条件 C 下 → 制度配置 D 出现"
+      evidence_standard: "跨文化/历史比较证据"
+    - type: trajectory_prediction
+      description: "社会形态 F 在压力 P 下 → 往 G 走（不是 H）"
+      evidence_standard: "纵向/历史序列证据"
+    - type: phase_transition
+      description: "变量 X 过阈值 T → 系统从 R1 跳到 R2"
+      evidence_standard: "阈值两侧案例对比证据"
+    - type: co_evolution
+      description: "制度 I 和 J 互相约束演化路径"
+      evidence_standard: "跨社会配对比较证据"
+
+# === L4 推论生命周期 ===
+
+lifecycle:
+  step_1:
+    rule: "Rule A: 操作化"
+    note: "继承 L3 Rule A。额外要求：复合输出变量的测量必须独立于各父机制的单独输出变量。"
+
+  step_2:
+    rule: "Rule B: 对抗式审查 + L4 专属审查"
+    note: |
+      继承 L3 Rule B。L4 专属审查增加：
+      - 涌现三条件（必要性/新颖性/多父逐格判空）
+      - 观众砖检测
+      - 声明类型-证据标准匹配
+      - 复合特有锚点存在性
+
+  step_3:
+    rule: "Rule C: 经验检验（可选）"
+    note: "继承 L3 Rule C。L4 额外要求：检验设计必须控制各父机制的单独预测，以隔离复合效应。"
+
+  step_4:
+    rule: "Rule F: 置信度传播"
+    note: "L4→L4 链式推导允许，无环，置信度取两层父前提的下限。"
+
+  composition:
+    rule: "Rule F 依赖规则"
+    note: "不是验证步骤，是组合规则——L4 推论可垒在 L4 推论上，但必须无环且置信度受父前提约束。"
+
+# === 与 L3 的关系 ===
+
+layer_relationship:
+  l3_produces: "单机制命题：'A 导致 B''在条件 C 下，机制 M 运作'"
+  l4_produces: "系统性命题：'当机制 M₁、M₂、M₃ 同时在场，社会形态 S 出现，且在压力 P 下往 S' 走'"
+
+  boundary:
+    rule: |
+      一条推论属于 L3 还是 L4，不由它"引用了多少条其他推论"决定，
+      而由它的【主前提类型】和【结论类型】决定：
+      - 主前提是 L1/L2 + 可选 L3 → 结论是单机制命题 → L3
+      - 主前提是 ≥2 条 L3 推论 → 结论是系统性命题 → L4
+    edge_case: "主前提恰好 1 条 L3 推论 + 若干 L1/L2 → L3（chaining deduction），不是 L4。"
+
+  l3_methodology_forward_reference:
+    note: "L3-deductions/METHODOLOGY.yaml Rule D 末尾已加 L4 前向引用。"
+
+  l5_forward_reference:
+    note: |
+      L4 回答"可能会发生什么"（预测性系统命题）。
+      L5 回答"应该怎么做"（规范性/处方性命题）。
+
+      L5 的主前提是两类命题的合取：
+      (a) 事实前提：L4（或 L3）的系统性预测——"世界会往这个方向走"
+      (b) 规范前提：目标/价值/偏好——"我们想要达到 X"
+
+      L5 面临 L0-L4 不曾面对的休谟断头台（is-ought gap）：
+      从"是"推不出"应该"。这意味着 L5 需要自己的方法论来处理
+      价值多元性、规范来源、不确定性下的决策等问题。
+
+      L5 的核心贡献不在于"应用 L4"——就像 L4 不是"应用 L3"——
+      而在于回答 L4 不回答的两类问题：
+      (i) 目标排序：当多个目标冲突时如何权衡（需要规范推理）
+      (ii) 路径设计：从当前状态到目标状态的过渡路径（过渡本身就充满陷阱，
+          不是 L4 预测终点能覆盖的）
+
+      定位已确认，现阶段不实现。
+    status: planned
+    date: 2026-07-14
+
+# === 验证 ===
+
+validation:
+  enforced_by: "scripts/validate.py"
+  checks:
+    - "L4 路径分支识别（L4-composites/corollaries）"
+    - "deduction_form 必须为 composite"
+    - "depends_on.deductions ≥ 2 条"
+    - "emergence_demonstration 必填"
+    - "claim_type 合法值校验"
+    - "falsification_trace.primary_suspect + real_world_anchors 必填（同 L3）"
+    - "confidence_floor 跨 L3+L4 两层传播"
+    - "L3 引用 L4（composite_deductions 非空）→ 铁律违反"
+
+created: 2026-07-14

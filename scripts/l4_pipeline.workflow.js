@@ -1,0 +1,232 @@
+// scripts/l4_pipeline.workflow.js
+// L4 复合推论管线:author(读 L3 父推论+涌现清单,写瘦身 candidate)→ adaptive 对抗审查 loop
+// (fresh 实例、读 L4 评分卡、自写档、只回紧凑裁决)→ revise(定向 Edit)→ finalize(verified 翻牌)。
+// 重产物(全文 YAML / 全文审查)永不回主循环;只回 {id, verdict, rounds, paths, core}。
+//
+// 调用:Workflow({ scriptPath: '<repo>/scripts/l4_pipeline.workflow.js', args: BRIEF })
+// BRIEF = {
+//   id: 'L4-001', slug: 'state-formation-trajectories', reviewNum: 'L4-001',
+//   title: '国家形成轨迹',
+//   thesis: '多行:要证什么、承重逻辑、招牌预测',
+//   coreClaim: '一句话核心(供人话摘要与 statement 对齐)',
+//   l3Parents: ['DED-012','DED-010','DED-006'],   // L3 主前提(≥2 条 verified L3 推论;若 l4Parents≥2 则可 <2)
+//   l4Parents: ['L4-001','L4-002'],               // L4 父前提(可选,垒在 L4 上)
+//   claimType: 'social_form_prediction',           // social_form_prediction|trajectory_prediction|phase_transition|co_evolution
+//   domain: ['国家形成','政治经济学','制度演化'],
+//   maxRounds: 3,                                   // 可选,默认 3
+//   repo: '/home/hq/research/human-society'         // 可选
+// }
+
+export const meta = {
+  name: 'l4-pipeline',
+  description: 'L4 复合推论管线:author(读 L3 父推论+涌现清单)→ adaptive 对抗审查 loop → 定论,轮间不过主循环,只回紧凑裁决',
+  phases: [
+    { title: 'Author',   detail: '按 L4 前置清单起草瘦身 candidate L4 复合推论' },
+    { title: 'Review',   detail: 'fresh 实例读 L4 评分卡对抗审查,查涌现+观众砖+多父逐格判空' },
+    { title: 'Revise',   detail: '按 required 定向 Edit,不整份重写' },
+    { title: 'Finalize', detail: 'verified 翻牌 / rejected 归档,回紧凑摘要' },
+  ],
+}
+
+let b = args || {}
+if (typeof b === 'string') {
+  try { b = JSON.parse(b) } catch (e) {
+    return { error: 'args 是字符串但非合法 JSON', raw: String(b).slice(0, 200) }
+  }
+}
+const REPO = b.repo || '/home/hq/research/human-society'
+const MAX = b.maxRounds || 3
+
+const missing = ['id', 'slug', 'reviewNum', 'title', 'thesis'].filter((k) => !b[k])
+if (missing.length) {
+  return { error: `brief 缺字段: ${missing.join(', ')}`, hint: '见脚本顶部 BRIEF 示例' }
+}
+const l3Parents = b.l3Parents || []
+const l4Parents = b.l4Parents || []
+if (l3Parents.length < 2) {
+  return { error: `l3Parents 至少需要 2 条 L3 推论作为主前提 (L4 硬门槛，当前 ${l3Parents.length} 条)`, hint: 'L4 的定义性约束：主前提是 ≥2 条 L3 推论。L4 父前提(depends_on.composite_deductions)是可选的三级前提，不可替代 L3 主前提。' }
+}
+const allParents = l3Parents.concat(l4Parents)
+
+const DED_PATH = `${REPO}/L4-composites/corollaries/${b.id}-${b.slug}.yaml`
+const REVIEW_PATH = `${REPO}/L4-composites/reviews/ADV-REVIEW-${b.reviewNum}-${b.id}.yaml`
+const METHODOLOGY = `${REPO}/L4-composites/METHODOLOGY.yaml`
+const CHECKLIST = `${REPO}/docs/pipeline/l4-author-checklist.md`
+const RUBRIC = `${REPO}/docs/pipeline/l4-review-rubric.md`
+const INDEX = `${REPO}/INDEX.md`
+const claimType = b.claimType || 'social_form_prediction'
+const domain = JSON.stringify(b.domain || [])
+const l3ParentPaths = l3Parents.map((id) => `${REPO}/L3-deductions/corollaries/${id}-*.yaml`).join(' ')
+
+// --- 结构化返回 schema(强制紧凑) ---
+const AUTHOR_OUT = {
+  type: 'object',
+  properties: {
+    done: { type: 'boolean' },
+    coreOneLine: { type: 'string', description: '推论核心一句话' },
+    validatorOk: { type: 'boolean', description: 'validate.py 是否通过且实体+1、无 ❌ YAML' },
+  },
+  required: ['done', 'coreOneLine', 'validatorOk'],
+}
+const REVIEW_OUT = {
+  type: 'object',
+  properties: {
+    verdict: { type: 'string', enum: ['verified', 'needs_revision', 'rejected'] },
+    requiredFixes: { type: 'array', items: { type: 'string' }, description: 'required/should 最小清单,每条一行;无则空数组' },
+    counterexample: { type: 'string', description: '反例猎捕结果一句话' },
+    oneline: { type: 'string' },
+  },
+  required: ['verdict', 'requiredFixes', 'oneline'],
+}
+const REVISE_OUT = {
+  type: 'object',
+  properties: {
+    done: { type: 'boolean' },
+    validatorOk: { type: 'boolean' },
+    note: { type: 'string' },
+  },
+  required: ['done', 'validatorOk'],
+}
+
+// ============ Phase 1: Author ============
+phase('Author')
+const authored = await agent(
+  `你是 L4 复合推论【作者】,全新上下文。目标:把下列 L4 复合推论写成一份【瘦身 canonical】的 candidate YAML。
+
+## 先做(封顶读取成本)
+先跑 \`cd ${REPO} && python scripts/index.py\` 重生实体索引,再读 ${INDEX}——用它了解已有实体、避免重叠、找判别对象。
+
+## 必读
+1. L4 方法论:${METHODOLOGY}(规则 E/F/G——涌现、依赖、锚点)
+2. L4 前置清单 + 瘦身格式:${CHECKLIST}(务必读完,起草前逐条自查 A–E)
+3. L3 父推论(逐份读,这是 L4 的承重墙——每条父推论必须是 verified/verified*):
+   ${l3Parents.join(', ') || '(无)'}
+   (在 ${REPO}/L3-deductions/corollaries/<id>-*.yaml)
+${l4Parents.length ? `4. L4 父推论(逐份读——本推论垒在已有的 L4 复合推论之上):\n   ${l4Parents.join(', ')}\n   (在 ${REPO}/L4-composites/corollaries/<id>-*.yaml)` : ''}
+
+## 要写的 L4 复合推论
+- id: ${b.id}   term 用中文名(English)
+- claim_type: ${claimType}
+- 主题: ${b.title}
+- 论点/承重逻辑/招牌预测:
+${b.thesis}
+- 核心一句话(人话摘要与 statement 对齐): ${b.coreClaim || '(从论点提炼)'}
+- domain: ${domain}
+- L3 父前提: ${l3Parents.join(', ') || '(无)'}${l4Parents.length ? `\n- L4 父前提: ${l4Parents.join(', ')}` : ''}
+
+## 硬要求
+- 严格按 L4 前置清单【瘦身格式】写,L4 专属字段必填:
+  - deduction_form: composite (L4 固有)
+  - claim_type: ${claimType}
+  - emergence_demonstration: {necessity, novelty, multi_parent_cells}
+  - depends_on.deductions: [${l3Parents.join(', ') || '[]'}] (L3 父前提)${l4Parents.length ? `\n  - depends_on.composite_deductions: [${l4Parents.join(', ')}] (L4 父前提)` : ''}
+- **涌现是硬门槛**:必须证明结论不能从任一条父推论单独推出,且至少一个格子需要 ≥2 条父推论合力。
+- **YAML 陷阱**:多行段一律 \`|\` 字面块标量;别在裸标量写 ASCII 冒号+空格。
+- 写到 ${DED_PATH};写完跑 \`cd ${REPO} && python scripts/validate.py\`,确认实体数 +1 且【无 ❌ YAML】、引用完整、L4 专属检查通过。
+
+## 返回(紧凑,勿复述全文)
+{done, coreOneLine, validatorOk}`,
+  { label: `author:${b.id}`, phase: 'Author', schema: AUTHOR_OUT, agentType: 'general-purpose' }
+)
+
+if (!authored || !authored.validatorOk) {
+  return { id: b.id, verdict: 'author_failed', rounds: 0, dedPath: DED_PATH,
+           note: authored ? '作者产出未过校验' : '作者 agent 失败', authored }
+}
+log(`author done: ${authored.coreOneLine}`)
+
+// ============ Phase 2: adaptive Review / Revise loop ============
+let round = 0
+let verdict = 'needs_revision'
+let fixes = []
+let lastCounterexample = ''
+
+while (round < MAX) {
+  round++
+  phase('Review')
+  const rev = await agent(
+    `你是 L4 复合推论的【独立对抗审查者】(round ${round}),全新上下文,与作者及前几轮审查者无关。
+
+## 唯一校准来源
+L4 评分卡:${RUBRIC}(读它即可,**不要**去读其它参照推论——那是浪费)。
+
+## 已有实体上下文(按需)
+如需了解本推论与已有实体的关系,读定长索引 ${INDEX}。
+
+## 审查对象
+${DED_PATH}(status: candidate)。L3 父推论如需核对:${l3Parents.join(', ') || '(无)'}（在 ${REPO}/L3-deductions/corollaries/）。${l4Parents.length ? `L4 父推论如需核对:${l4Parents.join(', ')}（在 ${REPO}/L4-composites/corollaries/）。` : ''}
+${round > 1 ? `前几轮记录在 ${REVIEW_PATH},读 round_1..round_${round - 1} 了解已修什么,别重复已解决的点。` : ''}
+
+## 任务
+按 L4 评分卡——10 条标准红旗 + 7 条 L4 专属红旗(观众砖/平凡合取/涌现缺失/弱父前提/锚点偷窃/交互测量缺口/声明类型错配)——逐条攻。
+**特别强调**:你必须亲自做多父逐格判空归属分析——抽取每条父推论的核心自变量,构建笛卡尔积表,逐格标注"该格预测由哪条父推论强制"。
+若没有至少一个格子标注为"需要 ≥2 父推论合力"→ 这是平凡合取,判 rejected。
+反例猎捕:不仅要猎"某父推论不成立",要猎"父推论都成立、但交互不产生 L4 预测的结果"。
+把本轮完整评审写进 ${REVIEW_PATH} 的 \`round_${round}\` 块。写完跑 \`cd ${REPO} && python scripts/validate.py\` 确认 YAML 不破。
+
+## 返回(紧凑){verdict, requiredFixes, counterexample, oneline}`,
+    { label: `review:${b.id}:r${round}`, phase: 'Review', schema: REVIEW_OUT, agentType: 'general-purpose' }
+  )
+
+  verdict = (rev && rev.verdict) || 'needs_revision'
+  fixes = (rev && rev.requiredFixes) || []
+  lastCounterexample = (rev && rev.counterexample) || ''
+  log(`round ${round}: ${verdict}${fixes.length ? ` — ${fixes.length} fixes` : ''}`)
+
+  if (verdict === 'verified' || verdict === 'rejected') break
+  if (!fixes.length) { log(`round ${round}: needs_revision 但无 required,停(交主循环裁量)`); break }
+
+  phase('Revise')
+  const revised = await agent(
+    `你是 L4 复合推论【整改者】,全新上下文。按 round-${round} 审查的 required 清单,对推论做【定向 Edit】(勿整份重写)。
+
+## 输入
+- 推论文件:${DED_PATH}
+- 本轮 required 清单:
+${fixes.map((f, i) => `  ${i + 1}) ${f}`).join('\n')}
+- 审查全档:${REVIEW_PATH} 的 round_${round}(如需上下文)
+
+## 硬要求
+- 只 Edit 受影响的段落,保持瘦身格式;每处改动要真正消解对应 required。
+- 在 ${DED_PATH} 的 review_summary 追加/更新一行本轮结论;若需记作者回应,写进 ${REVIEW_PATH} 的 author_response_round_${round}。
+- YAML 陷阱同前(\`|\` 块标量)。改完跑 \`cd ${REPO} && python scripts/validate.py\` 确认无 ❌ YAML、引用完整、L4 检查通过。
+
+## 返回(紧凑){done, validatorOk, note}`,
+    { label: `revise:${b.id}:r${round}`, phase: 'Revise', schema: REVISE_OUT, agentType: 'general-purpose' }
+  )
+  if (!revised || !revised.validatorOk) {
+    log(`round ${round}: 整改未过校验,停`)
+    return { id: b.id, verdict: 'revise_failed', rounds: round, dedPath: DED_PATH, reviewPath: REVIEW_PATH }
+  }
+}
+
+// ============ Phase 3: Finalize ============
+if (verdict === 'verified') {
+  phase('Finalize')
+  await agent(
+    `把 ${DED_PATH} 的 status 由 candidate 改为 verified。
+
+更新 review_summary —— 【严格 ≤3 行,只留结论+指针,禁止复述每轮 required/整改细节(那是双存,归 ADV-REVIEW)】,照此模板(用 \`|\` 块标量):
+  1) r1 <verdict> → r2 <verdict> → … → 定论 verified(只写裁决词)
+  2) 一句话为何 verified(涌现成立+多父逐格判空至少一个合力格+反例猎捕无活反例)
+  3) 全档见 ADV-REVIEW-${b.reviewNum}。
+
+补 revised 日期与 revision_note(一行摘要即可)。跑 \`cd ${REPO} && python scripts/validate.py\` 确认无 ❌ YAML、状态检查通过。返回 {done, validatorOk, note}。`,
+    { label: `finalize:${b.id}`, phase: 'Finalize', schema: REVISE_OUT, agentType: 'general-purpose' }
+  )
+}
+
+return {
+  id: b.id,
+  verdict,
+  rounds: round,
+  core: authored.coreOneLine,
+  counterexample: lastCounterexample,
+  dedPath: DED_PATH,
+  reviewPath: REVIEW_PATH,
+  next: verdict === 'verified'
+    ? '主循环:校验已过,git add 两文件并提交(按授权自主提交)'
+    : verdict === 'rejected'
+      ? '主循环:上报 rejected + 归档(诚实记录)'
+      : '主循环:needs_revision 未收敛,人工裁量',
+}

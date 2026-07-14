@@ -26,6 +26,9 @@ GROUPS = [
     ("L3-deductions/corollaries", "L3 推论 corollaries"),
     ("L3-deductions/reviews", "L3 审查 reviews"),
     ("L3-deductions", "L3 其它(经验检验/交叉验证等)"),
+    ("L4-composites/corollaries", "L4 复合推论 composites"),
+    ("L4-composites/reviews", "L4 审查 reviews"),
+    ("L4-composites", "L4 其它(经验检验/交叉验证等)"),
 ]
 
 SUMMARY_MAX = 72  # 摘要截断字符数
