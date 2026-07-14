@@ -3,13 +3,16 @@
 // (author→审查loop→revise→finalize),互不阻塞。墙钟 ≈ 单条最慢链,而非 N 倍。
 // 每条重产物留在各自子链,主循环只收每条一行紧凑裁决。
 //
-// 调用:Workflow({ scriptPath: '<repo>/scripts/ded_batch.workflow.js', args: { briefs: [BRIEF, ...] } })
+// 调用:
+//   小批量(≤3条):Workflow({ scriptPath, args: { briefs: [BRIEF, ...] } })
+//   大批量(>3条,防 args 串化截断):先把 briefs 写成 JSON 文件,传 { briefsFile: '<绝对路径>' }
 // 每个 BRIEF 格式见 ded_pipeline.workflow.js 顶部(id/slug/reviewNum/title/thesis/coreClaim/bricks/domain)。
 
 export const meta = {
   name: 'ded-batch',
   description: '批量补广度:pipeline 并行跑 N 条 ded-pipeline 推论,各走 author→对抗审查loop→finalize,只回每条紧凑裁决',
   phases: [
+    { title: 'Load',  detail: '从文件读 briefs(大批量模式)或从 args 直取(小批量模式)' },
     { title: 'Batch', detail: 'N 条推论并行起跑,各自独立生命周期,互不阻塞' },
   ],
 }
@@ -23,10 +26,26 @@ if (typeof a === 'string') {
 }
 const REPO = a.repo || '/home/hq/research/human-society'
 const DED_PIPELINE = `${REPO}/scripts/ded_pipeline.workflow.js`
-const briefs = Array.isArray(a) ? a : (a.briefs || [])
+
+// --- briefs 来源:优先从 briefsFile 读(防大 args 串化截断),否则从 args.briefs/args 数组取 ---
+let briefs = []
+if (a.briefsFile) {
+  phase('Load')
+  const loaded = await agent(
+    `用 Read 工具读文件 ${a.briefsFile},把内容作为 JSON 解析,返回 { briefs: [...] }。每个 brief 原样保留所有字段。`,
+    { label: 'load-briefs', phase: 'Load', schema: { type: 'object', properties: { briefs: { type: 'array' } }, required: ['briefs'] }, agentType: 'general-purpose' }
+  )
+  briefs = (loaded && loaded.briefs) ? loaded.briefs : []
+  if (!briefs.length) {
+    return { error: '从 briefsFile 读到的 briefs 为空或解析失败', file: a.briefsFile }
+  }
+  log(`从文件读入 ${briefs.length} 条 briefs`)
+} else {
+  briefs = Array.isArray(a) ? a : (a.briefs || [])
+}
 
 if (!Array.isArray(briefs) || briefs.length === 0) {
-  return { error: 'args.briefs 必须是非空数组', got: typeof briefs }
+  return { error: '未提供 briefs:传 { briefs: [...] } 或 { briefsFile: "<path>" }', got: typeof briefs }
 }
 
 log(`批量起跑 ${briefs.length} 条:${briefs.map((b) => b.id).join(', ')}`)
