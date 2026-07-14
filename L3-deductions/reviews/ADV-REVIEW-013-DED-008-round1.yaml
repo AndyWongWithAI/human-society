@@ -1,0 +1,192 @@
+id: ADV-REVIEW-013
+type: adversarial_review
+reviews: DED-008
+layer: L3-deductions
+
+人话摘要: "对 DED-008(裙带侵蚀×监督者独立)的独立对抗审查记录。round-1 裁 needs_revision(核心活、未重蹈 DED-004/007,但抓到一条 required:不能既用职业声誉救'俘获却公正'的空格、又否认声誉是另一驱动;冰岛/北欧是活反例)。作者按 5 条清单整改(把'监督者独立'上位为含 A 亲缘切断 / B 非亲缘问责两 species)。待 round-2 确认。"
+
+target: DED-008
+protocol: "Rule B 独立对抗审查(作者≠审查者),红旗 10 条逐项攻 + 反例猎捕 + DED-004/007 复发检查。"
+
+round_1:
+  reviewer: "独立子 Agent (general-purpose, 全新独立上下文)"
+  verdict: needs_revision
+  verdict_note: |
+    核心逻辑成立,不像 DED-007 死于焊死测量轴或事实错锚:三量轴正交、锚全部史实无误、
+    护身符被成文回避规则真兑现、档位与 BR-L2-002 连续梯度匹配。但一条 required 未决硬伤:
+    推论既用"公正由非亲缘机制(职业声誉/法律)解释"当逃生舱保住'俘获却公正'空格,又在判别
+    声称驱动量是"结构性亲缘独立度【而非】职业声誉"并把这些机制排除出修复清单——不能既靠
+    声誉救空格、又否认声誉是另一驱动。可靠重写措辞修复,非推倒重来 ⇒ needs_revision。
+  red_flag_findings:
+    brick_conclusion: "部分命中(minor)。联合结构非砖内原文;但 BR-L2-010 贡献近定义,真发动机是 BR-L2-002 递归 + '梯度占主导'经验命题,应诚实点明。"
+    nontriviality_cell_check: "攻不穿。'俘获却公正'空格非同义反复,系于'亲缘梯度是否占主导'的可错经验主张。通过。"
+    measurement_orthogonality: "不重蹈 DED-007。承重对(monitor_independence 谱牒+成文回避 vs impartiality_outcome 控绩效后偏斜)真正交。但 kin_embeddedness 用'实际获授者'分母把结果混入自变量,残留中度焊点——改'合格候选池'分母即除。"
+    scope_hook_independent_of_result: "不命中。非亲缘排除按【渠道】(事前可测)划,非事后按结果;anti_talisman 禁结果反推;excluded #2 保留对称证伪。做对了。"
+    criterion_tier_match: "不命中。monitor 独立度明列连续、单调,与 BR-L2-002 连续 r 匹配。学到 DED-006 r2 教训。"
+    anti_talisman_cashed: "不命中,真兑现。锁院/糊名/回避/德夫希尔梅招募是法典成文事实,独立于配置公正。优于 DED-006 r1'只装门未上栓'。"
+    anchor_fact_check: "不命中,无 DED-007 式事实错。科举回避/锁院/糊名/誊录、德夫希尔梅、Northcote-Trevelyan 1854/Pendleton 1883、paulette 1604 均准确。minor:德夫希尔梅其实是 kin_embeddedness→0,非严格监督者独立,应点明。"
+    definition_vs_prediction: "不命中。'监督者结构独立'由纽带+成文规则定义,'俘获'禁结果反推,故 ⟺ 是实质预测。通过。"
+    counterexample_hunt: "未净杀 falsifiability(a),但揭出(ii)/判别过度伸张(见下)。"
+    primary_suspect_aim: "指对但欠锋利。最弱腿方向对,但低估其后果:同一让步也动摇'驱动量=亲缘独立度而非职业声誉'判别。secondary_suspect 更该瞄 kin_embeddedness 分母。"
+  counterexample_hunt: |
+    - 威尼斯(封闭世袭贵族人人沾亲却数百年公正):消化→支持。公正来自刻意反俘获结构(抽签选
+      总督/任期限/同署禁亲属/秘密投票)=蓄意亲缘-派系切断。印证非反驳。
+    - 冰岛/北欧(人人相关、无法本籍回避却极公正):最强候选。不正式命中(a)(它有自由媒体/独立
+      司法/民主问责=其它制衡,落进逃生舱),但干净揭出:它靠声誉/透明/问责(既非亲缘切断、也非
+      (ii)所谓失败的'严规则/道德')维持公正 ⇒ 二分漏掉的第三修复路径,而救(a)的逃生舱正是(ii)
+      假装无效的那套机制。
+    - 宗族义庄/合会/氏族信托成员间'公平'配置:出 scope(明面亲缘原则),正确地不算反例。
+    结论:falsifiability(a) 核心未被净证伪(真无制衡时亲缘利他+自利确实侵蚀,核心成立);冰岛/
+    北欧压力落在(ii)与判别,不落在(a)。
+  non_recurrence_of_ded004_007: |
+    DED-004(不可证伪循环):未重蹈。anti_talisman 禁结果→俘获反推;监督者独立由谱牒+成文规则
+    测,独立于结果。(限定词'除非非亲缘机制解释'+'无其它制衡'有 DED-006 r1 式类别弹性回声,但
+    因结构可测仍在纯循环这一侧。)
+    DED-007(焊死测量轴):承重对未重蹈,异源非共线,无事实锚反转。残留 kin_embeddedness 分母
+    中度焊点远轻于 DED-007,改分母即除。
+  required_fixes:
+    - "[required] 解决非亲缘机制双重使用:声誉/透明/媒体/民主问责【并入】'监督者结构独立'(修复清单加非亲缘问责监督者),或判别降为'结构性外部制衡(亲缘切断一种、声誉/问责另一种)胜过道德+纸面规则'。不能既保强唯一驱动、又用声誉当逃生舱。"
+    - "[required] 修 (ii)/(c) 假二分:漏了实证第三修复路径(声誉市场+透明+自由媒体+民主问责,如北欧/冰岛),须归类使'总是'成立。"
+    - "[should] kin_embeddedness 测量改'合格候选池'分母,除 outcome-import 焊点。"
+    - "[minor] 诚实化非平凡性:BR-L2-010 近定义,发动机是 BR-L2-002 递归 + 梯度占主导经验命题。"
+    - "[minor] 收紧德夫希尔梅锚:操作化 kin_embeddedness→0,区别于监督者独立。"
+
+author_response_round_1:
+  verdict: "全部接受,按 5 条清单修订。"
+  revisions_made:
+    - "[required 1+2] '监督者独立'上位为'监督者处于分享不到偏私收益的位置',下辖 species A(亲缘切断)/ B(非亲缘反向问责);statement(ii)、falsifiability(a)(c)、derivation step4/5 全重写;判别降级为'结构性外部制衡(A 或 B)胜过道德+纸面规则';falsifiability(a) 明确要求 A、B 双双缺席仍公正方证伪,取消逃生舱歧义。"
+    - "[should 3] kin_embeddedness 分母改'合格候选池',measurement + secondary_suspect 标注。"
+    - "[minor 4] derivation step1 钉清 BR-L2-010 近定义;discriminant 增'防平凡化守卫'三点(非道德渠道/两 species 同杠杆/可逆单调,均委托-代理不含)。"
+    - "[minor 5] 德夫希尔梅锚加 honest_note(kin_embeddedness→0)。"
+    - "反哺:冰岛/北欧反例转为 species B 支持锚,堵'修复只有亲缘切断一条'的漏洞。"
+
+round_2:
+  reviewer: "独立子 Agent (general-purpose, 全新独立上下文, 与 round-1 不同实例)"
+  verdict: needs_revision
+  verdict_note: |
+    required #1(非亲缘机制双重使用)干净 landed;但 #2(修假二分)只 partial——补 species B
+    补上了冰岛缺口,却没使'总是'成立:{A 或 B} 仍不穷尽。猎到 scope 内、A/B 双双缺席却长期
+    公正的真反例(Ostrom 自治公地:亲缘内竞争性同侪监督),满足伞级判据却既非 A 也非 B ⇒
+    (ii)'总是 A 或 B'被净证伪,falsifiability(a) 因 species-B 严格/宽松两读而可重读(DED-004
+    轻度回声)。核心(伞级判据)未被证伪反被支持;防平凡化守卫靠①③撑住,②被高估。修法小而
+    外科式 ⇒ needs_revision 非 rejected。
+  required_landed:
+    "req1_双重使用": "landed(干净)——声誉从'被排除逃生舱'变'被包含 species B 驱动',逻辑矛盾解除。"
+    "req2_假二分": "partial——补 species B 机制用对,但'总是=A 或 B'仍假,枚举不穷尽(缺 species C)。"
+  dilution_check: |
+    守卫够,未稀释为委托-代理常识,但②被高估。①(俘获渠道=亲缘利他非道德梯度→'好人也烂'是
+    预测 + 非亲缘偏私出射程)真有分量,委托-代理不这么切;③(可逆单调定量方向)真有分量。②
+    (A/B 两 species 统一)弱:成熟委托-代理论者也能把回避制/自由媒体归为'问责装置',故'分几个
+    species'非非平凡卖点;真非平凡在伞级判据 + ①③。结论:抗稀释权重应压①③,②降调。
+  new_defects:
+    - "[required] species A/B 按'亲缘网内外'定义,伞级按'是否分享偏私收益'定义,二者不等价 ⇒ 亲缘内利益相反的监督者(Ostrom 同侪)满足伞级却落 A/B 之外 ⇒ falsifiability(a) 可重读(严格读命中/宽松读把同侪监督塞进 B 则架空 anti_talisman)。轻度 DED-004 回声。"
+    - "[should] species B'声誉市场'与'纯个人前程顾虑'无结构判据;应以'有无制度化声誉基础设施(执照/惩戒/公开绩效/声誉定价流动)'切分,否则 primary_suspect 悬空。"
+    - "[should] 上位+连续化后 falsifiability(a) 在现代高-B 世界近乎不可满足,须诚实标注适用区间(干净实例在低-B;现代经 b·iii)。"
+  counterexample_hunt: |
+    威尼斯(抽签选总督/任期限/同署禁亲属)=species A 蓄意切断,支持非反例;冰岛/北欧=已吸收为
+    species B;★Ostrom 长寿公地(阿尔卑斯共有牧场/日本入会地 iriai/西班牙 huerta 水权/菲律宾
+    zanjera):小型亲缘密集共同体按规则(轮值/按份/抽签)在成员间一视同仁配置,配置者是亲缘内
+    同侪(A 失效)、无独立司法媒体选举(B 缺席),却靠利益相反的竞争性共有者横向互监 + 分级制裁
+    维持数百年规则公正 ⇒ scope 内(明面按规则配、非按亲缘)、A/B 双缺却公正 ⇒ 支持伞级判据但
+    净证伪'(ii) 总是 A 或 B',揭示缺 species C。与义庄(明面按亲缘配,出 scope)区分。
+  non_recurrence: |
+    DED-007(焊死测量轴)未复发:三轴仍异源正交,分母改合格候选池除掉 round-1 中度焊点;
+    species B'收益来自揭露偏私'虽含功能措辞,但 limitations 硬约束'结构测、禁功能反推'已在
+    操作层结构化。DED-004(不可证伪循环)未全面复发,但有轻度回声:上位把 monitor 扩成 A∪B、
+    B 连续过宽后,(a) 出现严格/宽松两读得相反结论的可重读性——这是判 needs_revision 而非
+    verified 的主因,须把证伪条件收紧到无歧义。
+  required_fixes:
+    - "[required] 令 species 定义与伞级判据一致:显式加 species C(亲缘内竞争性索取者/分布式同侪监督),或把 (ii) 改为'总是落到某种监督者不分享偏私收益的结构,A/B/C 为其 species',使'总是'真为真、falsifiability(a) 无歧义。"
+    - "[should] 给 species B 声誉市场 vs 纯个人前程顾虑一条结构测判据(制度化声誉基础设施)。"
+    - "[should] 诚实标注 falsifiability(a) 适用区间。"
+    - "[minor] 重述防平凡化守卫②:非平凡在伞级判据 + ①③,非'两 species 二元统一'。"
+
+author_response_round_2:
+  verdict: "全部接受,按 4 条(1 required + 2 should + 1 minor)修订。"
+  revisions_made:
+    - "[required] species 改按伞级判据('不分享偏私收益')定义,显式加 species C(亲缘内竞争性横向监督,Ostrom 公地);statement 三 species、(ii)'总是 A/B/C'、falsifiability(a)'A/B/C 俱无仍公正'、derivation step4/5、monitor_independence 定义全据此重写;(a) 可重读性消除。"
+    - "[should] monitor_independence.measurement 加 species B 结构判据(制度化声誉基础设施 vs 纯个人前程顾虑),primary_suspect 据此锋利化。"
+    - "[should] falsifiability(a) 加适用区间诚实标注(低-B 干净实例 / 现代经 b·iii)。"
+    - "[minor] 防平凡化守卫②降调为'组织性说明',抗稀释权重明压①③ + 伞级判据。"
+    - "反哺:Ostrom 公地反例转 species C 支持锚;excluded #3 补'义庄(按亲缘配,出 scope)vs 公地(按规则配,in scope)'界定;anti_talisman 强化'不得事后硬塞非正式同侪监督当 C'。"
+
+round_3:
+  reviewer: "独立子 Agent (general-purpose, 全新独立上下文, 与 round-1/2 不同实例)"
+  verdict: verified
+  verdict_note: |
+    终局轻量确认:round-2 的 1 required + 2 should + 1 minor 全部 landed,核心(伞级判据)
+    未被证伪、反被本轮'第四 species 猎捕'落空所正面支持。species C(亲缘内竞争性横向监督)
+    按伞级判据('监督者不分享向同一受益池偏私的收益')在五处一致落实——statement 三 species /
+    derivation step4-5 / monitor_independence 定义 / falsifiability(a)'A/B/C 俱无仍公正' /
+    (ii)'总是 A/B/C',无残留'亲缘网内外'旧二分【主干】措辞。伞级判据是二值(监督者非享即
+    不享)、by-construction 穷尽,使 falsifiability(a) 非空、可满足、读法收敛;round-2 的
+    严格/宽松两读因显式加 C 而消除。anti_talisman 真兑现:'C 的在场须由独立产权/竞争性索取者
+    结构事实坐实、不得结果反塞'是可操作结构判据,挡住'A/B 皆无就事后硬塞非正式同侪监督当 C'。
+    义庄 vs Ostrom 公地界线按'制度明示的配置原则'划,事前可测、可操作。三条 residual_minor
+    均为标注/措辞/scope 诚实化,无任一在 scope 内构成活反例或威胁 falsifiability ⇒ verified。
+    (较 round-2:round-2 有一个 scope 内的活净反例 Ostrom,故 needs_revision;本轮无任何
+    scope 内活反例,故 verified,与 round-2 标准一致而非放水。)
+  confirmations:
+    "1_species_C_全线一致": |
+      landed。A/B/C 在 statement / derivation step4-5 / monitor_independence / falsifiability(a) /
+      (ii) 五处一致,无主干旧二分漏改。唯一残留:species B 定义(statement + monitor_
+      independence.definition)仍写'监督者是亲缘外一方'——此为按'亲缘网内外'的旧位置措辞,
+      与'按收益共享'的伞级判据不完全等价(C 已解耦位置、B 未)。列 residual_minor#1,非活反例。
+    "2_伞级判据使(a)无歧义": |
+      基本 landed。伞级二值穷尽 ⇒ (a)'无任何不分享偏私收益的监督者却公正'非空、可满足、
+      不可重读;round-2 的'同侪监督算不算 B'两读因显式 C 消除。残留:(ii) 括注"'总是'由伞级
+      判据 A∪B∪C 之穷尽保证"把'总是'的担保错挂在'枚举 A∪B∪C 穷尽'上,而非伞级判据本身的
+      二值 by-construction 穷尽上——宜改回后者(A/B/C 为例示而非闭合枚举)。列 residual_minor#2。
+    "3_anti_talisman_挡C反塞": |
+      够。anti_talisman_clause 与 monitor_independence.limitations 均显式禁'遇 A/B/C 皆无却公正
+      就事后硬塞非正式同侪监督当 C',并要求 C 由独立产权/竞争性索取者/梯度惩罚结构事实坐实。
+      与 round-1 表扬的锁院/回避成文事实同级,是真兑现的结构测,非空门。
+    "4_义庄vs公地界线": |
+      清且可操作。判据 = 制度明示的配置原则:明面按亲缘配(义庄)→ 出 scope;明面按非人格化
+      规则在成员间配、且把'某支偏袒本支'当要压制的裙带(Ostrom 公地)→ in scope + species C
+      支持。与 excluded#1 同为渠道/原则的事前测。极端 minor:成员边界按亲缘、边界内按规则的
+      混合体需分'入会资格'与'会内配置'两层 scope 判定,现行'在成员间配'限定词已基本涵盖。
+  fourth_species_hunt: |
+    未找到满足伞级判据却 A/B/C 皆非的第四类【监督者】。逐根穷举:'不分享偏私收益的监督者'
+    其不分享的结构根由只有两支——(根一)不在受益池(非亲缘):被动在外 = A,受外部反向问责
+    基础设施奖励揭露 = B;(根二)在受益池内但份额与偏私此消彼长(竞争性索取者)= C。测试若干
+    候选均回落:①神圣/宣誓/神判监督→制度化则并入 B(惩戒/声誉基础设施),纯信仰内化则是被
+    excluded 的'道德'或 primary_suspect 的证伪候选,非 species;②市场退出/竞争对手/选票→已在
+    B;③亲缘内'受国家赏格/豁免驱动揭发亲属'的告发者→其驱动是外部制度化反向问责基础设施在
+    场,属 B(B 是'基础设施'层,不因执行个体恰为亲属而缺席),非净反例。故 A/B/C 对非享监督者
+    穷尽,支持三 species 够用,并印证'该直接用伞级判据当唯一判据、A/B/C 仅例示'。
+    【一处 scope 洞,非第四 species】操作化有两个结构变量(kin_embeddedness 分子 / monitor_
+    independence 分母)。消解裁量本身——抽签/轮值刚性公式/无亲族录用(威尼斯抽签选总督、
+    德夫希尔梅)——是压【分子】的另一杠杆,它维持公正却【不设任何监督者】(不满足伞级判据,
+    因根本无 monitor),故非第四 species;但 (ii)'长期公正的修复总是落到设立监督者'作为无限定
+    全称,对这类'以机制设计消解裁量'的实例过伸:其修复既非'设监督者'亦非 (ii) 所对比的'更严
+    规则/更廉洁的人',而是第三条(降分子)。德夫希尔梅锚自己的 honest_note 已半自认'另一着法
+    /机制侧重不同'却仍归 species A。宜给 (ii) 加'裁量权被保留'的显式 scope。列 residual_minor#3。
+    此不证伪核心(核心是'裁量权交给亲缘嵌入 Agent 则需监督者'的条件式,消解裁量者未实例化
+    其前件),仅收窄 (ii) 的全称。
+  residual_minor:
+    - |
+      [措辞] species B 定义仍留'监督者是亲缘外一方'的位置措辞(statement + monitor_
+      independence.definition)。既已按伞级判据(收益共享)重定义、且 C 已解耦位置,B 宜同样
+      解耦为'收益来自制度化反向问责基础设施对揭露的奖励,不问执行个体在不在亲缘网内'。
+      该 cell 由 B-基础设施在场吸收(coverable),仅措辞不一致,无活反例。
+    - |
+      [措辞] (ii) 括注"'总是'由伞级判据 A∪B∪C 之穷尽保证"把'总是'错挂在枚举穷尽上;宜改为
+      '由伞级判据本身(监督者非享即不享,二值 by-construction 穷尽)保证,A/B/C 为其例示而非
+      闭合枚举'。这正是 round-2 处方的原意,主干已做、唯此括注未随改。
+    - |
+      [scope,较强的一条] (ii) 宜加'裁量权被保留'的显式 scope,以免与'消解裁量(抽签/刚性
+      公式/无亲族录用)'这条降分子杠杆冲突;并把德夫希尔梅/威尼斯抽签明标为'分子杠杆'锚,
+      与 monitor-species 区分(德夫希尔梅 honest_note 已半自认)。最严审查者可将本条升为
+      [should];但因该类实例落在核心条件式前件之外,不构成 scope 内活反例,故不阻断 verified。
+  non_recurrence: |
+    DED-004(不可证伪循环):未复发。anti_talisman 对 A/B/C(尤其 C)全部要求结构测、禁结果
+    反推,且显式堵'硬塞非正式同侪监督当 C';round-2 的轻度回声(证伪条件可重读)因显式 C +
+    伞级二值化基本消除,唯 residual_minor#2 括注留一丝措辞回声,不改可操作读法。
+    DED-007(焊死测量轴):未复发。三轴(kin_embeddedness / monitor_independence /
+    impartiality_outcome)仍异源正交、分母用合格候选池;species C 由产权/竞争性索取者结构
+    独立测,不与被预测量共线。
+  required_fixes: "无(verified)。三条 residual_minor 为推荐性收敛,不阻断状态推进。"
+
+domain: [政治社会学, 制度经济学, 组织理论, 亲属制度]
+created: 2026-07-14
