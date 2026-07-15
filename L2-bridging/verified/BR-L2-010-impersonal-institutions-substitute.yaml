@@ -44,36 +44,51 @@ falsifiability: |
   交换中替代人际信任(引入后陌生人交易并不因此变得可行)——则本命题被削弱。
 
 cross_verification:
+  audited: 2026-07-15
+  audit_type: 存量回补审查(独立 IEA 重算,只可维持或降级)
   votes:
     game_theory:
       status: agree
       weight: 1.0
       evidence: []
       note: |
-        机制设计/重复博弈制度化:第三方执行、声誉(Kandori)、law-merchant
-        (Milgrom-North-Weingast)、抵押担保。本命题最强来源,作锚点。证据强度:strong。
+        锚源。机制设计/重复博弈的制度化——law-merchant 模型
+        (Milgrom-North-Weingast 1990)、社区执行(Kandori 1992)、抵押担保与
+        机制设计,形式化证明第三方执行+声誉系统【能】支撑匿名/一次性交换。
+        直接命中命题的 capability 主张。证据强度 strong。
     cultural_universals:
       status: agree
       weight: 0.5
       evidence: []
       note: |
-        Greif 马格里布/热那亚、社区责任制、票据信用、公证行会、货币度量衡标准化
-        跨文明独立出现。经济史/档案方法独立于博弈论,独立系数 0.5。
+        经济史/档案通道——Greif 马格里布联盟 vs 热那亚双边/法律制度、社区责任制、
+        香槟集市、公证与票据信用、行会执行;铸币与度量衡标准化在吕底亚/中国/印度
+        等文明独立出现。方法(档案/物质证据)独立于博弈论形式化,成对独立系数 0.5。
+        诚实备注——Edwards-Ogilvie(2012)对马格里布联盟实证曾提出质疑,但中世纪
+        非人格化执行制度的更广档案记录依然稳固,agree 成立。
     evolutionary_biology:
       status: agree
       weight: 0.4
       evidence: []
-      independence_note: |
-        文化演化(Henrich):第三方惩罚规范 + 市场制度扩展陌生人合作。与 gt 共享
-        "制度扩展合作"逻辑,且群体选择成分有争议,独立系数 0.4、诚实降权。
+      note: |
+        文化演化通道(Henrich、Boyd-Richerson)——Henrich 等 2010 跨 15 社会的
+        市场整合与匿名公平/第三方惩罚相关研究,支持"市场型制度扩展陌生人合作"。
+        但证据是相关性而非因果,实验范式(最后通牒等)与 gt 共享,群体选择成分有
+        争议;对锚源成对系数 0.4(对 cu 为 0.6,取更严的 0.4 避免重复计权)。
   iea: 1.9
   verdict: verified
   verdict_note: |
-    IEA = 1.0(gt) + 0.5(cultural) + 0.4(evo) = 1.9 ≥ 1.8 → verified(博弈论形式化 +
-    经济史档案两个准独立来源为主)。无有资格的反对票。
+    重算 IEA = 1.0(gt 锚) + 0.5(cultural_universals 对锚折算) + 0.4(evo_bio 对锚
+    折算,已取与已计源的最小系数防重复计权) = 1.9 ≥ 1.8 → 维持 verified。
+    三通道均 agree,无有资格的反对票;命题只主张 capability(可替代),不主张必然
+    采用,证伪条款完好。仪器折扣披露——本次三路投票由单一 LLM 执行,报告的
+    IEA=1.9 是【学科独立性上限】,仪器有效独立性低于此(见 independence-model 的
+    instrument_correlation discount_rule)。
   instrument_disclosure: |
-    三路投票由单一 LLM 执行。IEA=1.9 是学科独立性上限,仪器有效独立性低于此。本命题
-    有独立的经济史档案证据(Greif 等)支撑,仪器忧虑被部分缓解。
+    三路投票由单一 LLM 执行,同一仪器+重叠语料读取三个学科通道。IEA=1.9 是学科
+    独立性上限,仪器有效独立性低于此。缓解——本命题属制度经济学多重复现的稳固
+    共识(North/Greif/Milgrom-North-Weingast 有真实文献收敛),且经济史档案证据
+    与形式模型方法论路径确实不同,单仪器忧虑被部分缓解,但不消除。
   honest_note: |
     本命题偏"制度经济学教科书"(North/Greif)。这不是缺陷——L2 砖的职责是当经验锚,
     新颖性应体现在其上的推论(交换规模突破信任上限 ⇒ 制度外化的阈值/可逆/领域特定
@@ -85,5 +100,11 @@ depends_on:
   axioms: [AXIOM-003]
   theorems: [THEOREM-cooperation-precondition, THEOREM-relation-information-asset]
 
+review_summary: |
+  定论:verified,IEA=1.9(gt 锚 1.0 + cu 0.5 + evo_bio 0.4)。
+  机制有效:第三方执行/声誉/契约/担保把履约保障从私人关系移到系统惩罚,三通道 agree,反例猎捕无活反例(Edwards-Ogilvie 质疑仅削单案例,不撼广档案)。
+  全档见 ADV-REVIEW-BR-L2-010。
+
 domain: [制度经济学, 交换理论, 经济史]
 created: 2026-07-14
+revised: 2026-07-15

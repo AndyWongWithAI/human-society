@@ -212,7 +212,7 @@ def check_status(es):
             nt = e.get("negation_test") or {}
             if not isinstance(nt, dict) or nt.get("verdict") not in ("passes", "fails", "contested"):
                 errs.append(f"{eid}: negation_test.verdict 缺失/无效")
-        if "L2-bridging" in p:
+        if "L2-bridging" in p and "reviews" not in p:
             st = e.get("status", "")
             if st not in valid_l2_status:
                 errs.append(f"{eid}: status='{st}' 无效 (需为 candidate|verified|weakly_verified|rejected)")

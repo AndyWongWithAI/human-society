@@ -84,11 +84,11 @@ async function verifyOne(id, domain) {
   // ---- Phase 1: IEA Survey ----
   phase('IEA Survey')
   const iea = await agent(
-    `你是 L2 桥接砖的【IEA 调查员】,全新上下文。目标:对下面这条已写好的 candidate 桥接砖做
+    `你是 L2 桥接砖的【IEA 调查员】,全新上下文。目标:对下面这条已写好的桥接砖做
 独立来源加权投票(IEA = 独立 agree 当量),把结论写回砖文件的 cross_verification 段。
 
 ## 审查对象
-桥接砖 ${id}(status 应为 candidate)。先用 \`cd ${REPO} && ls L2-bridging/*/${id}-*.yaml\` 定位文件路径,读它。
+桥接砖 ${id}(status 为 candidate;若为 verified/weakly_verified 则本次是【存量回补审查】——同样全流程跑,裁决只能维持或降级,不得因"已 verified"放水)。先用 \`cd ${REPO} && ls L2-bridging/*/${id}-*.yaml\` 定位文件路径,读它。已有 cross_verification 段则以本次重算为准更新。
 domain: ${domainStr}
 
 ## 封顶读取(两份,不读无关全文)
