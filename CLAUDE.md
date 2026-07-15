@@ -40,7 +40,7 @@ L0-physical/  L1-definitions/  L2-bridging/  L3-deductions/  L4-composites/
 - **L3 验证规则 A–D**:A 操作化 → B 独立对抗审查 → C 经验对照 → D 链式(confidence_floor)。附 `anti_talisman_clause`(防不可证伪护身符)+ `nontriviality_test`(逐格判空)。
 - **L4 验证规则 E–G**(见 `L4-composites/METHODOLOGY.yaml`):E 涌现(必要性+新颖性+多父逐格判空)→ F 跨层置信度传播 → G 复合特有锚点。L4 主前提 ≥2 条 verified L3 推论,结论是涌现的系统性命题。必须证明至少一个格子需要 ≥2 父推论合力(否则是平凡合取)。L4 离地基远,标准比 L3 更严。
 - **status 枚举**:L3/L4 = `candidate|verified|verified*|rejected`;L2 = `candidate|verified|weakly_verified|rejected`。`verified*` = 带未了悬案(如 DED-003)。`rejected` 是正常产出,不删——体系肯毙自己的推论正是可信度来源(已否决 DED-004/DED-007/L4-009)。
-- **沉淀的通用检验**(历次审查换来的红旗)全部写在 L3 + L4 评分卡与作者清单:`docs/pipeline/author-checklist.md` / `review-rubric.md`(L3),`l4-author-checklist.md` / `l4-review-rubric.md`(L4)。**新增推论前先读对应清单**。最新判例:评分卡第 18 条(阈值必须连同分子/分母/口径一次性注册;事后口径选择一律反向裁决,由 L4-009/利比亚攻防换来)。
+- **沉淀的通用检验**(历次审查换来的红旗)全部写在 L3 + L4 评分卡与作者清单:`docs/pipeline/author-checklist.md` / `review-rubric.md`(L3),`l4-author-checklist.md` / `l4-review-rubric.md`(L4)。**新增推论前先读对应清单**。通用红旗(11 条)只在 L3 评分卡定义一次,L4 评分卡继承 + 追加专属红旗(第 12–18 条)。最新判例:L3 评分卡第 11 条(阈值必须连同分子/分母/口径一次性注册;事后口径选择一律反向裁决,由 L4-009/利比亚攻防换来,对 L3/L4 通用)。
 
 ## L2 桥接层验证:IEA(独立 agree 当量)
 
@@ -50,9 +50,12 @@ L2 砖靠多来源加权投票(演化生物学 / 博弈论 / 文化普适),来�
 
 - **碰存量实体先读 `INDEX.md`**(定长紧凑索引,一行一条),别整份扫 L3 全文——读取成本随实体数封顶而非滚雪球。
 - **新增 L3 推论**走 `scripts/ded_pipeline.workflow.js`,`Workflow({scriptPath, args: BRIEF})`,brief 格式见脚本顶部。
-- **新增 L4 复合推论**走 `scripts/l4_pipeline.workflow.js`,流程同 L3 管线但加 L4 专属检查(涌现/评分卡第 11–18 条/L4 专属字段)。
+- **新增 L4 复合推论**走 `scripts/l4_pipeline.workflow.js`,流程同 L3 管线但加 L4 专属检查(涌现/L4 评分卡专属红旗第 12–18 条/L4 专属字段)。
 - 两条管线均采用**摘要优先、按需深挖**的读取策略:Author 仅读 INDEX 摘要行定位父推论(起草遇歧义才开全文);Reviewer r2+ 仅读推论文件 `review_summary` 字段(含每轮紧凑摘要,1–2 行/轮),不读全量旧审查档——轮间上下文从 O(N²) 降为 O(N);Revise 每轮必须将裁决压入 `review_summary`。
 - 管线产出在 Workflow 内闭环——重产物(全文 YAML / 全文审查)永不回主循环,只回 `{id, verdict, rounds, paths, core}` 紧凑结构。
+- **模型多样性(可选)**:L2/L3/L4 管线的 brief 支持可选 `reviewModel` 参数(如 `'opus'`/`'haiku'`)。
+  设置后审查 agent 使用指定模型而非默认模型,提供血统级独立性(尤其对经验编码/事实核查)。
+  成本敏感时省略此参数即可(退回同血统审查,仍享上下文独立性)。
 
 ## 操作约束(不可从代码发现,务必遵守)
 

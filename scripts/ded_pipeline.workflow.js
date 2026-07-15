@@ -12,6 +12,8 @@
 //   bricks: ['BR-L2-002','BR-L2-010'],       // 承重砖 id(在 L2-bridging/verified/)
 //   domain: ['政治社会学','组织理论','亲属制度'],
 //   maxRounds: 3,                            // 可选,默认 3
+//   reviewModel: 'opus',                     // 可选,审查/整改 agent 用指定模型(如 'opus'/'haiku'),
+//                                            // 提供血统级独立性;不设=继承主模型(author/finalize 永远继承主模型)
 //   repo: '/home/hq/research/human-society'  // 可选
 // }
 //
@@ -140,7 +142,7 @@ ${round > 1 ? `**前轮摘要** (已在 DED 文件的 review_summary 字段,读�
 跑 \`cd ${REPO} && python scripts/validate.py\` 确认 YAML 不破。
 
 ## 返回(紧凑){verdict, requiredFixes, counterexample, oneline}`,
-    { label: `review:${b.id}:r${round}`, phase: 'Review', schema: REVIEW_OUT, agentType: 'general-purpose' }
+    { label: `review:${b.id}:r${round}`, phase: 'Review', schema: REVIEW_OUT, agentType: 'general-purpose', ...(b.reviewModel ? { model: b.reviewModel } : {}) }
   )
 
   verdict = (rev && rev.verdict) || 'needs_revision'
@@ -168,7 +170,7 @@ ${fixes.map((f, i) => `  ${i + 1}) ${f}`).join('\n')}
 - YAML 陷阱同前(| 块标量)。跑 \`cd ${REPO} && python scripts/validate.py\` 确认无 ❌、引用完整。
 
 ## 返回(紧凑){done, validatorOk, note}`,
-    { label: `revise:${b.id}:r${round}`, phase: 'Revise', schema: REVISE_OUT, agentType: 'general-purpose' }
+    { label: `revise:${b.id}:r${round}`, phase: 'Revise', schema: REVISE_OUT, agentType: 'general-purpose', ...(b.reviewModel ? { model: b.reviewModel } : {}) }
   )
   if (!revised || !revised.validatorOk) {
     log(`round ${round}: 整改未过校验,停`)

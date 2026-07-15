@@ -202,9 +202,15 @@ def check_status(es):
                     errs.append(
                         f"{eid}: confidence_floor 违反 — status='{st}' 高于父前提 "
                         f"'{weakest[0]}'(status={weakest[2]}) 允许的上限")
+        # L1 公理/定理是分析性真理——必须携带 negation_test（否定它则话语崩溃的论证）。
+        # 概念(CONCEPT-*)是定义、不可证伪，不做此检查。
+        if "L1-definitions/axioms" in p or "L1-definitions/theorems" in p:
+            nt = e.get("negation_test")
+            if not nt:
+                errs.append(f"{eid}: L1 公理/定理缺少 negation_test 字段")
         if "L1-definitions/axioms" in p:
-            nt = e.get("negation_test", {})
-            if nt.get("verdict") not in ("passes", "fails", "contested"):
+            nt = e.get("negation_test") or {}
+            if not isinstance(nt, dict) or nt.get("verdict") not in ("passes", "fails", "contested"):
                 errs.append(f"{eid}: negation_test.verdict 缺失/无效")
         if "L2-bridging" in p:
             st = e.get("status", "")

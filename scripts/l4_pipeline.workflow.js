@@ -14,6 +14,8 @@
 //   claimType: 'social_form_prediction',
 //   domain: ['国家形成','政治经济学','制度演化'],
 //   maxRounds: 3,                                   // 可选,默认 3
+//   reviewModel: 'opus',                            // 可选,审查/整改 agent 用指定模型(如 'opus'/'haiku'),
+//                                                   // 提供血统级独立性;不设=继承主模型(author/finalize 永远继承主模型)
 //   repo: '/home/hq/research/human-society'         // 可选
 // }
 //
@@ -57,6 +59,7 @@ const DED_PATH = `${REPO}/L4-composites/corollaries/${b.id}-${b.slug}.yaml`
 const REVIEW_PATH = `${REPO}/L4-composites/reviews/ADV-REVIEW-${b.reviewNum}-${b.id}.yaml`
 const CHECKLIST = `${REPO}/docs/pipeline/l4-author-checklist.md`
 const RUBRIC = `${REPO}/docs/pipeline/l4-review-rubric.md`
+const L3_RUBRIC = `${REPO}/docs/pipeline/review-rubric.md`
 const INDEX = `${REPO}/INDEX.md`
 const claimType = b.claimType || 'social_form_prediction'
 const domain = JSON.stringify(b.domain || [])
@@ -138,8 +141,10 @@ while (round < MAX) {
   const rev = await agent(
     `你是 L4 复合推论的【独立对抗审查者】(round ${round}),全新上下文,与作者及前几轮审查者无关。
 
-## 唯一校准来源
-L4 评分卡:${RUBRIC}(读它即可,**不要**去读其它参照推论——那是浪费)。
+## 唯一校准来源(两份评分卡,都要读)
+L4 评分卡:${RUBRIC}(L4 专属红旗第 12–18 条)。
+同时读 L3 通用评分卡:${L3_RUBRIC}(通用 11 条红旗的唯一定义)。
+读这两份即可,**不要**去读其它参照推论——那是浪费。
 
 ## 审查对象
 ${DED_PATH}(status: candidate)。
@@ -147,13 +152,13 @@ L3 父推论如需核对:${l3Parents.join(', ')}（在 ${REPO}/L3-deductions/cor
 ${round > 1 ? `**前轮摘要** (已在 DED 文件的 review_summary 字段,读它即可——不读全量旧审查档,那是浪费):\n读 ${DED_PATH} 的 review_summary 字段,含 r1–r${round - 1} 紧凑结论。仅在 review_summary 有歧义或需核对前轮细节时,再打开 ${REVIEW_PATH} 对应 round。` : ''}
 
 ## 任务
-按评分卡红旗逐条攻(标准 10 + L4 专属 8),必须亲自做多父逐格判空归属分析。
+按两份评分卡红旗逐条攻(通用 11 条 + L4 专属第 12–18 条),必须亲自做多父逐格判空归属分析。
 反例猎捕:不仅要猎"某父推论不成立",要猎"父推论都成立、但交互不产生 L4 预测的结果"。
 把本轮完整评审写进 ${REVIEW_PATH} 的 round_${round} 块。
 跑 \`cd ${REPO} && python scripts/validate.py\` 确认 YAML 不破。
 
 ## 返回(紧凑){verdict, requiredFixes, counterexample, oneline}`,
-    { label: `review:${b.id}:r${round}`, phase: 'Review', schema: REVIEW_OUT, agentType: 'general-purpose' }
+    { label: `review:${b.id}:r${round}`, phase: 'Review', schema: REVIEW_OUT, agentType: 'general-purpose', ...(b.reviewModel ? { model: b.reviewModel } : {}) }
   )
 
   verdict = (rev && rev.verdict) || 'needs_revision'
@@ -181,7 +186,7 @@ ${fixes.map((f, i) => `  ${i + 1}) ${f}`).join('\n')}
 - YAML 陷阱同前(| 块标量)。跑 \`cd ${REPO} && python scripts/validate.py\` 确认无 ❌、引用完整、L4 检查通过。
 
 ## 返回(紧凑){done, validatorOk, note}`,
-    { label: `revise:${b.id}:r${round}`, phase: 'Revise', schema: REVISE_OUT, agentType: 'general-purpose' }
+    { label: `revise:${b.id}:r${round}`, phase: 'Revise', schema: REVISE_OUT, agentType: 'general-purpose', ...(b.reviewModel ? { model: b.reviewModel } : {}) }
   )
   if (!revised || !revised.validatorOk) {
     log(`round ${round}: 整改未过校验,停`)

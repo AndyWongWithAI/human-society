@@ -167,7 +167,7 @@ rule_e_emergence:
         （interaction / conjunction / consilience 之一，或混合——
         如"主体为 conjunction，prediction X 为 interaction"）。
         validate.py 当前不强制此声明（需 emergence_demonstration 存在但
-        不解析其内容），但 L4 审查评分卡（l4-review-rubric.md）的旗 13
+        不解析其内容），但 L4 审查评分卡（l4-review-rubric.md）的旗 14
         （涌现缺失）应将"未声明涌现类型"视为 should 级缺陷。
 
   emergence_to_status_mapping:
