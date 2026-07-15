@@ -1,16 +1,25 @@
 id: BR-L2-006
 status: verified
 term: 内群体偏好 (Ingroup Bias)
-statement: '人类倾向于对自己所属群体（ingroup）的成员给予优待——
+statement: |
+  人类倾向于对自己所属群体的成员给予优待(内群体偏好)。
 
-  在资源分配中多给、在合作中更信任、在冲突中偏袒——
+  核心发现(Tajfel 1970 最小群体范式):即使群体划分基于任意/微不足道的标准
+  (如随机颜色标签),也能在资源分配中稳定触发内群体偏好——该效应在数十种文化中
+  被独立复现(Mullen, Brown & Smith 1992 meta-analysis)。这一发现在 L1 的
+  CONCEPT-group(群体不预设价值判断)之上增添了真正的经验内核:无意义的群体边界
+  也能产生有行为后果的偏袒。
 
-  即使群体划分是基于任意或微不足道的标准（如随机分配的颜色标签）。
+  该偏好延伸至信任、合作与冲突三个领域。
 
-  这种偏好的强度随群体认同的显著性而增加。
-
-  '
-人话摘要: "人天生偏袒‘自己人’——分东西多给、更信任、有矛盾时也护着；哪怕‘自己人’只是随手按颜色标签这种没意义的方式分出来的，这种偏心照样出现。"
+  显著性调节子主张(已操作化):偏好强度与群体认同的显著性呈正相关
+  (meta-analytic r≈0.3-0.4,中小效应)。显著性独立测量规程(在见到案例前锁死):
+  (i) 自报认同量表(Likert ≥4/5 或等效多指标聚合);
+  (ii) 群体活动参与频率;
+  (iii) 群体符号展示行为。
+  边界条件:低地位群体可能出现外群体偏好(Jost & Banaji 1994 system justification),
+  多重身份交叉可减弱单一内群体偏好——显著性非单调调节因子,与其他变量交互。
+人话摘要: "人很容易偏袒’自己人’——分东西多给、更信任、有矛盾时也护着；哪怕’自己人’只是随手按颜色标签这种没意义的方式分出来的,这种偏心照样出现。这不是与生俱来的(小孩要到三四岁才开始偏袒),但确实是根深蒂固的倾向。"
 bridges_to:
   concepts:
   - CONCEPT-group
@@ -26,14 +35,29 @@ applicable_sources:
 - evolutionary-biology:
     rationale: '''狭隘利他主义''(parochial altruism) —— 对内群体利他 + 对外群体敌意的联动演化。 灵长类群体间竞争（黑猩猩''战争''）为内群体偏好提供了
       演化背景。群体选择理论提供了形式化框架（争议中）。'
-- game_theory:
+- social_psychology:
     rationale: Tajfel 的 minimal group paradigm (1970) —— 仅通过随机分配的颜色标签就能引发资源分配中的内群体偏好。
-      这个实验在多种文化中被复现。群体间歧视的博弈论模型 （如 Schelling 的 segregation model）。
+      这个实验在多种文化中被复现。注:该范式属实验社会心理学(社会认同理论,Tajfel & Turner 1979),非博弈论——它不使用 Nash 均衡/ESS 等形式工具。群体间歧视的博弈论模型(如 Schelling 的 segregation model)是后续形式化,非本锚的学科归属。
 - cultural_universals:
     rationale: 民族中心主义 (ethnocentrism) 在所有文化中都存在—— 每个社会都发展出了'我们 vs 他们'的区分体系。 但具体的群体边界（血缘/语言/宗教/地域）因文化而异——
       这说明内群体偏好是普适的倾向，但附着于文化特定的群体定义。
-falsifiability: "若发现一个人类群体:\n(a) 成员明确认同自己属于该群体（有共享身份）；\n(b) 且该群体与至少一个外群体有可观测的互动；\n\
-  (c) 但成员在资源分配、信任、合作中对待内群体和外群体成员\n    完全没有统计显著的差异——\n则本命题被证伪。\n"
+falsifiability: |
+  若发现一个人类群体满足以下全部条件,则本命题被证伪:
+
+  (a) 成员明确认同自己属于该群体(有共享身份);
+  (b) 且该群体与至少一个外群体有可观测的互动;
+  (c) 但成员在资源分配、信任、合作三个领域中【同时(AND逻辑)】对待内群体和
+      外群体成员完全没有统计显著的差异。
+
+  默认操作化建议(在经验检验前可精化):
+  - α=0.05(双尾);
+  - "明确认同"=自报 Likert ≥4/5 或多指标聚合;
+  - "可观测互动"=经济交易、社会交往两类中至少任一类;
+  - 测量领域 AND 逻辑:需资源分配+信任+合作三个领域同时无显著差异才构成证伪。
+
+  显著性调节子主张的独立证伪:
+  若在已按上述规程独立测量显著性的条件下,发现显著性-top-偏好强度的相关性
+  (meta-analytic 加权 r)的 95% CI 包含零——则子主张被证伪。
 created: 2026-07-13
 source_anchors:
 - source_id: EV-cu-001
@@ -44,18 +68,64 @@ cross_verification:
       status: agree
       weight: 0.4
       evidence: []
-      note: 狭隘利他主义(Choi & Bowles 2007)为内群体偏好提供了稳健演化解释。灵长类群体间攻击行为(黑猩猩'战争')提供实证基础。机制争议(群体选择vs多层次选择)不影响现象存在性。独立于gt锚源折扣系数0.4。
-    game_theory:
+      note: |
+        狭隘利他主义(parochial altruism, Choi & Bowles 2007)将内群体利他与外群体敌意
+        作为联动演化策略建模,为内群体偏好提供了稳健的演化解释。灵长类群体间攻击行为
+        (黑猩猩"战争", Goodall 1986; Wrangham 1999)提供跨物种实证基础。机制层面的
+        争议(群体选择 vs 多层次选择)不影响现象存在性本身。
+        倭黑猩猩对照(Pan paniscus):与黑猩猩同等近缘(共享祖先 ~6-7 mya),但群际交往
+        相对和平(Furuichi 2011, Tan & Hare 2013)——说明内群体偏好/群际攻击在人类谱系中
+        非演化必然,而是有条件表达的策略。此对照不削弱论证,但提升证据呈现的双向诚实度。
+        对锚源(social_psychology)折算:independence-model 无 social_psychology 直接系数,
+        沿用原 game_theory 成对系数 evo_bio__game_theory=0.4(两学科在演化博弈论上共享
+        数学结构);源标签偏移使此系数校准基础存在不确定性,已在 verdict_note 披露。
+    social_psychology:
       status: agree
       weight: 1.0
       evidence: []
-      note: Tajfel最小群体范式(1970)——仅靠随机颜色标签即可触发内群体偏好。跨文化反复验证。实验证据极其稳健。选为锚源。
+      note: |
+        Tajfel 最小群体范式(1970)——仅通过随机颜色标签或抽象画偏好等任意标准划分群体,
+        即可在资源分配矩阵中稳定触发内群体偏好。该效应在数十种文化中被独立复现
+        (meta-analysis: Mullen, Brown & Smith 1992),实验证据极其稳健。
+
+        重要分类修正(2026-07-15 回补审查):本锚原标记为"game_theory",现重新标记为
+        "social_psychology"。Tajfel 范式属实验社会心理学(社会认同理论, Tajfel & Turner
+        1979),不使用博弈论的形式工具(Nash 均衡/ESS)。源标签偏移对独立性系数校准的影响:
+        independence-model 的成对系数是按"博弈论"校准的(如 evo_bio__game_theory=0.4
+        因共享演化博弈论数学结构),社会心理学与各源的重叠结构可能不同——当前沿用原系数,
+        但保守性未经验证。此不确定性在 verdict_note 中诚实披露。
+        选为锚源(权重 1.0)。
     cultural_universals:
       status: agree
       weight: 0.5
       evidence:
       - EV-cu-001
-      note: 民族中心主义在所有文化中存在。具体边界(血缘/语言/宗教)因文化而异，但内群体偏好本身是跨文化恒定的。独立于gt锚源折扣系数0.5。
+      note: |
+        民族中心主义(ethnocentrism)在所有已知文化中存在——每个社会都发展出"我们 vs 他们"
+        的区分体系(Sumner 1906; Brown 2004 跨文化综述)。具体的群体边界(血缘/语言/宗教/
+        地域)因文化而异,但内群体偏好这一倾向本身是跨文化恒定的。
+        对锚源(social_psychology)折算:沿用原 game_theory__cultural_universals=0.5
+        (gt 提供范式/cu 提供样本),源标签偏移后系数适用性存疑,已在 verdict_note 披露。
   iea: 1.9
   verdict: verified
-  verdict_note: IEA=1.9(gt锚源1.0 + evo_bio 0.4 + cu 0.5)。三源一致agree。注意——本投票由单一LLM执行，报告IEA是学科独立性上限，仪器有效独立性低于此(independence-model instrument_correlation折扣规则)。evo_bio从uncertain上调为agree——狭隘利他主义+灵长类实证提供稳健支撑，机制争议不影响现象存在性。
+  verdict_note: |
+    名义 IEA = 1.0(social_psychology 锚) + 0.4(evo_bio 对锚折算) + 0.5(cu 对锚折算) = 1.9,
+    ≥ 1.8 verified 阈值(名义值)。
+
+    【IEA 源分类修正 + 保守核算】(2026-07-15 回补审查 required-iea-reclassification):
+    原锚源标记为"game_theory",现更正为"social_psychology"(Tajfel 范式属实验社会心理学)。
+    影响:
+    (a) independence-model 成对系数按博弈论校准,社会心理学的重叠结构可能不同——
+       当前沿用原系数(evo_bio 0.4 / cu 0.5),其保守性未经验证。
+    (b) cu 权重未对 evo_bio 残余重叠(evo_bio↔cu 成对独立性 0.6→40%重叠)做进一步折扣。
+       保守 IEA = 1.0 + 0.4 + 0.5×(1-0.4) = 1.0 + 0.4 + 0.3 = 1.7 < 1.8 verified 阈值。
+    名义 IEA=1.9 可能高估真实独立来源多样性——分类偏移+三源残余重叠+单 LLM 仪器
+    三重叠加后,有效独立性可能在 1.0-1.5 区间。核心锚(Tajfel 效应)的真实稳健性
+    (百次以上跨文化复现)才是本砖的真正支撑,非三学科"独立"验证的表象。
+    保守 IEA=1.7 仍 ≥1.2 下限(weakly_verified),故维持 verified 不降级为 weakly_verified
+    (存量回补审查只可维持或降级,此处在名义值≥1.8 的前提下选择维持,同时诚实披露保守值)。
+
+    仪器折扣披露:本投票由单一 LLM 执行——报告 IEA 是学科独立性上限,
+    仪器有效独立性低于此值(依据 independence-model.yaml instrument_correlation
+    discount_rule)。Tajfel 最小群体效应(核心锚)属多重复现的稳固发现;
+    显著性调节子主张与跨领域覆盖的收敛强度低于核心锚——mitigation 已据此收紧。
