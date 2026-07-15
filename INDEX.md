@@ -5,7 +5,7 @@
 > 把碰存量实体的读取成本封顶,不随实体增多滚雪球。
 > 行格式:`id [status] · term — 摘要  ⟵ 承重依赖`
 
-**159 实体**
+**177 实体**
 
 ## L0 物理约束 (3)
 - PHY-001 — 东西放着不管就会自然变乱、变坏(这就是热力学第二定律);社会里的制度、组织、知识也一样——不持续投入精力去维护,就会自然松散、退化,不存在'一次…
@@ -55,21 +55,26 @@
 - THEOREM-relation-information-asset · 关系信息资产定理 — 两个人的‘关系’本质是一笔信息财富——存着彼此打交道攒下的了解，让往后每次合作都更省事；所以熟人办事比生人省力，而长期不来往，这份了解会变淡、关…  ⟵ PHY-001, AXIOM-002, AXIOM-003
 - THEOREM-value-attribution · 价值归属定理 — 一个东西对你有多值钱，取决于两条路加在一起再乘以稀缺度——第一条路是这东西对你自己有用（使用价值），第二条路是别人愿意为它付出什么（交换网络价值…  ⟵ PHY-001, PHY-002, PHY-003-c, AXIOM-001, AXIOM-003
 
-## L2 桥接 bridges (24)
+## L2 桥接 bridges (32)
+- ADV-REVIEW-BR-L2-004
+- ADV-REVIEW-BR-L2-006
+- ADV-REVIEW-BR-L2-010 [verified]
+- ADV-REVIEW-BR-L2-013 — 对 BR-L2-013(不公平厌恶)的 round-1 独立对抗审查
+- ADV-REVIEW-BR-L2-014 — 对 BR-L2-014(代价第三方惩罚)的 round-1 独立对抗审查
 - BR-L2-001 [verified] · 有限理性 — 人的脑子算不过来所有选项、也想不清每个选择的长远后果，只能挑个‘够用就行’的方案，而不是理论上的最优解  ⟵ AXIOM-002
 - BR-L2-002 [verified] · 亲缘利他 — 血缘越近的亲人，人越愿意为他付出、吃点亏也帮——共享的基因越多，愿意出手相助的门槛就越低
 - BR-L2-003 [verified] · 大规模非亲缘合作 — 人类的独特之处，是能让成千上万素不相识的陌生人一起合作（国家、宗教、市场都是），靠的不是熟人互惠或血缘，而是大家共同相信的规矩和‘想象出来的秩序…  ⟵ AXIOM-003, THEOREM-cooperation-precondition
-- BR-L2-004 [verified] · 层级普适性 — 人群一旦超过约150人（一个人能维持稳定社交关系的上限），就必然冒出某种‘少数人拍板’的层级——否则事事都要人人跟人人商量，协调成本根本扛不住  ⟵ AXIOM-002, THEOREM-hierarchy-depth-limit
+- BR-L2-004 [verified] · 层级普适性 — 人群一旦超过约150人(Dunbar数——一个人能维持稳定社交关系的上限),在所有已知案例中都会冒出某种'少数人拍板'的层级——两条独立的链在此…  ⟵ AXIOM-002, THEOREM-hierarchy-depth-limit
 - BR-L2-005 [verified] · 互惠利他 — 经常打交道的人，哪怕没有血缘，也会自然形成‘你帮我、我帮你’的默契——不用签合同、也不靠上头强制，来往多了自己就长出来了  ⟵ AXIOM-003, THEOREM-cooperation-precondition
-- BR-L2-006 [verified] · 内群体偏好 — 人天生偏袒‘自己人’——分东西多给、更信任、有矛盾时也护着；哪怕‘自己人’只是随手按颜色标签这种没意义的方式分出来的，这种偏心照样出现  ⟵ AXIOM-001, THEOREM-group-identity-decay
+- BR-L2-006 [verified] · 内群体偏好 — 人很容易偏袒’自己人’——分东西多给、更信任、有矛盾时也护着；哪怕’自己人’只是随手按颜色标签这种没意义的方式分出来的,这种偏心照样出现  ⟵ AXIOM-001, THEOREM-group-identity-decay
 - BR-L2-007 [verified] · 禀赋互补驱动贸易 — 两拨人手里的东西越是'你有我没、我有你没'(禀赋互补),他们之间越会做买卖;贸易的密度跟着这种互补程度走  ⟵ THEOREM-exchange-competition-alternative
 - BR-L2-008 [verified] · 掠夺是真实且普遍的资源获取策略 — 人不是只会做买卖——当'抢的代价'低于'抢到的好处'时,靠武力直接夺取(劫掠、掠夺、征服)是一种真实存在、跨文化反复出现的策略  ⟵ AXIOM-001, THEOREM-conflict-cost
 - BR-L2-009 [verified] · 人际信任有界且随社会距离衰减 — 一个人能真正'知根知底、放心托付'的对象是有限的——出了熟人圈,信任就随社会距离(血亲→熟人→同乡→匿名陌生人)一路陡降  ⟵ AXIOM-002, THEOREM-relation-information-asset, THEOREM-group-identity-decay, THEOREM-cooperation-precondition
 - BR-L2-010 [verified] · 非人格化制度能替代人际信任支撑陌生人交换 — 熟人之间靠交情办事;陌生人之间没交情,怎么放心交易?答案是把'信任'外包给制度——第三方执法、声誉登记、标准合同、抵押/货币  ⟵ AXIOM-003, THEOREM-cooperation-precondition, THEOREM-relation-information-asset
 - BR-L2-011 [verified] · 通货替代匿名交换中缺失的记忆/可追踪性 — 熟人赊账,靠双方记得谁欠谁、以后还见面;可跟一个【认不出、追不到、不会再见】的人打交道,没法赊账——没人记得住、也没'下次'惩罚  ⟵ AXIOM-003, THEOREM-relation-information-asset, THEOREM-cooperation-precondition
 - BR-L2-012 [verified] · 多边结算成本催生通用媒介 — 就算大家彼此都认得、也记得住谁欠谁(记忆在场),但一大群人互相七拐八绕地欠来欠去,要把这张'谁欠谁'的多边大网记清、轧平,本身就很费劲  ⟵ AXIOM-003, THEOREM-relation-information-asset, THEOREM-exchange-competition-alternative
-- BR-L2-013 [verified] · 不公平厌恶 — 人不光讨厌自己吃亏,有时候连自己占便宜也会不舒服——这种不公平厌恶是刻在脑子里的,连猴子都有;不是长大进了市场才学会计较,而是人天生就对'凭啥你…  ⟵ AXIOM-001, THEOREM-competition-norm, THEOREM-cooperation-precondition
-- BR-L2-014 [verified] · 代价第三方惩罚 — 人不光自己吃亏了要讨公道,看见陌生人欺负另一个陌生人也会气得掏自己的腰包去罚那个欺负人的——这种'多管闲事'的冲动看起来不划算,但它是公平规矩在…  ⟵ AXIOM-001, AXIOM-003, THEOREM-competition-norm, THEOREM-cooperation-precondition, THEOREM-conflict-cost
+- BR-L2-013 [verified] · 不公平厌恶 — 人讨厌自己吃亏(不利不公平)——这是刻在脑子里的,连猴子都有,三四岁小孩就会  ⟵ AXIOM-001, THEOREM-competition-norm, THEOREM-cooperation-precondition
+- BR-L2-014 [verified] · 代价第三方惩罚 — 人不光自己吃亏了要讨公道,看见陌生人欺负另一个陌生人也会气得掏自己的腰包去罚那个欺负人的——这种'多管闲事'的冲动是公平规矩在没人管的情况下还能…  ⟵ AXIOM-001, AXIOM-003, THEOREM-competition-norm, THEOREM-cooperation-precondition, THEOREM-conflict-cost
 - BR-L2-015 [verified] · 程序公平可替结果公平 — 结果输了但过程让人服气,人就能接受;过程不透明又偏袒,就算结果赚了人也觉得不对  ⟵ AXIOM-003, THEOREM-competition-norm, THEOREM-conflict-cost
 - BR-L2-016 [verified] · 报应比例性 — 人不光觉得做坏事该罚,还觉得'罚多少得跟罪配'——太轻了不解恨、太重了又成欺负人  ⟵ AXIOM-003, THEOREM-conflict-cost, THEOREM-competition-norm
 - BR-L2-017 [verified] · 分配规范随语境切换 — 同一家人,分'晚饭'是平均盛,分'谁继承祖宅'就不是平均了  ⟵ AXIOM-001, THEOREM-exchange-competition-alternative
@@ -80,6 +85,9 @@
 - BR-L2-022 [verified] · 价值储藏作为货币的独立功能维度 — 钱'其实做了三件不同的事——买东西（交易媒介）、标价格（记账单位）、存起来以后用（价值储藏）  ⟵ AXIOM-002, AXIOM-003, THEOREM-value-attribution
 - BR-L2-023 [verified] · 金的非货币需求基底与冷启动 — 金在变成'钱'之前，已经有人想要它了——不是因为它能买东西，而是因为它好看、闪亮、做首饰戴在身上就是地位的象征  ⟵ AXIOM-003, THEOREM-value-attribution
 - BR-L2-024 [verified] · 法币信用的连续可逆性与记忆滞后 — 法币的信用不是开关——不是'信任'或'不信任'二选一  ⟵ AXIOM-002, THEOREM-value-attribution
+- BR-L2-025 [weakly_verified] · 数字媒介可处理性 — 纸上的字要人读了才有用,屏幕上的字机器自己就能读、能搜、能改、能跟别处的信息自动合成——这不是'变快了',是信息从'死物'变成了'活物  ⟵ AXIOM-002
+- BR-L2-026 [verified] · AI Agent 信息处理不对称 — AI 不是'更聪明的人'——它在某些事上远超人类(无限记忆、不累、能同时处理海量信息),但在另一些事上根本缺失(没有身体体验、没有真感情、不怕死…  ⟵ AXIOM-002
+- BR-L2-027 [verified] · 注意力稀缺与信息过载 — 脑子只能同时想几件事——信息太少当然不行,但信息太多、被信息淹了,判断力反而下降  ⟵ AXIOM-002
 
 ## L3 推论 corollaries (30)
 - DED-001 [verified] · 组织深度天花板推论 — 光靠人嘴对嘴传话的组织，管理层级最多也就5到7层——再深，最高层掌握的情况就和基层实际严重脱节了；想再大，只能把信息写下来（官僚化）或把权力下放…  ⟵ AXIOM-002, THEOREM-hierarchy-depth-limit, BR-L2-001, BR-L2-004
@@ -159,7 +167,7 @@
 - ICV-001 [conducted] — 请两个'血统不同'的免费 AI 独立盲打分，复核推论 DED-001 经验检验里那 14 个国家的层级数——不图它们更聪明，图它们'错得不一样'…
 - L3-METHODOLOGY [canonical]
 
-## L4 复合推论 composites (9)
+## L4 复合推论 composites (14)
 - L4-001 [verified*] · 国家形成轨迹：从流寇到国家的多条路径 — 流寇变坐寇只是第一步——坐寇最终交出制度型国家、采掘型帝国、还是退化回碎片化， 取决于三股力量的同时拉扯：外面有没有敌人、税是从商人身上收还是农…  ⟵ AXIOM-001, AXIOM-002, AXIOM-003, THEOREM-conflict-cost, THEOREM-power-signal-decay, THEOREM-relation-information-asset, THEOREM-group-identity-decay, THEOREM-cooperation-precondition, THEOREM-exchange-competition-alternative, THEOREM-hierarchy-depth-limit, BR-L2-008, BR-L2-010, BR-L2-004, BR-L2-009, BR-L2-003, BR-L2-006, DED-012, DED-010, DED-006, DED-003
 - L4-002 [verified] · 政体稳定相图 — 政权稳不稳，不是看它"民主不民主"一个指标——是三股力量的同时博弈：输了的人还有没有路走、 裁判是不是自己人、不公平有没有集中到某个群体且让他们…  ⟵ AXIOM-001, THEOREM-position, BR-L2-015, BR-L2-006, BR-L2-013, BR-L2-014, DED-011, DED-014, DED-020, DED-017
 - L4-003 [verified] · 制度共演锁定 — 一个社会用什么样的公平规矩分东西，不是某个人拍板定的——是亲缘远近、人多不多、 资源够不够这三股力量在历史关口上一起决定的  ⟵ AXIOM-001, AXIOM-003, THEOREM-position, THEOREM-group-identity-decay, THEOREM-cooperation-precondition, BR-L2-002, BR-L2-004, BR-L2-006, BR-L2-009, BR-L2-013, BR-L2-015, BR-L2-017, DED-013, DED-016, DED-018, DED-022
@@ -169,8 +177,13 @@
 - L4-007 [verified] · 数字时代道德碎片化 — 算法让邻居活在两个道德宇宙——TP默契崩了，一个社会挤着好几个互不通气的道德部落  ⟵ AXIOM-001, AXIOM-002, AXIOM-003, PHY-001, THEOREM-moral-third-party-enforcement, THEOREM-moral-internalization, THEOREM-group-identity-decay, BR-L2-006, BR-L2-014, BR-L2-018, BR-L2-019, DED-026, DED-025
 - L4-008 [verified*] · 道德绑架 — 道德绑架劫持的不是人的善良，是道德执行机制的自动化回路——A指控→C自动惩罚→B屈从  ⟵ AXIOM-002, THEOREM-moral-third-party-enforcement, THEOREM-moral-internalization, BR-L2-014, BR-L2-006, BR-L2-018, DED-023, DED-026, DED-021, DED-024
 - L4-009 [rejected] · 金价体制切换 — 金价有两套定价规则来回切换——平时它是'商品'，跟着实际利率走（利率高金价跌）；法币信用出问题时它切回'钱'，实际利率失灵、央行和储户抢存量、价…  ⟵ AXIOM-001, AXIOM-002, AXIOM-003, THEOREM-value-attribution, BR-L2-021, BR-L2-022, BR-L2-023, BR-L2-024, DED-027, DED-028, DED-029, DED-030
+- L4-010 [candidate] · 价值储藏放大器的需求部门门控 — 金价对增量需求的'放大器'不是常开的——央行和储户抢金子时放大器全开、等量买盘能掀翻价格；ETF玩家主导时放大器休眠、买卖更'讲道理  ⟵ AXIOM-001, THEOREM-value-attribution, BR-L2-021, BR-L2-022, BR-L2-024, DED-029, DED-030
+- L4-011 [rejected] · 主权信用事件的储蓄端传导链 — 当一个大国储备资产被冻结（≥全球储备1%），钱跑的路线是可预测的——央行先动（换黄金、调结构），老百姓后跟（买金条金币），最后金价重估  ⟵ AXIOM-001, AXIOM-002, THEOREM-value-attribution, BR-L2-022, BR-L2-024, DED-028, DED-029
+- L4-012 [candidate] · 储备资产地位变迁的网络效应动力学 — 储备货币的改朝换代不是各国各自算账的独立决策——它是网络效应驱动的体制切换  ⟵ AXIOM-001, AXIOM-002, AXIOM-003, THEOREM-value-attribution, THEOREM-exchange-competition-alternative, THEOREM-relation-information-asset, THEOREM-cooperation-precondition, BR-L2-021, BR-L2-022, BR-L2-024, BR-L2-007, BR-L2-011, BR-L2-012, DED-027, DED-028, DED-029
+- L4-013 [candidate] · 数字时代价值储藏媒介竞争格局 — 数字交换网络把'什么东西适合当钱/当储备'的六条老规矩重新洗牌了——可分割、可验证、可携带这三条在数字世界里彻底变了含义  ⟵ AXIOM-001, AXIOM-002, AXIOM-003, THEOREM-value-attribution, THEOREM-exchange-competition-alternative, THEOREM-relation-information-asset, THEOREM-cooperation-precondition, BR-L2-021, BR-L2-022, BR-L2-024, DED-027, DED-029
+- L4-014 [candidate] · 平台作为第三组织形态 — 平台(Uber/淘宝/Airbnb)既不是公司(层级命令),也不是菜市场(纯买卖关系)——它是第三种组织:算法当'中层管理'来协调、评分系统当'…  ⟵ AXIOM-002, THEOREM-hierarchy-depth-limit, THEOREM-cooperation-precondition, BR-L2-001, BR-L2-009, BR-L2-010, BR-L2-025, DED-001, DED-006
 
-## L4 审查 reviews (9)
+## L4 审查 reviews (14)
 - ADV-REVIEW-L4-001 — 对 L4-001(国家形成轨迹:从流寇到国家的多条路径,status=candidate)的 round_1 独立对抗审查
 - ADV-REVIEW-L4-002 — 对 L4-002(政体稳定相图:三股力量的同时博弈——轮替开放度×裁决独立度×透明度×不公集中度 →四区+相变边界)的独立对抗审查记录
 - ADV-REVIEW-L4-003 — 对 L4-003(公平制度演化推论)的 round_1 独立对抗审查
@@ -180,6 +193,11 @@
 - ADV-REVIEW-L4-007 [needs_revision] — L4-007 有真东西——DED-026 的边界增殖与 DED-025 的熵增通道并行化产生'多道德空间各自独立演化→不可通约'这一新预测，合取…
 - ADV-REVIEW-L4-008 [needs_revision] — L4-008 有真实的新颖贡献——道德绑架的 A→B→C 三角结构作为武器化路径，Type I（信息劫持） 与 Type II（结构劫持）的区分…
 - ADV-REVIEW-L4-009 [needs_revision] — L4-009 是一条有真涌现的复合推论——招牌格（重定价×高利率）确实需要 DED-029+028+030 三父合力，相关性断裂作为体制指示器是…
+- ADV-REVIEW-L4-010 — L4-010 把 L4-009 里最硬的交互（放大器被需求构成门控）剥出来单独提案，操作化确实比 L4-009 干净得多——连续 gate、无阈…
+- ADV-REVIEW-L4-011 — 对 L4-011（主权信用事件的储蓄端传导链，status=candidate）的 round_1 独立对抗审查
+- ADV-REVIEW-L4-012 — 对 L4-012（储备资产地位变迁的网络效应动力学）的 round_1 独立对抗审查
+- ADV-REVIEW-L4-013 — L4-013 说的是"数字资产可能在下次信用危机里抢走原本流向黄金的避险钱
+- ADV-REVIEW-L4-014 — L4-014 说"平台(Uber/淘宝)是公司和市场之外的第三种组织
 
 ## L4 其它(经验检验/交叉验证等) (1)
 - L4-METHODOLOGY [canonical]
