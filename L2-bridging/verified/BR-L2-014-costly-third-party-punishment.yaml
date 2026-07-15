@@ -62,6 +62,10 @@ falsifiability: |
   路径1和路径2各自独立可证伪——不存在"一条被否证时躲在另一条后面"的护身符结构。
   以上编码规程在见到任何具体案例前已锁死。
 created: 2026-07-14
+revised: 2026-07-15
+review_summary: |
+  1) verified, IEA=1.9; 2) 多学科独立来源收敛(行为经济学锚+演化博弈论+文化人类学),
+  可证伪路径1/2预先锁死编码规程后反例猎捕无活反例发现; 3) 全档见 ADV-REVIEW-BR-L2-014。
 source_anchors:
 - source_id: EV-cu-001
   support: strong
@@ -76,18 +80,21 @@ cross_verification:
         锚源。Fehr & Gächter (2002) 带惩罚的公共品博弈、Fehr & Fischbacher (2004)
         的第三方惩罚博弈:旁观者 A 在与 B/C 均无未来交互时,仍愿付真金白银去罚 B
         对 C 的不公分配。Henrich et al. (2006) 跨 15 个社会复现第三方惩罚普适存在
-        (幅度文化可变)。多实验室、多文化独立复现,不存在自利解释。锚定为 1.0。
+        (幅度文化可变)。这是行为经济学中复现最稳健的发现之一——多实验室、多文化
+        独立复现,不存在纯粹自利的替代解释。锚定为 1.0。
     evolutionary_game_theory:
       status: agree
-      weight: 0.5
+      weight: 0.4
       evidence: []
       note: |
-        强互惠/利他惩罚形式模型(Gintis 2000, Bowles & Gintis 2004, Boyd et al.)。
-        在群体竞争/文化群体选择下代价惩罚可演化稳定,为该现象提供演化逻辑。
-        独立性来源:数学建模路径,不依赖实验室数据。折扣理由(两重):
-        (1) 理论 vs 实证——模型解释"为何可持续",不直接测量现实惩罚行为;
-        (2) 与锚源(行为经济学)共享博弈论范式(独立模型缺 behavioral_economics 直接
-        系数,取 default 0.6;因两者共用公共品/最后通牒等博弈结构,再向下折至 0.5)。
+        强互惠/利他惩罚的形式模型(Gintis 2000, Bowles & Gintis 2004, Boyd et al.):
+        在群体竞争/文化群体选择条件下,代价惩罚可演化稳定——惩罚者个体吃亏,但其
+        所在群体因合作率更高而在群体间竞争中胜出。模型为经验现象提供了演化逻辑,
+        且方法论独立于实验室实验(数学建模 vs 行为实验)。
+        独立系数:independence-model 无 behavioral_economics 直接配对,取最接近的
+        evo_bio__game_theory = 0.4。该对捕捉了演化博弈论与行为经济学的共享博弈论
+        核心(公共品/囚徒困境/最后通牒博弈结构),模型注明"核心数学结构共享。
+        在合作/信号主题上几乎是一棵树"——此处精准适用。
     cultural_anthropology:
       status: agree
       weight: 0.5
@@ -95,22 +102,29 @@ cross_verification:
       note: |
         无国家社会的分散化规范执行(排斥/羞辱/放逐),执行者是任意群体成员而非专门
         权威(Boehm 1999 反向支配层级覆盖多社会;Wiessner 2005 昆桑人羞辱仪式)。
-        独立性来源:民族志参与观察方法论 + 小规模社会样本,与实验室 WEIRD 被试
-        双重错开。无 behavioral_economics 直接系数,default 0.6;保守取 0.5
-        (承认田野"第三方惩罚"编码含研究者判断、与实验范式存在概念传染)。
+        方法论独立于实验室实验——民族志参与观察 vs incentivized lab games,
+        被试群体双重错开(小规模社会 vs WEIRD 大学生)。
+        独立系数:independence-model 无 behavioral_economics 直接配对,取最接近的
+        game_theory__cultural_universals = 0.5。保守取值,承认田野"第三方惩罚"
+        编码含研究者判断、与实验范式存在概念传染(尽管方法论鸿沟大于该系数暗示)。
         evidence tag 修正(2026-07-15):原指向 EV-cu-001(内群体偏好证据),已移除——
         Boehm 1999/Wiessner 2005 是第三方惩罚的专属民族志文献,非 EV-cu-001 覆盖范围。
-  iea: 2.0
+  iea: 1.9
   verdict: verified
   verdict_note: |
-    IEA = 1.0(行为经济学锚定)+ 0.5(演化博弈论:模型独立于实验,折扣理论vs实证
-    及博弈论范式共享)+ 0.5(文化人类学:民族志+小规模社会样本,双重错开实验室)
-    = 2.0,≥1.8 verified 阈值。压力测试:即便把演化博弈论按 evo_bio__game_theory
-    的 0.4 系数向下取(承认与锚源共享博弈树),IEA=1.9 仍 ≥1.8——结论对系数扰动稳健。
-    存量回补审查裁决:维持 verified(本相独立复核未发现推翻/降级证据)。
-    【仪器折扣披露 / instrument_disclosure】本次三路投票由单一 LLM 执行(非独立人类
-    专家/非独立文献通道)。据 independence-model 的 discount_rule:报告的 IEA=2.0 是
-    "学科独立性"上限,"仪器有效独立性"低于此——三源证据由同一 LLM 及其重叠语料读取
-    判定,统一先验可能横加到三票上。缓解(mitigation):本命题为多实验室+跨文化
-    (Henrich 15 社会)反复复现的稳固共识,受真实文献收敛支撑,单仪器忧虑被显著缓解,
-    非新颖/争议命题的承重红旗。
+    IEA = 1.0(行为经济学锚定) + 0.4(演化博弈论:取 evo_bio__game_theory = 0.4,
+    共享博弈论核心数学结构) + 0.5(文化人类学:取 game_theory__cultural_universals
+    = 0.5,方法论+被试群体双重错开) = 1.9, ≥ 1.8 verified 阈值。
+    压力测试:即便将演化博弈论放松至 0.5(原审取值,始于 default 0.6 向下折),
+    IEA = 2.0 仍 ≥ 1.8;即便同时将文化人类学压至 0.4, IEA = 1.8 仍卡在阈值上
+    ——结论对合理的系数扰动稳健。
+    存量回补审查裁决:维持 verified。本轮独立复核将演化博弈论权重从 0.5 下调至
+    0.4(直接引用 evo_bio__game_theory 对,更严格地对齐 independence-model),
+    IEA 从 2.0 → 1.9,仍高于 1.8,不触发降级。不得因"已 verified"放水——
+    本轮是独立的存量回补审查,全流程重跑,下调来自独立判断非因原审有误。
+    【仪器折扣披露 / instrument_disclosure】本次三路投票由单一 LLM 执行(非独立
+    人类专家/非独立文献通道)。据 independence-model 的 discount_rule:报告的
+    IEA=1.9 是"学科独立性"上限,"仪器有效独立性"低于此——三源证据由同一 LLM
+    及其重叠语料读取判定,统一先验可能横加到三票上。缓解(mitigation):本命题为
+    多实验室+跨文化(Henrich 15 社会)反复复现的稳固共识,受真实文献收敛支撑,
+    单仪器忧虑被显著缓解,非新颖/争议命题的承重红旗。
