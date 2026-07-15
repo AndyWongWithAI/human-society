@@ -142,3 +142,158 @@ round_1:
     should 调和 innate-vs-市场逻辑二分:statement 的"并非后天习得的市场逻辑内化"与
     Henrich et al. 2010(市场整合正向预测公平出价)同源相抵;改为"先天能力 + 文化/市场
     校准",承认市场参与调制公平【水平】,而先天成分决定其【存在与方向】。
+
+round_2:
+  reviewer: '独立子 Agent (round 2, 全新独立上下文, 验证 round_1 修复 + 重新对抗审查)'
+  verdict: verified
+  fix_verification: |
+    逐条核对 round_1 两条 required 修复:
+    Required①(有利不公平分支缺证伪出口):已修复。falsifiability 字段现已包含"分支2(有利
+    不公平厌恶——次级主张)",证伪条件为(a)在所有文化中完全不存在 或 (b)在所有文化中发育
+    时序均不晚于不利分支。两个条件均可事前测,与命题的限定主张("部分文化存在,发育更晚")
+    匹配。
+    Required②(Machiguenga 事实错):已修复。cultural_universals rationale 已改为"无一社会
+    符合纯自利预测,但拒绝行为跨文化差异极大——从Machiguenga(全样本仅约1次拒绝)到Au/Gnau
+    (超公平报价也被拒)"。与 Henrich 2005 一致,内部自相矛盾已消除。cross_verification 的
+    cultural_universals note 亦使用诚实口径。
+    round_1 的 should(innate-vs-市场逻辑二分)未在主 statement 中修改,仍保留"先天能力,
+    非市场逻辑内化"措辞。因系 should 非 required,不阻塞 verified 判决;但本轮将其提升为
+    本轮的 should,列于下文 should_fixes 区块(非 required,为升级建议)。
+  verdict_note: |
+    本砖的经验内核——不利不公平厌恶的跨物种/发育/跨文化证据——在行为科学中属于极少数具备
+    高度复现稳健性的发现集群。round_1 两条 required 修复落地后,砖的 statement 与证伪条件
+    已自洽,有利不公平分支的有限主张与证伪覆盖匹配,Henrich 2005 事实表述诚实。本轮独立
+    对抗审查逐条走完 11 红旗,未发现新的 required 级缺陷。反例猎捕未获 scope 内活反例。
+    IEA=1.9 算术正确、单 LLM 折扣如实披露。满足 verified 三条硬门槛:无 required 缺陷 +
+    反例猎捕已完成 + 未重复 DED-004/DED-007 模式。
+
+    原 should(innate-vs-市场二分)本轮确认并升级;另新增 4 条 should(均不阻塞
+    verified):口径注册缺口、有利分支经验底子偏薄、shared-paradigm IEA 重叠未建模、
+    statement 主文措辞欠一致。详见 should_fixes 区块。
+  red_flag_findings:
+    brick_conclusion: |
+      【未命中】。非平凡内核清晰:不利 vs 有利不公平厌恶在发育时序/跨文化分布/跨物种证据
+      上的系统不对称性——此二维度不对称性不在 L1 的 CONCEPT-fairness(分析性定义)中,也不在
+      AXIOM-001、THEOREM-competition-norm、cooperation-precondition 中。亦不重复 BR-L2-014
+      (第三方惩罚)、BR-L2-015(程序公平)、BR-L2-016(报应比例性)、BR-L2-017(语境切换)。
+      桥接方向(公平定义→可观测跨物种/跨文化心理反应)真实,非"专为某条 L3 窄化"。
+    measurement_axis_orthogonal: |
+      【未命中】。自变量=分配结果的客观不对称(由实验博弈支付矩阵外生设定);被观测量=负反应
+      (拒绝/负情绪/退出/减少未来合作)。二者异源,无隐藏焊点。"先天能力"的推断虽依赖多重
+      证据收敛而非单一直接测量,但各来源(跨物种/发育/跨文化)在测量路径上彼此独立——卷尾猴
+      用非语言行为范式、儿童用简化博弈、跨文化用田野博弈——非同源焊死。
+    anti_talisman: |
+      【未命中——round_1 的命中已修复】。不利分支的三条件(a)(b)(c)事前可测:存在一个面对
+      不利不公平却既无负情绪、也无任何代价回应的人群即证伪。有利分支现亦有独立可测证伪
+      出口(分支2)。"先天能力"的推断虽非直接测量(系从多重证据收敛导出),但这是行为科学
+      的标准方法论——跨物种+早期发育+跨文化三条独立证据线的收敛已提供对 innateness 的
+      有效操作化。无事后开脱的护身符结构:若某文化显示零负情绪+零代价回应,砖不能以
+      "文化抑制了先天能力"开脱,因为(c)条件已同时要求情绪和代价均为零。
+    real_world_anchor_factcheck: |
+      【未命中——round_1 的 required②已修复】。Henrich 2005 的 Machiguenga 数据现如实
+      表述为"全样本仅约1次拒绝"。Brosnan & de Waal(2003)的复制争议已标注("部分实验
+      未复现"),处理诚实。Blake et al. 2015 七文化研究引用准确(美/加/乌干达出现有利
+      不公平厌恶;墨西哥/秘鲁/塞内加尔/印度不出现)。但从 7 文化→"跨文化大面积缺席"的
+      推断基于小型便利样本,外部效度需承认(见下 should 第2条)。
+    condition_is_prediction_not_definition: |
+      【未命中】。核心是可证伪的跨物种/发育/跨文化预测,非必然为真的概念定义。
+    primary_suspect_and_trivialization: |
+      【部分命中→should】。L2 砖无 primary_suspect 字段,本轮审查判最弱腿=有利不公平
+      分支的经验基础偏薄:发育时序基于单一研究(Blake et al. 2015)、跨文化分布基于仅
+      7 个社会、"在部分文化中存在"是 trivial 的低门槛(只需 1 个文化即可满足)。尽管该
+      分支的证伪条件匹配其有限主张,但 statement 层对该分支的经验强度的暗示仍偏乐观。
+      无被稀释为相邻常识的迹象——发育分叉+跨文化不对称是砖的识别性贡献。
+    calibration_registration: |
+      【部分命中→should】。falsifiability 两分支均为定性条件,未注册精确测量口径:负情绪
+      的具体测量工具/编码方案、样本量下限、统计显著性阈值。虽 L2 砖的定位(桥接概念到
+      证据)决定了其精确度天然低于 L3 推论,且砖无"纯数字"("~4 岁""~8 岁"有文献操作化
+      支撑),但 Machiguenga 案例(接近零拒绝)已暴露边界裁决的潜在歧义——若未来发现某社会
+      拒绝率 0.05%,属"方向存在"还是"有效缺席",在没有预注册口径的情况下无法严格裁决。
+      当前砖靠诚实表述 Machiguenga 数据自身(不声称它能裁决)绕开了这一点,故降为 should。
+  iea_independence_check: |
+    IEA 算术:1.0(behavioral_economics→game_theory 锚源)+ 0.4(evo_bio__game_theory
+    系数)+ 0.5(game_theory__cultural_universals 系数)= 1.9。验证:锚源确为 game_theory
+    通道,evo_bio 与 cu 均对 game_theory 锚折算,系数准确取自 independence-model。
+    存量的 2.1(误用 evo_bio__cu=0.6)已回补为 1.9,回补方向合规(只降不升)。1.9 ≥ 1.8
+    verified 阈值,过线但不宽裕。
+
+    单 LLM 仪器折扣:已如实披露(cross_verification verdict_note 明写"本次投票由单一
+    LLM(deepseek-v4-pro)执行…报告的 IEA 是学科独立性上限,真实仪器有效独立性低于此"),
+    符合 instrument_correlation.discount_rule。缓解理由(多重真实文献收敛,非新颖/争议
+    命题)合理——不公平厌恶属行为科学少数高复现共识,非 speculative 主张。
+
+    本轮新增关注(should 级,非 required):三票源共享同一实验范式基因。behavioral_economics
+    (最后通牒/独裁者/公共品博弈)+ evolutionary_biology(灵长类 inequity 范式,逻辑同源)
+    + cultural_universals(以相同博弈范式跑非 WEIRD 人口)——三者并非三个独立实验家族,
+    而是同一实验范式的三个受试群体变体(WEIRD 大学生/非人灵长类/非 WEIRD 田野人群)。
+    模型的对偶独立系数(game_theory__cultural_universals=0.5 等)捕捉的是理论框架的共享,
+    但方法论层面的"同一实验家族"重叠未被独立建模。这不是 IEA 计算错误(砖遵守了模型),
+    而是模型本身对共享实验范式的折扣不足——有效的三源独立性<1.9。缓解:不同受试群体
+    确提供了边际独立性(灵长类无市场经验/田野人群非 WEIRD),所以不是 zero-independence;
+    但应如实记录这个 untagged overlap。不降 verdict,列为 should。
+  counterexample_hunt: |
+    本轮独立猎捕(scope=人类群体,目标=证伪不利不公平厌恶的跨文化普适性 + 有利不公平的
+    发育时序/分布模式):
+
+    候选1(最强)——Machiguenga 再检验(round_1 已猎,本轮复核)。Henrich 2005 全样本约
+    1 次拒绝,接近零地板。本轮判定:【非净杀】。理由:Machiguenga 已被改造为砖的诚实表述
+    (round_1 Required② 修复),砖不声称"所有社会系统性拒绝",而是"无一社会符合纯自利
+    但差异极大"。Machiguenga 不再构成事实冲突,且可作为幅度差异的证据(阈值接近零)。
+
+    候选2——有利不公平厌恶在 Blake et al. 2015 之外的 follow-up 研究中的分布。后续
+    literature(House et al. 2020, Developmental Science 等跨国儿童公平研究)总体
+    支持 advantageous inequity aversion 的跨文化变异性——它在更多社会中缺席而非出席。
+    本轮判定:【被消化/反成支持】。扩展文献不杀有利分支的有限主张("部分存在"),反而
+    加固其跨文化碎片化模式。
+
+    候选3——狩猎采集 immediate-return 社会(如 Hadza/!Kung)的分配实验。Hadza(Henrich
+    2005)出价低且拒绝率尚可,但核心的不利不公平厌恶方面,仍表现非零水平的拒绝。!Kung
+    有"侮辱肉食"文化——猎人带回肉被嘲弄,但本质是抑制 hierarchy 的 egalitarian 机制,
+    反而以"对不公平的敏感"为底层心理,不构成净杀。本轮判定:【被消化/反成支持】。
+
+    候选4——荣誉文化/超公平文化(PNG 的 Au/Gnau,Henrich 2005)中高价被拒现象。round_1
+    已猎,本轮复核:这仍是"对不公平结果的敏感反应",只是文化把"接受过高馈赠=背负义务"
+    编码为不公平的方向与标准实验室范式相反。方向相反但底层心理机制相同(对偏离预期的
+    负反应),不支持净杀。判定:【被消化/反成支持】。
+
+    候选5——极端等级社会(印度种姓制度)中的儿童公平感发育。假设:等级社会化可能使儿童
+    更早习得"接受不平等",从而压制 disadvantageous inequity aversion。现状:Blake et al.
+    2015 跨文化样本含印度,未按种姓分层;文献中未见针对不可接触者儿童的博弈实验。此为
+    "未实测区域",不是"已有观察冲突"。在没有数据的情况下,不构成净杀,但指向砖的经验
+    覆盖缺口(见 should 第 2 条)。
+
+    结论:无 scope 内活反例净杀 core(不利不公平厌恶的跨文化/跨物种普适方向)。
+    有利分支的有限主张(部分存在)被后续文献加固。猎捕揭示两处应补边界:①有利分支的
+    跨文化分布基于小样本文化集合(7 个,后续部分扩展但未覆盖全谱);②印度种姓等极端等级
+    条件下的儿童博弈实验是一块经验空白(silence≠counterevidence,但降低 confidence)。
+    两处均录为 should。
+  non_recurrence: |
+    DED-004(不可证伪循环):未复发。两分支均有独立可测证伪出口,且 round_1 修复后有利
+    分支不再在 statement 中被断言却落于证伪条款之外。不利分支的"既无负情绪,也无代价
+    回应"虽设定了高证伪门槛(实践中任何人群都可能满足弱形式的至少其一),但这是 universal
+    claim 的固有特征——发现零实例即可证伪,非循环自证。DED-007(测量轴焊死):未复发,
+    自变量(外生支付结构)与被观测量(行为反应)异源正交。
+  required_fixes: []
+  should_fixes:
+  - |
+    should①(本轮升级自 round_1 should):statement 的"先天能力,非市场逻辑内化"二分法
+    与 Henrich et al. 2010(市场整合正向预测公平出价)相抵。建议改为"先天能力 + 文化/
+    市场校准",使命题承认市场参与调制公平【水平】,而先天成分决定其【存在与方向】。
+    这并非削弱命题,而是让命题与全部证据对齐(而非仅与部分证据对齐)。
+  - |
+    should② 声明有利不公平分支的经验基础厚度有限:发育时序目前主依赖 Blake et al. 2015
+    单一研究,跨文化分布基于 7 个社会(而非全球代表性样本)。"跨文化大面积缺席"措辞应加
+    限定——改为"在已有研究的七文化中仅三文化出现",或补充后续扩展文献(House et al. 2020
+    等)的样本量以加固该主张。核心结论(有利不公平厌恶变异大)不变,仅诚实度提升。
+  - |
+    should③ 记录 shared-paradigm IEA 重叠:三票源的独立性折扣(0.4/0.5)建模的是理论框架
+    重叠,但 behavioural_economics、evolutionary_biology(灵长类 inequity 范式)、cultural_
+    universals(田野 ultimatum game)共享同一核心实验范式(资源分配博弈)的基因。方法论
+    层面的重叠未被 independence-model 的对偶系数独立捕捉。这不是 IEA 计算错误,但 mean
+    有效的三源独立性<1.9。建议在 cross_verification 中添加一个简短的方法论重叠声明
+    (一句即可),不要求改数字。
+  - |
+    should④ statement 中"跨物种稳健(Brosnan & de Waal 2003)"的"稳健"一词与砖自身在同一段
+    cross_verification note 中承认的"复制争议"之间有张力:可改为"跨物种有证据
+    (Brosnan & de Waal 2003),但存在复制争议"以达措辞一致性——避免读者读到
+    statement 的"稳健"时尚未看到后面 note 中的"部分实验未复现"。
