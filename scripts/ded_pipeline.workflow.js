@@ -14,20 +14,24 @@
 //   maxRounds: 3,                            // 可选,默认 3
 //   repo: '/home/hq/research/human-society'  // 可选
 // }
+//
+// v2 效率优化 (2026-07-15):
+// - Author 不跑 index.py 再生(浪费),不逐份读 L2 砖全文(INDEX 摘要够用)
+// - Reviewer r2+ 不读全量旧审查档(改读 DED review_summary 紧凑摘要)
+// - Revise 阶段自动将本轮裁决压进 DED review_summary
 
 export const meta = {
   name: 'ded-pipeline',
-  description: '公理化推论管线:author(带前置清单)→ adaptive 对抗审查 loop → 定论,轮间不过主循环,只回紧凑裁决',
+  description: '公理化推论管线 v2:author(INDEX+清单)→ adaptive 对抗审查 loop → 定论,轮间不过主循环',
   phases: [
-    { title: 'Author',   detail: '按前置清单起草瘦身 candidate DED' },
-    { title: 'Review',   detail: 'fresh 实例读评分卡对抗审查,自写档,只回紧凑裁决' },
-    { title: 'Revise',   detail: '按 required 定向 Edit,不整份重写' },
-    { title: 'Finalize', detail: 'verified 翻牌 / rejected 归档,回紧凑摘要' },
+    { title: 'Author',   detail: '读 INDEX+清单起草瘦身 candidate,砖仅读摘要行' },
+    { title: 'Review',   detail: 'fresh 实例读评分卡对抗审查,读 DED review_summary 而非全量旧审查' },
+    { title: 'Revise',   detail: '定向 Edit,写 DED review_summary 紧凑摘要供下轮复用' },
+    { title: 'Finalize', detail: 'verified 翻牌 / rejected 归档' },
   ],
 }
 
 let b = args || {}
-// harness 有时把对象 args 序列化成 JSON 字符串;兼容两种传法。
 if (typeof b === 'string') {
   try { b = JSON.parse(b) } catch (e) {
     return { error: 'args 是字符串但非合法 JSON', raw: String(b).slice(0, 200) }
@@ -36,7 +40,6 @@ if (typeof b === 'string') {
 const REPO = b.repo || '/home/hq/research/human-society'
 const MAX = b.maxRounds || 3
 
-// --- 基本校验:缺关键 brief 字段直接回错,不空跑 ---
 const missing = ['id', 'slug', 'reviewNum', 'title', 'thesis'].filter((k) => !b[k])
 if (missing.length) {
   return { error: `brief 缺字段: ${missing.join(', ')}`, hint: '见脚本顶部 BRIEF 示例' }
@@ -50,13 +53,12 @@ const INDEX = `${REPO}/INDEX.md`
 const bricks = (b.bricks || []).join(', ')
 const domain = JSON.stringify(b.domain || [])
 
-// --- 结构化返回 schema(强制紧凑) ---
 const AUTHOR_OUT = {
   type: 'object',
   properties: {
     done: { type: 'boolean' },
-    coreOneLine: { type: 'string', description: '推论核心一句话' },
-    validatorOk: { type: 'boolean', description: 'validate.py 是否通过且实体+1、无 ❌ YAML' },
+    coreOneLine: { type: 'string' },
+    validatorOk: { type: 'boolean' },
   },
   required: ['done', 'coreOneLine', 'validatorOk'],
 }
@@ -64,8 +66,8 @@ const REVIEW_OUT = {
   type: 'object',
   properties: {
     verdict: { type: 'string', enum: ['verified', 'needs_revision', 'rejected'] },
-    requiredFixes: { type: 'array', items: { type: 'string' }, description: 'required/should 最小清单,每条一行;无则空数组' },
-    counterexample: { type: 'string', description: '反例猎捕结果一句话' },
+    requiredFixes: { type: 'array', items: { type: 'string' } },
+    counterexample: { type: 'string' },
     oneline: { type: 'string' },
   },
   required: ['verdict', 'requiredFixes', 'oneline'],
@@ -85,30 +87,24 @@ phase('Author')
 const authored = await agent(
   `你是公理化推论【作者】,全新上下文。目标:把下列推论写成一份【瘦身 canonical】的 candidate YAML。
 
-## 先做(封顶读取成本,别整份扫 L3-deductions/)
-先跑 \`cd ${REPO} && python scripts/index.py\` 重生实体索引,再读 ${INDEX}——它一行一条列出所有已有实体(id/status/term/摘要/依赖)。用它了解已有推论、**避免与既有推论重叠**、找对齐判别的对象;只在真需核对某条全文时才打开那一两份。
-
-## 必读
-1. 前置清单 + 瘦身格式规范:${CHECKLIST}(务必读完,起草前逐条自查 A–E,格式照"瘦身 canonical DED 格式"节)
-2. 承重砖(逐份读,推论只能引已 verified 的砖):${bricks}(在 ${REPO}/L2-bridging/verified/<id>-*.yaml)
+## 封顶读取(两份)
+1. 读 ${INDEX}(定长索引,一行一条实体)——了解已有推论、避免重叠、找判别对象。
+2. 读 ${CHECKLIST}(前置清单+瘦身格式)——逐条自查 A–E,照底部"瘦身 canonical DED 格式"节写。
+3. 承重砖 ${bricks} ——【仅读 INDEX 摘要行,不逐份读全文】。
+   起草中遇到具体歧义时再打开对应砖全文 (${REPO}/L2-bridging/verified/<id>-*.yaml)。
 
 ## 要写的推论
-- id: ${b.id}   term 用中文名(English)
-- 主题: ${b.title}
+- id: ${b.id}   主题: ${b.title}   核心一句话: ${b.coreClaim || '(从论点提炼)'}
+- domain: ${domain}   承重砖: ${bricks}
 - 论点/承重逻辑/招牌预测:
 ${b.thesis}
-- 核心一句话(人话摘要与 statement 对齐): ${b.coreClaim || '(从论点提炼)'}
-- domain: ${domain}
-- 承重砖: ${bricks}
 
 ## 硬要求
-- 严格按前置清单【瘦身格式】写,只放规范 claim;审查史留给 ADV-REVIEW,别在 DED 里开 adversarial_review 全过程(只需 review_summary 占位一行)。
-- 起草时把清单 A(逐格判空)、B(操作化/测量轴正交/anti-talisman)、C(射程独立/primary_suspect/判别)真正落到对应字段;nontriviality_test 与 falsification_trace 必写。
-- **YAML 陷阱**:多行段一律 \`|\` 字面块标量;别在裸标量写 ASCII 冒号+空格(会把块顶飞)。
-- 写到 ${DED_PATH};写完跑 \`cd ${REPO} && python scripts/validate.py\`,确认实体数 +1 且【无 ❌ YAML】、引用完整。
+- 瘦身格式照清单底部节。必填:nontriviality_test / falsification_trace / primary_suspect。
+- YAML 陷阱:多行段用 | 块标量,裸标量禁 ASCII 冒号+空格。
+- 写到 ${DED_PATH};跑 \`cd ${REPO} && python scripts/validate.py\`,确认实体+1、无 ❌、引用完整。
 
-## 返回(紧凑,勿复述全文)
-{done, coreOneLine, validatorOk}`,
+## 返回(紧凑){done, coreOneLine, validatorOk}`,
   { label: `author:${b.id}`, phase: 'Author', schema: AUTHOR_OUT, agentType: 'general-purpose' }
 )
 
@@ -131,18 +127,17 @@ while (round < MAX) {
     `你是【独立对抗审查者】(round ${round}),全新上下文,与作者及前几轮审查者无关。
 
 ## 唯一校准来源
-评分卡:${RUBRIC}(读它即可,**不要**去读其它参照推论 DED-006/007 等——那是浪费)。
-
-## 已有实体上下文(按需)
-如需了解本推论与已有实体的关系(判别/重叠),读定长索引 ${INDEX},别整份扫其它推论全文。
+评分卡:${RUBRIC}(读它即可,**不要**去读其它参照推论——那是浪费)。
 
 ## 审查对象
-${DED_PATH}(status: candidate)。承重砖如需核对 brick=conclusion:${bricks}(在 ${REPO}/L2-bridging/verified/)。
-${round > 1 ? `前几轮记录在 ${REVIEW_PATH},读 round_1..round_${round - 1} 了解已修什么,别重复已解决的点。` : ''}
+${DED_PATH}(status: candidate)。
+承重砖如需核对:${bricks}（在 ${REPO}/L2-bridging/verified/,仅在真需核对事实时打开全文）。
+${round > 1 ? `**前轮摘要** (已在 DED 文件的 review_summary 字段,读它即可——不读全量旧审查档,那是浪费):\n读 ${DED_PATH} 的 review_summary 字段,含 r1–r${round - 1} 紧凑结论。仅在 review_summary 有歧义或需核对前轮细节时,再打开 ${REVIEW_PATH} 对应 round。` : ''}
 
 ## 任务
-按评分卡红旗逐条攻 + 反例猎捕(必做,判 verified 前尤其)。裁决语义、verified 三条门、返回格式全照评分卡。
-把本轮完整评审写进 ${REVIEW_PATH} 的 \`round_${round}\` 块(该文件${round === 1 ? '需新建,含 id: ADV-REVIEW-' + b.reviewNum + '、type: adversarial_review、reviews: ' + b.id + '、target、protocol,及 round_1' : '已存在,只加/改 round_' + round + ',勿动别轮'})。写完跑 \`cd ${REPO} && python scripts/validate.py\` 确认 YAML 不破(长段用 \`|\`)。
+按评分卡红旗逐条攻 + 反例猎捕(必做)。裁决语义、verified 三条门、返回格式全照评分卡。
+把本轮完整评审写进 ${REVIEW_PATH} 的 round_${round} 块。
+跑 \`cd ${REPO} && python scripts/validate.py\` 确认 YAML 不破。
 
 ## 返回(紧凑){verdict, requiredFixes, counterexample, oneline}`,
     { label: `review:${b.id}:r${round}`, phase: 'Review', schema: REVIEW_OUT, agentType: 'general-purpose' }
@@ -167,9 +162,10 @@ ${fixes.map((f, i) => `  ${i + 1}) ${f}`).join('\n')}
 - 审查全档:${REVIEW_PATH} 的 round_${round}(如需上下文)
 
 ## 硬要求
-- 只 Edit 受影响的段落,保持瘦身格式;每处改动要真正消解对应 required(不是敷衍加句话)。
-- 在 ${DED_PATH} 的 review_summary 追加/更新一行本轮结论;若需记作者回应,写进 ${REVIEW_PATH} 的 author_response_round_${round}(别塞回 DED)。
-- YAML 陷阱同前(\`|\` 块标量)。改完跑 \`cd ${REPO} && python scripts/validate.py\` 确认无 ❌ YAML、引用完整。
+- 只 Edit 受影响的段落,保持瘦身格式;每处改动真正消解对应 required。
+- **【关键】在 ${DED_PATH} 的 review_summary 追加本轮 compact 摘要**(1–2 行):本轮裁决词 + 修复的核心红旗 + "见 round_${round}"。这行是下轮审查者的"前轮摘要"。
+- 若需记详细作者回应,写进 ${REVIEW_PATH} 的 author_response_round_${round}(不塞回 DED)。
+- YAML 陷阱同前(| 块标量)。跑 \`cd ${REPO} && python scripts/validate.py\` 确认无 ❌、引用完整。
 
 ## 返回(紧凑){done, validatorOk, note}`,
     { label: `revise:${b.id}:r${round}`, phase: 'Revise', schema: REVISE_OUT, agentType: 'general-purpose' }
@@ -186,19 +182,19 @@ if (verdict === 'verified') {
   await agent(
     `把 ${DED_PATH} 的 status 由 candidate 改为 verified。
 
-更新 review_summary —— 【严格 ≤3 行,只留结论+指针,禁止复述每轮 required/整改细节(那是双存,归 ADV-REVIEW)】,照此模板(用 \`|\` 块标量):
-  1) r1 <verdict> → r2 <verdict> → … → 定论 verified(只写裁决词,别写每轮改了啥)
+更新 review_summary —— 【严格 <=3 行,只留结论+指针,禁止复述每轮 required/整改细节(那是双存,归 ADV-REVIEW)】,照此模板(用 | 块标量):
+  1) r1 <verdict> -> r2 <verdict> -> ... -> 定论 verified(只写裁决词)
   2) 一句话为何 verified(核心载重新意 + 反例猎捕无活反例)
   3) 全档见 ADV-REVIEW-${b.reviewNum}。
 
-补 revised 日期与 revision_note(一行摘要即可)。跑 \`cd ${REPO} && python scripts/validate.py\` 确认无 ❌ YAML、状态检查通过。返回 {done, validatorOk, note}。`,
+补 revised 日期与 revision_note(一行摘要)。跑 \`cd ${REPO} && python scripts/validate.py\` 确认无 ❌ YAML、状态检查通过。返回 {done, validatorOk, note}。`,
     { label: `finalize:${b.id}`, phase: 'Finalize', schema: REVISE_OUT, agentType: 'general-purpose' }
   )
 }
 
 return {
   id: b.id,
-  verdict,          // verified / needs_revision / rejected
+  verdict,
   rounds: round,
   core: authored.coreOneLine,
   counterexample: lastCounterexample,
