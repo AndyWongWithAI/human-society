@@ -1,0 +1,144 @@
+id: ADV-REVIEW-BR-L2-013
+type: adversarial_review
+reviews: BR-L2-013
+layer: L2-bridging
+
+人话摘要: |
+  对 BR-L2-013(不公平厌恶)的 round-1 独立对抗审查。裁 needs_revision:核心
+  (不利不公平厌恶=演化根深、学龄前+跨物种可见、非市场后天习得)证据极稳,IEA 算术与
+  折扣披露诚实,不是失败点;但有两条 required 级过度伸张须收口——①证伪条件只覆盖
+  "不利不公平"分支,statement 里同时断言的"有利不公平厌恶"(发育更晚、跨文化更弱)
+  完全落在证伪条款之外,属半不可证伪;②"所有社会均系统性拒绝极低报价"与 Henrich 2005
+  的 Machiguenga(几乎全盘接受、仅 1 次拒绝)事实冲突,且与砖自陈"阈值从接近零"内部
+  自相矛盾——接近零阈值=无系统性拒绝。另附 should:innate-vs-市场逻辑二分法与 Henrich
+  2010(市场整合正向预测公平出价)的同源发现相抵,应改为"先天能力 + 文化/市场校准"。
+  反例猎捕:Machiguenga 净出"强普适性"过度伸张(核心存活),非净杀。
+
+target: BR-L2-013
+protocol: |
+  Rule B 独立对抗审查(作者≠审查者,全新独立上下文,与写砖者及 IEA 调查员无关)。
+  L3 评分卡通用红旗 11 条 + L2 专属 5 条(brick=conclusion / 测量轴正交 / anti-talisman /
+  IEA 独立性诚实含单 LLM 折扣 / 反例猎捕必做)。默认怀疑,方法论 > 任何单条命题。
+
+round_1:
+  reviewer: "独立子 Agent (round 1, 全新独立上下文, 与写砖者及 IEA 调查员无关)"
+  verdict: needs_revision
+  verdict_note: |
+    本砖的经验内核是真的、且极稳:不利不公平厌恶(disadvantageous inequity aversion)是
+    行为科学中复现最扎实的发现之一——最后通牒/独裁者/公共品三范式跨数十国复现、
+    Fehr/Bernhard/Rockenbach 2008 在学龄前儿童中观测到、Brosnan & de Waal 在灵长类中
+    观测到自动负反应,"非市场后天习得"的先天成分证据充分。IEA 算术正确(1.0+0.4+0.5=1.9
+    ≥1.8),且已修正存量误用(把 evo_bio__cultural_universals=0.6 误当锚源折算,回补为
+    evo_bio__game_theory=0.4),单 LLM 仪器折扣如实披露——IEA 诚实,不是本砖的失败点。
+
+    但 statement 层有两条 required 级过度伸张,不修则命题的一部分不可证伪 / 含事实错:
+
+    【Required ①】证伪条款只覆盖"不利不公平",漏掉自己断言的"有利不公平"分支。
+    statement 明确断言"在特定条件下也排斥自己占便宜的有利不公平(advantageous inequity)",
+    但 falsifiability(a)(b)(c) 三条件全部限定在(b)"不利的(自己拿比对方少)"。于是
+    命题里更可争议、经验上更弱的那半(有利不公平厌恶)完全没有事前可测的证伪出口——
+    这是半不可证伪(anti-talisman 红旗命中)。而有利不公平厌恶恰恰是软肋:它发育显著更晚
+    (~8 岁才稳定出现,不利分支 ~4 岁),且跨文化/成人样本中大量不出现(Blake et al. 2015
+    七文化研究:有利不公平厌恶只在美/加/乌干达出现,墨西哥/秘鲁/塞内加尔/印度不出现)。
+    修法二选一:(a)给有利不公平分支补一条独立、事前可测的证伪路径;或(b)把该分支明确
+    降格为"文化受限的次级现象"并移出"刻在脑子里/跨物种普适"的强断言伞下。
+
+    【Required ②】"所有社会均出现对极低报价的系统性拒绝"事实错 + 内部自相矛盾。
+    cultural_universals 的 rationale 与 note 均称 Henrich et al. 2005 的 15 社会"所有社会
+    均系统性拒绝极低报价"。这与该文献本身冲突:Machiguenga(秘鲁)众数出价 15%、均值 ~26%,
+    低价被【几乎全盘接受】、全样本仅约 1 次拒绝——他们恰恰是最接近纯自利博弈论预测的社会,
+    并未"系统性拒绝"。Henrich 2005 的真实结论是"没有一个社会完全符合纯自利,但拒绝行为
+    跨文化差异巨大、部分社会(Machiguenga)几乎不拒绝",而非"所有社会都系统性拒绝"。
+    更致命的是砖自己在同段写"拒绝阈值从接近零到接近 50%"——阈值≈0 就等于无系统性拒绝,
+    与"所有社会均系统性拒绝"直接打架。这是现实锚事实核查(红旗#7)命中。修法:改为
+    诚实口径——"无一社会符合纯自利预测,但拒绝阈值跨文化差异极大(从接近零如 Machiguenga
+    到接近 50% 如 PNG 的 Au/Gnau 超公平文化);方向普适性弱于幅度差异,幅度高度文化可变"。
+
+    满足以上两条 required 后可上 verified;当前不满足 verified 三门的第①条(存在 required
+    缺陷)。反例猎捕(见下)未净杀核心,但揭出"强普适性"这一过度伸张,已锁进 Required②。
+    另有 1 条 should(市场逻辑二分法)见 required_fixes 尾部。
+  red_flag_findings:
+    brick_conclusion: |
+      【未命中】。核心非平凡内核=对不公平分配的自动、情绪性负反应,且此反应(i)出现在
+      学龄前儿童、(ii)跨物种(灵长类)、(iii)先于市场逻辑内化。这些是关于发育时序/跨物种/
+      语料先天性的可观测经验主张,不是 CONCEPT-fairness(分析性定义)的复述,也不是
+      AXIOM-001/THEOREM-competition-norm/cooperation-precondition 的近义改写。桥接方向
+      (从公平定义落到跨物种/跨文化心理反应)真实存在,非"专为某条 L3 窄化"。
+    measurement_axis_orthogonal: |
+      【攻不穿——正交】。自变量=分配结果的客观不平等(由实验设计/博弈支付结构外生设定),
+      被观测量=负反应(拒绝/负情绪/退出/减少未来合作)。二者异源:不平等由博弈支付矩阵定,
+      反应由被试行为测,前件不由结果反推。无隐藏焊点。
+    anti_talisman: |
+      【部分命中——见 Required①】。不利分支的证伪条件(a)(b)(c)是事前可测的真证伪窗口
+      (存在一个面对不利不公平却零负情绪、零代价回应的人群即证伪),合格。但有利不公平分支
+      被 statement 断言却未纳入任何证伪条款,该半命题当前不可事前证伪。此外"阈值从接近零"
+      的措辞与 Required② 的"系统性拒绝"合看,存在把"接近零拒绝"的反例(Machiguenga)
+      事后消化进"文化可变阈值"的护身符风险——须靠 Required② 的诚实口径堵上。
+    real_world_anchor_factcheck: |
+      【命中——required,见 Required②】。Henrich 2005 的 Machiguenga 数据被 rationale
+      过度解读为"所有社会均系统性拒绝极低报价";实际 Machiguenga 几乎全盘接受低价。
+      卷尾猴锚点(Brosnan & de Waal 2003)的复制争议砖已诚实标注(note 明写"部分实验
+      未复现"),此处处理得当,不另计红旗。
+    condition_is_prediction_not_definition: |
+      【未命中】。核心是可证伪预测(跨物种/发育/跨文化的负反应),非必然为真的定义。
+    primary_suspect_and_trivialization: |
+      本砖未设 primary_suspect 字段(L2 砖非强制)。审查者判本砖最弱腿=有利不公平分支
+      的经验脆弱性(发育晚+跨文化大量缺席)与证伪覆盖缺口,已在 Required① 定位。
+      无被稀释为相邻常识的迹象——核心的跨物种+发育时序主张有独立经验重量。
+  iea_independence_check: |
+    IEA 算术:锚源 behavioral_economics=1.0(game_theory 通道)+ evolutionary_biology=0.4
+    (evo_bio__game_theory,两学科在演化博弈论上共享核心数学结构,系数取自
+    independence-model)+ cultural_universals=0.5(game_theory__cultural_universals,
+    gt 提供范式/cu 提供非 WEIRD 样本)= 1.9。逐项核对系数应用【正确】:锚源确为 game_theory
+    通道,故 evo_bio 与 cu 都对 game_theory 折算(0.4 与 0.5),未误用 evo_bio__cu=0.6。
+    存量误用(原记 2.1,误用 0.6)已被 verdict_note 诚实披露并回补为 1.9,回补方向合规
+    (只降不升)。1.9 ≥ 1.8 verified 阈值,过线但不宽裕。
+    单 LLM 仪器折扣:已披露(verdict_note 明写"本次投票由单一 LLM 执行…报告的 IEA 是
+    学科独立性上限,真实仪器有效独立性低于此")——符合 instrument_correlation.discount_rule。
+    有无把共享数学/共享语料当独立重复计权而虚高:evo_bio 与 behavioral_economics 共享
+    演化博弈论数学结构,砖已用 0.4 系数如实打折,未虚高;cu 的独立性来自非 WEIRD 田野人口,
+    对 LLM 语料而言确有边际独立性,0.5 合理。IEA 诚实,不是失败点。
+    唯一残余提醒:三源实由同一 LLM 读取判定,统一先验横加三票——但本命题受多重真实文献
+    收敛支撑(数十国实验+跨物种+15 田野社会),属稳固共识而非新颖命题,单仪器忧虑被部分缓解。
+  counterexample_hunt: |
+    亲自猎捕(scope=人类群体,证伪目标=falsifiability 与 statement 的强普适性):
+
+    候选1(最强)——Machiguenga(秘鲁亚马逊,Henrich 1996/2000/2005)。最后通宝博弈中
+    低价被几乎全盘接受、全样本约 1 次拒绝、众数出价 15%。这直击"所有社会均系统性拒绝极低
+    报价"。结果:【揭出过度伸张,非净杀】。它不杀核心(核心是"不利不公平厌恶的先天能力+
+    跨物种根底",Machiguenga 仍给非零出价、并非零公平感),但净出砖对 Henrich 2005 的
+    普适性口径过度解读——已锁进 Required②。
+
+    候选2——有利不公平厌恶的跨文化缺席(Blake et al. 2015, Nature,七文化)。墨西哥/秘鲁/
+    塞内加尔/印度儿童不表现有利不公平厌恶。结果:【净出 statement 有利分支的过度伸张】——
+    该分支被断言为普适却大面积缺席,且不在证伪条款内,已锁进 Required①。
+
+    候选3——荣誉文化/超公平文化(PNG 的 Au/Gnau,Henrich 2005)。出价常 >50% 且被拒
+    (礼物义务反使高价被拒)。结果:【被消化/反成支持】——这仍是"对不公平结果的敏感反应",
+    只是文化把"接受过高馈赠会背负义务"编码为一种不公平,方向与核心一致,反哺 cultural
+    universals 锚的"方向普适、幅度文化可变"。
+
+    候选4——市场整合正向预测公平(Henrich et al. 2010, Science)。市场整合度越高,博弈中
+    出价越公平。结果:【与砖的"非市场逻辑内化"二分法相抵】——不净杀(先天能力仍可与文化/
+    市场校准并存),但揭示 innate-vs-learned 二分过于干净,列为 should。
+
+    结论:无 scope 内活反例净杀核心;但猎出两处过度伸张(强普适性、有利分支),定位为
+    Required①②,故不判 verified。
+  non_recurrence: |
+    DED-004(不可证伪循环):部分风险——有利不公平分支缺证伪出口 + "阈值接近零"可能事后
+    消化反例,须靠 Required①② 堵死,避免滑向事后开脱。DED-007(测量轴焊死):未复发,
+    自变量(外生支付结构)与被观测量(行为反应)异源正交。
+  required_fixes:
+  - |
+    Required① 补齐"有利不公平"分支的证伪覆盖或降格:要么给该分支补一条独立、事前可测的
+    证伪路径;要么在 statement 明确把它降为"文化受限的次级现象"、移出"刻在脑子里/跨物种
+    普适"的强断言伞下(现证据:Blake et al. 2015 七文化中仅少数出现,发育 ~8 岁才稳定)。
+  - |
+    Required② 修正 cultural_universals 的事实口径:删去"所有社会均出现对极低报价的系统性
+    拒绝"这一与 Henrich 2005 冲突且内部自相矛盾的表述;改为"无一社会符合纯自利预测,但
+    拒绝阈值跨文化差异极大(从接近零如 Machiguenga 到接近 50% 如 Au/Gnau);方向普适性
+    弱于幅度差异"。
+  - |
+    should 调和 innate-vs-市场逻辑二分:statement 的"并非后天习得的市场逻辑内化"与
+    Henrich et al. 2010(市场整合正向预测公平出价)同源相抵;改为"先天能力 + 文化/市场
+    校准",承认市场参与调制公平【水平】,而先天成分决定其【存在与方向】。
