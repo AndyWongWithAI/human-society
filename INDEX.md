@@ -5,7 +5,7 @@
 > 把碰存量实体的读取成本封顶,不随实体增多滚雪球。
 > 行格式:`id [status] · term — 摘要  ⟵ 承重依赖`
 
-**157 实体**
+**159 实体**
 
 ## L0 物理约束 (3)
 - PHY-001 — 东西放着不管就会自然变乱、变坏(这就是热力学第二定律);社会里的制度、组织、知识也一样——不持续投入精力去维护,就会自然松散、退化,不存在'一次…
@@ -159,7 +159,7 @@
 - ICV-001 [conducted] — 请两个'血统不同'的免费 AI 独立盲打分，复核推论 DED-001 经验检验里那 14 个国家的层级数——不图它们更聪明，图它们'错得不一样'…
 - L3-METHODOLOGY [canonical]
 
-## L4 复合推论 composites (8)
+## L4 复合推论 composites (9)
 - L4-001 [verified*] · 国家形成轨迹：从流寇到国家的多条路径 — 流寇变坐寇只是第一步——坐寇最终交出制度型国家、采掘型帝国、还是退化回碎片化， 取决于三股力量的同时拉扯：外面有没有敌人、税是从商人身上收还是农…  ⟵ AXIOM-001, AXIOM-002, AXIOM-003, THEOREM-conflict-cost, THEOREM-power-signal-decay, THEOREM-relation-information-asset, THEOREM-group-identity-decay, THEOREM-cooperation-precondition, THEOREM-exchange-competition-alternative, THEOREM-hierarchy-depth-limit, BR-L2-008, BR-L2-010, BR-L2-004, BR-L2-009, BR-L2-003, BR-L2-006, DED-012, DED-010, DED-006, DED-003
 - L4-002 [verified] · 政体稳定相图 — 政权稳不稳，不是看它"民主不民主"一个指标——是三股力量的同时博弈：输了的人还有没有路走、 裁判是不是自己人、不公平有没有集中到某个群体且让他们…  ⟵ AXIOM-001, THEOREM-position, BR-L2-015, BR-L2-006, BR-L2-013, BR-L2-014, DED-011, DED-014, DED-020, DED-017
 - L4-003 [verified] · 制度共演锁定 — 一个社会用什么样的公平规矩分东西，不是某个人拍板定的——是亲缘远近、人多不多、 资源够不够这三股力量在历史关口上一起决定的  ⟵ AXIOM-001, AXIOM-003, THEOREM-position, THEOREM-group-identity-decay, THEOREM-cooperation-precondition, BR-L2-002, BR-L2-004, BR-L2-006, BR-L2-009, BR-L2-013, BR-L2-015, BR-L2-017, DED-013, DED-016, DED-018, DED-022
@@ -168,8 +168,9 @@
 - L4-006 [verified] · 道德-制度共演 — 法律和道德互相兜底也互相腐蚀——法律太强人就不内化了（'反正有警察管'），道德太碎法律跟不上（每个小群体都有自己的道德→法律不知道该保护谁）  ⟵ AXIOM-001, AXIOM-003, PHY-001, THEOREM-moral-third-party-enforcement, THEOREM-moral-internalization, THEOREM-norm-energy-saver, BR-L2-014, BR-L2-018, BR-L2-019, DED-023, DED-025, DED-016, DED-024
 - L4-007 [verified] · 数字时代道德碎片化 — 算法让邻居活在两个道德宇宙——TP默契崩了，一个社会挤着好几个互不通气的道德部落  ⟵ AXIOM-001, AXIOM-002, AXIOM-003, PHY-001, THEOREM-moral-third-party-enforcement, THEOREM-moral-internalization, THEOREM-group-identity-decay, BR-L2-006, BR-L2-014, BR-L2-018, BR-L2-019, DED-026, DED-025
 - L4-008 [verified*] · 道德绑架 — 道德绑架劫持的不是人的善良，是道德执行机制的自动化回路——A指控→C自动惩罚→B屈从  ⟵ AXIOM-002, THEOREM-moral-third-party-enforcement, THEOREM-moral-internalization, BR-L2-014, BR-L2-006, BR-L2-018, DED-023, DED-026, DED-021, DED-024
+- L4-009 [rejected] · 金价体制切换 — 金价有两套定价规则来回切换——平时它是'商品'，跟着实际利率走（利率高金价跌）；法币信用出问题时它切回'钱'，实际利率失灵、央行和储户抢存量、价…  ⟵ AXIOM-001, AXIOM-002, AXIOM-003, THEOREM-value-attribution, BR-L2-021, BR-L2-022, BR-L2-023, BR-L2-024, DED-027, DED-028, DED-029, DED-030
 
-## L4 审查 reviews (8)
+## L4 审查 reviews (9)
 - ADV-REVIEW-L4-001 — 对 L4-001(国家形成轨迹:从流寇到国家的多条路径,status=candidate)的 round_1 独立对抗审查
 - ADV-REVIEW-L4-002 — 对 L4-002(政体稳定相图:三股力量的同时博弈——轮替开放度×裁决独立度×透明度×不公集中度 →四区+相变边界)的独立对抗审查记录
 - ADV-REVIEW-L4-003 — 对 L4-003(公平制度演化推论)的 round_1 独立对抗审查
@@ -178,6 +179,7 @@
 - ADV-REVIEW-L4-006 [needs_revision] — L4-006 有真正的理论野心——把四条独立发展的道德/法律推论合成为双向共演系统
 - ADV-REVIEW-L4-007 [needs_revision] — L4-007 有真东西——DED-026 的边界增殖与 DED-025 的熵增通道并行化产生'多道德空间各自独立演化→不可通约'这一新预测，合取…
 - ADV-REVIEW-L4-008 [needs_revision] — L4-008 有真实的新颖贡献——道德绑架的 A→B→C 三角结构作为武器化路径，Type I（信息劫持） 与 Type II（结构劫持）的区分…
+- ADV-REVIEW-L4-009 [needs_revision] — L4-009 是一条有真涌现的复合推论——招牌格（重定价×高利率）确实需要 DED-029+028+030 三父合力，相关性断裂作为体制指示器是…
 
 ## L4 其它(经验检验/交叉验证等) (1)
 - L4-METHODOLOGY [canonical]
