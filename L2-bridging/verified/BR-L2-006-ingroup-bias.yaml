@@ -41,21 +41,21 @@ source_anchors:
 cross_verification:
   votes:
     evolutionary_biology:
-      status: uncertain
-      weight: 0.0
+      status: agree
+      weight: 0.4
       evidence: []
-      note: 狭隘利他主义(parochial altruism)理论提出但非共识。群体选择在evo内部存在显著争议——不是所有演化生物学家接受群体选择作为内群体偏好的解释。标记为uncertain以反映学科内部分歧。
+      note: 狭隘利他主义(Choi & Bowles 2007)为内群体偏好提供了稳健演化解释。灵长类群体间攻击行为(黑猩猩'战争')提供实证基础。机制争议(群体选择vs多层次选择)不影响现象存在性。独立于gt锚源折扣系数0.4。
     game_theory:
       status: agree
       weight: 1.0
       evidence: []
-      note: Tajfel最小群体范式(1970)——仅靠随机颜色标签即可触发内群体偏好。跨文化反复验证。实验证据极其稳健。
+      note: Tajfel最小群体范式(1970)——仅靠随机颜色标签即可触发内群体偏好。跨文化反复验证。实验证据极其稳健。选为锚源。
     cultural_universals:
       status: agree
       weight: 0.5
       evidence:
       - EV-cu-001
-      note: 民族中心主义在所有文化中存在。具体边界(血缘/语言/宗教)因文化而异，但内群体偏好本身是跨文化恒定的。
-  iea: 1.5
+      note: 民族中心主义在所有文化中存在。具体边界(血缘/语言/宗教)因文化而异，但内群体偏好本身是跨文化恒定的。独立于gt锚源折扣系数0.5。
+  iea: 1.9
   verdict: verified
-  verdict_note: IEA=1.5。evo标记为uncertain(学科内部分歧)。gt和cu各自独立验证了内群体偏好现象。
+  verdict_note: IEA=1.9(gt锚源1.0 + evo_bio 0.4 + cu 0.5)。三源一致agree。注意——本投票由单一LLM执行，报告IEA是学科独立性上限，仪器有效独立性低于此(independence-model instrument_correlation折扣规则)。evo_bio从uncertain上调为agree——狭隘利他主义+灵长类实证提供稳健支撑，机制争议不影响现象存在性。
