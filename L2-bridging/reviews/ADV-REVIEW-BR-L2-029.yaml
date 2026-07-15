@@ -1,0 +1,654 @@
+id: ADV-REVIEW-BR-L2-029
+type: adversarial_review
+reviews: BR-L2-029
+layer: L2-bridging
+target: BR-L2-029
+target_term: 边际消费倾向的收入梯度 (Income Gradient of Marginal Propensity to Consume)
+rounds: 2
+
+人话摘要: |
+  对 BR-L2-029(边际消费倾向的收入梯度)的 round-1 独立对抗审查。裁 needs_revision。
+  核心经验主张——对未预期/一次性收入变化,事前低流动性组的 MPC 显著高于高流动性组——
+  是消费研究里复现最多的发现之一,跨识别策略方向一致。但两条 required 级缺陷:
+  ①主文 statement 对"新增一单位收入"不加限定地断言梯度,而已发表 QJE 准实验
+  (Kueng 2018,阿拉斯加永久基金分红)显示【可预期的周期性发钱】下梯度可以反向
+  (高收入家庭花得更多)——这是干净的反向证据,落在 statement 射程内但 falsifiability
+  未覆盖;按口径歧义反向裁决原则,必须将核心主张射程事前收窄到"未预期/一次性
+  收入变化"并显式登记 Kueng 2018 为已知边界案例。②cognitive_science 票(权重 0.4)
+  恰好是 IEA 从 1.5(weakly_verified)升到 1.9(verified)的承重票,但其判 agree 的
+  核心依据"较窄主张复现状况较好"无任何引证支撑;且 Mullainathan 同时是锚源
+  (behavioral_economics)与该票(cognitive_science)的核心作者,两票的学科独立性
+  被系统性高估——修法二选一:补独立于 Mullainathan 作者群的证据线,或将该票降权
+  至 ≤0.25,接受 IEA≈1.5 的 weakly_verified 定位。
+  round-2 复核裁 needs_revision(1 required,机械可修)——Required ① 已修净;
+  Required ② 的补引 CMW 2016 作者群确实独立于 Mullainathan,但事实核查发现该文
+  是 AER 经济学论文、作者自己把效应归因于流动性约束(与锚源机制(b)同一机制)并
+  明确排除稀缺-认知解释——"认知科学通道"的承重内容实为行为经济学结果,0.4 权重
+  构成锚源机制的二次计数。这恰好命中作者预注册的回退触发条件:执行修法(b),
+  该票降权 ≤0.25,IEA=1.75,定格 weakly_verified。反例猎捕无活反例。
+
+round_1:
+  reviewer: "独立对抗审查者 (round 1, 与写砖者及 IEA 调查员无关的全新上下文)"
+  date: 2026-07-15
+  verdict: needs_revision
+  verdict_note: |
+    本砖的经验内核真实且属高复现集群。对【未预期/一次性】收入变化,事前低流动性
+    agent 的 MPC 显著高于高流动性 agent——这一方向性发现跨美国退税自然实验
+    (Johnson-Parker-Souleles 2006; Parker et al. 2013)、挪威彩票行政数据
+    (Fagereng-Holm-Natvik 2021)、2020 疫情现金发放实时数据,识别策略多样而方向
+    一致。Kaplan-Violante 的 wealthy hand-to-mouth 把解释变量从"收入"校准为
+    "流动性"——有房产但现金紧的家庭 MPC 同样高——直接支持机制(b)"约束差异而非
+    偏好差异"。与 BR-L2-001 的承重分工(本砖只承重梯度,绝对水平残差划给有限理性)
+    干净且设计合理。测量轴在概念上正交(事前流动性分组 vs 事后消费反应),证伪条件
+    事前可测,IEA 算术正确且单 LLM 仪器折扣如实披露。
+
+    但存在两条 required 级缺陷,不修则命题的部分主张与已发表证据冲突,且 verified
+    线的承重票不诚实:
+
+    【Required ① — 主文射程宽于注册证伪口径,Kueng 2018 QJE 反向证据落在模糊地带】
+    statement 第 1 段对"新增一单位收入"不加限定地断言 MPC 梯度(低流动性→高 MPC,
+    高流动性→低 MPC),但 falsifiability(a) 只注册了"随机或准随机的【一次性】等额
+    转移"。两者之间的地带并非真空:Kueng 2018(QJE,利用阿拉斯加永久基金分红的
+    行政+支付数据准实验,识别干净)发现对【事前可预期、周期性、金额已知】的支付,
+    MPC 梯度【反向】——高收入/高流动性家庭花得反而更凶(因为小额平滑成本对他们是
+    琐事,穷人反而因确定性而预先规划)。这不是斜率的量变,是方向的质变。砖的
+    "不声称精确数值…随转移的预期性质…而变"免责条款只覆盖了斜率大小,没有事前
+    声明方向在可预期支付下可反转。按红旗#11(口径歧义反向裁决:模糊注册的成本由
+    推论承担,事后方向性口径选择失去证据价值),这条必须判不利于砖。
+    修法:将 statement 核心主张从"新增一单位收入"收窄为"未预期/一次性/暂时性
+    收入变化",与 falsifiability(a) "一次性等额转移"对齐;并显式登记 Kueng 2018
+    为射程边界外的已知反向案例(可预期的周期性支付下梯度消失或反向)。
+
+    【Required ② — cognitive_science 票是 IEA 1.8 线的承重票,其 agree 判决的核心
+    依据无引证、且与锚源的学科独立性被系统性高估】
+    IEA = 1.0(锚) + 0.4(cognitive_science) + 0.5(economic_history) = 1.9,
+    仅比 verified 线(1.8)高 0.1。cognitive_science 票的 0.4 是承重票:若无此票,
+    IEA=1.5,命题自动降格 weakly_verified。
+    该票存在双层问题:
+    (i) 判 agree 的最后依据"本砖实际引用的较窄主张(稀缺状态提高对紧迫未满足需求
+    的权重,且随状态切换而非人群固有特质)复现状况较好"——这句话【无任何引证】。
+    事实核查:稀缺启动的注册复现(O'Donnell et al. 2021, PNAS)未能复现原效应;
+    Mani et al. 2013 蔗农研究遭 Wicherts & Scholten 再分析质疑(未校正练习效应)。
+    "较窄主张复现较好"或许可辩护(发薪日前后对照等田野证据确实存在),但承重票
+    不能靠一句无引证的断言过线。
+    (ii) 票内已诚实承认"行为经济学本就是经济学+认知心理学的合成学科,与认知科学
+    共享作者(Mullainathan 本人横跨两界)",但仍取 0.4。Mullainathan 同时是锚源
+    (behavioral_economics,作为 Scarcity 合著者和蔗农研究合作者,其思想贯穿该领域)
+    和 cognitive_science 票的核心作者——这不是"常规重叠",而是同一研究纲领的两次
+    计数。仅此一项,该票的独立权重不宜超过 0.25(允许其提供认知机制的补充视角,
+    但不构成独立来源的确证)。按 0.25 重算,IEA=1.0+0.25+0.5=1.75,仍不及 1.8。
+    修法二选一:
+    (a) 给"较窄主张"补独立于 Mullainathan 作者群的证据线并写进票内。候选:
+    Carvalho-Meier-Wang 2016(AER,发薪日前后对照——同一被试在紧缺/宽裕状态间
+    的现时偏向差异)、或行为生态学的状态依赖觅食/风险敏感理论(能量赤字个体
+    系统性提高当期获取权重,跨物种、与经济学语料近乎零共享,独立系数可≥0.6),
+    或神经经济学证据(BOLD 信号显示稀缺状态调制腹侧纹状体对即时奖励的反应)。
+    (b) 若无法补独立证据,将该票降至 mixed 或降权至 ≤0.25,接受 IEA≤1.75 的
+     weakly_verified 定位——对一条"组间差方向"的 L2 桥接砖,弱验证是诚实且体面的
+    级别,好过靠虚高票数撑 verified。
+
+    两条 required 均可定向修复,不构成核心塌陷。本砖不属 rejected。
+
+  red_flags:
+    brick_is_conclusion:
+      hit: false
+      detail: |
+        命题声称 MPC 随 agent 收入/财富/流动性系统性变化,且给出机制分解:
+        (a) 资源约束压缩选择空间→被压抑选择的解锁优先于边际价值递减的新增选择;
+        (b) 跨期平滑能力不对称→收入波动对受约束者的消费传导更强。
+        这不是任何单一 L1 概念(agent/choice/resource/value)的复述或近义转写。
+        CONCEPT-choice 只说选择发生在资源约束下,CONCEPT-value 只说价值取决于
+        "谁想要、多想要",均不蕴含"约束差异→MPC 梯度"的定量方向。
+        命题的非平凡经验内核:梯度必须经测量确证(可被证伪),且机制(a)(b)的独立
+        贡献需要与偏好异质假说竞争——"不需要假设偏好不同"本身是可检验的经验主张。
+        分工设计(本砖承重梯度、BR-L2-001 承重绝对水平残差)进一步证明非 trivial。
+
+    empty_cell_tautology:
+      hit: false
+      detail: |
+        核心空格预测真实:若低流动性组与高流动性组的 MPC 无显著差异或方向相反
+        (条件 a),则为证伪。这不是同义反复——在完全市场/永久收入假说下,MPC 应
+        对所有 agent 接近零(一次性转移),组间差不应存在。命题声称"约束差异创造了
+        组间差",这是一个可检验的经验主张,非被前提平凡强制。
+
+    measurement_axis_orthogonality:
+      hit: false
+      detail: |
+        自变量(事前流动性:收入/可变现资产/借贷渠道)与被预测量(MPC:收入增量中
+        的消费比例)在概念上异源。关键防火墙:
+        (1) 事前分组——流动性按收入冲击【之前】的状态测量,不与冲击后的消费行为
+        混淆。挪威彩票研究(Fagereng et al. 2021)的彩票中奖是准随机的,事前流动性
+        由行政数据(税务记录)独立测定,与中奖后的消费反应无共享测量源。
+        (2) wealthy hand-to-mouth(Kaplan-Violante)进一步拆解了"穷=高 MPC"的
+        隐含焊点——有房产(高财富)但现金紧张(低流动性)的家庭 MPC 同样高,证明
+        驱动量是流动性而非收入,而流动性(现金/可变现资产)是独立于 MPC 的可观测
+        前置状态。
+        (3) 蔗农研究(Mani et al. 2013)的被试内设计——同一批人在收获前(紧缺)和
+        收获后(宽裕)的认知/行为差异——以时间为外生切换,不依赖组间分类。
+        不存在 DED-007 式的"分母用实际获授者"型焊点。但需注意:蔗农研究本身
+        有复现争议,此处仅讨论其研究设计在测量正交性上的优势,不涉及其结论可靠性。
+
+    scope_exclusion_independent:
+      hit: true
+      detail: |
+        已中(required 级)。详见 verdict_note Required ①。
+        statement 射程("新增一单位收入")宽于 falsifiability 注册口径("一次性等额转移"),
+        且 Kueng 2018 的阿拉斯加永久基金分红准实验(可预期、周期性支付)显示 MPC
+        梯度【反向】,落在这个模糊地带。不声称列表的免责条款("随转移的预期性质而变")
+        是事后可用的模糊护身符,不足以替代事前射程登记。按红旗#11 反向裁决原则,
+        必须将核心主张射程收窄至 falsifiability 已注册的范围。
+
+    classification_granularity:
+      hit: false
+      detail: |
+        命题处理连续梯度(MPC 随流动性单调变化),未强行二分或分档。falsifiability
+        中"低流动性组 vs 高流动性组"是操作化的离散化(便于统计检验),非命题的本体
+        宣称。不适用 DED-006 档位匹配红旗。
+
+    anti_talisman:
+      hit: false
+      detail: |
+        前件判定不由结果反推。
+        (1) 事前流动性分组在收入冲击之前完成,不依赖冲击后的 MPC 测量。
+        (2) falsifiability(a) 要求"事前分组→事后 MPC 无显著组间差或方向相反",
+        可在数据收集前注册判据(统计显著性阈值、效应方向、复现要求)。
+        (3) falsifiability(b) 要求"控制协变量后流动性对 MPC 无独立作用",可通过
+        标准回归/匹配方法事前注册,非事后翻案。
+        (4) wealthy hand-to-mouth 作为锚点独立测出驱动量(流动性而非收入),
+        满足"至少一个承重锚真的独立测出驱动量"要求。
+        软肋:falsifiability(b) 的"控制所有协变量"在实践中不可能穷尽——残差混淆
+        永远存在。但这不构成 required:falsifiability(a) 的组间差方向检验本身就
+        足够锋利,不依赖(b)的完美控制。
+
+    real_world_anchor_fact_check:
+      hit: false
+      detail: |
+        引证的核心研究发现方向一致,无事实错。
+        (1) Johnson-Parker-Souleles 2006 / Parker et al. 2013:美国退税自然实验,
+        低流动性家庭 MPC 显著更高——方向正确。需注意退税的预期性可能压低
+        总体 MPC(家庭提前调整),但这压低组间差(使梯度更保守),而非制造伪梯度。
+        (2) Fagereng-Holm-Natvik 2021:挪威彩票行政数据,准随机分配,干净识别——
+        方向正确。
+        (3) Kaplan-Violante wealthy hand-to-mouth:有房产无现金→高 MPC,支持
+        流动性驱动而非收入/偏好驱动——方向正确。
+        (4) Mullainathan & Shafir 2013 / Mani et al. 2013:稀缺→认知聚焦未满足
+        需求——与机制(a)同构。但蔗农研究的复现争议已在 IEA 票内披露,此处仅核
+        事实方向。
+        (5) 经济史证据:恩格尔式截面 APC 梯度被 Friedman 永久收入假说批判
+        (截面 APC 部分为暂时性收入伪影)——这一警示已在 economic_history 票内
+        诚实标注,不构成隐藏的事实错。
+        整体:事实方向一致,已知弱点已披露。
+
+    definition_vs_prediction:
+      hit: false
+      detail: |
+        关键条件为可证伪的预测。"流动性受限"由可观测前置指标定义(低收入/低现金/
+        无借贷渠道),不依赖"MPC 高"来反向归类。MPC 由独立的消费/收入数据测量。
+        蔗农研究和发薪日对照的被试内设计进一步排除了"定义使人落入某类"的循环:
+        同一被试在不同约束状态间切换时行为随之切换——约束状态是外生变化(时间/
+        收成),非由行为定义。
+
+    enumeration_exhaustiveness:
+      hit: false
+      detail: |
+        命题未声称枚举 N 类离散类型。主张为连续梯度(MPC 随流动性单调变化),
+        不适用 DED-008 式枚举红旗。
+
+    primary_suspect:
+      hit: false
+      detail: |
+        命题无 formal primary_suspect 字段(L2 桥接层不要求),但从对抗视角识别
+        最弱腿:
+        (1) 【认知科学通道的引证质量】——已由 Required ② 覆盖,不在此重复。
+        (2) 【经济史通道的 APC/MPC 混淆】——已在 IEA 票内诚实标注,该票权重
+        已从 default 0.6 压至 0.5,处理诚实。
+        (3) 【泛化风险】——MPC 梯度是否可归约为"约束更紧者对外生松弛反应更大"
+        这一近乎平凡的主张?本砖通过机制(a)(b)的具体化(选择空间压缩+平滑能力
+        不对称)避免了空泛,但需注意:若未来 L3 推论试图用它做过于宽泛的桥接,
+        可能触发平凡化。这是使用侧的风险,非本砖自身的缺陷。
+        整体:最弱腿已由 Required ①(射程)和 Required ②(IEA 承重票)覆盖,
+        无独立的未认软肋。
+
+    caliber_preregistration:
+      hit: true
+      detail: |
+        已中(required 级)。详见 verdict_note Required ①。
+        statement 核心主张的口径("新增一单位收入")与 falsifiability 注册的口径
+        ("一次性等额转移")不一致。按判例 L4-009/红旗#11:阈值/判据须连同分子、
+        分母、测量口径一次性注册;口径歧义使事后选择失去证据价值,疑点利益归
+        不利于推论方向。Kueng 2018 的可预期周期性支付落在 statement 射程内
+        但 falsifiability 射程外——这正是口径未完整注册的典型伤害。
+        附加:MPC 测量的时间窗口(冲击后 1 个月?3 个月?1 年?)和消费定义
+        (非耐用品?含耐用品?含服务?)未在 statement 或 falsifiability 中注册——
+        不同窗口/定义下的 MPC 估计值可相差数倍。对 L2 桥接砖此为 should 级
+        (L2 不要求 L3 级的全口径注册),但跨进 L3 时必须补。
+
+  iea_independence_check:
+    overall_iea: 1.9
+    iea_threshold_verified: 1.8
+    margin: 0.1
+    assessment: |
+      IEA 算术正确(1.0 + 0.4 + 0.5 = 1.9),单 LLM 仪器折扣已按 instrument_correlation
+      discount_rule 如实披露——这一点比本体系早期未披露折扣的 L2 砖(如 BR-L2-002 初版)
+      有实质性进步,予以肯定。
+
+      但学科独立性的评估存在两处实质性问题:
+
+      (1) behavioral_economics ↔ cognitive_science 的独立性被高估。
+      两票共享核心作者(Mullainathan——Scarcity 合著者,蔗农研究合作者,其研究纲领
+      贯穿两票引证的文献)、共享方法论(实验/准实验)、共享理论框架(将认知约束引入
+      经济决策)。这不是"学科同源"的普通重叠——这是同一研究纲领被当成两个独立来源
+      计数。票内已从 default 0.6 压至 0.4,但 0.4 仍在"中度独立"区间,与实际重叠
+      程度不符。更诚实的区间:0.20-0.30(高度重叠,仅因方法论路径的侧重点不同
+      ——认知实验 vs 自然实验——保留有限独立信息)。
+
+      (2) economic_history ↔ behavioral_economics 的独立性评估中,BR-L2-024 同对
+      先例(0.5)的适用性存疑。BR-L2-024 关于法币信用与价值储藏,其 economic_history
+      源引证的是货币史(不同体系);本砖的 economic_history 源引证的是消费行为
+      (恩格尔曲线/饥荒史),与 behavioral_economics 的消费研究共享底层消费数据
+      和理论(凯恩斯消费函数/永久收入假说框架)。消费理论的语料共享程度高于
+      货币理论的语料共享——0.5 或许偏高,0.40-0.45 更诚实。但此差距较小
+      (±0.1,在校准误差范围内),不单独构成 required。
+
+      主要问题仍在 cognitive_science 票。按 0.25 重算:
+      IEA = 1.0 + 0.25 + 0.5 = 1.75,不及 1.8 → weakly_verified。
+      即使用更宽容的 0.3:IEA = 1.0 + 0.3 + 0.5 = 1.8,刚好压线——而压线的票
+      恰是"无引证支撑"的票,不可接受。
+
+      修复路径已在 Required ② 中给出。补充:若修法(a)(补独立证据线)成功,
+      不仅修复引证问题,还可能提高认知科学源的真实独立系数(跨物种行为生态学
+      或神经经济学证据与行为经济学语料近乎零共享),使 IEA 稳超 1.8。
+
+    instrument_disclosure_check:
+      disclosed: true
+      note: |
+        cross_verification.verdict_note 中明确披露"本次三路投票由单一 LLM 在同一
+        上下文执行,IEA=1.9 是学科独立性上限,仪器有效独立性低于此值"——符合
+        independence-model.yaml instrument_correlation discount_rule 的强制披露要求。
+        与 BR-L2-001/002 早期未披露折扣的版本相比,这是实质性合规进步。予以认可。
+
+    source_pair_independence:
+      be_cs:
+        pair: [behavioral_economics, cognitive_science]
+        model_coverage: "independence-model.yaml 无此对——模型仅覆盖 evo_bio/game_theory/cultural_universals 三对"
+        default_applied: 0.6
+        manual_adjustment: 0.4
+        honesty: "票内承认共享作者(Mullainathan 横跨两界)和期刊,压至 0.4"
+        reviewer_assessment: |
+          0.4 仍偏高。Mullainathan 同时是两票核心引证的作者,这是同一研究纲领的
+          两次计数,非独立来源。建议区间 0.20-0.30。
+      be_eh:
+        pair: [behavioral_economics, economic_history]
+        model_coverage: "模型中无此对"
+        default_applied: 0.6
+        manual_adjustment: "参照 BR-L2-024 同对先例取 0.5"
+        honesty: "票内标注 APC/MPC 混淆警示,部分打折"
+        reviewer_assessment: |
+          0.5 可能略高(消费理论语料共享 > 货币理论语料共享),但差距在校准误差
+          范围内(±0.1)。降低至 0.40-0.45 更诚实,但不单独构成 required。
+      cs_eh:
+        pair: [cognitive_science, economic_history]
+        model_coverage: "模型中无此对"
+        note: "这对对本砖不关键——仅在三源均 agree 时影响 verdict confidence,不改变 IEA 算术"
+
+  counterexample_hunt:
+    hunted: true
+    method: |
+      按 falsifiability(a) 的最强形式主动构造/寻找能证伪核心主张的干净经验案例。
+      搜索范围:跨文化/跨历史/跨分配体制,不限于现代市场经济。
+    cases:
+      - case: "Kueng 2018 — 阿拉斯加永久基金分红(QJE)"
+        type: "准实验,行政+支付数据,识别干净"
+        claim: |
+          阿拉斯加永久基金分红是每年可预期的、金额大致已知的、按人头发放的支付。
+          Kueng 发现 MPC 随收入/流动性【上升】——高收入家庭花得更多,低收入家庭
+          反而因确定性而预先规划、花得少。梯度方向与砖的 statement 核心主张相反。
+        resolution: "净出射程过度伸张(非净杀核心)"
+        disposition: |
+          砖的 falsifiability(a) 注册的是"一次性等额转移",阿拉斯加分红的"可预期+
+          周期性"不满足此条件。但 statement 未做此限定——"新增一单位收入"会覆盖
+          阿拉斯加情景。结论:核心存活(对未预期/一次性收入变化,梯度方向仍成立),
+          但 statement 射程必须收窄以排除此类已知反向案例。→ Required ①。
+
+      - case: "苏联式短缺经济"
+        type: "体制对照"
+        claim: |
+          在消费靠排队/配给/关系而非价格分配的制度中,有钱也买不到东西。新增收入
+          对所有人(不论收入高低)的当期消费传导均接近零——MPC 梯度消失非因穷人
+          不想消费,而因消费通道被非价格配给阻断。
+        resolution: "被消化为体制边界条件"
+        disposition: |
+          命题机制(a)假设"被压抑的选择可通过新增货币收入解锁"——这隐含价格分配
+          体制。短缺经济中解锁需要的是票证/关系而非货币,机制(a)的传动链断裂。
+          这不构成净杀——命题的操作域天然是价格分配占主导的经济体。但命题应
+          在 domain 或 statement 中显式声明这一隐含前提(should 级修订)。
+
+      - case: "夸富宴/地位竞争型礼物经济(如西北海岸原住民 potlatch)"
+        type: "跨文化对照"
+        claim: |
+          在地位竞争驱动的礼物经济中,富裕者被规范要求大量分发/销毁财富以获取
+          地位。一笔意外收入落在高地位者手中可能被全部分发(MPC=1,在社会性消费
+          的意义上),而落在低地位者手中反而可能被储蓄。
+        resolution: "被消化为消费定义边界"
+        disposition: |
+          砖的"消费"概念隐含个人/家庭最终消费(吃穿住行)。夸富宴中的"分发"
+          是地位投资/社会资本积累,按经济学分类更接近投资或转移支付而非消费。
+          在适切定义下,夸富宴不构成梯度反向——但这也暴露了砖未定义"消费"这一
+          关键因变量的口径。should 级:在 statement 中声明本命题的消费定义范围。
+
+      - case: "极端贫困下的教育/迁移储蓄"
+        type: "测量定义边界"
+        claim: |
+          极贫困家庭为子女教育或迁移而长期忍受低消费、高储蓄。若一笔意外收入
+          到来,可能大部分仍被储蓄(为教育/迁移目标),MPC 低于有闲钱的富裕家庭。
+        resolution: "被消化——教育/迁移属于'排队中的被压抑选择'"
+        disposition: |
+          砖的机制(a)"排队中的被压抑选择"本身就包括此类重大投资性消费——教育
+          和迁移是低收入家庭最强烈的未满足需求之一。若意外收入加速了教育储蓄的
+          完成(储蓄→支付学费),按生命周期消费理论,这仍是消费(人力资本投资),
+          MPC 仍然高——只是时间窗口比购买日用品更长。不构成净杀。
+
+      - case: "狩猎采集者的即时分享规范"
+        type: "跨文化对照"
+        claim: |
+          在强分享规范的狩猎采集社会(如!Kung、Hadza),获得大猎物的猎人必须与
+          全营分享,个人无法"储蓄"肉食。这可能使所有人的 MPC 均接近 1,梯度消失。
+        resolution: "被消化——分享规范本质是储蓄替代机制"
+        disposition: |
+          分享规范在狩猎采集社会中充当了跨期平滑的替代机制——你今天分给别人,
+          别人明天分给你。这不是 MPC 梯度消失,而是"储蓄"的形态不同(社会资本
+          储蓄而非物质储蓄)。在合适定义下,梯度可能仍存在(好猎人获得更多分享
+          回报,相当于"储蓄"更多),只是测量困难。不构成净杀。
+
+    conclusion: |
+      猎到一个干净的反向证据(Kueng 2018)落在 statement 射程内但 falsifiability
+      射程外——由此揭出 statement 射程过度伸张(Required ①)。其余候选案例均
+      被消化为体制边界/消费定义/储蓄形态的澄清——不构成净杀,但共同指向命题
+      需要更精确的射程与口径注册。
+
+  required_fixes:
+    - |
+      【Required ①】将 statement 核心主张从"新增一单位收入"收窄为"未预期/
+      一次性/暂时性收入变化",与 falsifiability(a)的"一次性等额转移"口径对齐。
+      在 statement 或射程声明中显式登记 Kueng 2018(阿拉斯加永久基金分红:
+      可预期周期性支付下 MPC 梯度可反向)为射程边界外的已知案例,说明本命题
+      不声称对可预期/周期性收入变化的消费反应。
+    - |
+      【Required ② — 二选一】(a) 给 cognitive_science 票的"较窄主张复现状况
+      较好"补独立于 Mullainathan 作者群的引证(候选:Carvalho-Meier-Wang 2016
+      AER 发薪日前后对照;或行为生态学的状态依赖觅食/风险敏感理论——跨物种+
+      语料近乎零共享;或神经经济学 BOLD 信号证据)。若成功,IEA 可稳超 1.8。
+      (b) 若无法补独立证据,将该票降为 mixed 或降权至 ≤0.25,接受 IEA≈1.75
+      的 weakly_verified 定位——对一条"组间差方向"的 L2 桥接砖,弱验证是诚实
+      且体面的级别,好过靠虚高票数撑 verified。
+  should_fixes:
+    - |
+      【should】statement 中声明本命题的操作域:消费由价格分配主导的市场经济体。
+      在非价格分配体制(配给/排队/关系分配)中,货币收入→消费的传动链可能断裂,
+      MPC 梯度的方向与幅度不保证。
+    - |
+      【should】在 statement 或 measurement 段落中注册"消费"的操作定义范围
+      (非耐用品?含耐用品?含服务?含人力资本投资如教育医疗?),以消除跨情境
+      比较时的口径歧义。进入 L3 时此项升级为 required。
+    - |
+      【should】economic_history 票的 APC/MPC 方法论警示值得在 brick 的
+      applicable_sources 中直接提及(而非仅在 cross_verification 票内),让未来
+      引用本砖的 L3 推论能看到这一警示。
+
+author_response:
+  round_1:
+    date: 2026-07-15
+    responder: "整改者 (全新上下文,与写砖者/IEA 调查员/审查者均无关)"
+    response_to_required_1: |
+      接受,已修。
+      (1) statement 第 1 段核心主张收窄为"对【未预期的一次性/暂时性
+      收入变化】",与 falsifiability(a) 注册的"一次性等额转移"口径对齐。
+      (2) statement 新增"射程边界(显式登记)"段,登记 Kueng 2018(QJE,
+      阿拉斯加永久基金分红准实验)为射程外已知边界案例:事前可预期、
+      周期性、金额大致已知的支付下,MPC 梯度可消失甚至反向;本命题
+      对可预期/周期性收入变化不做方向声称。
+      (3) "综合"段与人话摘要同步收窄(人话摘要末尾加了阿拉斯加分红的
+      直白反例说明)。
+      (4) "不声称"列表删除了被审查者点名的模糊护身符("随转移的预期
+      性质而变"),替换为显式的方向性射程排除条款(引 Kueng 2018)。
+      现 statement 射程与注册证伪口径一致,红旗#11 的口径歧义已消除。
+    response_to_required_2: |
+      选修法 (a)。
+      (1) 补引:Carvalho, Meier & Wang 2016(AER,"Poverty and Economic
+      Decision-Making: Evidence from Changes in Financial Resources at
+      Payday")——同一低收入被试在发薪日前(现金紧缺)对货币性跨期
+      选择呈显著更强的现时偏向,非货币性选择无差异,被试内设计。
+      已写入 applicable_sources.cognitive_science.rationale 与
+      cross_verification.cognitive_science.independence_note 两处。
+      承重逻辑:(i) 作者群与 Mullainathan/Shafir 无重叠;(ii) 数据通道
+      (发薪日现金周期)独立于蔗农收成与实验室稀缺启动,也独立于锚源的
+      退税/彩票/疫情发放识别;(iii) 精确支撑本砖引用的较窄主张——
+      "当期需求权重随约束状态切换,非人群固有特质"。
+      (2) 诚实披露反面证据:审查者点名的 O'Donnell et al. 2021(PNAS,
+      稀缺启动注册复现失败)与 Wicherts & Scholten(蔗农研究再分析
+      质疑)已写进票内,复现状况按宽/窄主张分层陈述;Mullainathan 系
+      文献降级为机制表述的辅助参照,不再承重。
+      (3) 权重决定:维持 0.4。理由——审查者判 ≤0.25 的核心依据是
+      "同一研究纲领两次计数",整改后该票的承重引证已移出 Mullainathan
+      作者群,该依据不再适用于承重链。
+      (4) 预注册退路(诚实优先):若独立复核仍判独立性不足(例如认为
+      CMW 2016 将发薪日效应归因于流动性约束,与锚源机制(b)语料重叠
+      过高,不构成足够独立的认知科学通道),作者不再争辩,直接执行
+      修法(b):该票降权至 ≤0.25,IEA=1.75,接受 weakly_verified 定位。
+    should_fixes_status: |
+      3 条 should(操作域声明/消费口径注册/APC-MPC 警示上移)本轮未动
+      ——本轮为 required 定向整改。跨进 L3 引用本砖时,消费口径注册
+      按审查档要求升级为 required 执行。
+    resulting_iea: |
+      各票 weight 未变:1.0 + 0.4 + 0.5 = 1.9。是否达 verified 线,
+      交独立复核裁决;复核若否决 0.4,按预注册退路降为 1.75 /
+      weakly_verified。
+
+round_2:
+  reviewer: "独立对抗审查者 (round 2, 与写砖者/IEA 调查员/round-1 审查者/整改者均无关的全新上下文)"
+  date: 2026-07-15
+  verdict: needs_revision
+  verdict_note: |
+    整改后复核,两条 round-1 required 处置结果不对称。
+
+    【Required ① — 已修净,确认关闭】
+    statement 核心主张已收窄为"未预期的一次性/暂时性收入变化",与
+    falsifiability(a) 口径对齐;Kueng 2018 已显式登记为射程外边界案例,
+    且排除判据(事前可预期/周期性/金额大致已知)是可事前测的渠道特征,
+    非按结果开脱;旧模糊护身符("随转移的预期性质而变")已从"不声称"
+    列表删除。本轮独立核对 Kueng 2018 原文(QJE 133(4), "Excess
+    Sensitivity of High-Income Consumers")——分红确为预定/周期性/
+    显著支付;MPC 确随收入单调上升,高收入高流动性家庭 MPC 超 50%,
+    且 Kueng 用账户级数据排除了流动性约束对该组的解释。砖的定性准确,
+    登记诚实。红旗#4/#11 的 round-1 命中解除。
+
+    【Required ② — 修法(a)补引经事实核查后独立性不成立,触发预注册回退】
+    整改补引 Carvalho-Meier-Wang 2016 为 cognitive_science 票承重引证,
+    据此维持 weight 0.4。本轮独立核查该文,三点:
+    (i) 作者群独立性属实——CMW 与 Mullainathan/Shafir 无重叠,整改
+    这一点没说错。
+    (ii) 但 CMW 是 AER(经济学旗舰刊)论文,作者均为经济学家,方法是
+    标准行为经济学的跨期选择激发(lab-in-the-field);票内"方法论路径
+    (认知实验/心理测量)与 behavioral_economics 不同"的表述夸大了
+    路径差异——被试内对照是设计特征,不改变学科归属。
+    (iii) 最关键:CMW 作者【自己】把发薪日前的货币性现时偏向归因于
+    【流动性约束】(手头现金少→偏好更早货币支付的套利式反应),并用
+    非货币任务零结果+认知功能测度零结果【明确排除】稀缺-认知机制
+    (Mullainathan-Shafir 式解释)。即:承重引证支撑的机制恰是锚源
+    已承重的机制(b),而非一条独立的认知科学机制通道。砖把非货币
+    零结果转述为"恰好支持约束状态驱动读法"——读法不假,但它意味着
+    该票全部承重内容坍缩回锚源的机制与学科:真正的认知科学内容
+    (Mullainathan 系)已自行降级不承重,剩下的承重链是一篇用不同
+    数据通道复现流动性约束机制的行为经济学论文。数据通道不同
+    (发薪日周期 vs 退税/彩票/疫情发放)只构成【学科内复现】——IEA
+    本就不给锚源内部多识别策略额外计权(多策略收敛只算 1.0),把
+    学科内复现从"cognitive_science"标签下以 0.4 二次入账,是对锚源
+    机制的重复计数,也违反一致性(标签与承重内容不符)。
+    这正是 author_response 预注册的回退触发条件原文所指("若认为
+    CMW 2016 将发薪日效应归因于流动性约束,与锚源机制(b)语料重叠
+    过高,不构成足够独立的认知科学通道")。按预注册承诺不再争辩,
+    执行修法(b):该票降权至 ≤0.25(保留被试内设计对"状态切换非特质"
+    区分的有限补充信息),IEA = 1.0 + 0.25 + 0.5 = 1.75,跌破 1.8、
+    稳超 1.2,定格 weakly_verified。
+
+    砖的经验内核(未预期一次性收入变化下的流动性-MPC 负梯度)在
+    收窄后射程内高复现、方向稳健,机制(a)(b)干净,与 BR-L2-001 分工
+    合理,本轮反例猎捕无活反例。weakly_verified 是这条砖诚实的稳态,
+    不是失败。剩余 required 为机械执行项,不构成核心塌陷,故裁
+    needs_revision 而非 rejected;因 IEA 记录值(1.9/verified)当前
+    仍虚高,不能径判 verified。
+
+  red_flags:
+    brick_is_conclusion:
+      hit: false
+      detail: |
+        同意 round-1:梯度主张不被 L1 概念平凡蕴含(标准跨期优化基准下
+        一次性转移 MPC 对所有人趋零,组间差本不该存在);机制(a)(b)与
+        "无需偏好异质假设"均为可检验经验主张;与 BR-L2-001 的承重分工
+        (本砖只承重梯度)防止复述有限理性砖。未命中。
+    empty_cell_tautology:
+      hit: false
+      detail: |
+        核心空格(低/高流动性组 MPC 组间差)是真经验主张,永久收入
+        假说基准下预测为空,非同义反复。未命中。
+    measurement_axis_orthogonality:
+      hit: false
+      detail: |
+        事前流动性(行政/税务数据,冲击前测定)与事后消费反应异源;
+        wealthy hand-to-mouth 拆掉"穷=高 MPC"隐含焊点。整改未触动
+        此轴。未命中。
+    scope_exclusion_independent:
+      hit: false
+      detail: |
+        round-1 命中已修净:Kueng 2018 排除按可事前测的渠道特征
+        (可预期/周期性/金额已知)划界,非事后按结果开脱;statement 与
+        falsifiability(a) 口径已对齐。本轮核对原文确认定性准确。解除。
+    classification_granularity:
+      hit: false
+      detail: 连续梯度主张,操作化分组仅为统计检验手段。未命中。
+    anti_talisman:
+      hit: false
+      detail: |
+        事前分组、判据可预注册;旧模糊护身符已删除,替换为显式射程
+        排除;wealthy hand-to-mouth 锚独立测出驱动量(流动性而非收入)。
+        未命中。
+    real_world_anchor_fact_check:
+      hit: false
+      detail: |
+        本轮独立核查两个关键引证。(1) Kueng 2018:砖的转述准确
+        (预定周期性支付;MPC 随收入单调上升;高流动性组 MPC>50%;
+        流动性约束被排除)。(2) CMW 2016:发现方向转述准确(发薪日前
+        货币性现时偏向更强、非货币无差异、被试内设计),但其学科归属
+        与机制归因(作者自判流动性约束、明确排除认知机制)的含义未被
+        如实计入独立性评估——归入 iea_independence_check,非事实错。
+        锚源与经济史证据无事实错。未命中(事实层面)。
+    definition_vs_prediction:
+      hit: false
+      detail: 流动性由前置可观测指标定义,MPC 独立测量,无循环。未命中。
+    enumeration_exhaustiveness:
+      hit: false
+      detail: 未声称 N 类枚举,不适用。
+    primary_suspect:
+      hit: false
+      detail: |
+        文件自认最弱腿(cognitive_science 票 0.4 边界值)定位准确且
+        预注册了回退承诺——自我诊断诚实;本轮只是判定回退触发条件已
+        满足,无未认的更致命软肋。未命中。
+    caliber_preregistration:
+      hit: false
+      detail: |
+        round-1 required 部分已修净(射程口径对齐+边界案例登记)。
+        残留 should 维持:MPC 时间窗口与"消费"操作定义未注册——L2
+        容忍,跨进 L3 必须升 required。另见反例猎捕第 2 条:statement
+        中"(接近 1)"数值 gloss 与"不声称精确 MPC 数值"有轻微张力,
+        建议软化(should)。
+
+  iea_independence_check:
+    recorded_iea: 1.9
+    reviewer_iea: 1.75
+    iea_threshold_verified: 1.8
+    iea_threshold_floor: 1.2
+    assessment: |
+      算术无误,仪器折扣披露到位。争点集中在 cognitive_science 票
+      整改后能否守住 0.4。裁定:守不住,按预注册回退降至 ≤0.25。
+      独立性视角要点:
+      (1) 整改把 Mullainathan 系文献(该票唯一真正的认知科学内容)
+      降级为不承重——正确且诚实;但由此该票承重链只剩 CMW 2016。
+      (2) CMW 2016 的学科归属(AER/经济学作者/跨期选择激发范式)与
+      机制归因(作者自判流动性约束、排除稀缺-认知机制)都落在
+      behavioral_economics 疆域内。它对本砖是好证据,但它是锚源学科
+      的又一条识别策略,不是认知科学的独立确证通道;不能借道
+      "cognitive_science"标签以 0.4 二次入账。
+      (3) 保留 ≤0.25 而非归零:被试内设计与非货币零结果对"约束状态
+      驱动、非人群特质"这一关键区分提供了锚源组间设计给不出的补充
+      信息,值得有限计权。
+      (4) economic_history 票 0.5:维持 round-1 判断,消费理论语料
+      共享使 0.40-0.45 更诚实,但差距在校准误差内,不构成 required。
+      敏感性:即便同时取 cs=0.25、eh=0.40,IEA=1.65 仍稳超 1.2 下限,
+      weakly_verified 定位对系数扰动稳健——结论不依赖小数点校准,
+      故一轮机械修订即可收口。
+    instrument_disclosure_check:
+      disclosed: true
+      note: |
+        cross_verification.verdict_note 按 instrument_correlation
+        discount_rule 如实披露单 LLM 仪器上限并标注缓解因素(多识别
+        策略真实文献收敛);重算记录由独立上下文完成。合规。本命题属
+        稳固共识型,缓解条款适用,单仪器忧虑不构成额外降级理由。
+    source_pair_independence:
+      be_cs:
+        recorded_weight: 0.4
+        reviewer_weight: "≤0.25"
+        rationale: |
+          整改后承重链(CMW 2016)作者群确已移出 Mullainathan 纲领,
+          round-1 的"同一纲领两次计数"具体形态已消解;但替换后的承重
+          引证本身四项皆属行为经济学(学科/期刊/范式/机制归因),
+          "认知科学通道"名存实亡——问题从"纲领重复计数"变为"学科内
+          复现借标签入账",形态换了、独立性缺口未补。0.4 不可守,
+          按预注册回退取 ≤0.25。
+      be_eh:
+        recorded_weight: 0.5
+        reviewer_weight: "0.40-0.50"
+        rationale: |
+          维持 round-1 评估:BR-L2-024 先例(货币史)语料共享低于本砖
+          (消费理论),0.5 略宽但在 ±0.1 校准误差内,不构成 required。
+
+  counterexample_hunt:
+    hunted: true
+    method: |
+      不复用 round-1 案例清单(除对已修射程做回归核对),按收窄后的
+      falsifiability(a)(c) 独立猎捕:可预期支付回归核对、超贫大额转移
+      田野实验、刺激支票债务分流、负向冲击端、跨物种行为生态学。
+    cases:
+      - case: "Kueng 2018 回归核对(射程外登记守不守得住)"
+        resolution: 被消化(事前渠道判据的射程外登记诚实)
+        disposition: |
+          核对原文:分红满足砖登记的全部三项事前可测排除判据;不存在
+          "先见梯度反向再挑口径开脱"的事后选择——排除判据与
+          falsifiability(a) 的"未预期一次性转移"是同一渠道轴的两端。
+          另 Hsieh 2003(AER,同一阿拉斯加情境)显示家庭对可预期分红
+          平滑、对退税过度反应,与射程划分方向一致。非活反例。
+      - case: "超贫大额无条件转移(Haushofer & Shapiro 2016, GiveDirectly 肯尼亚)"
+        resolution: 被消化,但揭出一处措辞过度伸张(should)
+        disposition: |
+          超贫家庭收到大额一次性转移后相当比例流向金属屋顶/牲畜等
+          耐用资产,短窗非耐用品 MPC 远低于 1。消化路径:耐用资产购置
+          正是机制(a)"排队中被压抑的选择",且砖已声明不承诺精确数值。
+          但 statement"MPC 显著更高(接近 1)"的数值 gloss 与"不声称
+          精确 MPC 数值"有张力——梯度主张不需要"接近 1",建议删除或
+          软化该 gloss(should)。
+      - case: "2020 美国 CARES 刺激支票的债务偿还分流(Coibion-Gorodnichenko-Weber 2020)"
+        resolution: 被消化(梯度方向存活,强化既有消费口径 should)
+        disposition: |
+          总体仅约四成用于支出,低流动性群体大量用于还债——若"消费"
+          口径不含还债,低流动性组消费 MPC 被压低。但组间差方向在同期
+          多数据源(如 SaverLife 交易数据)仍是低流动性→更高支出反应,
+          梯度未反向。还债分流强化 round-1 既有 should(消费口径注册)
+          的必要性,非活反例。
+      - case: "负向冲击端(失业保险耗尽, Ganong-Noel 2019)"
+        resolution: 反成支持
+        disposition: |
+          statement"综合"段延伸到暂时性收入损失端。核对:UI 耗尽时
+          消费骤降且集中于低流动资产家庭——与机制(b)预测同向,为
+          负向端主张补上现代证据(此前只有 falsifiability(c) 的历史
+          饥荒证据)。
+      - case: "跨物种:状态依赖觅食/风险敏感理论(能
