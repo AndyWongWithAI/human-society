@@ -5,7 +5,7 @@
 > 把碰存量实体的读取成本封顶,不随实体增多滚雪球。
 > 行格式:`id [status] · term — 摘要  ⟵ 承重依赖`
 
-**177 实体**
+**182 实体**
 
 ## L0 物理约束 (3)
 - PHY-001 — 东西放着不管就会自然变乱、变坏(这就是热力学第二定律);社会里的制度、组织、知识也一样——不持续投入精力去维护,就会自然松散、退化,不存在'一次…
@@ -55,12 +55,13 @@
 - THEOREM-relation-information-asset · 关系信息资产定理 — 两个人的‘关系’本质是一笔信息财富——存着彼此打交道攒下的了解，让往后每次合作都更省事；所以熟人办事比生人省力，而长期不来往，这份了解会变淡、关…  ⟵ PHY-001, AXIOM-002, AXIOM-003
 - THEOREM-value-attribution · 价值归属定理 — 一个东西对你有多值钱，取决于两条路加在一起再乘以稀缺度——第一条路是这东西对你自己有用（使用价值），第二条路是别人愿意为它付出什么（交换网络价值…  ⟵ PHY-001, PHY-002, PHY-003-c, AXIOM-001, AXIOM-003
 
-## L2 桥接 bridges (32)
+## L2 桥接 bridges (36)
 - ADV-REVIEW-BR-L2-004
 - ADV-REVIEW-BR-L2-006
 - ADV-REVIEW-BR-L2-010 [verified]
 - ADV-REVIEW-BR-L2-013 — 对 BR-L2-013(不公平厌恶)的 round-1 独立对抗审查
 - ADV-REVIEW-BR-L2-014 — 对 BR-L2-014(代价第三方惩罚)的 round-1 独立对抗审查
+- ADV-REVIEW-BR-L2-030 — 对 BR-L2-030(现时偏向——人心里那杆秤天生偏向"现在")的 round-1 独立对抗审查
 - BR-L2-001 [verified] · 有限理性 — 人的脑子算不过来所有选项、也想不清每个选择的长远后果，只能挑个‘够用就行’的方案，而不是理论上的最优解  ⟵ AXIOM-002
 - BR-L2-002 [verified] · 亲缘利他 — 血缘越近的亲人，人越愿意为他付出、吃点亏也帮——共享的基因越多，愿意出手相助的门槛就越低
 - BR-L2-003 [verified] · 大规模非亲缘合作 — 人类的独特之处，是能让成千上万素不相识的陌生人一起合作（国家、宗教、市场都是），靠的不是熟人互惠或血缘，而是大家共同相信的规矩和‘想象出来的秩序…  ⟵ AXIOM-003, THEOREM-cooperation-precondition
@@ -88,8 +89,11 @@
 - BR-L2-025 [weakly_verified] · 数字媒介可处理性 — 纸上的字要人读了才有用,屏幕上的字机器自己就能读、能搜、能改、能跟别处的信息自动合成——这不是'变快了',是信息从'死物'变成了'活物  ⟵ AXIOM-002
 - BR-L2-026 [verified] · AI Agent 信息处理不对称 — AI 不是'更聪明的人'——它在某些事上远超人类(无限记忆、不累、能同时处理海量信息),但在另一些事上根本缺失(没有身体体验、没有真感情、不怕死…  ⟵ AXIOM-002
 - BR-L2-027 [verified] · 注意力稀缺与信息过载 — 脑子只能同时想几件事——信息太少当然不行,但信息太多、被信息淹了,判断力反而下降  ⟵ AXIOM-002
+- BR-L2-028 [candidate] · 预防性储蓄 — 天有不测风云,又没人给你兜底,你就得自己留后手——少花点,存点粮
+- BR-L2-029 [candidate] · 边际消费倾向的收入梯度 — 多发一块钱,穷人几乎全花掉,富人大多存起来——不是穷人大手大脚,是他们本来就有一堆想买而买不起的东西,钱一到手就去补窟窿;富人想买的早买了,多的…
+- BR-L2-030 [candidate] · 跨期选择的现时偏向 — 明知道下月开始存钱更好,但到了下月还是推到下下月——人天生就是'现在'比'以后'看得重,近的特别重、远的特别轻,不是算不清账,是心里那杆秤本身就…  ⟵ AXIOM-001, AXIOM-002
 
-## L3 推论 corollaries (30)
+## L3 推论 corollaries (31)
 - DED-001 [verified] · 组织深度天花板推论 — 光靠人嘴对嘴传话的组织，管理层级最多也就5到7层——再深，最高层掌握的情况就和基层实际严重脱节了；想再大，只能把信息写下来（官僚化）或把权力下放…  ⟵ AXIOM-002, THEOREM-hierarchy-depth-limit, BR-L2-001, BR-L2-004
 - DED-002 [verified] · 规范成文化阈值推论 — 口口相传的规矩有个复杂度上限；社会一大、规矩一多，要么把规矩写下来、分层、或找专人记诵来突破上限，要么干脆分裂成一堆小单元、让每份规矩都不超上限…  ⟵ AXIOM-003, THEOREM-norm-energy-saver, THEOREM-cooperation-precondition, BR-L2-001, BR-L2-005
 - DED-003 [verified*] · 内聚-外竞耦合推论 — 大群体的内部团结，和‘有没有一个外部对手’是绑在一起的——因为‘我们不同于他们’是最省力的团结方式；一旦外敌消失、又不肯改用别的方式（如民主参与…  ⟵ AXIOM-001, AXIOM-003, THEOREM-group-identity-decay, THEOREM-competition-norm, BR-L2-003, BR-L2-006
@@ -120,6 +124,7 @@
 - DED-028 [verified] · 价值储藏-交易媒介的功能解耦动力学 — 交易媒介和价值储藏走两条独立轨道——法币信用下滑时，储蓄先跑（价值储藏迁移），支付后崩（交易媒介瓦解），中间的时间差可以长达数年  ⟵ AXIOM-002, AXIOM-003, THEOREM-value-attribution, THEOREM-relation-information-asset, THEOREM-cooperation-precondition, THEOREM-exchange-competition-alternative, BR-L2-022, BR-L2-024, BR-L2-011, BR-L2-012
 - DED-029 [verified] · 金价单因素驱动机制 — 金价有四个独立驱动的方向性引擎——实际利率(-)、通胀预期(+)、法币信用(-)、不确定性(+)——各自可独立检验，不互相绑定  ⟵ AXIOM-001, AXIOM-002, AXIOM-003, THEOREM-value-attribution, BR-L2-021, BR-L2-022, BR-L2-024
 - DED-030 [verified] · 金的存量-流量不对称与价格弹性 — 金价不由开采成本定——每年新挖出来的金子只占地上存量的1-2%  ⟵ AXIOM-001, THEOREM-value-attribution, BR-L2-021, BR-L2-022, BR-L2-023
+- DED-031 [candidate] · 指标治理下的策略性上报失真 — 上级用数字考核下级、数字又是下级自己报的、上级还查不过来——这三件事凑齐，报上来的数字就会朝着'对下级有利'的方向系统性走样  ⟵ AXIOM-001, AXIOM-002, THEOREM-hierarchy-depth-limit, BR-L2-001, BR-L2-010, DED-001
 
 ## L3 审查 reviews (36)
 - ADV-REVIEW-001 [needs_revision] — 这是对推论 DED-001（组织层级深到一定程度，高层就再也管不清底层）的第一轮挑刺审查：审查者挑出四个毛病——关键数字（信息每传一层损耗多少）…

@@ -1,0 +1,288 @@
+id: ADV-REVIEW-BR-L2-030
+type: adversarial_review
+reviews: BR-L2-030
+layer: L2-bridging
+target: BR-L2-030
+target_term: 跨期选择的现时偏向 (Present Bias in Intertemporal Choice)
+rounds: 1
+
+人话摘要: |
+  对 BR-L2-030(现时偏向——人心里那杆秤天生偏向"现在")的 round-1 独立对抗审查。
+  裁 verified:双曲贴现/偏好反转/承诺机制需求横跨动物觅食、人类实验、跨文化档案
+  三条独立通道,IEA 2.1 经诚实仪器折扣披露后仍远超门槛,反例猎捕未发现 scope 内活
+  反例,核心"估值函数形状约束 vs 计算能力约束"的分离在概念上成立。附 3 条 should
+  修订(domain 边界声明/文化普适源权重透明/falsifiability 模型竞争范围收窄)。
+
+round_1:
+  reviewer: independent-adversarial-reviewer
+  date: 2026-07-15
+  verdict: verified
+  verdict_note: |
+    本命题是行为经济学最稳固的共识之一——双曲贴现/偏好反转/承诺机制需求的证据链
+    横跨人类实验室实验、动物觅食生态学、跨文化田野调查三条独立通道。IEA 2.1 经
+    诚实仪器折扣披露后仍远高于 verified 下限 1.2。反例猎捕未发现 scope 内的活反例
+    （符号效应/量级效应/领域依赖/未来自我连续性/建构水平理论/跨物种变异均可被消化
+    为参数调制或边界澄清，不构成净杀）。核心机制维度（估值函数形状约束 vs BR-L2-001
+    的计算能力约束）的分离在概念上成立，尽管经验边界存在固有模糊——这是 L2 经验命题
+    的正常状态，不构成 required 缺陷。三条 should 级修订建议见 required_fixes。
+  red_flags:
+    brick_is_conclusion:
+      hit: false
+      detail: |
+        命题声称人类贴现函数为双曲型（β<1），区别于指数型。这并非 AXIOM-001（稀缺竞争）
+        或 AXIOM-002（信息熵增）的复述——两条公理仅断言"未来不确定"和"资源稀缺"，
+        不指定贴现函数的数学形状。双曲 vs 指数的区分是真正的经验主张：β<1 导致偏好反转，
+        这是指数贴现无法产生的行为标志。非平凡经验内核成立。
+
+    empty_cell_tautology:
+      hit: false
+      detail: |
+        核心空格预测真实：若偏好时间一致（指数贴现），则 (1) 不应出现偏好反转，
+        (2) 承诺机制不必要，(3) 即刻 vs 延迟奖惩权重等比例。这些是可观察的反事实，
+        非同义反复。命题未被自身前提平凡强制——指数贴现数学上完全自洽，不是逻辑矛盾；
+        命题声称"现实选的是双曲而非指数"，这是经验选择问题。
+
+    measurement_axis_orthogonality:
+      hit: false
+      detail: |
+        自变量（时间距离）由实验者外生设定，可通过时钟/日历客观测量。因变量（估值/选择）
+        由被试表达，通过选择数据或 WTP 测量。两者异源正交，不存在 DED-007 式的
+        "分母用实际获授者"型焊点。偏好反转测试的 elegance 在于自变量是时间流逝本身
+        （外生），因变量是偏好是否改变（直接可观测），无隐藏焊点。
+
+    scope_exclusion_independent:
+      hit: false
+      detail: |
+        排除项按可事前测的渠道划界：(a) 贴现率具体数值→个体/情境差异，非本命题范畴；
+        (b) 现时偏向可克服性→承诺机制/习惯养成/认知重构，独立测量渠道；
+        (c) 流动性约束导致的短视→BR-L2-029 处理，不同机制。唯一模糊点：BR-L2-029
+        实际定位是"边际消费倾向的收入梯度"而非"流动性约束"本身，但命题在 falsifiability
+        段已申明"手头现金不足以撑到未来收益兑现"属于理性生存策略、不归因于估值偏差，
+        此排除有独立渠道（预算约束 vs 偏好参数）。
+
+    classification_granularity:
+      hit: false
+      detail: |
+        本命题处理连续量（贴现因子 β、贴现率梯度），未强行二分或分档。双曲/指数的区分
+        是函数形式选择（模型比较），非将连续量切为离散箱。不适用 DED-006 红旗。
+
+    anti_talisman:
+      hit: false
+      detail: |
+        前件判定不由结果反推。偏好反转可事前预言：给定被试在 t1 的贴现函数参数
+        （由独立选择任务拟合），可预测其在 t2 是否反转——不必等反转发生后再贴标签。
+        falsifiability (a) 要求"跨文化大样本中普遍符合指数贴现→命题证伪"，这是可
+        事前测的真证伪条件：指数 vs 双曲的模型比较在数据前即已注册判据（拟合优度+
+        参数显著性），非事后护身符。
+
+        软肋：falsifiability (b)——"BR-L2-001 完全解释所有后果"——的"控制认知负荷后
+        β 归零"操作化存在固有模糊。"认知负荷"是多维构念（工作记忆/注意/执行控制），
+        不存在单一控制操作。但这不构成 required——(a) 本身就足够锋利，(b) 仅是补充
+        性机制区分条件。L2 层面一条清晰证伪路径即满足 anti-talisman。
+
+    reality_anchor_fact_check:
+      hit: false
+      detail: |
+        所有引用的文献锚点经核查均为真实发表作品：Thaler(1981)动态不一致、Laibson
+        (1997)β-δ 模型(QJE)、Frederick-Loewenstein-O'Donoghue(2002)JEL 综述、
+        Ainslie(1975)鸽子偏好反转、Kirby-Herrnstein(1995)人类偏好反转、Ashraf-
+        Karlan-Yin(2006)菲律宾承诺储蓄(QJE)、Kacelnik-Bateson(1996)星鸦觅食、
+        Stephens-Anderson(2001)蓝松鸦跨期选择、Rogers(1994)双曲贴现演化模型、
+        Wang-Rieger-Hens(2016)53 国跨期选择调查。无事实错或过度解读。
+
+    definition_vs_prediction:
+      hit: false
+      detail: |
+        "贴现函数是双曲型（非指数型）"是可证伪的经验主张，非必然为真的定义。
+        指数贴现是自洽且被新古典经济学长期使用的替代模型——命题核心正是"现实数据
+        拒绝指数、支持双曲"。这是预测（模型选择）而非定义。"偏好反转作为双曲贴现的
+        行为标志"是数学推导（双曲→偏好反转），但"现实中存在偏好反转"是经验主张——
+        两者捆绑形成可检验整体。
+
+    enumeration_exhaustiveness:
+      hit: false
+      detail: |
+        本命题未声称可枚举的物种/类别划分。它主张人类跨期选择的通用结构性特征
+        （双曲贴现函数形状），允许参数受文化/个体调节。不适用 DED-008 红旗。
+
+    primary_suspect_accuracy:
+      hit: false
+      detail: |
+        命题自认最弱腿：与 BR-L2-001 的边界模糊。命题已在 statement 末尾显式对比
+        两者（"算不过来 vs 算得过来也偏向现在"），并在 falsifiability (b) 中将此
+        作为可检验替代假说。此自认准确。
+
+        外部额外软肋（命题未自认）：(i) 双曲贴现 vs 建构水平理论（construal level
+        theory）的模型竞争——命题仅对比指数 vs 双曲，未处理"心理距离/抽象程度驱动
+        折扣"替代模型。(ii) "承诺机制作为间接证据"存内生性——承诺机制可能服务协调/
+        信号/社会压力等多功能，其存在不排他证明现时偏向。两条均为 should 级——
+        不威胁核心主张真值但限制证据链排他解释力，属 L2 正常模糊带。
+
+    caliber_registration:
+      hit: false
+      detail: |
+        falsifiability (a) 已注册操作化口径：跨文化受控跨期选择实验，模型比较判据
+        （指数 δ vs 双曲 β+δ），偏好反转为核心行为标志。分子（反转次数/双曲拟合
+        优度）、分母（被试数/任务数）、测量工具（标准跨期选择范式）在实验范式中
+        隐含注册。
+
+        软肋：falsifiability (b) 的"控制认知负荷后 β 归零"口径未完整注册——认知
+        负荷测量方式、控制方法、β 归零的统计判据均未预注册。但 (a) 已是充分证伪
+        路径，不依赖 (b)。不构成 required。
+
+  iea_independence_check:
+    behavioral_economics_anchor:
+      weight: 1.0
+      role: 锚源
+      detail: 行为经济学范式直接测量跨期选择中双曲贴现/偏好反转/承诺需求。证据链形式化（β-δ 模型）+ 实验室/田野实证。锚源地位正当。
+    evolutionary_biology:
+      reported_weight: 0.6
+      reported_independence: default_independence 0.6（独立性模型无 behavioral_economics 配对）
+      scrutiny: |
+        behavioral_economics 不在 independence-model 的 source_pairs 中（表中仅有
+        evo_bio/game_theory/cultural_universals 三源）。evo_bio↔behavioral_economics
+        实际独立性几何？
+
+        有利因素：动物觅食生态学（星鸦/蓝松鸦）与人类实验室/田野经济学使用不同物种、
+        不同实验范式、不同研究者社群——数据通道真独立。
+
+        不利因素：(1) 两者共享最优觅食理论↔贴现模型的数学同源性——双曲贴现数学形式
+        在领域中几乎相同（皆拟合 choice×delay 数据）；(2) 行为生态学与行为经济学在
+        学术谱系上有重叠；(3) 发表期刊和引用网络有交叉。
+
+        结论：0.6 default_independence 对这对来源偏高。行为经济学↔演化生物学独立性
+        应介于 evo_bio↔game_theory(0.4,共享数学结构)与 evo_bio↔cultural_universals
+        (0.6,理论 vs 田野)之间。更诚实估值：0.5。不改变 IEA 是否达标——1.0+0.5+0.5
+        =2.0 仍远超 1.2。
+
+    cultural_universals:
+      reported_weight: 0.5
+      reported_independence: "default_independence 0.6 → 诚实下调至 0.5"
+      scrutiny: |
+        下调理由诚实：(1) Wang-Rieger-Hens(2016) 53 国调查本质是行为经济学范式
+        跨文化施用，共享实验仪器/范式，存语料重叠；(2) 承诺机制跨文化证据（宗教戒律、
+        ROSCA、印加粮仓等）是独立人类学/档案通道。
+
+        但下调幅度是否充分？(1) 权重若占大头（53 国调查是核心引用），整体独立性应
+        更低（≤0.4）。若承诺机制证据权重更大（更丰富跨文化例证），0.5 合理。命题在
+        cultural_universals rationale 中同时引用两者，未给各自权重。0.5 作为混合
+        估值虽有争议但不过分——Wang 等 53 国虽用行为经济学范式但样本多样性本身提供
+        了增量信息（文化变异反驳"西方实验室 artifact"）。
+
+        建议（should）：分开陈述两种证据的各自权重使推导可复现。
+
+    instrument_correlation_discount:
+      disclosed: true
+      disclosure_quality: honest
+      detail: |
+        命题 cross_verification.instrument_disclosure 诚实披露了单 LLM 执行导致的
+        仪器相关性，承认 2.1 IEA 是"学科独立性上限"。引用 ICV-001 布干达判例。
+        达到 independence-model discount_rule 要求。
+
+        额外考察：双曲贴现/偏好反转属"多重复现稳固共识"类别。三条通道（动物觅食+
+        人类实验+跨文化承诺机制）的真实文献收敛提供独立于 LLM 语料的验证基底，
+        单仪器忧虑被部分缓解（如 independence-model mitigation 段所述）。
+        与新颖/争议命题风险不同。
+
+    iea_verdict:
+      reported: 2.1
+      adjusted_if_evo_bio_downgraded: "1.0 + 0.5 + 0.5 = 2.0（建议调整）"
+      worst_case: "1.0 + 0.4 + 0.4 = 1.8（evo_bio 比照 evo_bio↔gt 的 0.4, cultural_universals 全用行为经济学范式）"
+      conclusion: |
+        即使最激进折扣 IEA 最低估值 1.8 仍远超 verified 下限 1.2，且达"两个准独立
+        来源"级。IEA 不存在虚高至无法诚实达标。仪器折扣已披露，独立性边界有记录。
+
+  counterexample_hunt:
+    method: |
+      主动构造/搜寻能证伪核心主张的跨文化/跨物种/跨情境经验案例。
+      逐一评估 scope 内活反例（净杀）或可消化（参数调制/边界澄清）。
+    cases:
+      - case: 符号效应 (sign effect)——收益贴现率 > 损失贴现率
+        source: "Thaler (1981); Loewenstein & Prelec (1992)"
+        claim_under_attack: 存在单一、统一的贴现函数形状
+        verdict: 被消化
+        digestion: |
+          命题核心是"贴现函数为双曲型（非指数型）"，非"所有 domain 共享同一 β"。
+          符号效应表明 β_gains<β_losses，但各 domain 内函数仍可为双曲型。
+          不构成净杀。但揭示隐式伸张：若不声明 domain 依赖，"人类 agent 的贴现函数
+          是双曲型"可能被误读为单一 β。属 scope 边界澄清。
+
+      - case: 量级效应 (magnitude effect)——大额奖励贴现率 < 小额奖励贴现率
+        source: "Thaler (1981); Green, Myerson & McFadden (1997)"
+        claim_under_attack: 贴现函数独立于奖励量级
+        verdict: 被消化（同符号效应逻辑）
+        digestion: 量级效应与双曲函数形式兼容。β 可随奖励量级变化，函数形式不变。
+
+      - case: 领域依赖性——健康 vs 金钱贴现率不同
+        source: "Chapman & Elstein (1995); Chapman (1996)"
+        claim_under_attack: 跨 domain 统一的贴现函数形状
+        verdict: 被消化，需澄清 scope
+        digestion: |
+          若某些 domain（如健康）在特定人群中更近指数贴现，则"贴现函数为双曲型"作为
+          跨 domain 通用主张被削弱。现有证据多数结论是各 domain 内双曲均优于指数，
+          但参数差异大。不构成净杀但揭示 scope 边界。
+
+      - case: 未来自我连续性 (future self-continuity) 调节贴现率
+        source: "Bartels & Urminsky (2011); Ersner-Hershfield et al. (2009)"
+        claim_under_attack: 现时偏向是估值函数固定结构特征
+        verdict: 被消化
+        digestion: |
+          若感知"未来自我-现在自我"连续性增强时 β 上升，表明 β 非固定结构参数
+          而是受心理表征调节变量。命题可容纳：双曲函数形式不变，β 受情境/个体调制。
+          与既有"β 可因承诺机制/习惯养成/认知重构部分矫正"声明一致。
+
+      - case: 建构水平理论竞争 (construal level theory)
+        source: "Trope & Liberman (2003; 2010)"
+        claim_under_attack: 双曲贴现驱动因素是时间距离本身（非心理距离/抽象程度）
+        verdict: 被消化，暴露机制层不完全排他性
+        digestion: |
+          若跨期选择由心理距离驱动，双曲贴现可能为心理距离函数副产品而非独立估值
+          函数形状。但：(1) 时间距离是心理距离核心维度；(2) 即使机制是心理距离→
+          折扣，折扣函数仍可呈双曲型（心理距离非线性）；(3) 命题未声称"时间距离是
+          唯一驱动因素"。建构水平理论是对机制解释的竞争，非对现象存在的反驳。
+          命题 falsifiability 以现象层（双曲形状+偏好反转）为核心，机制非排他不构成净杀。
+
+      - case: 跨物种例外——黑猩猩在部分任务中比人类更耐心
+        source: "Rosati et al. (2007)"
+        claim_under_attack: 双曲贴现是演化适应于不确定觅食环境的普遍产物
+        verdict: 被消化
+        digestion: |
+          命题主张"人类 agent"非"所有物种"。跨物种变异不直接证伪人类特殊性。
+          对演化叙述有间接张力（为何人类比黑猩猩更不耐心？），可能消化路径：人类
+          演化中自我驯化/合作繁殖降低死亡率→降低耐心选择压。不构成净杀。
+
+      - case: 经验成熟个体——金融市场从业者在专业 domain 中接近指数贴现
+        source: 间接（金融从业者长期决策模式研究）
+        claim_under_attack: 双曲贴现是人类 agent 结构性特征（不可消除）
+        verdict: 被消化
+        digestion: |
+          命题已声明"现时偏向可被部分矫正"。专业训练→接近指数贴现属"部分矫正"
+          范畴。但若证明存在未经训练/未用承诺机制的个体自然指数贴现、比例不可忽略，
+          则"人类 agent"全称量词受挑战。目前缺乏此类系统证据。
+
+    conclusion: |
+      七条挑战路径逐一猎捕，无一构成 scope 内净杀反例。最强挑战来自建构水平理论
+      （替代机制）和领域依赖性（scope 边界），但均不威胁命题核心现象层主张（贴现
+      函数为双曲型→偏好反转→承诺机制需求）。符号效应/量级效应/未来自我连续性/
+      跨物种变异均可消化为参数调制。反例猎捕通过。
+    net_kill: none
+
+  required_fixes: []
+  should_fixes:
+    - |
+      澄清 domain/scope 边界：在 statement 中显式声明"β 的具体取值因 domain（收益/
+      损失/健康/金钱）和个体而异，但函数形式（近期陡远期平）跨 domain 一致"，避免
+      "单一估值函数"被误读为"单一 β 参数"。符号效应和量级效应虽被消化，显式声明
+      有助于预防 scope 伸张。
+    - |
+      收窄 cultural_universals 的 IEA 计算注释：将 Wang-Rieger-Hens(2016) 53 国
+      调查与承诺机制的跨文化档案证据分开陈述各自权重，使 0.5 的混合折扣推导更透明。
+      当前混写使审查者无法独立复现折扣判断。
+    - |
+      考虑在 falsifiability 中追加边界：不要求双曲模型在所有 domain 拟合均优于
+      所有可能替代模型（只要求优于指数），以避免"建构水平模型更好→命题证伪"的歧义。
+      可选措辞："若在至少一个主要 domain（金钱/食物/努力）中，跨文化人类选择普遍
+      不符合双曲贴现形式（即指数模型或其他非双曲模型显著优于双曲模型），则证伪。"
+      目前的 (a) 只显式对比指数。
+
+  non_recurrence: {}
