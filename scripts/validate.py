@@ -137,16 +137,16 @@ def check_status(es):
                   for p, e in es.items() if "L3-deductions/corollaries" in p}
     l4_status = {e.get("id", ""): e.get("status", "")
                  for p, e in es.items() if "L4-composites/corollaries" in p}
-    RANK = {"verified": 3, "verified*": 2, "candidate": 1, "rejected": 0}
+    RANK = {"verified": 4, "verified*": 3, "weakly_verified": 2, "candidate": 1, "rejected": 0}
     # 父状态给子推论施加的状态上限：rejected 父 → 子退回 candidate(不得 verified)
-    CAP = {"verified": 3, "verified*": 2, "candidate": 1, "rejected": 1}
+    CAP = {"verified": 4, "verified*": 3, "weakly_verified": 2, "candidate": 1, "rejected": 1}
     all_ded_status = {**ded_status, **l4_status}
     for p, e in es.items():
         eid = e.get("id", "?")
         if "L3-deductions/corollaries" in p:
             st = e.get("status", "")
-            if st not in ("candidate", "verified", "verified*", "rejected"):
-                errs.append(f"{eid}: status='{st}' 无效 (需为 candidate|verified|verified*|rejected)")
+            if st not in ("candidate", "verified", "verified*", "weakly_verified", "rejected"):
+                errs.append(f"{eid}: status='{st}' 无效 (需为 candidate|verified|verified*|weakly_verified|rejected)")
             if not e.get("falsification_trace", {}).get("primary_suspect"):
                 errs.append(f"{eid}: 缺少 falsification_trace.primary_suspect")
             if not e.get("real_world_anchors"):
@@ -170,8 +170,8 @@ def check_status(es):
                 errs.append(f"{eid}: L3 推论引用了 L4 实体 {l4_refs} —— 违反下层不依赖上层铁律")
         if "L4-composites/corollaries" in p:
             st = e.get("status", "")
-            if st not in ("candidate", "verified", "verified*", "rejected"):
-                errs.append(f"{eid}: status='{st}' 无效 (需为 candidate|verified|verified*|rejected)")
+            if st not in ("candidate", "verified", "verified*", "weakly_verified", "rejected"):
+                errs.append(f"{eid}: status='{st}' 无效 (需为 candidate|verified|verified*|weakly_verified|rejected)")
             if not e.get("falsification_trace", {}).get("primary_suspect"):
                 errs.append(f"{eid}: 缺少 falsification_trace.primary_suspect")
             if not e.get("real_world_anchors"):
