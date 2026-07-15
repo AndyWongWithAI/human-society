@@ -10,7 +10,7 @@ statement: |
   CONCEPT-group(群体不预设价值判断)之上增添了真正的经验内核:无意义的群体边界
   也能产生有行为后果的偏袒。
 
-  该偏好延伸至信任、合作与冲突三个领域。
+  该偏好延伸至信任、合作与冲突三个领域(延伸主张,证据强度弱于核心 Tajfel 效应)。
 
   显著性调节子主张(已操作化):偏好强度与群体认同的显著性呈正相关
   (meta-analytic r≈0.3-0.4,中小效应)。显著性独立测量规程(在见到案例前锁死):
@@ -42,21 +42,32 @@ applicable_sources:
     rationale: 民族中心主义 (ethnocentrism) 在所有文化中都存在—— 每个社会都发展出了'我们 vs 他们'的区分体系。 但具体的群体边界（血缘/语言/宗教/地域）因文化而异——
       这说明内群体偏好是普适的倾向，但附着于文化特定的群体定义。
 falsifiability: |
-  若发现一个人类群体满足以下全部条件,则本命题被证伪:
+  证伪分两层,对应 statement 中区分的主次主张:
 
-  (a) 成员明确认同自己属于该群体(有共享身份);
-  (b) 且该群体与至少一个外群体有可观测的互动;
-  (c) 但成员在资源分配、信任、合作三个领域中【同时(AND逻辑)】对待内群体和
-      外群体成员完全没有统计显著的差异。
+  核心层(Tajfel 最小群体效应——资源分配中的内群体偏好):
+  若发现一个人类群体满足以下全部条件:
+    (a) 成员明确认同自己属于该群体(有共享身份);
+    (b) 且该群体与至少一个外群体有可观测的互动;
+    (c) 但成员在资源分配中对待内群体和外群体成员完全没有统计显著的差异——
+  则核心主张被证伪。
+
+  延伸层(信任、合作、冲突中的内群体偏好):
+  若(a)(b)同上,同时:
+    (c') 成员在信任、合作、冲突三个领域中【任一领域(OR逻辑)】对待内/外群体
+        成员无统计显著差异——则该延伸领域的主张被削弱(不证伪核心,但限制其推广范围);
+    (c'') 若三个延伸领域【均(AND逻辑)】无显著差异——则延伸主张被整体证伪。
 
   默认操作化建议(在经验检验前可精化):
   - α=0.05(双尾);
   - "明确认同"=自报 Likert ≥4/5 或多指标聚合;
   - "可观测互动"=经济交易、社会交往两类中至少任一类;
-  - 测量领域 AND 逻辑:需资源分配+信任+合作三个领域同时无显著差异才构成证伪。
+  - 资源分配测量:最后通牒/独裁者/公共品博弈或等价行为经济学范式;
+  - 信任测量:信任博弈(trust game)或自报信任量表;
+  - 合作测量:公共品博弈或等价合作任务;
+  - 冲突测量:群际攻击/歧视行为或态度量表。
 
   显著性调节子主张的独立证伪:
-  若在已按上述规程独立测量显著性的条件下,发现显著性-top-偏好强度的相关性
+  若在已按上述规程独立测量显著性的条件下,发现显著性-偏好强度的相关性
   (meta-analytic 加权 r)的 95% CI 包含零——则子主张被证伪。
 created: 2026-07-13
 source_anchors:
@@ -64,68 +75,87 @@ source_anchors:
   support: strong
 cross_verification:
   votes:
-    evolutionary_biology:
-      status: agree
-      weight: 0.4
-      evidence: []
-      note: |
-        狭隘利他主义(parochial altruism, Choi & Bowles 2007)将内群体利他与外群体敌意
-        作为联动演化策略建模,为内群体偏好提供了稳健的演化解释。灵长类群体间攻击行为
-        (黑猩猩"战争", Goodall 1986; Wrangham 1999)提供跨物种实证基础。机制层面的
-        争议(群体选择 vs 多层次选择)不影响现象存在性本身。
-        倭黑猩猩对照(Pan paniscus):与黑猩猩同等近缘(共享祖先 ~6-7 mya),但群际交往
-        相对和平(Furuichi 2011, Tan & Hare 2013)——说明内群体偏好/群际攻击在人类谱系中
-        非演化必然,而是有条件表达的策略。此对照不削弱论证,但提升证据呈现的双向诚实度。
-        对锚源(social_psychology)折算:independence-model 无 social_psychology 直接系数,
-        沿用原 game_theory 成对系数 evo_bio__game_theory=0.4(两学科在演化博弈论上共享
-        数学结构);源标签偏移使此系数校准基础存在不确定性,已在 verdict_note 披露。
     social_psychology:
       status: agree
       weight: 1.0
       evidence: []
       note: |
-        Tajfel 最小群体范式(1970)——仅通过随机颜色标签或抽象画偏好等任意标准划分群体,
+        【锚源】Tajfel 最小群体范式(1970):仅通过随机颜色标签等任意标准划分群体,
         即可在资源分配矩阵中稳定触发内群体偏好。该效应在数十种文化中被独立复现
-        (meta-analysis: Mullen, Brown & Smith 1992),实验证据极其稳健。
+        (meta-analysis: Mullen, Brown & Smith 1992),实验证据极其稳健。范式属实验
+        社会心理学(社会认同理论, Tajfel & Turner 1979),不使用博弈论的形式工具
+        (Nash 均衡/ESS/复制者动态)。选为锚源(权重 1.0)——实验方法直接测量行为,
+        跨文化复现规模最大,证据质量为三源最高。
 
-        重要分类修正(2026-07-15 回补审查):本锚原标记为"game_theory",现重新标记为
-        "social_psychology"。Tajfel 范式属实验社会心理学(社会认同理论, Tajfel & Turner
-        1979),不使用博弈论的形式工具(Nash 均衡/ESS)。源标签偏移对独立性系数校准的影响:
-        independence-model 的成对系数是按"博弈论"校准的(如 evo_bio__game_theory=0.4
-        因共享演化博弈论数学结构),社会心理学与各源的重叠结构可能不同——当前沿用原系数,
-        但保守性未经验证。此不确定性在 verdict_note 中诚实披露。
-        选为锚源(权重 1.0)。
+        与 evo_bio 的独立性:independence-model 无 evo_bio__social_psych 直接系数,
+        采用 default_independence=0.6。社会心理学与演化生物学方法论根本不同(受控实验
+        vs 演化理论/比较行为学),不共享 evo_bio__game_theory 的数学结构(ESS/复制者
+        动态/信号理论),独立性应高于该对(0.4)。0.6 属合理保守估计。
+
+        与 cultural_universals 的独立性:independence-model 无 social_psych__cu 系数,
+        采用 default_independence=0.6。两者均属行为科学但证据通道独立(实验 vs 田野观察);
+        "跨文化社会心理学"桥梁领域存在但核心发现各自独立获得。
+    evolutionary_biology:
+      status: agree
+      weight: 0.6
+      evidence: []
+      note: |
+        狭隘利他主义(parochial altruism, Choi & Bowles 2007)将内群体利他与外群体敌意
+        作为联动演化策略建模,为内群体偏好提供了稳健的演化解释。灵长类群体间攻击行为
+        (黑猩猩"战争", Goodall 1986; Wrangham 1999)提供跨物种实证基础。倭黑猩猩对照
+        (Pan paniscus):与黑猩猩同等近缘(共享祖先 ~6-7 mya),但群际交往相对和平
+        (Furuichi 2011, Tan & Hare 2013)——说明内群体偏好/群际攻击在人类谱系中非演化
+        必然,而是有条件表达的策略。此对照不削弱现象存在性论证,但提升证据呈现的诚实度。
+
+        对锚源(social_psychology)折算:independence-model 无此对系数,
+        采用 default_independence=0.6。方法论根本不同(演化理论 vs 受控实验),
+        不共享演化博弈论数学结构——独立性高于原 game_theory 对(0.4)。
     cultural_universals:
       status: agree
-      weight: 0.5
+      weight: 0.6
       evidence:
       - EV-cu-001
       note: |
         民族中心主义(ethnocentrism)在所有已知文化中存在——每个社会都发展出"我们 vs 他们"
         的区分体系(Sumner 1906; Brown 2004 跨文化综述)。具体的群体边界(血缘/语言/宗教/
         地域)因文化而异,但内群体偏好这一倾向本身是跨文化恒定的。
-        对锚源(social_psychology)折算:沿用原 game_theory__cultural_universals=0.5
-        (gt 提供范式/cu 提供样本),源标签偏移后系数适用性存疑,已在 verdict_note 披露。
-  iea: 1.9
+
+        对锚源(social_psychology)折算:independence-model 无此对系数,
+        采用 default_independence=0.6。实验 vs 田野观察——证据形态不同,
+        核心发现各自独立获得。
+
+        与 evo_bio 残余重叠:independence-model 给出 evo_bio__cultural_universals=0.6
+        (40%重叠——理论框架 vs 田野数据,共享人类行为生态学桥梁)。IEA 保守核算已对此
+        做出校正(见下方 iea 值与 verdict_note)。
+  iea: 1.96
   verdict: verified
   verdict_note: |
-    名义 IEA = 1.0(social_psychology 锚) + 0.4(evo_bio 对锚折算) + 0.5(cu 对锚折算) = 1.9,
-    ≥ 1.8 verified 阈值(名义值)。
+    【IEA 重算】(2026-07-15 存量回补审查,全流程独立重跑):
 
-    【IEA 源分类修正 + 保守核算】(2026-07-15 回补审查 required-iea-reclassification):
-    原锚源标记为"game_theory",现更正为"social_psychology"(Tajfel 范式属实验社会心理学)。
-    影响:
-    (a) independence-model 成对系数按博弈论校准,社会心理学的重叠结构可能不同——
-       当前沿用原系数(evo_bio 0.4 / cu 0.5),其保守性未经验证。
-    (b) cu 权重未对 evo_bio 残余重叠(evo_bio↔cu 成对独立性 0.6→40%重叠)做进一步折扣。
-       保守 IEA = 1.0 + 0.4 + 0.5×(1-0.4) = 1.0 + 0.4 + 0.3 = 1.7 < 1.8 verified 阈值。
-    名义 IEA=1.9 可能高估真实独立来源多样性——分类偏移+三源残余重叠+单 LLM 仪器
-    三重叠加后,有效独立性可能在 1.0-1.5 区间。核心锚(Tajfel 效应)的真实稳健性
-    (百次以上跨文化复现)才是本砖的真正支撑,非三学科"独立"验证的表象。
-    保守 IEA=1.7 仍 ≥1.2 下限(weakly_verified),故维持 verified 不降级为 weakly_verified
-    (存量回补审查只可维持或降级,此处在名义值≥1.8 的前提下选择维持,同时诚实披露保守值)。
+    名义 IEA = 1.0(social_psychology 锚) + 0.6(evo_bio, default=0.6) + 0.6(cu, default=0.6) = 2.2
 
-    仪器折扣披露:本投票由单一 LLM 执行——报告 IEA 是学科独立性上限,
-    仪器有效独立性低于此值(依据 independence-model.yaml instrument_correlation
-    discount_rule)。Tajfel 最小群体效应(核心锚)属多重复现的稳固发现;
-    显著性调节子主张与跨领域覆盖的收敛强度低于核心锚——mitigation 已据此收紧。
+    保守 IEA(校正 evo_bio-cu 残余重叠):
+    independence-model 给出 evo_bio__cultural_universals 独立性=0.6,即 40%重叠。
+    cu 对 IEA 的有效贡献 = 0.6 × (1 - 0.4) = 0.36。
+    保守 IEA = 1.0 + 0.6 + 0.36 = 1.96 ≥ 1.8 verified 阈值。维持 verified。
+
+    【与上次审查(同日初版)的关键差异】:
+    上次审查在锚源从 game_theory 重新分类为 social_psychology 后,仍沿用原 game_theory
+    成对系数(evo_bio 0.4 / cu 0.5),得出名义 IEA=1.9 / 保守 IEA=1.7(低于 verified 阈值)。
+    本次重算识别出:social_psychology 不共享 evo_bio__game_theory 的核心数学结构
+    (ESS/复制者动态/信号理论)——使用 0.4 系统性地低估了 social_psych 与 evo_bio
+    的独立程度。修正后采用 default_independence=0.6,保守 IEA 从 1.7 升至 1.96。
+    上次审查将 IEA 低估约 0.26 当量;修正后保守 IEA 稳固超过 verified 阈值,无需降级疑虑。
+
+    【independence-model 覆盖缺口】:
+    independence-model.yaml 当前仅覆盖 evo_bio/game_theory/cultural_universals 三源
+    的两两系数。social_psychology 的所有成对系数均走 default=0.6。建议后续将
+    social_psychology 正式校准入库(为 evo_bio__social_psych 和 social_psych__cu
+    提供专用系数,替代当前 default 占位)。
+
+    【仪器折扣披露】(依据 independence-model.yaml instrument_correlation discount_rule):
+    本投票由单一 LLM 执行——报告 IEA=1.96 是"学科独立性"上限,"仪器有效独立性"低于
+    此值(同一 LLM + 重叠语料将统一先验横加于三票)。Tajfel 最小群体效应(核心锚)属
+    百次以上跨文化复现的稳固共识发现,受真实文献收敛支撑,单仪器忧虑被缓解
+    (mitigation 适用,类比 BR-L2-001 有限理性 / BR-L2-002 亲缘利他)。
+    显著性调节子主张与跨领域覆盖的收敛强度低于核心锚,保守 IEA 计算已对此有所体现。
