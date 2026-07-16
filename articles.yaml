@@ -2,4 +2,8 @@
 # 一篇文章可以关联多个实体，一个实体可以被多篇文章引用
 # 只在页面上展示，不通过 API 暴露，只由 Claude 修改
 
-articles: []
+articles:
+  - url: "https://mp.weixin.qq.com/s/bgKQiO8qvrwuBs_8_oFxqQ"
+    title: "算法透明才是数字时代最坚硬的铠甲"
+    date: "2026-07-16"
+    entity_ids: ["DED-042"]
