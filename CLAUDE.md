@@ -61,7 +61,7 @@ L0-physical/  L1-definitions/  L2-bridging/  L3-deductions/  L4-composites/
 - **L3 验证规则 A–D**:A 操作化 → B 独立对抗审查 → C 经验对照 → D 链式(confidence_floor)。附 `anti_talisman_clause`(防不可证伪护身符)+ `nontriviality_test`(逐格判空)。
 - **L4 验证规则 E–G**(见 `L4-composites/METHODOLOGY.yaml`):E 涌现(必要性+新颖性+多父逐格判空)→ F 跨层置信度传播 → G 复合特有锚点。L4 主前提 ≥2 条 verified L3 推论,结论是涌现的系统性命题。必须证明至少一个格子需要 ≥2 父推论合力(否则是平凡合取)。L4 离地基远,标准比 L3 更严。
 - **status 枚举**:L3/L4 = `candidate|verified|verified*|rejected`;L2 = `candidate|verified|weakly_verified|rejected`。`verified*` = 带未了悬案(如 DED-003)。`rejected` 是正常产出,不删——体系肯毙自己的推论正是可信度来源(已否决 DED-004/DED-007/L4-009)。
-- **沉淀的通用检验**(历次审查换来的红旗)全部写在 L3 + L4 评分卡与作者清单:`docs/pipeline/author-checklist.md` / `review-rubric.md`(L3),`l4-author-checklist.md` / `l4-review-rubric.md`(L4)。**新增推论前先读对应清单**。通用红旗(11 条)只在 L3 评分卡定义一次,L4 评分卡继承 + 追加专属红旗(第 12–18 条)。最新判例:L3 评分卡第 11 条(阈值必须连同分子/分母/口径一次性注册;事后口径选择一律反向裁决,由 L4-009/利比亚攻防换来,对 L3/L4 通用)。
+- **沉淀的通用检验**(历次审查换来的红旗)全部写在 L3 + L4 评分卡与作者清单:`docs/pipeline/author-checklist.md` / `review-rubric.md`(L3),`l4-author-checklist.md` / `l4-review-rubric.md`(L4)。**新增推论前先读对应清单**。通用红旗(16 条,含 2026-07-16 新增第 14–16 条:反向失败模式/Bootstrap限定/验证对象存在性)只在 L3 评分卡定义一次,L4 评分卡继承 + 追加专属红旗(第 14–20 条)。最新判例:L3 评分卡第 11 条(阈值必须连同分子/分母/口径一次性注册;事后口径选择一律反向裁决,由 L4-009/利比亚攻防换来,对 L3/L4 通用)。
 
 ## L2 桥接层验证:IEA(独立 agree 当量)
 

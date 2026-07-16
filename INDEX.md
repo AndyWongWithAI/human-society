@@ -5,7 +5,7 @@
 > 把碰存量实体的读取成本封顶,不随实体增多滚雪球。
 > 行格式:`id [status] · term — 摘要  ⟵ 承重依赖`
 
-**238 实体**
+**237 实体**
 
 ## L0 物理约束 (3)
 - PHY-001 — 东西放着不管就会自然变乱、变坏(这就是热力学第二定律);社会里的制度、组织、知识也一样——不持续投入精力去维护,就会自然松散、退化,不存在'一次…
@@ -101,7 +101,7 @@
 - BR-L2-031 [weakly_verified] · 制度信任的不对称衰减 — 对制度的信任有个扎心的规律——掉得快、涨得慢  ⟵ AXIOM-002, THEOREM-relation-information-asset
 - BR-L2-032 [weakly_verified] · 算法驱动的搜索/匹配/监控成本断崖 — 算法不是让交易'更快'——它把搜索成本压低了上万倍、把匹配和监控成本压到了从前在大规模匿名交易中无法企及的水平,压低到了没有算法时不管花多少钱都…  ⟵ AXIOM-002
 
-## L3 推论 corollaries (54)
+## L3 推论 corollaries (53)
 - DED-001 [verified] · 组织深度天花板推论 — 光靠人嘴对嘴传话的组织，管理层级最多也就5到7层——再深，最高层掌握的情况就和基层实际严重脱节了；想再大，只能把信息写下来（官僚化）或把权力下放…  ⟵ AXIOM-002, THEOREM-hierarchy-depth-limit, BR-L2-001, BR-L2-004
 - DED-002 [verified] · 规范成文化阈值推论 — 口口相传的规矩有个复杂度上限；社会一大、规矩一多，要么把规矩写下来、分层、或找专人记诵来突破上限，要么干脆分裂成一堆小单元、让每份规矩都不超上限…  ⟵ AXIOM-003, THEOREM-norm-energy-saver, THEOREM-cooperation-precondition, BR-L2-001, BR-L2-005
 - DED-003 [verified*] · 内聚-外竞耦合推论 — 大群体的内部团结，和‘有没有一个外部对手’是绑在一起的——因为‘我们不同于他们’是最省力的团结方式；一旦外敌消失、又不肯改用别的方式（如民主参与…  ⟵ AXIOM-001, AXIOM-003, THEOREM-group-identity-decay, THEOREM-competition-norm, BR-L2-003, BR-L2-006
@@ -139,7 +139,6 @@
 - DED-035 [candidate] · 数据协调成本不对称冲击与企业边界分叉 — 数字数据+算法让做买卖和管公司都变便宜了,但便宜的程度不一样——能标准化、能量化的事,做买卖的成本降得比管公司更狠,所以企业把这类事外包出去;但…  ⟵ AXIOM-002, THEOREM-hierarchy-depth-limit, THEOREM-cooperation-precondition, BR-L2-001, BR-L2-009, BR-L2-010, DED-001, DED-006
 - DED-036 [verified] · 算法成本断崖×货币物理筛选：从发现到设计 — 算法把搜索和评估成本压低了上万倍之后，'什么东西适合当钱'这件事的玩法彻底变了——以前是大自然花上千年慢慢筛选（金、银、铜，试了无数种东西才找到…  ⟵ AXIOM-001, AXIOM-002, THEOREM-exchange-competition-alternative, THEOREM-value-attribution, BR-L2-021, BR-L2-032
 - DED-038 [verified] · 制度信任崩解×法币功能解耦：恶性通胀的双重时间不对称 — 制度信任崩了之后，钱的两样功能各跑各的——'存钱'功能因为信任掉得快先跑（大家赶紧把钱换成金条、外币），但'标价'功能因为记忆惯性还留在原地（工…  ⟵ AXIOM-002, THEOREM-value-attribution, THEOREM-relation-information-asset, BR-L2-031, BR-L2-024
-- DED-039 [candidate] · AI共享代码×大规模合作：想象秩序的必要性降级 — 人类大规模合作一直靠'大家都信同一个故事'——国家、宗教、市场都是靠人们共同相信一套叙事才让陌生人愿意合作  ⟵ AXIOM-002, AXIOM-003, THEOREM-cooperation-precondition, BR-L2-003, BR-L2-026
 - DED-040 [verified] · 算法监控成本断崖×第三方惩罚：惩罚通胀与惩罚疲劳的分叉 — 算法让发现别人违规的成本断崖式下降后,大量以前看不见的小违规全进了'可罚池'——这触发两种相反的走向:要么举报太多、每条举报越来越不值钱(惩罚通…  ⟵ AXIOM-001, AXIOM-002, AXIOM-003, THEOREM-competition-norm, THEOREM-cooperation-precondition, THEOREM-conflict-cost, THEOREM-moral-third-party-enforcement, BR-L2-014, BR-L2-032
 - DED-041 [verified] · 数字可处理性×道德内化：具身共情的系统性削弱 — 屏幕上的伤害没有血肉、没有颤抖的声音、没有真实的眼神接触——你知道对方受伤了，但你感受不到
 - DED-042 [verified] · 算法监控×制度信任不对称：修复斜率的系统性拉陡 — 制度信任有个扎心规律——掉得快、涨得慢

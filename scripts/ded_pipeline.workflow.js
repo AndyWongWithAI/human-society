@@ -52,6 +52,9 @@ const REVIEW_PATH = `${REPO}/L3-deductions/reviews/ADV-REVIEW-${b.reviewNum}-${b
 const CHECKLIST = `${REPO}/docs/pipeline/author-checklist.md`
 const RUBRIC = `${REPO}/docs/pipeline/review-rubric.md`
 const INDEX = `${REPO}/INDEX.md`
+// 阅读包(v2.1):agent 冷启动只读 1 份而非 3-4 份,未命中输入成本 ↓25-40%
+const AUTHOR_PACK = `${REPO}/docs/pipeline/author-pack.md`
+const REVIEWER_PACK = `${REPO}/docs/pipeline/reviewer-pack.md`
 const bricks = (b.bricks || []).join(', ')
 const domain = JSON.stringify(b.domain || [])
 
@@ -92,11 +95,9 @@ const authored = b.skipAuthor
   : await agent(
   `你是公理化推论【作者】,全新上下文。目标:把下列推论写成一份【瘦身 canonical】的 candidate YAML。
 
-## 封顶读取(两份)
-1. 读 ${INDEX}(定长索引,一行一条实体)——了解已有推论、避免重叠、找判别对象。
-2. 读 ${CHECKLIST}(前置清单+瘦身格式)——逐条自查 A–E,照底部"瘦身 canonical DED 格式"节写。
-3. 承重砖 ${bricks} ——【仅读 INDEX 摘要行,不逐份读全文】。
-   起草中遇到具体歧义时再打开对应砖全文 (${REPO}/L2-bridging/verified/<id>-*.yaml)。
+## 封顶读取(一份阅读包,预编了实体速览+前置清单+瘦身格式)
+1. 读 ${AUTHOR_PACK}(本体系的作者阅读包——含全部实体索引摘要+作者前置清单A-E段+瘦身canonical格式)。读完这份就够了,不用分别读INDEX+checklist。
+2. 承重砖 ${bricks} ——阅读包的实体速览段已含各砖摘要行。起草中遇到具体歧义时再打开对应砖全文 (${REPO}/L2-bridging/verified/<id>-*.yaml)。
 
 ## 要写的推论
 - id: ${b.id}   主题: ${b.title}   核心一句话: ${b.coreClaim || '(从论点提炼)'}
@@ -134,7 +135,7 @@ while (round < MAX) {
     `你是【独立对抗审查者】(round ${round}),全新上下文,与作者及前几轮审查者无关。
 
 ## 唯一校准来源
-评分卡:${RUBRIC}(读它即可,**不要**去读其它参照推论——那是浪费)。
+阅读包:${REVIEWER_PACK}(本体系的审查者阅读包——含全部实体索引摘要+审查评分卡+通用红旗13条+反例猎捕+裁决语义。读完这份就够了,**不要**去读其它参照推论——那是浪费)。
 
 ## 审查对象
 ${DED_PATH}(status: candidate)。

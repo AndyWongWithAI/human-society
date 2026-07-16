@@ -61,6 +61,9 @@ const CHECKLIST = `${REPO}/docs/pipeline/l4-author-checklist.md`
 const RUBRIC = `${REPO}/docs/pipeline/l4-review-rubric.md`
 const L3_RUBRIC = `${REPO}/docs/pipeline/review-rubric.md`
 const INDEX = `${REPO}/INDEX.md`
+// 阅读包(v2.1):agent 冷启动只读 1 份而非 3-4 份,未命中输入成本 ↓25-40%
+const AUTHOR_PACK = `${REPO}/docs/pipeline/author-pack.md`
+const REVIEWER_PACK = `${REPO}/docs/pipeline/reviewer-pack.md`
 const claimType = b.claimType || 'social_form_prediction'
 const domain = JSON.stringify(b.domain || [])
 
@@ -99,10 +102,10 @@ phase('Author')
 const authored = await agent(
   `你是 L4 复合推论【作者】,全新上下文。目标:把下列 L4 复合推论写成一份【瘦身 canonical】的 candidate YAML。
 
-## 封顶读取(两份,不读 METHODOLOGY——清单已含规则 E/F/G)
-1. 读 ${INDEX}(定长索引,一行一条实体)——定位父推论摘要、避免重叠、找判别对象。
-2. 读 ${CHECKLIST}(前置清单+瘦身格式)——逐条自查 A–E,规则在 A 段,L4 专属字段格式在底部。
-3. L3 父推论 ${l3Parents.join(', ')} ——【仅读 INDEX 摘要行,不逐份读全文】。
+## 封顶读取(阅读包+L4专属清单,不读 METHODOLOGY——清单已含规则 E/F/G)
+1. 读 ${AUTHOR_PACK}(本体系的作者阅读包——含全部实体索引摘要+通用作者前置清单A-E段+瘦身格式)。读完这份,通用部分全覆盖。
+2. 读 ${CHECKLIST}(L4 专属前置清单+瘦身格式)——逐条自查 L4 专属规则,L4 专属字段格式在底部。
+3. L3 父推论 ${l3Parents.join(', ')} ——【仅读阅读包实体速览段摘要行,不逐份读全文】。
    起草中遇到具体歧义时再打开对应 L3 全文 (${REPO}/L3-deductions/corollaries/<id>-*.yaml)。
 ${l4Parents.length ? `4. L4 父推论同理,仅读 INDEX 摘要:${l4Parents.join(', ')}\n   全文在 ${REPO}/L4-composites/corollaries/<id>-*.yaml,遇歧义再打开。` : ''}
 
@@ -143,9 +146,9 @@ while (round < MAX) {
   const rev = await agent(
     `你是 L4 复合推论的【独立对抗审查者】(round ${round}),全新上下文,与作者及前几轮审查者无关。
 
-## 唯一校准来源(两份评分卡,都要读)
-L4 评分卡:${RUBRIC}(L4 专属红旗第 12–18 条)。
-同时读 L3 通用评分卡:${L3_RUBRIC}(通用 11 条红旗的唯一定义)。
+## 唯一校准来源(两份——阅读包+L4专属评分卡)
+阅读包:${REVIEWER_PACK}(含全部实体索引摘要+通用红旗13条+反例猎捕+裁决语义——通用部分全覆盖)。
+同时读 L4 专属评分卡:${RUBRIC}(L4 专属红旗第 12–18 条,继承通用13条后追加)。
 读这两份即可,**不要**去读其它参照推论——那是浪费。
 
 ## 审查对象

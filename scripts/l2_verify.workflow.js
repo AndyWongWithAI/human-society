@@ -43,6 +43,8 @@ const REPO = b.repo || '/home/hq/research/human-society'
 const INDEPENDENCE = `${REPO}/sources/independence-model.yaml`
 const RUBRIC = `${REPO}/docs/pipeline/review-rubric.md`
 const INDEX = `${REPO}/INDEX.md`
+// 阅读包(v2.1):审查者冷启动只读 1 份而非 2 份,未命中输入成本 ↓25-40%
+const REVIEWER_PACK = `${REPO}/docs/pipeline/reviewer-pack.md`
 const REVIEWS_DIR = `${REPO}/L2-bridging/reviews`
 
 // --- 结构化返回 schema(强制紧凑,重产物永不回主循环) ---
@@ -126,11 +128,11 @@ domain: ${domainStr}
 你的职责是尽最大努力打穿它,给硬裁决。默认怀疑,宁可错杀不放水(最高原则:方法论 > 任何单条命题)。
 
 ## 唯一校准来源
-L3 评分卡:${RUBRIC}(读它即可——L2 也是经验命题,10 条通用红旗同样适用;**不要**去读其它参照命题)。
+阅读包:${REVIEWER_PACK}(本体系的审查者阅读包——含全部实体索引摘要+通用红旗13条+反例猎捕+裁决语义。读完这份就够了——L2 也是经验命题,通用红旗同样适用;**不要**去读其它参照命题)。
 
 ## 审查对象
 桥接砖 ${id}。用 \`cd ${REPO} && ls L2-bridging/*/${id}-*.yaml\` 定位并读全文(含 IEA 调查刚写入的 cross_verification)。
-如需核对 bridges_to 的 L1 实体,查 ${INDEX} 对应行。仪器折扣规则见 ${INDEPENDENCE} 的 instrument_correlation。
+如需核对 bridges_to 的 L1 实体,查阅读包实体速览段对应行。仪器折扣规则见 ${INDEPENDENCE} 的 instrument_correlation。
 
 ## L2 专属重点(在通用 10 红旗之上)
 1. **brick=conclusion** — 这条砖是不是只在复述某条 L1 定理/公理?非平凡经验内核在哪?(命中=required)
