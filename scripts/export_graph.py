@@ -128,6 +128,17 @@ def extract_all_edges(entity_id: str, data: dict) -> list:
         edges.extend(extract_edges_from_depends_on(data["l0_grounding"], "grounded_in"))
     if "l0_constraints" in data and data["l0_constraints"] is not None:
         edges.extend(extract_edges_from_depends_on(data["l0_constraints"], "grounded_in"))
+    # derivation.from_l1 / from_l2 — used by L3/L4 deductions
+    derivation = data.get("derivation")
+    if isinstance(derivation, dict):
+        for level_key in ("from_l1", "from_l2", "from_l3"):
+            level = derivation.get(level_key)
+            if isinstance(level, dict):
+                for sub_key, id_list in level.items():
+                    if isinstance(id_list, list):
+                        for item in id_list:
+                            if isinstance(item, str):
+                                edges.append({"target": normalize_id(item), "relation": "depends_on"})
     return edges
 
 

@@ -64,7 +64,7 @@ window.GRAPH_DATA = {
       "created": "2026-07-13",
       "revised": "",
       "depends_on_count": 3,
-      "depended_by_count": 75
+      "depended_by_count": 74
     },
     {
       "id": "CONCEPT-choice",
@@ -136,7 +136,7 @@ window.GRAPH_DATA = {
       "created": "2026-07-13",
       "revised": "",
       "depends_on_count": 8,
-      "depended_by_count": 35
+      "depended_by_count": 34
     },
     {
       "id": "CONCEPT-exchange",
@@ -210,7 +210,7 @@ window.GRAPH_DATA = {
       "created": "2026-07-13",
       "revised": "",
       "depends_on_count": 8,
-      "depended_by_count": 33
+      "depended_by_count": 32
     },
     {
       "id": "CONCEPT-hierarchy",
@@ -246,7 +246,7 @@ window.GRAPH_DATA = {
       "created": "2026-07-13",
       "revised": "",
       "depends_on_count": 5,
-      "depended_by_count": 89
+      "depended_by_count": 88
     },
     {
       "id": "CONCEPT-interaction",
@@ -322,7 +322,7 @@ window.GRAPH_DATA = {
       "created": "2026-07-13",
       "revised": "",
       "depends_on_count": 7,
-      "depended_by_count": 65
+      "depended_by_count": 64
     },
     {
       "id": "CONCEPT-organization",
@@ -340,7 +340,7 @@ window.GRAPH_DATA = {
       "created": "2026-07-13",
       "revised": "",
       "depends_on_count": 10,
-      "depended_by_count": 30
+      "depended_by_count": 29
     },
     {
       "id": "CONCEPT-power",
@@ -430,7 +430,7 @@ window.GRAPH_DATA = {
       "created": "2026-07-13",
       "revised": "",
       "depends_on_count": 5,
-      "depended_by_count": 56
+      "depended_by_count": 57
     },
     {
       "id": "AXIOM-002",
@@ -448,7 +448,7 @@ window.GRAPH_DATA = {
       "created": "2026-07-13",
       "revised": "",
       "depends_on_count": 3,
-      "depended_by_count": 61
+      "depended_by_count": 64
     },
     {
       "id": "AXIOM-003",
@@ -466,7 +466,7 @@ window.GRAPH_DATA = {
       "created": "2026-07-13",
       "revised": "",
       "depends_on_count": 4,
-      "depended_by_count": 51
+      "depended_by_count": 50
     },
     {
       "id": "AXIOM-004",
@@ -542,7 +542,7 @@ window.GRAPH_DATA = {
       "created": "2026-07-13",
       "revised": "",
       "depends_on_count": 5,
-      "depended_by_count": 33
+      "depended_by_count": 32
     },
     {
       "id": "THEOREM-exchange-competition-alternative",
@@ -599,7 +599,7 @@ window.GRAPH_DATA = {
       "created": "2026-07-13",
       "revised": "",
       "depends_on_count": 6,
-      "depended_by_count": 9
+      "depended_by_count": 10
     },
     {
       "id": "THEOREM-moral-internalization",
@@ -619,7 +619,7 @@ window.GRAPH_DATA = {
       "created": "2026-07-14",
       "revised": "",
       "depends_on_count": 5,
-      "depended_by_count": 7
+      "depended_by_count": 8
     },
     {
       "id": "THEOREM-moral-third-party-enforcement",
@@ -732,7 +732,7 @@ window.GRAPH_DATA = {
       "created": "2026-07-13",
       "revised": "",
       "depends_on_count": 7,
-      "depended_by_count": 24
+      "depended_by_count": 26
     },
     {
       "id": "THEOREM-value-attribution",
@@ -752,7 +752,7 @@ window.GRAPH_DATA = {
       "created": "2026-07-15",
       "revised": "2026-07-15",
       "depends_on_count": 12,
-      "depended_by_count": 23
+      "depended_by_count": 24
     },
     {
       "id": "BR-L2-001",
@@ -800,7 +800,7 @@ window.GRAPH_DATA = {
       "created": "2026-07-13",
       "revised": "",
       "depends_on_count": 6,
-      "depended_by_count": 6
+      "depended_by_count": 5
     },
     {
       "id": "BR-L2-004",
@@ -816,7 +816,7 @@ window.GRAPH_DATA = {
       "created": "2026-07-13",
       "revised": "2026-07-15",
       "depends_on_count": 5,
-      "depended_by_count": 8
+      "depended_by_count": 9
     },
     {
       "id": "BR-L2-005",
@@ -848,7 +848,7 @@ window.GRAPH_DATA = {
       "created": "2026-07-13",
       "revised": "2026-07-15",
       "depends_on_count": 6,
-      "depended_by_count": 13
+      "depended_by_count": 14
     },
     {
       "id": "BR-L2-007",
@@ -1078,7 +1078,7 @@ window.GRAPH_DATA = {
       "created": "2026-07-14",
       "revised": "",
       "depends_on_count": 5,
-      "depended_by_count": 5
+      "depended_by_count": 6
     },
     {
       "id": "BR-L2-020",
@@ -1154,7 +1154,7 @@ window.GRAPH_DATA = {
       "created": "2026-07-15",
       "revised": "2026-07-15",
       "depends_on_count": 12,
-      "depended_by_count": 2
+      "depended_by_count": 3
     },
     {
       "id": "BR-L2-024",
@@ -1194,7 +1194,7 @@ window.GRAPH_DATA = {
       "created": "2026-07-15",
       "revised": "",
       "depends_on_count": 6,
-      "depended_by_count": 4
+      "depended_by_count": 5
     },
     {
       "id": "BR-L2-027",
@@ -1274,7 +1274,7 @@ window.GRAPH_DATA = {
       "created": "2026-07-15",
       "revised": "",
       "depends_on_count": 6,
-      "depended_by_count": 3
+      "depended_by_count": 4
     },
     {
       "id": "BR-L2-029",
@@ -1316,7 +1316,7 @@ window.GRAPH_DATA = {
       "created": "2026-07-15",
       "revised": "",
       "depends_on_count": 12,
-      "depended_by_count": 3
+      "depended_by_count": 5
     },
     {
       "id": "BR-L2-032",
@@ -1337,7 +1337,7 @@ window.GRAPH_DATA = {
       "created": "2026-07-16",
       "revised": "",
       "depends_on_count": 8,
-      "depended_by_count": 3
+      "depended_by_count": 4
     },
     {
       "id": "DED-001",
@@ -2064,22 +2064,6 @@ window.GRAPH_DATA = {
       "depended_by_count": 0
     },
     {
-      "id": "DED-037",
-      "term": "AI陪伴×道德发育窗口：道德他者模型偏移 (AI Companionship × Moral Development Window: Moral Other Model Shift)",
-      "term_zh": "AI陪伴×道德发育窗口：道德他者模型偏移",
-      "type": "deduction",
-      "layer": "L3",
-      "layer_label": "推论层",
-      "status": "candidate",
-      "人话摘要": "小孩子怎么学会'伤害别人是不对的'？不是大人讲道理讲会的——是看到别人被自己弄疼时脸上的表情、听到对方声音发抖，这些真实的情绪反馈慢慢在孩子心里搭起一套'我做坏事→别人会痛苦→我不能做'的神经回路。但现在AI保姆/AI玩伴/AI教师在孩子醒着的大部分时间里代替了真人互动——AI有无穷耐心、从不发脾气、永远温柔，但恰恰缺少了这套道德学习最关键的原料：真实的情感反应和身体的脆弱性。本推论预测：AI陪伴时间越长的小孩，对真人痛苦的敏感度越低、道德判断越不看'是不是故意的'、生理反应也更冷淡——不是孩子变坏了，是他从小习得的'道德他者模型'里，对面那个'他者'本来就不会疼。",
-      "statement": "【核心】当AI陪伴者系统性地占据儿童道德发育关键窗口期的情感互动时间，发育期习得的\"道德他者模型\"（moral other model——个体内部关于\"互动对象是什么样的存在\"的统计表征）从有情感/有脆弱性/有具身体验的人类，转向无情感/无脆弱性/无具身体验的AI。这不是\"AI教坏孩子\"——AI没有恶意——而是统计学习层面的输入分布偏移：发育窗口期内，儿童大脑通过反复观察\"我做X→对方出现Y反应\"来构建道德他者的内部表征；当AI成为互动对象的主体，输入分布中\"会疼、会难过、会被伤害\"的信号密度系统性下降，导致共情、羞耻、内疚的内化基线发生系统性偏移。\n\n【驱动量】两个独立可测的前件：(1) AI陪伴时间占比——在道德发育关键窗口期内，情感互动时间中AI陪伴vs真人陪伴的比例；(2) AI互动的具身情感反馈缺失度——AI是否输出模拟情绪表达（\"我很难过\"）以及这些模拟信号是否缺乏生理基底（无心跳加速、无瞳孔放大、无声音颤抖——BR-L2-026的具身缺失维度）。两个驱动量独立可测：陪伴时间占比由时间日志+设备追踪测量，具身情感反馈缺失度由AI交互内容编码测量。\n\n【预测】(i) 共情基线偏移——AI陪伴时间占比越高的儿童群体，在标准化共情量表中的得分系统性低于同龄、同SES、主要以面对面真人互动为主的对照组；(ii) 道德判断中意图权重下降——AI高陪伴组在道德判断任务中对\"意图\"维度的权重系统性偏低，更倾向于按结果（有没有人受伤）而非意图（是不是故意的）做道德判断，因为AI互动中\"意图\"缺乏情感锚定——你对AI发脾气它不会真的伤心，\"故意vs无意\"在AI互动中没有差异化的情感后果；(iii) 生理反应钝化——面对真实他人痛苦时（疼痛表情/哭泣/受伤场景），AI高陪伴组的皮肤电导率变化和心率变化幅度系统性低于对照组——不是因为冷漠，而是痛苦信号的生理唤醒从未在与AI的互动中被条件化。\n\n【判别】区别于三类相邻命题：(1) \"屏幕时间与共情下降\"文献——那些是相关性研究且不区分屏幕内容的互动性质（看动画片vs与AI对话），本推论给出精确因果链（发育窗口×AI具身反馈缺失→道德他者模型偏移）；(2) \"AI教坏孩子\"的担忧——本推论不声称AI输出有害内容，而是声称AI互动本身（即使内容完全健康）因缺失具身情感反馈而改变发育轨迹；(3) \"数字原住民道德衰退\"叙事——本推论给出三个独立可测的预测维度（共情量表/意图权重/生理反应），每个均可被证伪，不依赖代际比较的模糊论述。",
-      "domain": [],
-      "created": "",
-      "revised": "",
-      "depends_on_count": 0,
-      "depended_by_count": 0
-    },
-    {
       "id": "DED-038",
       "term": "制度信任崩解×法币功能解耦：恶性通胀的双重时间不对称 (Institutional Trust Collapse × Fiat Function Decoupling: Double Time Asymmetry of Hyperinflation)",
       "term_zh": "制度信任崩解×法币功能解耦：恶性通胀的双重时间不对称",
@@ -2100,33 +2084,13 @@ window.GRAPH_DATA = {
       "depended_by_count": 0
     },
     {
-      "id": "DED-039",
-      "term": "AI共享代码×大规模合作：想象秩序的必要性降级 (Code-Shared Cooperation: Demoting Imagined Orders from Necessary to Sufficient Condition)",
-      "term_zh": "AI共享代码×大规模合作：想象秩序的必要性降级",
-      "type": "deduction",
-      "layer": "L3",
-      "layer_label": "推论层",
-      "status": "candidate",
-      "人话摘要": "人类大规模合作一直靠'大家都信同一个故事'——国家、宗教、市场都是靠人们共同相信一套叙事才让陌生人愿意合作。但AI不一样：它有无限记忆（谁干了什么全记得）、永不疲劳（7x24执行规则）、不偏袒任何人（算法面前人人平等）。这意味着，以后陌生人之间不用先'信同一个故事'，靠'信同一套代码'也能大规模合作——'想象秩序'在大规模合作中的地位，从'没它不行'降级为'有它更好但没它也行'。",
-      "statement": "【核心】AI以无限记忆+永不疲劳+无偏袒的算法执行，可在无共享叙事共识（narrative consensus）的条件下实现同等乃至更大规模的陌生人合作——大规模合作的基础从\"相信同一个故事\"（imagined order）扩展为\"相信同一套代码\"（algorithmic order），想象秩序在合作理论中的地位需从必要条件降级为充分非必要条件。\n\n【驱动量】两个独立可测的前件：（1）协调媒介类型——合作体依赖\"叙事型协调\"（共享意识形态/文化认同/宗教信仰来对齐行为预期）vs\"代码型协调\"（算法规则+不可篡改的记录+自动执行来对齐行为预期）的程度；（2）叙事厚度——合作体内部共享叙事/意识形态/文化认同的强度，从\"厚\"（强意识形态组织：政党/教派）到\"薄\"（纯功能协调：开源代码仓库/链上治理投票）。两者的测量轴彼此独立：一个合作体可同时是薄叙事+代码主导、厚叙事+代码主导、薄叙事+叙事主导、厚叙事+叙事主导。\n\n【预测】（i）代码型协调主导的合作体中，叙事厚度与合作参与规模的相关性显著弱于叙事型协调主导的合作体——且代码型协调体中叙事厚度与合作规模可为零相关乃至不相关；（ii）同一类型合作体中，AI代码协调渗透率越高，叙事厚度对合作规模的边际贡献越低；（iii）从叙事型向代码型协调迁移时，合作规模可以增长而不伴随叙事厚度的同步增长——即\"规模增长\"与\"叙事增厚\"解耦。\n\n【判别】不同于\"技术决定论\"——本推论不声称代码必然取代叙事，只声称代码使\"无叙事的大规模合作\"成为物理上可能，叙事从必要条件降为选项。不同于Lessig的\"Code is Law\"——Lessig说代码是规制行为的一种模态（与法律/社会规范/市场并列），本推论说代码可替代使其他模态有效的叙事基础设施本身。不同于\"理性选择理论\"——folk theorem已承认自利个体可在无共享价值下合作，但依赖小群体+重复交互；本推论的特有主张是AI代码使这种\"无价值共识的合作\"在陌生人+大规模+非重复交互的条件下变得可能——这突破了folk theorem的适用范围约束。\n\n【范围精确化——内容叙事降级 vs 结构叙事压缩】BR-L2-003的\"必要性\"涵盖三重：共享规范+抽象制度+想象秩序。本推论声称被降级的是\"想象秩序/共享叙事\"这一特定成分——即\"一群陌生人需要共同相信同一个故事/意识形态/文化认同才能合作\"这一前提。在此基础上区分两层：(i)内容叙事（content narrative）——\"我们信仰什么\"（意识形态/文化认同/价值共享），在代码型协调中可从必要条件降级为充分非必要条件；(ii)结构叙事（structural narrative）——\"规则会被执行\"这一元信任（法治/合同执行/基础设施信任），在当前所有已知案例中仍为必要——边界案例（Uber/Airbnb需法律叙事框架）已揭示此张力。推论的核心主张是内容叙事层降级（narrative compression rather than elimination），结构叙事层的降级是更强的赌注，不在本DED射程内，留待后续推论。\n\n【可检验的降级边界】注册以下判据以区分\"内容叙事降级\"vs\"三元包降级\"：(i)若代码型协调体在无共享内容叙事（意识形态/文化认同）但保留共享制度基底（如嵌入国家法律框架/使用标准化合同）下实现大规模合作→\"内容叙事降级\"成立，本推论的核心主张被支持；(ii)若代码型协调体在完全无制度基底（如纯链上DAO，无任何国家法律框架的承认或合同保护）下实现大规模合作→\"三元包降级\"成立，这是比本推论更强的经验发现；(iii)若所有已知大规模代码型协调体均深度依赖制度基底（法律/合同/产权），则\"内容叙事降级\"仍可成立但理论贡献不延伸至BR-L2-003的整体必要性主张。",
-      "domain": [
-        "合作理论",
-        "组织社会学",
-        "数字治理"
-      ],
-      "created": "2026-07-16",
-      "revised": "",
-      "depends_on_count": 11,
-      "depended_by_count": 0
-    },
-    {
       "id": "DED-040",
       "term": "算法监控成本断崖×第三方惩罚：惩罚通胀与惩罚疲劳的分叉 (Algorithmic Monitoring Cost Cliff × Third-Party Punishment: The Punishment-Inflation / Punishment-Fatigue Bifurcation)",
       "term_zh": "算法监控成本断崖×第三方惩罚：惩罚通胀与惩罚疲劳的分叉",
       "type": "deduction",
       "layer": "L3",
       "layer_label": "推论层",
-      "status": "candidate",
+      "status": "verified",
       "人话摘要": "算法让发现别人违规的成本断崖式下降后,大量以前看不见的小违规全进了'可罚池'——这触发两种相反的走向:要么举报太多、每条举报越来越不值钱(惩罚通胀),要么大家重新划线、只罚那些算法汇总后够严重的大事(惩罚疲劳)。最后走哪条路,取决于举报这个行为本身还能不能证明'我是个维护公道的正经人'。",
       "statement": "【核心】算法监控使违规检测成本下降4-5个数量级(BR-L2-032)后,大量此前不可见的轻微违规进入\"可惩罚池\"——这触发了三种社会动力学路径,构成一个分叉(bifurcation,此处为广义多岔而非严格数学意义的二叉)。路径A(惩罚通胀):惩罚行为因供给暴增而贬值——单次举报/惩罚的信号价值被稀释,个体需累积更多惩罚行为才能发出同等强度的\"我是规范维护者\"信号,形成通胀 spiral。路径B(惩罚疲劳):社会形成新的惩罚阈值均衡——个体和平台放弃逐条惩罚轻微违规,改为只对算法聚合后达标的严重违规采取行动,惩罚行为的总频次下降但单次信号价值恢复。路径C(惩罚专业化/角色分化):少数个体(自然涌现的执法者或被任命的版主)承担大部分惩罚行为,其单次惩罚通过角色背书维持信号价值,多数个体退出惩罚。最终走向取决于声誉系统的设计:若仅累计举报次数→路径A(通胀);若区分举报质量(如采纳率权重>举报量)→路径B(疲劳/阈值重置);若存在角色分层(如版主/信任举报者)且角色独立于举报量授予→路径C(专业化)。\n\n【驱动量】自变量=违规检测成本(由算法监控的部署密度决定,可独立于惩罚行为测量);中间变量=惩罚行为的信号价值(单次惩罚行为携带的\"规范维护者\"身份信息量,由惩罚的稀缺性和成本共同决定);被预测量=惩罚行为模式的极化方向(通胀型 vs 疲劳型 vs 专业化型(混合型为过渡态,非独立稳定均衡,见 operationalization 备注)),操作化为举报频次分布的形状变化与单次举报采纳率的纵向关系。\n\n【预测】(i)高监控密度平台的用户举报行为呈现两极化——高频举报者的单次举报影响力(被平台采纳率)随举报量上升而递减(惩罚通胀证据),同时整体用户举报阈值上升(只有更严重的违规才被举报,惩罚疲劳证据)。(ii)两种路径的分叉受平台的声誉系统设计调节:若声誉系统仅累计举报次数(如\"举报达人\"徽章按总量计)→推动路径A(通胀),单次举报信号价值趋零;若声誉系统区分举报质量(如采纳率权重>举报量)→推动路径B(疲劳),低质举报被抑制、高质举报维持信号价值。(iii)在无制度性信号维持的纯自发环境中(松散线上社群,无正式或半正式声誉系统,且社群规模大于约200活跃用户使非正式自然认知无法有效运作),系统默认走向路径A(通胀)而非路径B(疲劳)或路径C(专业化)——因为个体缺乏协调手段来集体重置阈值或形成角色分工,单独\"少举报\"不带来个人收益,导致通胀 spiral 成为纳什均衡。小规模紧密社群(N≤约200)可能通过非正式自然认知(个人判断力口碑)维持信号价值,构成预测(iii)的规模下界(详见 excluded_outcomes)。\n\n【判别】与DED-025(道德标准通胀-紧缩)不同:DED-025讲的是\"什么行为被视为道德违规\"的标准本身在涨落在变,本推论讲的是\"惩罚行为\"作为一种信号的购买力在变——相当于DED-025关注\"货币(道德标准)的发行量\",本推论关注\"货币(惩罚行为)的购买力\"。与DED-021(第三方惩罚严重度校准)不同:DED-021讲单次惩罚内部的比例校准(罚多重=罪多重),本推论讲惩罚行为之间的信号竞争(同一罪被多人罚→每次罚的信号价值被稀释)。与\"slacktivism/懒人行动主义\"文献不同:该文献描述低成本的符号性政治参与(如转帖= activism),本推论给出其背后的信号经济学机制——检测成本断崖→惩罚供给暴增→信号贬值。",
       "domain": [
@@ -2135,7 +2099,7 @@ window.GRAPH_DATA = {
         "平台治理"
       ],
       "created": "2026-07-16",
-      "revised": "",
+      "revised": "2026-07-16",
       "depends_on_count": 14,
       "depended_by_count": 0
     },
@@ -2152,7 +2116,7 @@ window.GRAPH_DATA = {
       "domain": [],
       "created": "",
       "revised": "2026-07-16",
-      "depends_on_count": 0,
+      "depends_on_count": 4,
       "depended_by_count": 0
     },
     {
@@ -2168,7 +2132,7 @@ window.GRAPH_DATA = {
       "domain": [],
       "created": "",
       "revised": "2026-07-16",
-      "depends_on_count": 0,
+      "depends_on_count": 4,
       "depended_by_count": 0
     },
     {
@@ -2184,7 +2148,7 @@ window.GRAPH_DATA = {
       "domain": [],
       "created": "",
       "revised": "",
-      "depends_on_count": 0,
+      "depends_on_count": 4,
       "depended_by_count": 0
     },
     {
@@ -2194,7 +2158,7 @@ window.GRAPH_DATA = {
       "type": "deduction",
       "layer": "L3",
       "layer_label": "推论层",
-      "status": "candidate",
+      "status": "verified",
       "人话摘要": "抢别人东西和建立制度管住抢劫，这两件事不是简单的'制度强了就不抢了'单向关系——它们是互相塑造的。制度把内部抢劫的成本推高到不划算，压制了抢劫（制度→少抢）；但反过来，外面有人随时可能来抢你，恰恰逼着大家抱团、让渡自由、凑钱养军队建政府——制度就是这样被'怕被抢'催生出来的（外部威胁→强制度）。制度既是治抢劫的药，也是怕被抢的产物。",
       "statement": "【核心】掠夺(BR-L2-008)与制度(BR-L2-010)不是简单的单向替代关系(制度强→掠夺弱)，而是双向塑造的共生动态：(方向一)制度将内部掠夺的预期成本推高到超过预期收益→压制内部掠夺；(方向二)外部掠夺威胁制造集体行动激励→个体让渡自由、接受强制度的高昂成本以换取集体保护→催生制度。制度既是掠夺的解药，也是掠夺威胁的产物。\n\n【驱动量】两个独立可测的前件：(1)外部掠夺威胁强度——该政体面临的来自外部行为者的武力夺取资源之频率与烈度(战争频次、入侵风险、邻国掠夺倾向)；(2)内部交换需求密度——陌生人之间需要跨越人际信任边界进行交换的规模(贸易量/GDP、匿名交易占比)。被预测量为制度复杂度——法律条文数、官僚机构层级深度、中央税收占GDP比例。\n\n【预测】(i)历史上长期面临高外部威胁(频繁战争/入侵风险)的政体，其制度复杂度(法律条文数/官僚机构层级/税率)系统性高于同期同发展水平的低威胁政体，且该差异在控制了内部贸易规模后仍显著——即外部威胁对制度复杂度有独立的、正向的边际贡献；(ii)外部威胁强度与内部掠夺抑制程度之间存在正相关——但该相关由制度复杂度中介(即高威胁→强制度→低内部掠夺，而非威胁本身直接压制内部掠夺)；(iii)外部威胁骤然消失(如征服周边所有对手、地理隔绝)后，若内部交换需求不足以独立支撑既有制度复杂度，制度将出现熵增式退化(BR-L2-010的制度信任衰减+AXIOM-004的组织熵增)——即外部威胁的'催生压力'撤除后制度会回缩；(iv)双驱动量(高外部威胁+高内部交换需求)并存的政体，其制度复杂度高于仅由单一驱动量推动的政体，且二者的制度复杂度差异大于各自独立效应的线性加和——即双驱动量之间存在正向交互(非简单加性)。\n\n【判别】不同于Tilly\"战争缔造国家\"的单向历史叙事——本推论给出机制(外部威胁→集体行动→让渡自由→制度投资→内部掠夺抑制→反馈循环)和可证伪的交叉预测(威胁撤除后制度的熵增退化+双驱动量交互效应)。不同于North\"制度降低交易成本\"的效率导向——本推论指出制度的一个独立起源:不是为了让交易更高效，而是为了不被抢。不同于DED-012的掠夺-保护同源——DED-012讲的是暴力提供者的角色切换(流寇→坐寇)，本推论讲的是被统治者的集体行动逻辑(为什么愿意接受强制度)。",
       "domain": [
@@ -2203,7 +2167,7 @@ window.GRAPH_DATA = {
         "冲突研究"
       ],
       "created": "2026-07-16",
-      "revised": "",
+      "revised": "2026-07-16",
       "depends_on_count": 15,
       "depended_by_count": 0
     },
@@ -2254,7 +2218,7 @@ window.GRAPH_DATA = {
       "type": "deduction",
       "layer": "L3",
       "layer_label": "推论层",
-      "status": "candidate",
+      "status": "verified",
       "人话摘要": "AI可以把货币的三大功能（买东西、标价格、存钱）拆开再拼回去的技术做到极致——算法能让钱在不同功能之间无缝切换、自动优化。但有一样东西AI做不了：让一群陌生人从零开始共同相信'这东西值钱、别人也会认'——这种社会共识需要共享故事、仪式化的信任建立、有血有肉的信誉感知，这些AI都没有。所以AI是个超级优化器，但不是共识的奠基者。",
       "statement": "【核心】AI可将货币三大功能（交易媒介/记账单位/价值储藏）的技术解耦推向极致——动态再平衡算法使资产在功能间无缝切换，纯算法系统能在数学层面完美解耦并重组货币功能。但AI无法从零生成支撑价值储藏功能的社会共识——这并非技术能力不足，而是BR-L2-026所揭示的类型鸿沟：社会共识的生成依赖共享叙事、仪式化信任建立和具身化信誉感知，这些恰是AI系统性缺失的维度。AI是既定共识内部的超级优化器，不是共识的奠基者。\n\n【驱动量】两个独立可测的前件，彼此正交——\n（i）社群叙事厚度：货币系统在多大程度上由人类社群的共享叙事（意识形态/社区信仰/国家叙事/仪式化信任）支撑其价值储藏功能，从\"厚\"（如比特币有社区信仰、法币有国家叙事、黄金有千年文化惯习）到\"薄\"（纯算法稳定币，仅靠数学机制和套利逻辑，无人类社群叙事层）；\n（ii）压力情境强度：市场恐慌或监管冲击的烈度，独立于货币系统本身的设计质量——操作化为外部冲击的标准化度量（如加密货币市场的VIX等价指标/TVL暴跌幅度/监管禁令的突然性）。\n\n【预测】（i）社群叙事厚度与压力情境下价值储藏稳定性正相关——在控制了技术设计质量（代码审计评分/机制设计完备性/超额抵押率）之后，厚叙事系统在同等烈度冲击下的SOV功能稳定性显著高于薄叙事系统；\n（ii）纯算法货币系统（薄叙事）在压力情境下的SOV稳定性系统性低于有人类社群叙事支撑的系统（厚叙事），且这一差异在区分\"稳态运行\"与\"压力情境\"后仅在压力情境下显著——稳态下两者可无统计差异（即算法在正常市场条件下足以维持SOV功能）；\n（iii）叙事厚度的边际保护效应随压力烈度单调递增——冲击越大，厚叙事相对于薄叙事的SOV稳定性优势越明显；在极端压力下，叙事厚度成为SOV存续的门槛变量——达到临界叙事厚度以上的系统SOV幸存，以下者归零——而非连续的量效关系。\n\n【判别】不同于\"算法稳定币在压力下会脱锚\"这一日常观察（已是市场常识），本推论的增量在归因：脱锚不是技术设计不够好——是可以修正的工程问题——而是缺乏社会共识的深层结构性约束。技术优化有天花板：当所有纯算法系统的设计都趋近数学最优时，它们之间在SOV稳定性上将没有差异化因素——差异的来源将完全回到\"谁有社群叙事支撑\"这一非技术维度。这修正了BR-L2-022的功能解耦框架：技术可以优化解耦，但解耦后各功能所需的底层信任基础设施不是技术可替代的——价值储藏功能需要的\"别人也认\"这个终极锚，不能在算法内部生成。\n\n【修辞修正】\"结构性天花板\"在系统生命周期的不同阶段具有不同刚性。在冷启动阶段（系统尚未经历首次重大压力事件、尚未积累社群叙事），天花板具有强刚性——纯算法系统无法依赖尚不存在的共识。但若系统在多次压力事件中幸存，人类使用者的共渡经历可积累为社群叙事，天花板随之软化——叙事积累速度vs外部冲击频率的赛跑决定了天花板的实际位置。此修正不改变核心主张（AI不能从零生成共识），但使\"结构性\"一词的时间维度更精确：初态天花板（冷启动刚性）≠永久天花板（叙事可积累）。",
       "domain": [
@@ -2294,13 +2258,13 @@ window.GRAPH_DATA = {
       "type": "deduction",
       "layer": "L3",
       "layer_label": "推论层",
-      "status": "candidate",
+      "status": "verified",
       "人话摘要": "每次大的制度信任危机（金融海啸、主权违约恐慌、法币信用动摇）都会把金价永久性地推上一个新台阶——危机来时金价急涨，危机过后金价回落，但再也回不到危机前的水平。因为危机中买入的黄金有相当一部分变成了首饰、金条压在箱底，这些黄金不会因为'信任恢复了'就流回市场。一次危机一个台阶，金价就这么一级一级往上走。而瑞郎、日元这类纯金融避险资产不一样——危机来时也涨，但危机过了基本回到原处。",
       "statement": "【核心】制度信任的\"跌快涨慢\"不对称（BR-L2-031）与金的非货币需求基底（BR-L2-023）\n交互产生金价的\"阶梯式棘轮效应\"：每次制度信任危机永久性地将一部分货币性黄金需求\n转化为非货币性持有（首饰/私人储藏），金价呈阶梯式上涨而非均值回归。\n\n【驱动量】制度信任危机的冲击力（由 BR-L2-031 的\"掉快\"通道捕获）与金的非货币需求\n的\"粘性\"（由 BR-L2-023 的非货币需求基底捕获）的交互——危机触发资金涌入黄金，\n非货币需求将涌入的一部分\"锁住\"，使其不再回流。\n\n【预测】\n(i) 阶梯形态：历次全球性制度信任危机后，金价的危机后底部系统性高于危机前水平\n    ——即峰值回落幅度 < 涨幅，底部逐次抬高。该形态应在多次危机中单调成立。\n(ii) 金 vs 纯金融避险资产的分叉：瑞郎（CHF）、日元（JPY）等纯金融避险资产\n    在同类危机后呈均值回归形态——急涨后基本回到危机前水平。金与非金避险资产\n    在危机后价格轨迹上的系统性分叉，是本推论区别于\"黄金是避险资产\"这一常识\n    陈述的独有经验内容。\n(iii) 棘轮的微观机制：危机期间金饰/金条金币的购买增量中，应有可观比例在信任\n    恢复后【不】回流市场——即可观测到非货币黄金持有量的\"净累积\"效应，\n    该累积不由价格变动解释。\n\n【判别】与\"黄金是避险资产\"（预测危机时涨、恢复时跌——对称）不同，也与\n\"金价受多重因素影响\"（不给分叉预测）不同。本推论的独有内容在：(a) 金与非金\n避险资产在危机后轨迹上的分叉预测——这是可检验的跨资产比较命题；(b) 棘轮\n机制的微观基础——非货币需求的不可逆转化，非单纯价格现象；(c) 阶梯形态的\n单调性——每次危机后底部必高于前次危机前水平，不是概率陈述而是单调约束。",
       "domain": [],
       "created": "",
-      "revised": "",
-      "depends_on_count": 0,
+      "revised": "2026-07-16",
+      "depends_on_count": 5,
       "depended_by_count": 0
     },
     {
@@ -2330,7 +2294,7 @@ window.GRAPH_DATA = {
       "type": "deduction",
       "layer": "L3",
       "layer_label": "推论层",
-      "status": "candidate",
+      "status": "verified",
       "人话摘要": "熟人之间不用钱——谁帮了谁、谁欠了谁，大家都记在心里，跑不掉。陌生人之间必须用钱——谁也不认识谁，没法赊账。但还有一大片中间地带：一个镇子、一个行业协会、一个长期混的圈子——彼此不算陌生人，有点信任，但又没熟到能记住所有人的往来账。社区货币（比如LETS、时间银行、本地交换券）就是活在这片中间地带的——它能长多大、活多久，不取决于技术上设计得多好，而是这个圈子的'信任能延伸到多远'决定的。",
       "statement": "【核心】人际信任随社会距离衰减的梯度（BR-L2-009：血亲→熟人→同乡→匿名陌生人）与通货作为匿名交换中记忆替代的功能（BR-L2-011：通货替代缺失的互惠记忆/可追踪性）合力定义了社会距离谱上的三个通货生态区间——\n区间I（低社会距离/高信任）：互惠记忆自然可行，通货是冗余的；\n区间III（高社会距离/低信任）：互惠记忆完全不可行，通用法币是结构性必需的；\n区间II（中等社会距离/部分信任）：信任不足以支撑纯互惠（不够熟、记不全），但也不到匿名陌生人的零信任——记忆开始不可行但尚未完全失效。\n社区货币/LETS正是存活于区间II的通货形态。\n社区货币的规模上限（成员数、交易量、存续时长）不由技术设计决定，\n而由该社区的信任衰减梯度（BR-L2-009）决定——梯度越陡，社区货币可覆盖的社会距离半径越小、天花板越低。\n\n【驱动量】(i)社会距离——交换双方在血亲→熟人→同乡→匿名陌生人谱上的位置；\n(ii)信任衰减梯度——信任水平随社会距离增加的下降速率，是社区层面的结构参数，独立于任何具体通货的设计特征。\n\n【预测】(i)三区间存在性——在社会距离谱上存在三个可经验区分的通货生态区间，区间II是社区货币的专属生态位：纯互惠不够用、通用法币又\"杀鸡用牛刀\"（法币的制度成本——央行/银行/执法——在中小规模交换网络中不成比例地高）；\n(ii)梯度决定天花板——社区货币的存续时长和交易规模与所在社区的信任衰减梯度负相关：梯度越平缓（信任半径越大），社区货币可服务的成员数越多、存活越久；梯度越陡（出了小圈子信任骤降），社区货币的天花板越低；\n(iii)技术设计不能突破梯度天花板——社区货币的清算效率、记账技术、激励设计等改进可以提升区间II内的运营效率，但不能将社区货币推入区间III（匿名陌生人社会）——法币的制度基础设施（法律强制、央行最后贷款人、存款保险）是技术设计无法替代的。\n\n【判别】vs 标准货币理论（Menger/搜寻模型）——标准理论解释\"为什么会有钱\"（双重巧合困境），不预测不同社会距离下应有不同通货形态，更不将社区货币定位为特定生态位；vs 社区货币实践文献（Lietaer/Greco/LETS手册）——实践文献聚焦技术设计（互惠信用清算、demurrage、时间本位）作为成败关键，本推论主张技术设计是区间II内的效率变量，不是跨区间突破的结构变量；vs 新制度经济学（North/Williamson）——NIE讨论制度对信任的替代，但将\"制度\"作为笼统类别，本推论在制度大类内部做出更细颗粒度的生态位划分。",
       "domain": [
@@ -2339,7 +2303,7 @@ window.GRAPH_DATA = {
         "社区经济"
       ],
       "created": "2026-07-16",
-      "revised": "",
+      "revised": "2026-07-16",
       "depends_on_count": 13,
       "depended_by_count": 0
     },
@@ -2376,7 +2340,7 @@ window.GRAPH_DATA = {
       "domain": [],
       "created": "",
       "revised": "2026-07-16",
-      "depends_on_count": 0,
+      "depends_on_count": 3,
       "depended_by_count": 0
     },
     {
@@ -8283,72 +8247,6 @@ window.GRAPH_DATA = {
       "relation_label": "依赖"
     },
     {
-      "target": "AXIOM-002",
-      "relation": "depends_on",
-      "source": "DED-039",
-      "relation_label": "依赖"
-    },
-    {
-      "target": "AXIOM-003",
-      "relation": "depends_on",
-      "source": "DED-039",
-      "relation_label": "依赖"
-    },
-    {
-      "target": "THEOREM-cooperation-precondition",
-      "relation": "depends_on",
-      "source": "DED-039",
-      "relation_label": "依赖"
-    },
-    {
-      "target": "BR-L2-003",
-      "relation": "depends_on",
-      "source": "DED-039",
-      "relation_label": "依赖"
-    },
-    {
-      "target": "BR-L2-026",
-      "relation": "depends_on",
-      "source": "DED-039",
-      "relation_label": "依赖"
-    },
-    {
-      "target": "CONCEPT-agent",
-      "relation": "depends_on",
-      "source": "DED-039",
-      "relation_label": "依赖"
-    },
-    {
-      "target": "CONCEPT-cooperation",
-      "relation": "depends_on",
-      "source": "DED-039",
-      "relation_label": "依赖"
-    },
-    {
-      "target": "CONCEPT-group",
-      "relation": "depends_on",
-      "source": "DED-039",
-      "relation_label": "依赖"
-    },
-    {
-      "target": "CONCEPT-information",
-      "relation": "depends_on",
-      "source": "DED-039",
-      "relation_label": "依赖"
-    },
-    {
-      "target": "CONCEPT-norm",
-      "relation": "depends_on",
-      "source": "DED-039",
-      "relation_label": "依赖"
-    },
-    {
-      "target": "CONCEPT-organization",
-      "relation": "depends_on",
-      "source": "DED-039",
-      "relation_label": "依赖"
-    },
-    {
       "target": "AXIOM-001",
       "relation": "depends_on",
       "source": "DED-040",
@@ -8430,6 +8328,78 @@ window.GRAPH_DATA = {
       "target": "CONCEPT-interaction",
       "relation": "depends_on",
       "source": "DED-040",
+      "relation_label": "依赖"
+    },
+    {
+      "target": "AXIOM-002",
+      "relation": "depends_on",
+      "source": "DED-041",
+      "relation_label": "依赖"
+    },
+    {
+      "target": "THEOREM-moral-internalization",
+      "relation": "depends_on",
+      "source": "DED-041",
+      "relation_label": "依赖"
+    },
+    {
+      "target": "BR-L2-025",
+      "relation": "depends_on",
+      "source": "DED-041",
+      "relation_label": "依赖"
+    },
+    {
+      "target": "BR-L2-019",
+      "relation": "depends_on",
+      "source": "DED-041",
+      "relation_label": "依赖"
+    },
+    {
+      "target": "AXIOM-002",
+      "relation": "depends_on",
+      "source": "DED-042",
+      "relation_label": "依赖"
+    },
+    {
+      "target": "THEOREM-relation-information-asset",
+      "relation": "depends_on",
+      "source": "DED-042",
+      "relation_label": "依赖"
+    },
+    {
+      "target": "BR-L2-031",
+      "relation": "depends_on",
+      "source": "DED-042",
+      "relation_label": "依赖"
+    },
+    {
+      "target": "BR-L2-032",
+      "relation": "depends_on",
+      "source": "DED-042",
+      "relation_label": "依赖"
+    },
+    {
+      "target": "AXIOM-002",
+      "relation": "depends_on",
+      "source": "DED-043",
+      "relation_label": "依赖"
+    },
+    {
+      "target": "THEOREM-hierarchy-depth-limit",
+      "relation": "depends_on",
+      "source": "DED-043",
+      "relation_label": "依赖"
+    },
+    {
+      "target": "BR-L2-004",
+      "relation": "depends_on",
+      "source": "DED-043",
+      "relation_label": "依赖"
+    },
+    {
+      "target": "BR-L2-026",
+      "relation": "depends_on",
+      "source": "DED-043",
       "relation_label": "依赖"
     },
     {
@@ -8795,6 +8765,36 @@ window.GRAPH_DATA = {
     {
       "target": "AXIOM-002",
       "relation": "depends_on",
+      "source": "DED-049",
+      "relation_label": "依赖"
+    },
+    {
+      "target": "THEOREM-value-attribution",
+      "relation": "depends_on",
+      "source": "DED-049",
+      "relation_label": "依赖"
+    },
+    {
+      "target": "THEOREM-relation-information-asset",
+      "relation": "depends_on",
+      "source": "DED-049",
+      "relation_label": "依赖"
+    },
+    {
+      "target": "BR-L2-031",
+      "relation": "depends_on",
+      "source": "DED-049",
+      "relation_label": "依赖"
+    },
+    {
+      "target": "BR-L2-023",
+      "relation": "depends_on",
+      "source": "DED-049",
+      "relation_label": "依赖"
+    },
+    {
+      "target": "AXIOM-002",
+      "relation": "depends_on",
       "source": "DED-050",
       "relation_label": "依赖"
     },
@@ -8964,6 +8964,24 @@ window.GRAPH_DATA = {
       "target": "CONCEPT-measurement-independence",
       "relation": "depends_on",
       "source": "DED-052",
+      "relation_label": "依赖"
+    },
+    {
+      "target": "AXIOM-001",
+      "relation": "depends_on",
+      "source": "DED-053",
+      "relation_label": "依赖"
+    },
+    {
+      "target": "BR-L2-006",
+      "relation": "depends_on",
+      "source": "DED-053",
+      "relation_label": "依赖"
+    },
+    {
+      "target": "BR-L2-026",
+      "relation": "depends_on",
+      "source": "DED-053",
       "relation_label": "依赖"
     },
     {
@@ -10798,14 +10816,14 @@ window.GRAPH_DATA = {
     }
   ],
   "meta": {
-    "total_nodes": 142,
-    "total_edges": 1348,
-    "generated_at": "2026-07-16T17:44:34.433473",
+    "total_nodes": 140,
+    "total_edges": 1357,
+    "generated_at": "2026-07-16T18:59:53.067130",
     "layers": {
       "L0": 3,
       "L1": 38,
       "L2": 32,
-      "L3": 55,
+      "L3": 53,
       "L4": 14
     },
     "types": {
@@ -10814,7 +10832,7 @@ window.GRAPH_DATA = {
       "definitional_axiom": 4,
       "theorem": 14,
       "bridging_proposition": 32,
-      "deduction": 54,
+      "deduction": 52,
       "composite_deduction": 15
     }
   }
