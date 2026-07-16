@@ -1,0 +1,40 @@
+name: 部署知识图谱
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'L0-physical/**'
+      - 'L1-definitions/**'
+      - 'L2-bridging/**'
+      - 'L3-deductions/**'
+      - 'L4-composites/**'
+      - 'scripts/export_graph.py'
+      - 'visualization/index.html'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装依赖
+        run: pip install pyyaml
+
+      - name: 导出图谱数据
+        run: python scripts/export_graph.py
+
+      - name: 部署到华为云
+        uses: easingthemes/ssh-deploy@v5
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.HUAWEI_SSH_KEY }}
+          ARGS: "-avz --delete"
+          SOURCE: "visualization/"
+          REMOTE_HOST: "124.71.219.208"
+          REMOTE_USER: "root"
+          TARGET: "/var/www/human-society.intelab.cn/"
