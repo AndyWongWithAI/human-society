@@ -1,0 +1,14 @@
+{
+  "appid": "wx167514146b03982c",
+  "projectname": "human-society",
+  "description": "人类社会公理体系知识图谱",
+  "miniprogramRoot": "./",
+  "compileType": "miniprogram",
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "postcss": true,
+    "minified": true
+  },
+  "condition": {}
+}

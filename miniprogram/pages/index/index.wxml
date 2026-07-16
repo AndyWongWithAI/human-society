@@ -1,0 +1,37 @@
+<scroll-view class="layer-tabs" scroll-x enable-flex>
+  <view wx:for="{{layers}}" wx:key="key" class="layer-tab {{activeLayer === item.key ? 'active' : ''}}" bindtap="switchLayer" data-layer="{{item.key}}">
+    {{item.label}} {{item.count}}
+  </view>
+</scroll-view>
+
+<view class="search-bar">
+  <image src="/images/search.png" style="width:14px;height:14px;opacity:0.4"/>
+  <input placeholder="搜索 ID / 术语 / 摘要..." bindinput="onSearch" value="{{query}}" confirm-type="search"/>
+  <text wx:if="{{query}}" class="clear-btn" bindtap="clearSearch">✕</text>
+</view>
+
+<scroll-view class="entity-list" scroll-y>
+  <block wx:if="{{filtered.length > 0}}">
+    <block wx:for="{{filtered}}" wx:key="unique">
+      <view wx:if="{{item._header}}" class="header-row">{{item._label}}</view>
+      <view wx:else class="entity-item {{activeId === item.id ? 'active' : ''}}" bindtap="goDetail" data-id="{{item.id}}">
+        <view class="dot" style="background:{{item.dotColor}}"></view>
+        <view class="info">
+          <view class="name">{{item.term_zh || item.term}}</view>
+          <view class="meta-line">
+            <text>{{item.id}}</text>
+            <text class="sep">·</text>
+            <text>{{item.typeLabel}}</text>
+            <text wx:if="{{item.statusLabel}}" class="status badge-{{item.status === 'verified' || item.status === 'verified*' ? 'verified' : 'candidate'}}">{{item.statusLabel}}</text>
+            <text wx:if="{{item.dateDisplay}}" class="date">🕐 {{item.dateDisplay}}</text>
+            <text wx:if="{{item.isNew}}" class="new-badge">NEW</text>
+          </view>
+          <view wx:if="{{item.excerpt}}" class="excerpt">{{item.excerpt}}</view>
+        </view>
+      </view>
+    </block>
+  </block>
+  <view wx:else class="empty-hint">无匹配结果</view>
+</scroll-view>
+
+<view class="stats-bar" wx:if="{{meta}}">实体 {{meta.total_nodes}} · 关系 {{meta.total_edges}}</view>

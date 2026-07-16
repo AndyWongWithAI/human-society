@@ -1,0 +1,75 @@
+<scroll-view class="detail-container" scroll-y>
+  <block wx:if="{{node}}">
+    <!-- Breadcrumb -->
+    <view class="breadcrumb">{{node.layerLabel}} › {{node.id}}</view>
+
+    <!-- Header -->
+    <view class="entity-header">
+      <view class="title">{{node.term_zh || node.term}}</view>
+      <view wx:if="{{node.term !== node.term_zh}}" class="subtitle">{{node.term}}</view>
+      <view class="meta">
+        <text class="type-badge" style="background:{{node.dotColor}}">{{node.typeLabel}}</text>
+        <text>{{node.layerLabel}}</text>
+        <text wx:if="{{node.statusLabel}}" class="status-tag badge-{{node.status === 'verified' || node.status === 'verified*' ? 'verified' : 'candidate'}}">{{node.statusLabel}}</text>
+      </view>
+      <view wx:if="{{node.dateInfo}}" class="date-info">🕐 {{node.dateInfo}}</view>
+    </view>
+
+    <!-- 人话摘要 -->
+    <view wx:if="{{node.summary}}" class="card">
+      <view class="card-title">📖 人话摘要</view>
+      <view class="renhua">{{node.summary}}</view>
+    </view>
+
+    <!-- 完整陈述 -->
+    <view wx:if="{{node.statement}}" class="card">
+      <view class="card-title">📝 完整陈述</view>
+      <view class="statement {{stmtExpanded ? 'open' : ''}}">{{node.statement.slice(0, stmtExpanded ? 99999 : 300)}}{{!stmtExpanded && node.statement.length > 300 ? '…' : ''}}</view>
+      <view wx:if="{{node.statement.length > 300}}" class="expand-btn" bindtap="toggleStmt">{{stmtExpanded ? '收起 ▲' : '展开全文 ▾'}}</view>
+    </view>
+
+    <!-- 文章 -->
+    <view wx:if="{{articles.length > 0}}" class="card">
+      <view class="card-title">📰 相关文章 ({{articles.length}})</view>
+      <view wx:for="{{articles}}" wx:key="url" class="article-item">
+        <view class="article-title">{{item.title}}</view>
+        <view class="article-date">🕐 {{item.date}}</view>
+      </view>
+    </view>
+
+    <!-- 上游依赖 -->
+    <view wx:if="{{upstream.length > 0}}" class="card">
+      <view class="card-title">⬆️ 上游依赖 ({{upstream.length}})</view>
+      <view wx:for="{{upstream}}" wx:key="id" class="dep-link" bindtap="goNode" data-id="{{item.id}}">
+        <view class="mini-dot" style="background:{{item.dotColor}}"></view>
+        <view class="dep-info">
+          <view class="dep-name">{{item.term_zh || item.term}}</view>
+          <view class="dep-meta">{{item.id}} · {{item.typeLabel}} → {{item.relation}}</view>
+          <view wx:if="{{item.excerpt}}" class="dep-excerpt">{{item.excerpt}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 下游延伸 -->
+    <view wx:if="{{downstream.length > 0}}" class="card">
+      <view class="card-title">⬇️ 下游延伸 ({{downstream.length}})</view>
+      <view wx:for="{{downstream}}" wx:key="id" class="dep-link" bindtap="goNode" data-id="{{item.id}}">
+        <view class="mini-dot" style="background:{{item.dotColor}}"></view>
+        <view class="dep-info">
+          <view class="dep-name">{{item.term_zh || item.term}}</view>
+          <view class="dep-meta">← {{item.id}} · {{item.typeLabel}} · {{item.relation}}</view>
+          <view wx:if="{{item.excerpt}}" class="dep-excerpt">{{item.excerpt}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{upstream.length === 0 && downstream.length === 0}}" class="card">
+      <view class="card-title">🔗 依赖关系</view>
+      <view class="empty-hint">此节点无上下游关系</view>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view class="empty-hint">加载中…</view>
+  </block>
+</scroll-view>

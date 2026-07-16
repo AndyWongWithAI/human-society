@@ -1,0 +1,40 @@
+page {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #f8f9fa;
+  color: #1a202c;
+  font-size: 14px;
+}
+
+/* Color dots */
+.dot-0 { background: #5B8FF9; }
+.dot-1 { background: #5AD8A6; }
+.dot-2 { background: #F6BD16; }
+.dot-3 { background: #9270CA; }
+.dot-4 { background: #5D9CEC; }
+.dot-5 { background: #F08080; }
+.dot-6 { background: #E8684A; }
+
+/* Status badges */
+.badge-verified { background: #C6F6D5; color: #22543D; }
+.badge-candidate { background: #E2E8F0; color: #4A5568; }
+.badge-rejected { background: #FED7D7; color: #822727; }
+
+/* Common */
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 12px 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.card-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.empty-hint {
+  text-align: center;
+  color: #a0aec0;
+  font-size: 13px;
+  padding: 40px 20px;
+}

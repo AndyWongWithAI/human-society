@@ -1,0 +1,156 @@
+.detail-container {
+  background: #f8f9fa;
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  font-size: 12px;
+  color: #718096;
+  padding: 16px 16px 0;
+}
+
+/* Entity header */
+.entity-header {
+  padding: 16px;
+}
+.entity-header .title {
+  font-size: 20px;
+  font-weight: 700;
+}
+.entity-header .subtitle {
+  font-size: 12px;
+  color: #718096;
+  margin-top: 2px;
+}
+.entity-header .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #718096;
+}
+.type-badge {
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+}
+.status-tag {
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.date-info {
+  font-size: 12px;
+  color: #718096;
+  margin-top: 8px;
+}
+
+/* Card */
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 12px 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.card-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* 人话摘要 */
+.renhua {
+  font-size: 15px;
+  line-height: 1.8;
+  padding: 12px 16px;
+  background: #fffbeb;
+  border-left: 3px solid #F6BD16;
+  border-radius: 0 6px 6px 0;
+}
+
+/* 完整陈述 */
+.statement {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #718096;
+  white-space: pre-wrap;
+  max-height: 240px;
+  overflow: hidden;
+}
+.statement.open {
+  max-height: none;
+}
+.expand-btn {
+  font-size: 12px;
+  color: #5B8FF9;
+  margin-top: 8px;
+}
+
+/* Articles */
+.article-item {
+  padding: 10px 0;
+  border-bottom: 1rpx solid #f0f0f5;
+}
+.article-item:last-child {
+  border-bottom: none;
+}
+.article-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #5B8FF9;
+}
+.article-date {
+  font-size: 11px;
+  color: #a0aec0;
+  margin-top: 2px;
+}
+
+/* Dependencies */
+.dep-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+.mini-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+.dep-info {
+  flex: 1;
+  min-width: 0;
+}
+.dep-name {
+  font-size: 13px;
+  font-weight: 600;
+}
+.dep-meta {
+  font-size: 11px;
+  color: #718096;
+  margin-top: 1px;
+}
+.dep-excerpt {
+  font-size: 11px;
+  color: #a0aec0;
+  margin-top: 3px;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
