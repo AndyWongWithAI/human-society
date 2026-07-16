@@ -332,6 +332,21 @@ let activeLayer = "L0";
 let activeNodeId = null;
 let searchQuery = "";
 
+// ===== Read tracking (localStorage) =====
+function getReadIds() {
+  try {
+    return new Set(JSON.parse(localStorage.getItem('hs-read-ids') || '[]'));
+  } catch { return new Set(); }
+}
+function markRead(id) {
+  const ids = getReadIds();
+  ids.add(id);
+  try { localStorage.setItem('hs-read-ids', JSON.stringify([...ids])); } catch {}
+}
+function isUnread(id) {
+  return !getReadIds().has(id);
+}
+
 // ===== Init =====
 async function init() {
   await loadData();
@@ -418,7 +433,7 @@ function createEntityItem(n) {
   div.className = "entity-item" + (n.id === activeNodeId ? " active" : "");
 
   const created = n.created || "";
-  const isNew = isRecentlyCreated(created, 14); // 14 天内标记为 NEW
+  const isNew = isRecentlyCreated(created, 14) && isUnread(n.id);
   const dateDisplay = created ? formatDate(created) : "";
 
   div.innerHTML = `
@@ -466,17 +481,15 @@ function selectNode(id) {
   const n = nodeMap[id];
   if (!n) return;
 
+  // Mark as read — NEW badge disappears
+  markRead(id);
+
   document.getElementById("detailEmpty").style.display = "none";
   document.getElementById("detailContent").style.display = "block";
   document.getElementById("entityList").querySelectorAll(".entity-item").forEach(
     el => el.classList.toggle("active", false)
   );
-  // Find and highlight the active item
-  const items = document.getElementById("entityList").querySelectorAll(".entity-item");
-  items.forEach(el => {
-    // Match by looking at the onclick or content
-  });
-  // Re-render list to update active state
+  // Re-render list to update active state and clear NEW badge
   renderEntityList();
   document.getElementById("detail").scrollTop = 0;
 
