@@ -165,27 +165,43 @@ counterexample_hunt/若非 verified 的 required_fixes)。目录不存在就先�
   // needs_revision:不自动 revise,直接交主循环裁量(L2 比 L3 简单,should 级修改主循环执行更高效)。
   if (verdict === 'verified' || verdict === 'rejected') {
     phase('Finalize')
+    // L2 特有:IEA 决定终态 status
+    const ieaScore = iea.ieaScore
+    let targetStatus = verdict  // 'verified' or 'rejected'
+    let moveTo = ''
+    if (verdict === 'verified') {
+      if (ieaScore >= 1.8) {
+        targetStatus = 'verified'
+        moveTo = 'L2-bridging/verified/'
+      } else if (ieaScore >= 1.2) {
+        targetStatus = 'weakly_verified'
+        moveTo = 'L2-bridging/weakly_verified/'
+      } else {
+        return { id, verdict: 'finalize_failed', reviewPath: REVIEW_PATH,
+                 note: `IEA ${ieaScore} < 1.2,不该判 verified`, iea: ieaScore }
+      }
+    } else {
+      moveTo = 'L2-bridging/rejected/'
+    }
+    const oneline = (rev && rev.oneline) || (verdict === 'rejected' ? '核心塌陷,改措辞救不活' : '机制有效,反例猎捕无活反例')
+    const chain = `IEA ${ieaScore} + r1 ${verdict}`
+    const why = oneline.replace(/'/g, "'\\''")
+    const chainEsc = chain.replace(/'/g, "'\\''")
+    const targetStatusFlag = targetStatus !== verdict ? `--target-status ${targetStatus}` : ''
     const fin = await agent(
-      `你是 L2 桥接砖【定论员】,全新上下文。对 ${id} 做翻牌归位。用 \`cd ${REPO} && ls L2-bridging/*/${id}-*.yaml\` 定位文件。
-
-## 本轮裁决:${verdict}    IEA:${iea.ieaScore}
-
-## 若裁决 = verified
-- 依 IEA 定终态状态:IEA ≥ 1.8 → status: verified;1.2 ≤ IEA < 1.8 → status: weakly_verified(达下限但未达双独立源);IEA < 1.2 → 报错(不该判 verified,回 {done:false} 并在 note 说明)。
-- 把文件【移动到】对应目录:verified → L2-bridging/verified/;weakly_verified → L2-bridging/weakly_verified/。用 git mv 或 mv 后确保只此一份。
-## 若裁决 = rejected
-- status 改 rejected,文件移动到 L2-bridging/rejected/。
-
-## 通用
-- 在砖文件补 review_summary(严格 ≤3 行,| 块标量):1) 定论裁决词 + IEA;2) 一句为何(机制有效性 + 反例猎捕无活反例 / 或为何毙);3) 全档见 ADV-REVIEW-${id}。
-- 补 revised 日期。跑 \`cd ${REPO} && python scripts/validate.py\` 确认无 ❌、L2 verified 的 IEA≥1.2 检查通过、引用完整。
-
-## 返回(紧凑){done, validatorOk, note}`,
-      { label: `finalize:${id}`, phase: 'Finalize', schema: FINALIZE_OUT, agentType: 'general-purpose' }
+      `Run finalize for ${id} (scripted, zero LLM reasoning):
+cd ${REPO} && python scripts/finalize.py ${id} \\
+  --verdict ${verdict} ${targetStatusFlag} \\
+  --chain '${chainEsc}' \\
+  --why '${why}' \\
+  --review-num ${id.replace('BR-L2-', '')} \\
+  --move-to ${moveTo}
+Check stdout for ✅ validate 通过. Return {done, validatorOk, note}.`,
+      { label: `finalize:${id}`, phase: 'Finalize', schema: FINALIZE_OUT }
     )
     if (!fin || !fin.validatorOk) {
       return { id, verdict: 'finalize_failed', reviewPath: REVIEW_PATH,
-               note: fin ? fin.note : 'finalize agent 失败', iea: iea.ieaScore }
+               note: fin ? fin.note : 'finalize 脚本失败', iea: ieaScore }
     }
   }
 

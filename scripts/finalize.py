@@ -52,9 +52,9 @@ SEARCH_DIRS = [
 ]
 
 VALID_TRANSITIONS = {
-    "candidate": ["verified", "verified*", "rejected"],
+    "candidate": ["verified", "verified*", "weakly_verified", "rejected"],
     "weakly_verified": ["verified", "rejected"],
-    # weakly_verified 是 L2 标准状态,但部分早期 L3 推论(DED-033)也使用此状态
+    # weakly_verified 是 L2 标准状态,L2 管线可从 candidate 直翻 weakly_verified(IEA < 1.8)
 }
 
 
@@ -178,6 +178,16 @@ def main():
     )
     parser.add_argument("--note", default="", help="可选 revision_note(默认自动生成)")
     parser.add_argument(
+        "--target-status",
+        default="",
+        help="覆盖目标 status(用于 L2 IEA 判定:verified vs weakly_verified)",
+    )
+    parser.add_argument(
+        "--move-to",
+        default="",
+        help="目标子目录(如 L2-bridging/weakly_verified/),相对 repo 根;finalize 后用 git mv 移动文件",
+    )
+    parser.add_argument(
         "--no-index", action="store_true", help="跳过 INDEX.md 重生"
     )
     parser.add_argument(
@@ -209,7 +219,7 @@ def main():
         print(f"   合法转换: {VALID_TRANSITIONS[old_status]}")
         sys.exit(1)
 
-    target_status = args.verdict
+    target_status = args.target_status or args.verdict
     today = date.today().isoformat()
 
     revision_note = args.note or (
@@ -284,6 +294,31 @@ def main():
             print(f"⚠️  index 失败 (exit {idx_result.returncode}),但 validate 已通过")
         else:
             print("✅ INDEX.md 已重生")
+
+    # ── 7. 可选:移动文件 ──
+    if args.move_to:
+        target_dir = REPO / args.move_to
+        target_dir.mkdir(parents=True, exist_ok=True)
+        target_path = target_dir / entity_path.name
+
+        # 如果目标已存在同名文件(不应发生,但防御)
+        if target_path.exists() and target_path != entity_path:
+            print(f"⚠️  目标已存在 {target_path.relative_to(REPO)},跳过移动")
+        elif target_path != entity_path:
+            result = subprocess.run(
+                ["git", "mv", str(entity_path), str(target_path)],
+                cwd=str(REPO),
+                capture_output=True,
+                text=True,
+            )
+            if result.returncode != 0:
+                print(f"⚠️  git mv 失败: {result.stderr.strip()}")
+                # fallback: regular mv
+                import shutil
+                shutil.move(str(entity_path), str(target_path))
+                print(f"   → 已用 mv 回退")
+            else:
+                print(f"📦 已移至 {target_path.relative_to(REPO)}")
 
 
 if __name__ == "__main__":

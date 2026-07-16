@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人类社会公理体系 · 知识图谱</title>
+<style>
+/* ===== CSS Variables ===== */
+:root {
+  --color-bg: #f8f9fa;
+  --color-surface: #ffffff;
+  --color-border: #e2e8f0;
+  --color-text: #1a202c;
+  --color-text-secondary: #718096;
+  --color-primary: #5B8FF9;
+  --color-primary-hover: #4a7de0;
+  --color-danger: #E8684A;
+  --color-success: #61DDAA;
+  --color-warning: #F6BD16;
+  --radius: 6px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-lg: 0 4px 12px rgba(0,0,0,0.1);
+  --transition: 0.2s ease;
+}
+
+/* ===== Node Type Colors ===== */
+.node-type-physical_constraint   { background: #5B8FF9; }
+.node-type-concept               { background: #5AD8A6; }
+.node-type-definitional_axiom    { background: #F6BD16; }
+.node-type-theorem               { background: #9270CA; }
+.node-type-bridging_proposition  { background: #5D9CEC; }
+.node-type-deduction             { background: #F08080; }
+.node-type-composite_deduction   { background: #E8684A; }
+
+.NODE_COLORS {
+  physical_constraint: "#5B8FF9";
+  concept: "#5AD8A6";
+  definitional_axiom: "#F6BD16";
+  theorem: "#9270CA";
+  bridging_proposition: "#5D9CEC";
+  deduction: "#F08080";
+  composite_deduction: "#E8684A";
+}
+
+/* ===== Reset & Base ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Top Bar ===== */
+.top-bar {
+  height: 56px;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 16px;
+  flex-shrink: 0;
+  z-index: 10;
+}
+.top-bar h1 {
+  font-size: 16px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--color-text);
+}
+.top-bar .search-wrap {
+  flex: 1;
+  max-width: 400px;
+  position: relative;
+}
+.top-bar .search-wrap input {
+  width: 100%;
+  height: 34px;
+  padding: 0 12px 0 36px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 13px;
+  outline: none;
+  transition: border-color var(--transition);
+  font-family: inherit;
+}
+.top-bar .search-wrap input:focus { border-color: var(--color-primary); }
+.top-bar .search-wrap .search-icon {
+  position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
+  color: var(--color-text-secondary); font-size: 14px;
+}
+.top-bar .stats {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+/* ===== Main Layout ===== */
+.main-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ===== Left Sidebar ===== */
+.sidebar {
+  width: 200px;
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  overflow-y: auto;
+  padding: 12px;
+  flex-shrink: 0;
+}
+.sidebar h3 {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 12px 0 6px;
+}
+.sidebar h3:first-child { margin-top: 0; }
+.legend-item {
+  display: flex;
+  align-items: center;
+  padding: 5px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--color-text);
+  transition: background var(--transition);
+  margin-bottom: 2px;
+}
+.legend-item:hover { background: #f7fafc; }
+.legend-item.active { background: #eef2ff; box-shadow: inset 0 0 0 1px var(--color-primary); }
+.legend-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  margin-right: 8px; flex-shrink: 0;
+}
+.legend-item .check {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--color-primary);
+  opacity: 0;
+}
+.legend-item.active .check { opacity: 1; }
+.legend-label { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.status-legend-item {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 12px;
+  border-radius: 4px;
+  margin-bottom: 2px;
+}
+.status-legend-item:hover { background: #f7fafc; }
+.status-legend-item.active { background: #eef2ff; }
+.status-badge {
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 8px;
+  margin-right: 8px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.status-badge.verified, .status-badge.verified\* { background: #C6F6D5; color: #22543D; }
+.status-badge.weakly_verified { background: #FEFCBF; color: #744210; }
+.status-badge.candidate { background: #E2E8F0; color: #4A5568; }
+
+.btn-reset {
+  width: 100%;
+  margin-top: 12px;
+  padding: 6px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  transition: all var(--transition);
+  font-family: inherit;
+}
+.btn-reset:hover { background: #f7fafc; color: var(--color-text); }
+
+/* ===== Canvas ===== */
+.canvas-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: #fafbfc;
+  background-image: radial-gradient(circle, #e2e8f0 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.canvas-container svg { width: 100%; height: 100%; }
+.canvas-placeholder {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  text-align: center;
+  opacity: 0.6;
+  transition: opacity var(--transition);
+}
+.canvas-placeholder.hidden { opacity: 0; }
+
+/* ===== Right Panel ===== */
+.detail-panel {
+  width: 320px;
+  background: var(--color-surface);
+  border-left: 1px solid var(--color-border);
+  overflow-y: auto;
+  padding: 20px;
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+.detail-panel h2 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  line-height: 1.4;
+  color: var(--color-text);
+}
+.detail-panel .meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.detail-panel .meta-row span {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+.detail-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  text-align: center;
+  pointer-events: none;
+}
+.detail-placeholder .icon { font-size: 40px; margin-bottom: 12px; opacity: 0.4; }
+
+.node-type-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.6;
+}
+
+.section {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+}
+.section:first-of-type { border-top: none; margin-top: 0; padding-top: 0; }
+.section h4 {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+.section .renhua {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-text);
+  padding: 10px 14px;
+  background: #fefcf0;
+  border-left: 3px solid var(--color-warning);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.section .statement {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  max-height: 200px;
+  overflow: hidden;
+  position: relative;
+  white-space: pre-wrap;
+}
+.section .statement.expanded { max-height: none; }
+.expand-btn {
+  font-size: 12px;
+  color: var(--color-primary);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px 0;
+  font-family: inherit;
+}
+.expand-btn:hover { color: var(--color-primary-hover); }
+
+.dep-list {
+  list-style: none;
+  padding: 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.dep-list li {
+  padding: 3px 0;
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--color-primary);
+  transition: color var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.dep-list li:hover { color: var(--color-primary-hover); }
+.dep-list li .arrow { font-size: 10px; flex-shrink: 0; }
+
+.domain-tag {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  background: #EDF2F7;
+  color: var(--color-text-secondary);
+  margin: 2px;
+}
+
+.btn-panel {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  transition: all var(--transition);
+  font-family: inherit;
+  margin-right: 6px;
+  margin-top: 8px;
+}
+.btn-panel:hover { background: #f7fafc; color: var(--color-text); }
+.btn-panel.primary {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+.btn-panel.primary:hover { background: var(--color-primary-hover); }
+
+/* ===== D3 Node/Edge Styles ===== */
+.node-circle { cursor: pointer; transition: r 0.15s ease; }
+.node-circle:hover { r: 20; }
+.node-label { font-size: 10px; fill: #4a5568; text-anchor: middle; pointer-events: none; }
+.edge-line { stroke: #cbd5e1; stroke-width: 1.5px; }
+.edge-label { font-size: 8px; fill: #a0aec0; text-anchor: middle; pointer-events: none; }
+
+/* ===== Toast ===== */
+.toast {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  background: var(--color-text);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  z-index: 1000;
+  animation: slideIn 0.3s ease;
+  box-shadow: var(--shadow-lg);
+}
+@keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+.hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar">
+  <h1>🔬 人类社会公理体系 · 知识图谱</h1>
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="搜索节点 (ID / 术语 / 摘要)..." />
+  </div>
+  <div class="stats" id="statsBar">节点: 0 · 边: 0</div>
+</div>
+
+<!-- Main Layout -->
+<div class="main-layout">
+
+  <!-- Left Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <h3>📊 层级过滤</h3>
+    <div id="layerFilters"></div>
+
+    <h3>🏷️ 类型过滤</h3>
+    <div id="typeFilters"></div>
+
+    <h3>✅ 状态过滤</h3>
+    <div id="statusFilters"></div>
+
+    <h3>🔗 关系类型</h3>
+    <div id="relationFilters"></div>
+
+    <button class="btn-reset" onclick="resetAll()">🔄 重置视图</button>
+  </div>
+
+  <!-- Canvas -->
+  <div class="canvas-container" id="canvasContainer">
+    <div class="canvas-placeholder" id="canvasPlaceholder">
+      <div class="icon">🔍</div>
+      <div>点击节点查看详情</div>
+      <div style="font-size:12px;margin-top:4px;">滚轮缩放 · 拖拽平移 · 搜索定位</div>
+    </div>
+    <svg id="graphSvg"></svg>
+  </div>
+
+  <!-- Right Panel -->
+  <div class="detail-panel" id="detailPanel">
+    <div class="detail-placeholder" id="detailPlaceholder">
+      <div class="icon">📋</div>
+      <div>点击节点查看详情</div>
+      <div style="font-size:12px;margin-top:4px;">左侧节点代表公理体系中的实体</div>
+    </div>
+    <div id="detailContent" class="hidden"></div>
+  </div>
+
+</div>
+
+<!-- Toast Container -->
+<div id="toastContainer"></div>
+
+<!-- D3.js CDN -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<!-- Graph Data -->
+<script src="graph-data.js"></script>
+
+<script>
+// ===== Constants =====
+const NODE_COLORS = {
+  physical_constraint: "#5B8FF9",
+  concept: "#5AD8A6",
+  definitional_axiom: "#F6BD16",
+  theorem: "#9270CA",
+  bridging_proposition: "#5D9CEC",
+  deduction: "#F08080",
+  composite_deduction: "#E8684A",
+};
+
+const TYPE_LABELS = {
+  physical_constraint: "物理约束",
+  concept: "概念",
+  definitional_axiom: "公理",
+  theorem: "定理",
+  bridging_proposition: "桥接命题",
+  deduction: "推论",
+  composite_deduction: "复合推论",
+};
+
+const LAYER_LABELS = {
+  L0: "物理约束",
+  L1: "定义层",
+  L2: "桥接层",
+  L3: "推论层",
+  L4: "复合推论层",
+};
+
+const STATUS_LABELS = {
+  verified: "已验证",
+  "verified*": "已验证*",
+  weakly_verified: "弱验证",
+  candidate: "候选",
+};
+
+// ===== State =====
+var allNodes = [];
+var allEdges = [];
+var graphData = null;
+var selectedNode = null;
+var filterState = { layers: {}, types: {}, statuses: {}, relations: {} };
+var simulation = null;
+var svg = null;
+let gLinks = null;
+let gNodes = null;
+let gLabels = null;
+let gEdgeLabels = null;
+let currentTransform = d3.zoomIdentity;
+
+// ===== Init =====
+function init() {
+  if (!window.GRAPH_DATA) {
+    showToast("错误: 未找到 graph-data.js 数据文件");
+    return;
+  }
+  graphData = window.GRAPH_DATA;
+  allNodes = graphData.nodes.map(n => ({...n}));
+  allEdges = graphData.edges.map(e => ({...e}));
+
+  // Update stats
+  document.getElementById("statsBar").textContent =
+    `节点: ${graphData.meta.total_nodes} · 边: ${graphData.meta.total_edges}`;
+
+  // Build filters
+  buildFilters();
+  buildRelationFilters();
+
+  // Init SVG and simulation
+  initGraph();
+
+  // Search handler
+  const searchInput = document.getElementById("searchInput");
+  searchInput.addEventListener("input", debounce(handleSearch, 300));
+  searchInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") handleSearch();
+  });
+}
+
+// ===== Build Filters =====
+function buildFilters() {
+  const layerEl = document.getElementById("layerFilters");
+  const typeEl = document.getElementById("typeFilters");
+  const statusEl = document.getElementById("statusFilters");
+
+  const layers = {};
+  const types = {};
+  const statuses = {};
+  allNodes.forEach(n => {
+    layers[n.layer] = (layers[n.layer] || 0) + 1;
+    types[n.type] = (types[n.type] || 0) + 1;
+    if (n.status) statuses[n.status] = (statuses[n.status] || 0) + 1;
+  });
+
+  // Layer filters
+  const layerOrder = ["L0","L1","L2","L3","L4"];
+  layerOrder.forEach(layer => {
+    if (!layers[layer]) return;
+    filterState.layers[layer] = true;
+    const div = document.createElement("div");
+    div.className = "legend-item active";
+    div.innerHTML = `<span class="legend-dot" style="background:#718096"></span><span class="legend-label">${LAYER_LABELS[layer]}</span><span style="font-size:11px;color:var(--color-text-secondary)">${layers[layer]}</span><span class="check">✓</span>`;
+    div.onclick = () => toggleFilter("layers", layer, div);
+    layerEl.appendChild(div);
+  });
+
+  // Type filters
+  const typeKeys = Object.keys(types).sort();
+  typeKeys.forEach(t => {
+    filterState.types[t] = true;
+    const div = document.createElement("div");
+    div.className = "legend-item active";
+    div.innerHTML = `<span class="legend-dot" style="background:${NODE_COLORS[t] || "#999"}"></span><span class="legend-label">${TYPE_LABELS[t] || t}</span><span style="font-size:11px;color:var(--color-text-secondary)">${types[t]}</span><span class="check">✓</span>`;
+    div.onclick = () => toggleFilter("types", t, div);
+    typeEl.appendChild(div);
+  });
+
+  // Status filters
+  const statusKeys = Object.keys(statuses);
+  statusKeys.forEach(s => {
+    filterState.statuses[s] = true;
+    const badgeClass = s === "verified*" ? "verified*" : s;
+    const div = document.createElement("div");
+    div.className = "status-legend-item active";
+    div.innerHTML = `<span class="status-badge ${badgeClass}">${STATUS_LABELS[s] || s}</span><span style="font-size:11px;color:var(--color-text-secondary)">${statuses[s]}</span>`;
+    div.onclick = () => toggleFilter("statuses", s, div);
+    statusEl.appendChild(div);
+  });
+  // Also add null status filter
+  filterState.statuses["__null__"] = true;
+}
+
+function buildRelationFilters() {
+  const el = document.getElementById("relationFilters");
+  const relLabels = { depends_on: "依赖", bridges_to: "桥接", derived_from: "导出", grounded_in: "基于" };
+  Object.entries(relLabels).forEach(([rel, label]) => {
+    filterState.relations[rel] = true;
+    const div = document.createElement("div");
+    div.className = "legend-item active";
+    div.innerHTML = `<span style="color:#a0aec0;font-size:16px;width:10px;text-align:center;margin-right:8px">—</span><span class="legend-label">${label}</span><span class="check">✓</span>`;
+    div.onclick = () => toggleFilter("relations", rel, div);
+    el.appendChild(div);
+  });
+}
+
+function toggleFilter(category, key, el) {
+  filterState[category][key] = !filterState[category][key];
+  el.classList.toggle("active", filterState[category][key]);
+  updateGraph();
+}
+
+// ===== Graph Init =====
+function initGraph() {
+  const container = document.getElementById("canvasContainer");
+  const width = container.clientWidth;
+  const height = container.clientHeight;
+
+  svg = d3.select("#graphSvg")
+    .attr("width", width)
+    .attr("height", height);
+
+  // Grid pattern
+  const defs = svg.append("defs");
+  const pattern = defs.append("pattern")
+    .attr("id", "dotGrid")
+    .attr("width", 20)
+    .attr("height", 20)
+    .attr("patternUnits", "userSpaceOnUse");
+  pattern.append("circle").attr("cx", 1).attr("cy", 1).attr("r", 1).attr("fill", "#e2e8f0");
+
+  // Zoom container
+  const g = svg.append("g");
+
+  // Background rect for pan
+  g.append("rect").attr("width", width * 10).attr("height", height * 10).attr("x", -width * 5).attr("y", -height * 5).attr("fill", "#fafbfc");
+  // Dot grid
+  g.append("rect").attr("width", width * 10).attr("height", height * 10).attr("x", -width * 5).attr("y", -height * 5).attr("fill", "url(#dotGrid)");
+
+  gLinks = g.append("g").attr("class", "links");
+  gEdgeLabels = g.append("g").attr("class", "edge-labels");
+  gNodes = g.append("g").attr("class", "nodes");
+  gLabels = g.append("g").attr("class", "labels");
+
+  // Zoom behavior
+  const zoom = d3.zoom()
+    .scaleExtent([0.1, 4])
+    .filter((event) => {
+      if (event.type === "mousedown" && event.target.classList.contains("node-circle")) return false;
+      return true;
+    })
+    .on("zoom", (event) => {
+      currentTransform = event.transform;
+      g.attr("transform", event.transform);
+      // Hide labels when zoomed out
+      const showLabels = event.transform.k >= 0.5;
+      gLabels.style("display", showLabels ? null : "none");
+      gEdgeLabels.style("display", event.transform.k >= 1.0 ? null : "none");
+    });
+
+  svg.call(zoom);
+
+  // Click on background to deselect
+  svg.on("click", (event) => {
+    if (event.target === svg.node() || event.target.tagName === "rect") {
+      deselectNode();
+    }
+  });
+
+  // Initial zoom to center
+  svg.call(zoom.transform, d3.zoomIdentity.translate(width/2, height/2));
+
+  // Start simulation with all data
+  updateGraph();
+
+  // Resize handler
+  window.addEventListener("resize", debounce(() => {
+    const w = container.clientWidth;
+    const h = container.clientHeight;
+    svg.attr("width", w).attr("height", h);
+    if (simulation) simulation.force("center", d3.forceCenter(w/2, h/2)).alpha(0.1).restart();
+  }, 200));
+}
+
+// ===== Graph Update =====
+function updateGraph() {
+  // Apply filters
+  const filteredNodes = allNodes.filter(n => {
+    if (!filterState.layers[n.layer]) return false;
+    if (!filterState.types[n.type]) return false;
+    const statusKey = n.status || "__null__";
+    if (!filterState.statuses[statusKey]) return false;
+    return true;
+  });
+  const filteredNodeIds = new Set(filteredNodes.map(n => n.id));
+
+  const filteredEdges = allEdges.filter(e =>
+    filterState.relations[e.relation] &&
+    filteredNodeIds.has(e.source) &&
+    filteredNodeIds.has(e.target)
+  );
+
+  if (!svg) return;
+
+  const container = document.getElementById("canvasContainer");
+  const width = container.clientWidth;
+  const height = container.clientHeight;
+
+  // Stop existing simulation
+  if (simulation) simulation.stop();
+
+  // Update stats
+  document.getElementById("statsBar").textContent =
+    `节点: ${filteredNodes.length}/${allNodes.length} · 边: ${filteredEdges.length}/${allEdges.length}`;
+
+  // Hide placeholder
+  const placeholder = document.getElementById("canvasPlaceholder");
+  if (filteredNodes.length > 0) {
+    placeholder.classList.add("hidden");
+  } else {
+    placeholder.classList.remove("hidden");
+  }
+
+  // Clear previous elements
+  gNodes.selectAll("*").remove();
+  gLabels.selectAll("*").remove();
+  gLinks.selectAll("*").remove();
+  gEdgeLabels.selectAll("*").remove();
+
+  // ===== Pre-layout: position nodes in a layered grid =====
+  const marginX = 60;
+  const usableWidth = width - marginX * 2;
+  const layerYPos = { L4: height * 0.06, L3: height * 0.22, L2: height * 0.42, L1: height * 0.66, L0: height * 0.88 };
+  const layerGroups = {};
+  filteredNodes.forEach(n => {
+    if (!layerGroups[n.layer]) layerGroups[n.layer] = [];
+    layerGroups[n.layer].push(n);
+  });
+  for (const [layer, nodes] of Object.entries(layerGroups)) {
+    const yBase = layerYPos[layer] || height/2;
+    const count = nodes.length;
+    const colCount = Math.ceil(Math.sqrt(count * (usableWidth / 200))); // roughly fill width
+    const rowCount = Math.ceil(count / colCount);
+    const xSpacing = Math.min(65, usableWidth / Math.max(colCount, 1));
+    const ySpacing = Math.min(30, 150 / Math.max(rowCount, 1));
+    const startX = marginX + (usableWidth - xSpacing * Math.min(count, colCount)) / 2;
+    nodes.forEach((n, i) => {
+      const col = i % colCount;
+      const row = Math.floor(i / colCount);
+      n.x = startX + xSpacing * col;
+      n.y = yBase + (row - (rowCount - 1) / 2) * ySpacing;
+    });
+  }
+
+  // ===== Force simulation: layer dominance, links only for subtle clustering =====
+  simulation = d3.forceSimulation(filteredNodes)
+    .force("link", d3.forceLink(filteredEdges).id(d => d.id).distance(50).strength(0.08))
+    .force("charge", d3.forceManyBody().strength(-400).distanceMin(10).distanceMax(300))
+    .force("collide", d3.forceCollide().radius(36).strength(0.7).iterations(2))
+    .force("x", d3.forceX(width/2).strength(0.08))
+    .force("y", d3.forceY(d => layerYPos[d.layer] || height/2).strength(1.0))
+    .alphaDecay(0.01)
+    .velocityDecay(0.3);
+
+  // Links
+  const link = gLinks.selectAll("line")
+    .data(filteredEdges)
+    .join("line")
+    .attr("class", "edge-line");
+
+  // Edge labels
+  const edgeLabel = gEdgeLabels.selectAll("text")
+    .data(filteredEdges)
+    .join("text")
+    .attr("class", "edge-label")
+    .attr("dy", -5)
+    .text(d => d.relation_label || "");
+
+  // Nodes
+  const node = gNodes.selectAll("g")
+    .data(filteredNodes)
+    .join("g")
+    .attr("class", "node-group")
+    .call(d3.drag()
+      .on("start", (event, d) => {
+        if (!event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x; d.fy = d.y;
+      })
+      .on("drag", (event, d) => {
+        d.fx = event.x; d.fy = event.y;
+      })
+      .on("end", (event, d) => {
+        if (!event.active) simulation.alphaTarget(0);
+        d.fx = null; d.fy = null;
+      })
+    );
+
+  // Node circles
+  node.append("circle")
+    .attr("class", "node-circle")
+    .attr("r", 16)
+    .attr("fill", d => NODE_COLORS[d.type] || "#999")
+    .attr("stroke", d => {
+      if (d.id === selectedNode?.id) return "#5B8FF9";
+      if (d.status === "verified" || d.status === "verified*") return "#1a202c";
+      return "#999";
+    })
+    .attr("stroke-width", d => d.id === selectedNode?.id ? 3 : 2)
+    .attr("stroke-dasharray", d => {
+      if (d.id === selectedNode?.id) return null;
+      if (d.status === "verified" || d.status === "verified*") return null;
+      return "5,5";
+    })
+    .on("click", (event, d) => {
+      event.stopPropagation();
+      selectNode(d);
+    })
+    .on("mouseenter", function() {
+      d3.select(this).transition().duration(150).attr("r", 20);
+    })
+    .on("mouseleave", function() {
+      d3.select(this).transition().duration(150).attr("r", 16);
+    });
+
+  // Node labels
+  const label = gLabels.selectAll("text")
+    .data(filteredNodes)
+    .join("text")
+    .attr("class", "node-label")
+    .attr("dy", 28)
+    .text(d => {
+      let t = d.term_zh || d.term || d.id;
+      if (t.length > 24) t = t.slice(0, 22) + "…";
+      return t;
+    });
+
+  // Simulation tick
+  simulation.on("tick", () => {
+    link
+      .attr("x1", d => d.source.x)
+      .attr("y1", d => d.source.y)
+      .attr("x2", d => d.target.x)
+      .attr("y2", d => d.target.y);
+
+    edgeLabel
+      .attr("x", d => (d.source.x + d.target.x) / 2)
+      .attr("y", d => (d.source.y + d.target.y) / 2);
+
+    node.attr("transform", d => `translate(${d.x},${d.y})`);
+
+    label
+      .attr("x", d => d.x)
+      .attr("y", d => d.y);
+  });
+}
+
+// ===== Node Selection =====
+function selectNode(d) {
+  selectedNode = d;
+
+  // Update all node strokes
+  gNodes.selectAll("circle")
+    .attr("stroke", n => n.id === d.id ? "#5B8FF9" : (n.status === "verified" || n.status === "verified*" ? "#1a202c" : "#999"))
+    .attr("stroke-width", n => n.id === d.id ? 3 : 2)
+    .attr("stroke-dasharray", n => {
+      if (n.id === d.id) return null;
+      if (n.status === "verified" || n.status === "verified*") return null;
+      return "5,5";
+    });
+
+  // Hide placeholder, show content
+  document.getElementById("detailPlaceholder").classList.add("hidden");
+  document.getElementById("detailContent").classList.remove("hidden");
+  document.getElementById("canvasPlaceholder").classList.add("hidden");
+
+  renderDetail(d);
+
+  // Pan to node
+  const container = document.getElementById("canvasContainer");
+  const w = container.clientWidth;
+  const h = container.clientHeight;
+  const targetX = w/2 - d.x;
+  const targetY = h/2 - d.y;
+  svg.transition().duration(400).call(
+    d3.zoom().transform,
+    d3.zoomIdentity.translate(targetX, targetY).scale(currentTransform.k)
+  );
+}
+
+function deselectNode() {
+  selectedNode = null;
+  document.getElementById("detailPlaceholder").classList.remove("hidden");
+  document.getElementById("detailContent").classList.add("hidden");
+
+  gNodes.selectAll("circle")
+    .attr("stroke", n => (n.status === "verified" || n.status === "verified*") ? "#1a202c" : "#999")
+    .attr("stroke-width", 2)
+    .attr("stroke-dasharray", n => (n.status === "verified" || n.status === "verified*") ? null : "5,5");
+}
+
+// ===== Render Detail =====
+function renderDetail(d) {
+  const container = document.getElementById("detailContent");
+  const typeLabel = TYPE_LABELS[d.type] || d.type;
+  const layerLabel = LAYER_LABELS[d.layer] || d.layer;
+  const statusLabel = STATUS_LABELS[d.status] || (d.status || "—");
+  const statusClass = d.status === "verified*" ? "verified*" : (d.status || "");
+
+  // Get dependencies (nodes this depends on) and dependents (nodes that depend on this)
+  const deps = allEdges.filter(e => e.source === d.id).map(e => ({
+    id: e.target,
+    relation: e.relation_label,
+    node: allNodes.find(n => n.id === e.target),
+  }));
+  const dependents = allEdges.filter(e => e.target === d.id).map(e => ({
+    id: e.source,
+    relation: e.relation_label,
+    node: allNodes.find(n => n.id === e.source),
+  }));
+
+  const domainTags = (d.domain || []).map(tag => `<span class="domain-tag">${tag}</span>`).join("");
+
+  const statementText = d.statement || "";
+  const statementShort = statementText.length > 300 ? statementText.slice(0, 300) + "…" : statementText;
+  const isLong = statementText.length > 300;
+
+  container.innerHTML = `
+    <h2>${d.term_zh || d.term}</h2>
+    <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:6px">${d.term !== (d.term_zh || d.term) ? d.term : ''}</div>
+    <div class="meta-row">
+      <span>ID: <strong>${d.id}</strong></span>
+      <span class="node-type-badge ${'node-type-' + d.type}">${typeLabel}</span>
+      <span>${layerLabel}</span>
+      ${d.status ? `<span class="status-badge ${statusClass}">${statusLabel}</span>` : ""}
+    </div>
+    ${domainTags ? `<div style="margin-bottom:8px">${domainTags}</div>` : ""}
+
+    ${d["人话摘要"] ? `
+    <div class="section">
+      <h4>📖 人话摘要</h4>
+      <div class="renhua">${escapeHtml(d["人话摘要"])}</div>
+    </div>` : ""}
+
+    ${statementText ? `
+    <div class="section">
+      <h4>📝 完整陈述</h4>
+      <div class="statement ${isLong ? '' : 'expanded'}" id="statementText">${escapeHtml(statementShort)}</div>
+      ${isLong ? `<button class="expand-btn" id="expandBtn" onclick="toggleStatement()">展开全文 ▾</button>` : ""}
+      <div id="statementFull" style="display:none;font-size:13px;line-height:1.6;color:var(--color-text-secondary);white-space:pre-wrap">${escapeHtml(statementText)}</div>
+    </div>` : ""}
+
+    ${deps.length > 0 ? `
+    <div class="section">
+      <h4>🔗 依赖 (${deps.length})</h4>
+      <ul class="dep-list">${deps.map(e => `
+        <li onclick="jumpToNode('${e.id}')">
+          <span class="arrow">→</span>
+          <span style="font-size:10px;color:var(--color-text-secondary)">[${e.relation}]</span>
+          ${e.node ? (e.node.term_zh || e.node.term) : e.id}
+        </li>`).join("")}
+      </ul>
+    </div>` : ""}
+
+    ${dependents.length > 0 ? `
+    <div class="section">
+      <h4>🔗 被依赖 (${dependents.length})</h4>
+      <ul class="dep-list">${dependents.map(e => `
+        <li onclick="jumpToNode('${e.id}')">
+          <span class="arrow">←</span>
+          <span style="font-size:10px;color:var(--color-text-secondary)">[${e.relation}]</span>
+          ${e.node ? (e.node.term_zh || e.node.term) : e.id}
+        </li>`).join("")}
+      </ul>
+    </div>` : ""}
+
+    <div style="margin-top:16px">
+      <button class="btn-panel primary" onclick="centerOnNode('${d.id}')">📍 居中此节点</button>
+      <button class="btn-panel" onclick="highlightChain('${d.id}')">🔗 高亮依赖链</button>
+    </div>
+  `;
+}
+
+let statementExpanded = false;
+function toggleStatement() {
+  const short = document.getElementById("statementText");
+  const full = document.getElementById("statementFull");
+  const btn = document.getElementById("expandBtn");
+  if (!statementExpanded) {
+    short.style.display = "none";
+    full.style.display = "block";
+    btn.textContent = "收起 ▲";
+    statementExpanded = true;
+  } else {
+    short.style.display = "block";
+    full.style.display = "none";
+    btn.textContent = "展开全文 ▾";
+    statementExpanded = false;
+  }
+}
+
+// ===== Actions =====
+function jumpToNode(nodeId) {
+  const node = allNodes.find(n => n.id === nodeId);
+  if (!node) return;
+  // Ensure the node is visible (enable all filters temporarily if needed)
+  const wasFiltered = !filterState.layers[node.layer] || !filterState.types[node.type];
+  if (wasFiltered) {
+    filterState.layers[node.layer] = true;
+    filterState.types[node.type] = true;
+    if (node.status) filterState.statuses[node.status] = true;
+    updateFilterUI();
+    updateGraph();
+    setTimeout(() => selectAndCenter(node), 300);
+  } else {
+    selectAndCenter(node);
+  }
+}
+
+function selectAndCenter(node) {
+  // Find the node in the current simulation
+  const simNode = simulation.nodes().find(n => n.id === node.id);
+  if (simNode) {
+    selectNode(simNode);
+  } else {
+    // Node not in simulation (filtered out) - update graph first
+    updateGraph();
+    setTimeout(() => {
+      const sn = simulation.nodes().find(n => n.id === node.id);
+      if (sn) selectNode(sn);
+    }, 500);
+  }
+}
+
+function centerOnNode(nodeId) {
+  const node = allNodes.find(n => n.id === nodeId);
+  if (!node) return;
+  const simNode = simulation.nodes().find(n => n.id === nodeId);
+  const d = simNode || node;
+  const container = document.getElementById("canvasContainer");
+  const w = container.clientWidth;
+  const h = container.clientHeight;
+  svg.transition().duration(400).call(
+    d3.zoom().transform,
+    d3.zoomIdentity.translate(w/2 - d.x, h/2 - d.y).scale(Math.max(currentTransform.k, 1))
+  );
+}
+
+function highlightChain(nodeId) {
+  // Collect ancestor and descendant IDs
+  const ancestorIds = new Set();
+  const descendantIds = new Set();
+
+  function getAncestors(id) {
+    allEdges.filter(e => e.source === id).forEach(e => {
+      if (!ancestorIds.has(e.target)) {
+        ancestorIds.add(e.target);
+        getAncestors(e.target);
+      }
+    });
+  }
+  function getDescendants(id) {
+    allEdges.filter(e => e.target === id).forEach(e => {
+      if (!descendantIds.has(e.source)) {
+        descendantIds.add(e.source);
+        getDescendants(e.source);
+      }
+    });
+  }
+
+  getAncestors(nodeId);
+  getDescendants(nodeId);
+  const chainIds = new Set([...ancestorIds, ...descendantIds, nodeId]);
+
+  // Highlight nodes in chain
+  gNodes.selectAll("circle")
+    .attr("opacity", n => chainIds.has(n.id) ? 1 : 0.15)
+    .transition().duration(300);
+
+  gLabels.selectAll("text")
+    .attr("opacity", n => chainIds.has(n.id) ? 1 : 0.15)
+    .transition().duration(300);
+
+  gLinks.selectAll("line")
+    .attr("opacity", e => (chainIds.has(e.source.id || e.source) && chainIds.has(e.target.id || e.target)) ? 1 : 0.05)
+    .transition().duration(300);
+
+  // Auto-reset after 8 seconds
+  setTimeout(resetHighlight, 8000);
+}
+
+function resetHighlight() {
+  gNodes.selectAll("circle").transition().duration(300).attr("opacity", 1);
+  gLabels.selectAll("text").transition().duration(300).attr("opacity", 1);
+  gLinks.selectAll("line").transition().duration(300).attr("opacity", 1);
+}
+
+// ===== Search =====
+function handleSearch() {
+  const query = document.getElementById("searchInput").value.trim().toLowerCase();
+  if (!query) {
+    resetHighlight();
+    return;
+  }
+
+  const matches = allNodes.filter(n => {
+    return n.id.toLowerCase().includes(query) ||
+           (n.term || "").toLowerCase().includes(query) ||
+           (n.term_zh || "").toLowerCase().includes(query) ||
+           (n["人话摘要"] || "").toLowerCase().includes(query);
+  });
+
+  const matchIds = new Set(matches.map(n => n.id));
+
+  gNodes.selectAll("circle")
+    .attr("opacity", n => matchIds.has(n.id) ? 1 : 0.15);
+  gLabels.selectAll("text")
+    .attr("opacity", n => matchIds.has(n.id) ? 1 : 0.15);
+  gLinks.selectAll("line")
+    .attr("opacity", e => {
+      const sId = e.source.id || e.source;
+      const tId = e.target.id || e.target;
+      return (matchIds.has(sId) || matchIds.has(tId)) ? 1 : 0.05;
+    });
+
+  // Select first match on Enter
+  if (matches.length > 0) {
+    const node = matches[0];
+    const simNode = simulation.nodes().find(n => n.id === node.id);
+    if (simNode) selectNode(simNode);
+  }
+}
+
+// ===== Reset =====
+function resetAll() {
+  // Reset filters
+  Object.keys(filterState.layers).forEach(k => filterState.layers[k] = true);
+  Object.keys(filterState.types).forEach(k => filterState.types[k] = true);
+  Object.keys(filterState.statuses).forEach(k => filterState.statuses[k] = true);
+  Object.keys(filterState.relations).forEach(k => filterState.relations[k] = true);
+  updateFilterUI();
+  deselectNode();
+  document.getElementById("searchInput").value = "";
+  resetHighlight();
+  updateGraph();
+
+  // Reset zoom
+  const container = document.getElementById("canvasContainer");
+  svg.transition().duration(400).call(
+    d3.zoom().transform,
+    d3.zoomIdentity.translate(container.clientWidth/2, container.clientHeight/2)
+  );
+}
+
+function updateFilterUI() {
+  document.querySelectorAll("#layerFilters .legend-item, #typeFilters .legend-item, #statusFilters .status-legend-item, #relationFilters .legend-item").forEach(el => {
+    // We can't easily map DOM elements back to filter keys without data attributes.
+    // Instead, just rebuild all filter sections.
+  });
+  // Rebuild filter UI
+  document.getElementById("layerFilters").innerHTML = "";
+  document.getElementById("typeFilters").innerHTML = "";
+  document.getElementById("statusFilters").innerHTML = "";
+  document.getElementById("relationFilters").innerHTML = "";
+  buildFilters();
+  buildRelationFilters();
+}
+
+// ===== Utilities =====
+function escapeHtml(str) {
+  const div = document.createElement("div");
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function debounce(fn, delay) {
+  let timer;
+  return function(...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn.apply(this, args), delay);
+  };
+}
+
+function showToast(msg) {
+  const el = document.createElement("div");
+  el.className = "toast";
+  el.textContent = msg;
+  document.getElementById("toastContainer").appendChild(el);
+  setTimeout(() => el.remove(), 3000);
+}
+
+// ===== Start =====
+document.addEventListener("DOMContentLoaded", init);
+</script>
+
+</body>
+</html>

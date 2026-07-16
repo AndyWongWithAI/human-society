@@ -124,6 +124,8 @@ let round = 0
 let verdict = 'needs_revision'
 let fixes = []
 let lastCounterexample = ''
+let roundVerdicts = []
+let lastOneline = ''
 
 while (round < MAX) {
   round++
@@ -151,6 +153,8 @@ ${round > 1 ? `**前轮摘要** (已在 DED 文件的 review_summary 字段,读�
   verdict = (rev && rev.verdict) || 'needs_revision'
   fixes = (rev && rev.requiredFixes) || []
   lastCounterexample = (rev && rev.counterexample) || ''
+  lastOneline = (rev && rev.oneline) || ''
+  roundVerdicts.push({ n: round, v: verdict })
   log(`round ${round}: ${verdict}${fixes.length ? ` — ${fixes.length} fixes` : ''}`)
 
   if (verdict === 'verified' || verdict === 'rejected') break
@@ -182,17 +186,23 @@ Return only the JSON: {done, validatorOk, note}.`,
 // ============ Phase 3: Finalize ============
 if (verdict === 'verified') {
   phase('Finalize')
-  await agent(
-    `把 ${DED_PATH} 的 status 由 candidate 改为 verified。
-
-更新 review_summary —— 【严格 <=3 行,只留结论+指针,禁止复述每轮 required/整改细节(那是双存,归 ADV-REVIEW)】,照此模板(用 | 块标量):
-  1) r1 <verdict> -> r2 <verdict> -> ... -> 定论 verified(只写裁决词)
-  2) 一句话为何 verified(核心载重新意 + 反例猎捕无活反例)
-  3) 全档见 ADV-REVIEW-${b.reviewNum}。
-
-补 revised 日期与 revision_note(一行摘要)。跑 \`cd ${REPO} && python scripts/validate.py\` 确认无 ❌ YAML、状态检查通过。返回 {done, validatorOk, note}。`,
-    { label: `finalize:${b.id}`, phase: 'Finalize', schema: REVISE_OUT, agentType: 'general-purpose' }
+  const chain = roundVerdicts.map(r => `r${r.n} ${r.v}`).join(' -> ')
+  const why = (lastOneline || '核心载重成立,反例猎捕无活反例').replace(/'/g, "'\\''")
+  const chainEsc = chain.replace(/'/g, "'\\''")
+  const fin = await agent(
+    `Run finalize for ${b.id} (scripted, zero LLM reasoning):
+cd ${REPO} && python scripts/finalize.py ${b.id} \\
+  --verdict verified \\
+  --chain '${chainEsc}' \\
+  --why '${why}' \\
+  --review-num ${b.reviewNum}
+Check stdout for ✅ validate 通过. Return {done, validatorOk, note}.`,
+    { label: `finalize:${b.id}`, phase: 'Finalize', schema: REVISE_OUT }
   )
+  if (!fin || !fin.validatorOk) {
+    return { id: b.id, verdict: 'finalize_failed', rounds: round, dedPath: DED_PATH,
+             reviewPath: REVIEW_PATH, note: fin ? fin.note : 'finalize 脚本失败' }
+  }
 }
 
 return {
