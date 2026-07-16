@@ -184,6 +184,54 @@ def parse_yaml_file(filepath: Path) -> dict | None:
         return None
 
 
+def export_articles(valid_node_ids: set):
+    """Export articles.yaml → visualization/articles.js (not included in API)."""
+    articles_yaml = PROJECT_ROOT / "articles.yaml"
+    if not articles_yaml.exists():
+        print("  No articles.yaml found, skipping article export")
+        return
+
+    data = parse_yaml_file(articles_yaml)
+    if data is None:
+        return
+
+    raw_articles = data.get("articles", [])
+    if not isinstance(raw_articles, list):
+        raw_articles = []
+
+    # Build lookup: entity_id → [articles]
+    entity_articles = {}
+    valid_articles = []
+    for art in raw_articles:
+        if not isinstance(art, dict):
+            continue
+        url = art.get("url", "")
+        title = art.get("title", "")
+        date = str(art.get("date", ""))
+        entity_ids = art.get("entity_ids", [])
+        if not isinstance(entity_ids, list):
+            entity_ids = []
+        # Only keep references to valid node IDs
+        valid_eids = [eid for eid in entity_ids if eid in valid_node_ids]
+        if not url or not valid_eids:
+            continue
+        article_entry = {"url": url, "title": title, "date": date, "entity_ids": valid_eids}
+        valid_articles.append(article_entry)
+        for eid in valid_eids:
+            entity_articles.setdefault(eid, []).append(article_entry)
+
+    articles_output = {
+        "articles": valid_articles,
+        "entity_articles": entity_articles,
+    }
+
+    articles_js = VIS_DIR / "articles.js"
+    json_str = json.dumps(articles_output, ensure_ascii=False, indent=2)
+    with open(articles_js, "w", encoding="utf-8") as f:
+        f.write(f"window.ARTICLE_DATA = {json_str};\n")
+    print(f"  Wrote {articles_js} ({len(valid_articles)} articles, {len(entity_articles)} entities referenced)")
+
+
 def main():
     print("Exporting human-society graph data...")
 
@@ -309,6 +357,9 @@ def main():
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
     print(f"  Wrote {json_path}")
+
+    # Export article references (separate from API data)
+    export_articles(node_ids)
 
     skipped = len(unique_edges) - len(valid_edges)
     print(f"\nDone! {len(nodes)} nodes, {len(valid_edges)} edges.")

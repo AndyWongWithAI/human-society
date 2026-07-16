@@ -11,6 +11,7 @@ on:
       - 'L4-composites/**'
       - 'scripts/export_graph.py'
       - 'visualization/index.html'
+      - 'articles.yaml'
       - 'api.py'
   workflow_dispatch:
 

@@ -320,6 +320,7 @@ let edges = [];
 let nodeMap = {};
 let downstreamMap = {};
 let upstreamMap = {};
+let articleMap = {};
 
 async function loadData() {
   // 尝试 API，失败则回退到静态 JSON
@@ -342,6 +343,12 @@ async function loadData() {
     if (downstreamMap[e.target]) downstreamMap[e.target].push({ id: e.source, relation: e.relation_label });
     if (upstreamMap[e.source]) upstreamMap[e.source].push({ id: e.target, relation: e.relation_label });
   });
+
+  // Merge article references (from articles.js, not in API)
+  articleMap = {};
+  if (window.ARTICLE_DATA && window.ARTICLE_DATA.entity_articles) {
+    articleMap = window.ARTICLE_DATA.entity_articles;
+  }
 }
 
 // ===== Type config =====
@@ -614,6 +621,20 @@ function selectNode(id) {
     </div>`;
   }
 
+  // 相关文章
+  const articles = articleMap[n.id] || [];
+  if (articles.length > 0) {
+    html += `<div class="card"><h3>📰 相关文章 (${articles.length})</h3>`;
+    articles.forEach(a => {
+      const d = a.date ? a.date : '';
+      html += `<div style="margin-bottom:10px;border-bottom:1px solid var(--border);padding-bottom:10px">
+        <a href="${escapeHtml(a.url)}" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--primary);text-decoration:none">${escapeHtml(a.title)}</a>
+        ${d ? `<span style="font-size:11px;color:var(--text2);margin-left:8px">🕐 ${d}</span>` : ''}
+      </div>`;
+    });
+    html += `</div>`;
+  }
+
   // 依赖关系
   if (hasDeps || hasDependents) {
     html += `<div class="dep-section${(!hasDeps || !hasDependents) ? ' full' : ''}">`;
@@ -761,4 +782,6 @@ function toggleApiModal() {
   document.getElementById('apiModal').classList.toggle('show');
 }
 </script>
+<script src="articles.js"></script>
+</body>
 </html>
