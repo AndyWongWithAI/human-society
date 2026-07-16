@@ -9,6 +9,7 @@
     cd <repo> && python scripts/index.py
 """
 import yaml
+import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -145,6 +146,100 @@ def main():
 
     OUT.write_text("\n".join(lines), encoding="utf-8")
     print(f"✅ INDEX.md 已生成:{total} 实体 → {OUT.relative_to(ROOT)}")
+
+    # 顺带重生阅读包(author-pack + reviewer-pack)
+    build_packs(lines, total)
+
+
+def build_packs(index_lines, total):
+    """从 INDEX.md + 清单/评分卡 预编单文件阅读包。
+
+    agent 冷启动只读 1 份而非 3-4 份,未命中输入成本 ↓25-40%。
+    """
+    pipeline_dir = ROOT / "docs" / "pipeline"
+    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+
+    # ── author-pack ──
+    author_checklist = pipeline_dir / "author-checklist.md"
+    if author_checklist.exists():
+        checklist_text = author_checklist.read_text(encoding="utf-8")
+        marker = "## A. 非平凡性"
+        idx = checklist_text.find(marker)
+        body = checklist_text[idx:] if idx > 0 else checklist_text
+
+        pack = [
+            "# Author Reading Pack（作者阅读包）",
+            "",
+            f"> 自动生成于 {now}。跑 `python scripts/index.py` 重生。",
+            "> 用途：起草推论前**只读这一份**——实体速览 + 前置清单 + 瘦身格式，全在这里。",
+            "> 不再需要分别读 INDEX.md + author-checklist.md + 方法论文件。",
+            "",
+            "---",
+            "",
+            "## 1. 实体速览",
+            "",
+            f"**{total} 实体**（同 INDEX.md，一行一条）",
+            "",
+        ]
+        in_body = False
+        for line in index_lines:
+            if line.startswith("**") and "实体" in line:
+                in_body = True
+                continue
+            if in_body:
+                pack.append(line)
+
+        pack.append("")
+        pack.append("---")
+        pack.append("")
+        pack.append("## 2. 作者前置清单（A–E 段 + 瘦身 canonical 格式）")
+        pack.append("")
+        pack.append(body)
+
+        out = pipeline_dir / "author-pack.md"
+        out.write_text("\n".join(pack), encoding="utf-8")
+        print(f"✅ author-pack.md 已生成 → {out.relative_to(ROOT)}")
+
+    # ── reviewer-pack ──
+    review_rubric = pipeline_dir / "review-rubric.md"
+    if review_rubric.exists():
+        rubric_text = review_rubric.read_text(encoding="utf-8")
+        marker = "## 你的任务"
+        idx = rubric_text.find(marker)
+        body = rubric_text[idx:] if idx > 0 else rubric_text
+
+        pack = [
+            "# Reviewer Reading Pack（审查者阅读包）",
+            "",
+            f"> 自动生成于 {now}。跑 `python scripts/index.py` 重生。",
+            "> 用途：独立对抗审查前**只读这一份**——实体速览 + 评分卡 + 红旗清单，全在这里。",
+            "> 不再需要分别读 INDEX.md + review-rubric.md。",
+            "",
+            "---",
+            "",
+            "## 1. 实体速览",
+            "",
+            f"**{total} 实体**（同 INDEX.md，一行一条）",
+            "",
+        ]
+        in_body = False
+        for line in index_lines:
+            if line.startswith("**") and "实体" in line:
+                in_body = True
+                continue
+            if in_body:
+                pack.append(line)
+
+        pack.append("")
+        pack.append("---")
+        pack.append("")
+        pack.append("## 2. 审查评分卡（通用红旗 13 条 + 反例猎捕 + 裁决语义）")
+        pack.append("")
+        pack.append(body)
+
+        out = pipeline_dir / "reviewer-pack.md"
+        out.write_text("\n".join(pack), encoding="utf-8")
+        print(f"✅ reviewer-pack.md 已生成 → {out.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

@@ -85,8 +85,11 @@ const REVISE_OUT = {
 }
 
 // ============ Phase 1: Author ============
+// brief.skipAuthor = true 时跳过作者阶段(推论文件已在主循环外写好),直接进审查 loop。
 phase('Author')
-const authored = await agent(
+const authored = b.skipAuthor
+  ? { done: true, coreOneLine: b.coreClaim || b.title, validatorOk: true }
+  : await agent(
   `你是公理化推论【作者】,全新上下文。目标:把下列推论写成一份【瘦身 canonical】的 candidate YAML。
 
 ## 封顶读取(两份)
@@ -114,7 +117,7 @@ if (!authored || !authored.validatorOk) {
   return { id: b.id, verdict: 'author_failed', rounds: 0, dedPath: DED_PATH,
            note: authored ? '作者产出未过校验' : '作者 agent 失败', authored }
 }
-log(`author done: ${authored.coreOneLine}`)
+log(b.skipAuthor ? `author skipped (pre-authored): ${authored.coreOneLine}` : `author done: ${authored.coreOneLine}`)
 
 // ============ Phase 2: adaptive Review / Revise loop ============
 let round = 0
@@ -154,23 +157,21 @@ ${round > 1 ? `**前轮摘要** (已在 DED 文件的 review_summary 字段,读�
   if (!fixes.length) { log(`round ${round}: needs_revision 但无 required,停(交主循环裁量)`); break }
 
   phase('Revise')
+  // 优先走 SenseNova 免费 flash (机械修改不需要 pro 推理,省 LLM 费用)
+  const reviewRel = REVIEW_PATH.replace(REPO + '/', '')
+  const fixesArg = fixes.map(f => f.replace(/'/g, "'\\''")).join(' ||| ')
   const revised = await agent(
-    `你是【整改者】,全新上下文。按 round-${round} 审查的 required 清单,对推论做【定向 Edit】(勿整份重写)。
+    `Run flash revise for ${b.id} round ${round} (SenseNova free API, zero LLM cost):
 
-## 输入
-- 推论文件:${DED_PATH}
-- 本轮 required 清单:
-${fixes.map((f, i) => `  ${i + 1}) ${f}`).join('\n')}
-- 审查全档:${REVIEW_PATH} 的 round_${round}(如需上下文)
+cd ${REPO} && python scripts/flash_revise.py ${b.id} \\
+  --fixes '${fixesArg}' \\
+  --review-round ${round} \\
+  --review-path '${reviewRel}'
 
-## 硬要求
-- 只 Edit 受影响的段落,保持瘦身格式;每处改动真正消解对应 required。
-- **【关键】在 ${DED_PATH} 的 review_summary 追加本轮 compact 摘要**(1–2 行):本轮裁决词 + 修复的核心红旗 + "见 round_${round}"。这行是下轮审查者的"前轮摘要"。
-- 若需记详细作者回应,写进 ${REVIEW_PATH} 的 author_response_round_${round}(不塞回 DED)。
-- YAML 陷阱同前(| 块标量)。跑 \`cd ${REPO} && python scripts/validate.py\` 确认无 ❌、引用完整。
-
-## 返回(紧凑){done, validatorOk, note}`,
-    { label: `revise:${b.id}:r${round}`, phase: 'Revise', schema: REVISE_OUT, agentType: 'general-purpose', ...(b.reviewModel ? { model: b.reviewModel } : {}) }
+Read the JSON result from stdout (it will be {"done": true/false, "validatorOk": true/false, "note": "..."}).
+If flash_revise returns done=false, note the error in your return note field.
+Return only the JSON: {done, validatorOk, note}.`,
+    { label: `revise:${b.id}:r${round}`, phase: 'Revise', schema: REVISE_OUT }
   )
   if (!revised || !revised.validatorOk) {
     log(`round ${round}: 整改未过校验,停`)

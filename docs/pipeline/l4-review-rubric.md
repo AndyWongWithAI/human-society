@@ -1,6 +1,6 @@
 # L4 审查评分卡 (L4 Review Rubric Card)
 
-> 用途:L4 复合推论的独立对抗审查者校准来源。**继承 + 追加**:L4 在 L3 评分卡([review-rubric.md](review-rubric.md))的 11 条通用红旗基础上,追加以下 L4 专属红旗。
+> 用途:L4 复合推论的独立对抗审查者校准来源。**继承 + 追加**:L4 在 L3 评分卡([review-rubric.md](review-rubric.md))的 13 条通用红旗基础上,追加以下 L4 专属红旗。
 > L4 审查者必须同时使用两份评分卡:先跑 L3 的 11 条通用红旗,再跑下面的 L4 专属红旗。通用红旗**只在 L3 评分卡定义**,本文件不重复罗列。
 > 立场:默认怀疑,宁可错杀不放水。L4 离地基更远,标准必须比 L3 更严。
 
@@ -11,7 +11,7 @@
 ## verified 的定义(L4 版——L3 三条 + L4 三条,同时满足)
 
 **L3 通用条件**(定义见 L3 评分卡,此处仅列条目):
-1. **无 required 级缺陷**(通用 11 条红旗 + 下面的 L4 专属红旗)。
+1. **无 required 级缺陷**(通用 13 条红旗 + 下面的 L4 专属红旗)。
 2. **你亲自做过反例猎捕**,且没猎到 scope 内的活反例。
 3. **未重蹈 DED-004/DED-007**。
 
@@ -24,13 +24,13 @@
 
 ## L4 专属红旗(在 L3 11 条基础上追加,逐条给结论)
 
-12. **观众砖(spectator brick)** — 逐一移除每条 L3 父推论:结论还成立吗?哪条父推论挂着但不出力?
-13. **平凡合取(trivial conjunction)** — L4 结论是否只是父推论结论的 AND/OR 拼接?有没有"合起来才推得出"的东西?
-14. **涌现缺失** — 多父逐格判空:有没有至少一个格子需要 ≥2 条父推论合力?归零 = 这不是 L4,是 L3 chaining。
-15. **弱父前提** — 所有 L3 父推论都是 verified/verified* 吗?有没有 candidate 被用作主前提?
-16. **锚点偷窃** — "复合锚点"是否只是重复某条父推论的单机制锚点?换个案例说"A 存在且 B 存在"不算复合锚点。
-17. **交互测量缺口** — 复合输出变量能否被测量为"区别于 A 单独 + B 单独"的东西?还是只能测到 A 和 B 各自的结果?
-18. **声明类型-证据标准错配** — claim_type 宣称的东西(如 trajectory_prediction)是否有对应的证据(纵向/序列数据)?
+14. **观众砖(spectator brick)** — 逐一移除每条 L3 父推论:结论还成立吗?哪条父推论挂着但不出力?
+15. **平凡合取(trivial conjunction)** — L4 结论是否只是父推论结论的 AND/OR 拼接?有没有"合起来才推得出"的东西?
+16. **涌现缺失** — 多父逐格判空:有没有至少一个格子需要 ≥2 条父推论合力?归零 = 这不是 L4,是 L3 chaining。
+17. **弱父前提** — 所有 L3 父推论都是 verified/verified* 吗?有没有 candidate 被用作主前提?
+18. **锚点偷窃** — "复合锚点"是否只是重复某条父推论的单机制锚点?换个案例说"A 存在且 B 存在"不算复合锚点。
+19. **交互测量缺口** — 复合输出变量能否被测量为"区别于 A 单独 + B 单独"的东西?还是只能测到 A 和 B 各自的结果?
+20. **声明类型-证据标准错配** — claim_type 宣称的东西(如 trajectory_prediction)是否有对应的证据(纵向/序列数据)?
 
 (原第 18 条"口径完整注册 + 歧义反向裁决(L4-009 判例)"已上移为 L3 通用红旗第 11 条——阈值口径注册是通用问题,对 L3 同样适用。)
 
@@ -50,7 +50,7 @@
 
 ## 你要产出的两件事
 
-1. **把完整评审写进** `L4-composites/reviews/ADV-REVIEW-L4-NNN-*.yaml` 的 `round_<N>` 块。字段:reviewer / verdict / verdict_note / 通用红旗逐条(1–11)+ L4 专属红旗逐条(12–18)/ counterexample_hunt / non_recurrence / 若非 verified 的 required_fixes。写完跑 `python scripts/validate.py` 确认 YAML 不破(长文本用 `|` 块标量,防中文里的 ASCII 冒号顶飞)。
+1. **把完整评审写进** `L4-composites/reviews/ADV-REVIEW-L4-NNN-*.yaml` 的 `round_<N>` 块。字段:reviewer / verdict / verdict_note / 通用红旗逐条(1–13)+ L4 专属红旗逐条(14–20)/ counterexample_hunt / non_recurrence / 若非 verified 的 required_fixes。写完跑 `python scripts/validate.py` 确认 YAML 不破(长文本用 `|` 块标量,防中文里的 ASCII 冒号顶飞)。
 2. **只向调用方返回紧凑结果**(不复述全文):
    ```
    VERDICT: verified | needs_revision | rejected
