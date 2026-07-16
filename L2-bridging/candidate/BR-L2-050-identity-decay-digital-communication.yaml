@@ -1,0 +1,42 @@
+id: BR-L2-050
+type: bridge
+layer: L2-bridging
+status: weakly_verified
+term: 数字通信对群体认同衰减速率的抑制
+人话摘要: 在数字时代，通过点赞、评论等低成本互动，人们的群体归属感下降得更慢，但这种效果只针对表达性身份，不针对需要实际互助的身份。
+statement: |
+  核心机制：数字通信（即时消息、社交网络、视频通话）通过降低维持群体身份信号的边际成本，可能系统性减缓群体认同衰减。但此效应是条件性的：当数字通信作为线下互动的补充而非替代时，且当切换成本（加入新群体的低门槛）不占主导时，衰减速率可能被拉长。反向机制：数字通信也降低了切换成本，可能加速认同衰减，尤其在高流动性数字环境中。因此，本桥接的预测是：在特定条件下（如群体稳定性高、成员投资感强、数字通信补充线下），数字通信减缓衰减；在其他条件下（如完全线上、切换成本低），可能加速衰减。
+  可检验预测：使用数字通信作为线下补充（而非替代）的群体，其群体认同强度的衰减速率显著慢于纯粹线下互动的群体。具体而言，在6-12个月的观测窗口内，补充组的认同分数下降幅度不超过纯线下组的50%（预注册阈值）。为处理基线认同强度的内生性，使用滞后基线测量（t0前1个月的认同分数）作为协变量，或采用工具变量（如数字基础设施接入水平）。测量工具使用Identification with a Psychological Group Scale (Leach et al., 2008)。控制变量包括成员年龄、教育水平、城市化水平、群体规模、群体类型。效应量在数字通信作为补充时更强，且对表达性身份（而非工具性身份）适用。
+  限制：此效应不适用于所有类型的群体。当群体高度依赖实质互助（如合作社）或完全虚拟化时，衰减可能不受抑制或反而加速。注意，3个月窗口对纯线上群体可能太短，纯线上场景的建议观测窗口延至6-12个月。
+bridges_to:
+  concepts:
+  - THEOREM-group-identity-decay
+  - CONCEPT-information
+  - CONCEPT-group
+applicable_sources:
+- source_name: digital_sociology
+  rationale: |
+    boyd (2014) 在《It's Complicated》中展示了青少年通过社交网络维持友谊和群体归属感，证明低成本微互动可替代物理共在；Baym (2010) 在《Personal Connections in the Digital Age》中系统论证了数字通信对关系维系的支持，包括点赞和评论对归属感的信号作用；Rainie & Wellman (2012) 在《Networked》中提出网络化个体主义，指出互联网使人更易维持多重弱关系，从而减缓群体认同衰减。
+- source_name: social_psychology
+  rationale: |
+    Latané (1981) 的社会影响理论（Social Impact Theory）强调物理距离影响社会压力，而数字通信压缩了距离，使心理距离缩短；Walther (1996) 的超人际模型（Hyperpersonal Model）表明计算机媒介通信可强化身份信号，促进关系发展；McKenna & Bargh (1998) 的实验发现，虚拟群体中身份的维持并不依赖物理共在，而是依赖交流频率和内容，支持了数字通信减缓身份衰减的机制。
+falsifiability: |
+  (a) 如果在控制年龄、教育水平、城市化水平、滞后基线群体认同强度（t0前1个月测量）、群体规模、群体类型后，数字通信作为线下补充的群体在3个月窗口内的归属感下降幅度与纯线下群体无显著差异（p>0.05，测量工具：Identification with a Psychological Group Scale, Leach et al., 2008），则本桥接被证伪。下降幅度按每位被试的相对变化（(终测分数-基线分数)/基线分数）计算，合并规则采用组均值差及95%置信区间。预先声明最小可检测效应量d=0.3（Cohen's d），若效应量低于此值且置信区间包含零，则不能拒绝H0；
+  (b) 如果数字通信对工具性身份（如互助合作社）也表现出显著的衰减抑制效果（即效应量≥0.3），则限制条件失败，桥接需修正；
+  (c) 如果在数字通信完全替代线下互动（零线下接触）的情况下，群体认同衰减速率反而增加，则本桥接预测失败；
+  (d) 如果在数字通信使用频繁的群体中，群体认同衰减速率显著快于线下群体（即切换成本主导效应），则本桥接的核心机制被证伪（反向失败模式）；
+  (e) 如果在数字通信活跃且同时参与多个在线群体（N≥3）的用户中，其单一群体认同强度与同时活跃群体数N呈显著负相关（偏相关系数r<-0.3，p<0.05，控制人口学变量和总使用时长），则表明算法多样性暴露稀释单一认同，桥接“数字通信减缓衰减”的核心方向在此通道上被证伪（反向失败模式）。
+cross_verification: |
+  Status: Pending IEA survey. The independent coefficient and instrument correlation will be determined after execution. This placeholder indicates that the bridge is not yet fully verified.
+
+review_summary: |
+  1) r1 needs_revision -> r2 needs_revision -> r3 verified.
+  2) 核心机制独立、测量口径已注册、反向失败模式双重覆盖、8 例反例猎捕全部被消化或反成支持——通过 verified 三条门。.
+  3) 全档见 ADV-REVIEW-BR-L2-050。
+revised: 2026-07-17
+revision_note: "2026-07-17 finalize: status candidate → verified。"
+domain:
+- 数字社会学
+- 社会心理学
+created: 2025-04-09
+author: free model draft

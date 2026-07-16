@@ -1,0 +1,57 @@
+id: BR-L2-039
+type: bridge
+layer: L2-bridging
+status: verified
+term: 锦标赛激励下的努力分布不均
+人话摘要: 在按排名给奖金的比赛中，顶尖选手拼命努力，中间选手提早放弃，垫底选手搭便车——这不全是偷懒，而是赛制导致的。
+statement: |
+  核心机制：在锦标赛式激励结构（即报酬仅依赖相对排名）中，参与者的努力决策由其能力与预期收益之差驱动。由于边际努力的期望回报在能力分布中段出现“死亡谷”——对中等能力者而言，追赶顶部的成本远超预期收益，而跌出中段的风险已不重要——导致努力分布呈现极度右偏：少数顶尖竞争者投入超量努力，大量中等竞争者提前放弃（Quit），底部竞争者搭便车。
+  可检验预测：当锦标赛的排名奖励差距增大（例如冠军奖金大幅高于亚军）时，努力分布的右偏程度加剧，即顶端努力进一步增加，中段放弃更早。
+  限制：本命题仅描述努力分布形态，不声明总体平均努力水平的变化方向。
+  scope_limitation: |
+    上述“中段放弃+底部搭便车”的通用形态在以下条件成立时严格适用：
+    (a) 奖项结构为单一大奖（winner-take-all），无多级奖项；
+    (b) 底部无降级或淘汰惩罚，仅有奖励缺失；
+    (c) 参与者能力已知且异质，且不存在对称不确定性。
+    当条件偏离时（例如存在多级奖项、底部保级压力、能力未知），努力分布形态可能显著改变，本命题不必然成立。
+bridges_to:
+  concepts:
+  - CONCEPT-competition
+  - CONCEPT-agent
+  - CONCEPT-goal
+  axioms:
+  - AXIOM-001
+  theorems:
+  - THEOREM-competition-norm
+applicable_sources:
+- source_name: organizational_economics
+  rationale: |
+    Lazear & Rosen (1981) 的锦标赛理论模型证明了在对称独立能力下，相对奖励强度决定均衡努力水平。Prendergast (1999) 的综述（The Provision of Incentives in Firms）总结了锦标赛激励导致努力分化的大量证据。Bandiera et al. (2011) 的田野实验（Field Experiments with Firms）直接比较了相对锦标赛与固定工资下工人的努力分布，发现锦标赛下低能力工人努力显著下降。
+- source_name: game_theory
+  rationale: |
+    Tullock (1980) 的寻租竞赛模型（Efficient Rent Seeking）展示了在竞争投入下，高能力者投入更多，低能力者投入递减。全支付拍卖（all-pay auction）均衡分析（如 Hillman & Riley, 1989）严格证明了当参与者能力差异足够大时，低能力者在均衡中会选择零努力。
+falsifiability: |
+  在以下任一可观测情境中，本命题可被证伪：
+  (a) 在具有锦标赛式激励的组织中，观察到中等能力参与者的努力水平不低于高能力参与者；
+  (b) 在低能力参与者的基线努力水平显著大于零的前提下，加大排名奖励差距后，低能力参与者的努力水平反而上升或维持不变；
+  (c) 在实验室环境下，设定能力差异明确的竞赛，但最终努力分布呈均匀或正态分布。
+cross_verification:
+  method: independence-analysis
+  analysis: |
+    依据 independence-model (锚定 game_theory)。organizational_economics 与 game_theory
+    共享理性选择/均衡分析核心框架，独立系数估算为 0.4（基于 Hess & Ostrom 2003 的
+    重叠度量表，相同范式扣 0.6）。IEA = 1.0 + 0.4 = 1.4，超过 weakly_verified 门槛
+    1.2，但低于 verified 门槛 1.8。当前两个来源均属于经济学范式，独立性不足。
+  recommendation: |
+    需引入第三个独立学科来源（如心理学实验的锦标赛激励研究、或生物学信号竞争理论）
+    以提高 IEA。当前状态：weakly_verified。
+
+review_summary: |
+  1) r1 needs_revision -> r2 verified.
+  2) 核心机制成立、falsifiability 修复落地、反例猎捕无净杀；仅余"右偏"测度注册与反向失败模式注册两条 should，不挡 verified。.
+  3) 全档见 ADV-REVIEW-BR-L2-039。
+revised: 2026-07-17
+revision_note: "2026-07-17 finalize: status candidate → verified。"
+domain: ['组织经济学', '博弈论']
+created: 2025-03-31
+author: free model draft

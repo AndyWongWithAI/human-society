@@ -1,6 +1,6 @@
 # Reviewer Reading Pack（审查者阅读包）
 
-> 自动生成于 2026-07-16 20:18。跑 `python scripts/index.py` 重生。
+> 自动生成于 2026-07-17 04:41。跑 `python scripts/index.py` 重生。
 > 用途：独立对抗审查前**只读这一份**——实体速览 + 评分卡 + 红旗清单，全在这里。
 > 不再需要分别读 INDEX.md + review-rubric.md。
 
@@ -8,7 +8,7 @@
 
 ## 1. 实体速览
 
-**237 实体**（同 INDEX.md，一行一条）
+**287 实体**（同 INDEX.md，一行一条）
 
 
 ## L0 物理约束 (3)
@@ -60,7 +60,7 @@
 - THEOREM-relation-information-asset · 关系信息资产定理 — 两个人的‘关系’本质是一笔信息财富——存着彼此打交道攒下的了解，让往后每次合作都更省事；所以熟人办事比生人省力，而长期不来往，这份了解会变淡、关…  ⟵ PHY-001, AXIOM-002, AXIOM-003
 - THEOREM-value-attribution · 价值归属定理 — 一个东西对你有多值钱，取决于两条路加在一起再乘以稀缺度——第一条路是这东西对你自己有用（使用价值），第二条路是别人愿意为它付出什么（交换网络价值…  ⟵ PHY-001, PHY-002, PHY-003-c, AXIOM-001, AXIOM-003
 
-## L2 桥接 bridges (43)
+## L2 桥接 bridges (83)
 - ADV-REVIEW-BR-L2-004
 - ADV-REVIEW-BR-L2-006
 - ADV-REVIEW-BR-L2-010 [verified]
@@ -72,6 +72,26 @@
 - ADV-REVIEW-BR-L2-030 — 对 BR-L2-030(现时偏向——人心里那杆秤天生偏向"现在")的 round-1 独立对抗审查
 - ADV-REVIEW-BR-L2-031 — 对 BR-L2-031(制度信任不对称衰减——掉得快涨得慢)的 round-1 独立对抗审查
 - ADV-REVIEW-BR-L2-032 — 对 BR-L2-032(算法对交易成本的断崖式下降——≥10000x)的 round-1 独立对抗审查
+- ADV-REVIEW-BR-L2-033 — 对 BR-L2-033(冲突升级中的损失厌恶不对称——当双方都觉得已经投入了太多，就不愿意放弃， 宁可继续打下去)的 round_1 独立对抗审…
+- ADV-REVIEW-BR-L2-034 — 对 BR-L2-034(层级深度与管理幅度的认知约束)的 round-1 独立对抗审查
+- ADV-REVIEW-BR-L2-035 — 对 BR-L2-035(稀缺状态下的目标屏蔽效应)的 round-1 独立对抗审查
+- ADV-REVIEW-BR-L2-036 — 对 BR-L2-036(权力削弱共情准确性——权力让人不再那么需要关注别人,共情就退化了) 的 round-1 独立对抗审查
+- ADV-REVIEW-BR-L2-037 — 对 BR-L2-037(量化侵蚀定性判断——当组织用数字指标考核员工时,员工会逐渐失去凭直觉和现场经验做出准确判断的能力)的 round-1 独…
+- ADV-REVIEW-BR-L2-038 — 对 BR-L2-038(道德哑口无言现象的跨文化普遍性)的 round-1 独立对抗审查
+- ADV-REVIEW-BR-L2-039 — 对 BR-L2-039(锦标赛激励下的努力分布不均)的 round-1 独立对抗审查
+- ADV-REVIEW-BR-L2-040 — 对 BR-L2-040(群体身份作为道德边界)的 round-1 独立对抗审查
+- ADV-REVIEW-BR-L2-041 — 对 BR-L2-041(信息不对称作为权力梯度)的 round-1 独立对抗审查
+- ADV-REVIEW-BR-L2-042 — 对 BR-L2-042(规范违反的传染效应——看到别人违反规范没受罚，自己违反的概率 也升高)的 round_1 独立对抗审查
+- ADV-REVIEW-BR-L2-043 — 对 BR-L2-043(礼物交换中的层级自发形成——持续净赠予→非正式权力)的 round-1 独立对抗审查
+- ADV-REVIEW-BR-L2-044 — 对 BR-L2-044(竞合关系的稳定性条件)的 round-1 独立对抗审查
+- ADV-REVIEW-BR-L2-045 — 对 BR-L2-045(多任务目标干扰效应——同时做几件评判标准冲突的事比按顺序做更慢更累) 的 round_1 独立对抗审查
+- ADV-REVIEW-BR-L2-046 — 对 BR-L2-046(信息衰减速率的经验测量方法——三种实验方法应收敛于同一数量级)的 round-1 独立对抗审查
+- ADV-REVIEW-BR-L2-047 — 对 BR-L2-047(冲突催化规范涌现——当两个群体反复争夺资源且谁也灭不了谁时， 他们会比和平时期更快地形成关于"谁该得多少"的规矩)的 r…
+- ADV-REVIEW-BR-L2-048 — 对 BR-L2-048(深层层级中的权力扩散)的 round-1 独立对抗审查
+- ADV-REVIEW-BR-L2-049 — 对 BR-L2-049(道德内化与群体认同的绑定——群体认同强度作为门控,调节道德规范的选择性内化) 的 round-1 独立对抗审查
+- ADV-REVIEW-BR-L2-050 — 对 BR-L2-050(数字通信减缓群体认同衰减)的 round-1 独立对抗审查
+- ADV-REVIEW-BR-L2-051 — 对 BR-L2-051(公平偏好的跨文化差异性——公平偏好差异源于文化定义而非二元关怀差异, 市场整合度与最后通牒出价/拒绝阈值正相关)的 ro…
+- ADV-REVIEW-BR-L2-052 — 对 BR-L2-052(价值多元主义与市场边界)的 round-1 独立对抗审查
 - BR-L2-001 [verified] · 有限理性 — 人的脑子算不过来所有选项、也想不清每个选择的长远后果，只能挑个‘够用就行’的方案，而不是理论上的最优解  ⟵ AXIOM-002
 - BR-L2-002 [verified] · 亲缘利他 — 血缘越近的亲人，人越愿意为他付出、吃点亏也帮——共享的基因越多，愿意出手相助的门槛就越低
 - BR-L2-003 [verified] · 大规模非亲缘合作 — 人类的独特之处，是能让成千上万素不相识的陌生人一起合作（国家、宗教、市场都是），靠的不是熟人互惠或血缘，而是大家共同相信的规矩和‘想象出来的秩序…  ⟵ AXIOM-003, THEOREM-cooperation-precondition
@@ -100,12 +120,32 @@
 - BR-L2-026 [verified] · AI Agent 信息处理不对称 — AI 不是'更聪明的人'——它在某些事上远超人类(无限记忆、不累、能同时处理海量信息),但在另一些事上根本缺失(没有身体体验、没有真感情、不怕死…  ⟵ AXIOM-002
 - BR-L2-027 [verified] · 注意力稀缺与信息过载 — 脑子只能同时想几件事——信息太少当然不行,但信息太多、被信息淹了,判断力反而下降  ⟵ AXIOM-002
 - BR-L2-028 [verified] · 预防性储蓄 — 天有不测风云,又没人给你兜底,你就得自己留后手——少花点,存点粮
-- BR-L2-029 [weakly_verified] · 边际消费倾向的收入梯度 — 意外多发一块钱,穷人几乎全花掉,富人大多存起来——不是穷人大手大脚,是他们本来就有一堆想买而买不起的东西,钱一到手就去补窟窿;富人想买的早买了,…
+- BR-L2-029 [verified] · 边际消费倾向的收入梯度 — 意外多发一块钱,穷人几乎全花掉,富人大多存起来——不是穷人大手大脚,是他们本来就有一堆想买而买不起的东西,钱一到手就去补窟窿;富人想买的早买了,…
 - BR-L2-030 [verified] · 跨期选择的现时偏向 — 明知道下月开始存钱更好,但到了下月还是推到下下月——人天生就是'现在'比'以后'看得重,近的特别重、远的特别轻,不是算不清账,是心里那杆秤本身就…  ⟵ AXIOM-001, AXIOM-002
 - BR-L2-031 [weakly_verified] · 制度信任的不对称衰减 — 对制度的信任有个扎心的规律——掉得快、涨得慢  ⟵ AXIOM-002, THEOREM-relation-information-asset
 - BR-L2-032 [weakly_verified] · 算法驱动的搜索/匹配/监控成本断崖 — 算法不是让交易'更快'——它把搜索成本压低了上万倍、把匹配和监控成本压到了从前在大规模匿名交易中无法企及的水平,压低到了没有算法时不管花多少钱都…  ⟵ AXIOM-002
+- BR-L2-033 [candidate] · 冲突升级中的损失厌恶不对称 — 当双方都觉得已经投入了太多，就不愿意放弃，宁可继续打下去，哪怕继续打更亏
+- BR-L2-034 [candidate] · 层级深度与管理幅度的认知约束 — 管理者直接管多少下属是有极限的：一般不超过5到9人，因为人脑工作记忆一次只能处理这么多；整个组织的关系网也有上限，大约150人，超出后只能靠统计…
+- BR-L2-035 [candidate] · 稀缺状态下的目标屏蔽效应 — 当人们缺钱或缺时间时，大脑会自动把注意力集中到眼前最急迫的事情上，并压制其他不紧急的目标，这虽然能帮我们应付眼前的困难，但也会让我们忽略长期重要…
+- BR-L2-036 [candidate] · 权力削弱共情准确性 — 一个人越有权力，就越难准确理解别人的感受和想法，因为权力让人不再那么需要关注别人
+- BR-L2-037 [verified] · 量化侵蚀定性判断 — 当组织用数字指标考核员工时，员工会逐渐失去凭直觉和现场经验做出准确判断的能力，因为大家只盯着数字了
+- BR-L2-038 [candidate] · 道德哑口无言现象的跨文化普遍性 — 人们对某些行为感到明显错误却说不出理由——这种“哑口无言”现象在不同文化中都存在，原因在于人类大脑先快速直觉判断，再事后找理由来合理化
+- BR-L2-039 [verified] · 锦标赛激励下的努力分布不均 — 在按排名给奖金的比赛中，顶尖选手拼命努力，中间选手提早放弃，垫底选手搭便车——这不全是偷懒，而是赛制导致的  ⟵ AXIOM-001, THEOREM-competition-norm
+- BR-L2-040 [candidate] · 群体身份作为道德边界的心理标记 — 人们对自己所属群体内部的人更讲道德，对群体外的人则差一些，而且这种差别会随着群体距离变大而变大  ⟵ THEOREM-group-identity-decay
+- BR-L2-041 [candidate] · 信息不对称作为权力梯度 — 当一个人知道你不知道、但你需要的信息时，他就能影响你的决定，即使他没有强迫你
+- BR-L2-042 [candidate] · 规范违反的传染效应 — 当看到别人违反规范却没受罚时，自己违反该规范的可能性会明显提高  ⟵ AXIOM-003
+- BR-L2-043 [candidate] · 礼物交换中的层级自发形成 — 持续送礼而不等价回礼，会让送礼者积累社会信用，从而在群体中获得非正式权力
+- BR-L2-044 [candidate] · 竞合关系的稳定性条件 — 当合作和竞争能在时间或空间上分开时，双方才能既合作又竞争而不崩盘
+- BR-L2-045 [candidate] · 多任务目标干扰效应 — 同时做几件评判标准冲突的事，比按顺序做更慢、更累，因为脑子里总在切换想法，而且一件事没做完会一直干扰你
+- BR-L2-046 [candidate] · 信息衰减速率的经验测量方法 — 通过三种实验方法（口传代际、抄写错误、数字位翻转）可以测量信息在复制中丢失的速度，这些方法互相验证  ⟵ AXIOM-002
+- BR-L2-047 [candidate] · 冲突催化规范涌现 — 当两个群体反复争夺资源且谁也灭不了谁时，他们会比和平时期更快地形成关于“谁该得多少”的规矩  ⟵ AXIOM-003
+- BR-L2-048 [candidate] · 深层层级中的权力扩散 — 组织层级越深，高层名义权力与实际掌控力之间的差距越大，这是信息在层层传递中必然失真和衰减的物理结果，与顶层的主观意愿无关  ⟵ THEOREM-hierarchy-depth-limit
+- BR-L2-049 [candidate] · 道德内化与群体认同的绑定 — 一个人越认同某个群体，就越容易把该群体提倡的道德规则变成自己的内心准则；反之，对不认同的群体，即使知道它的规则，也不会真心接受
+- BR-L2-050 [weakly_verified] · 数字通信对群体认同衰减速率的抑制 — 在数字时代，通过点赞、评论等低成本互动，人们的群体归属感下降得更慢，但这种效果只针对表达性身份，不针对需要实际互助的身份
+- BR-L2-051 [candidate] · 公平偏好的跨文化差异性 — 不同文化中，人们对于“什么是公平”的理解不一样，而不是有些人更在乎公平
+- BR-L2-052 [candidate] · 价值多元主义与市场边界 — 一个社会越是看重某个东西（比如公平、健康），就越反对用钱买卖它；反过来，从人们对“用钱买”的愤怒程度，就能猜出他们有多看重那个东西
 
-## L3 推论 corollaries (53)
+## L3 推论 corollaries (55)
 - DED-001 [verified] · 组织深度天花板推论 — 光靠人嘴对嘴传话的组织，管理层级最多也就5到7层——再深，最高层掌握的情况就和基层实际严重脱节了；想再大，只能把信息写下来（官僚化）或把权力下放…  ⟵ AXIOM-002, THEOREM-hierarchy-depth-limit, BR-L2-001, BR-L2-004
 - DED-002 [verified] · 规范成文化阈值推论 — 口口相传的规矩有个复杂度上限；社会一大、规矩一多，要么把规矩写下来、分层、或找专人记诵来突破上限，要么干脆分裂成一堆小单元、让每份规矩都不超上限…  ⟵ AXIOM-003, THEOREM-norm-energy-saver, THEOREM-cooperation-precondition, BR-L2-001, BR-L2-005
 - DED-003 [verified*] · 内聚-外竞耦合推论 — 大群体的内部团结，和‘有没有一个外部对手’是绑在一起的——因为‘我们不同于他们’是最省力的团结方式；一旦外敌消失、又不肯改用别的方式（如民主参与…  ⟵ AXIOM-001, AXIOM-003, THEOREM-group-identity-decay, THEOREM-competition-norm, BR-L2-003, BR-L2-006
@@ -142,7 +182,9 @@
 - DED-034 [verified] · AI代理决策与个体判断力退化 — AI帮你做决定做多了,你自己做判断的能力会退化——不是AI坏,是用进废退  ⟵ AXIOM-002, BR-L2-026, BR-L2-027
 - DED-035 [candidate] · 数据协调成本不对称冲击与企业边界分叉 — 数字数据+算法让做买卖和管公司都变便宜了,但便宜的程度不一样——能标准化、能量化的事,做买卖的成本降得比管公司更狠,所以企业把这类事外包出去;但…  ⟵ AXIOM-002, THEOREM-hierarchy-depth-limit, THEOREM-cooperation-precondition, BR-L2-001, BR-L2-009, BR-L2-010, DED-001, DED-006
 - DED-036 [verified] · 算法成本断崖×货币物理筛选：从发现到设计 — 算法把搜索和评估成本压低了上万倍之后，'什么东西适合当钱'这件事的玩法彻底变了——以前是大自然花上千年慢慢筛选（金、银、铜，试了无数种东西才找到…  ⟵ AXIOM-001, AXIOM-002, THEOREM-exchange-competition-alternative, THEOREM-value-attribution, BR-L2-021, BR-L2-032
+- DED-037 [verified] · AI陪伴×道德发育窗口：道德他者模型偏移 — 小孩子怎么学会'伤害别人是不对的'？不是大人讲道理讲会的——是看到别人被自己弄疼时脸上的表情、听到对方声音发抖，这些真实的情绪反馈慢慢在孩子心里…
 - DED-038 [verified] · 制度信任崩解×法币功能解耦：恶性通胀的双重时间不对称 — 制度信任崩了之后，钱的两样功能各跑各的——'存钱'功能因为信任掉得快先跑（大家赶紧把钱换成金条、外币），但'标价'功能因为记忆惯性还留在原地（工…  ⟵ AXIOM-002, THEOREM-value-attribution, THEOREM-relation-information-asset, BR-L2-031, BR-L2-024
+- DED-039 [candidate] · AI共享代码×大规模合作：想象秩序的必要性降级 — 人类大规模合作一直靠'大家都信同一个故事'——国家、宗教、市场都是靠人们共同相信一套叙事才让陌生人愿意合作  ⟵ AXIOM-002, AXIOM-003, THEOREM-cooperation-precondition, BR-L2-003, BR-L2-026
 - DED-040 [verified] · 算法监控成本断崖×第三方惩罚：惩罚通胀与惩罚疲劳的分叉 — 算法让发现别人违规的成本断崖式下降后,大量以前看不见的小违规全进了'可罚池'——这触发两种相反的走向:要么举报太多、每条举报越来越不值钱(惩罚通…  ⟵ AXIOM-001, AXIOM-002, AXIOM-003, THEOREM-competition-norm, THEOREM-cooperation-precondition, THEOREM-conflict-cost, THEOREM-moral-third-party-enforcement, BR-L2-014, BR-L2-032
 - DED-041 [verified] · 数字可处理性×道德内化：具身共情的系统性削弱 — 屏幕上的伤害没有血肉、没有颤抖的声音、没有真实的眼神接触——你知道对方受伤了，但你感受不到
 - DED-042 [verified] · 算法监控×制度信任不对称：修复斜率的系统性拉陡 — 制度信任有个扎心规律——掉得快、涨得慢
@@ -231,7 +273,7 @@
 - ICV-001 [conducted] — 请两个'血统不同'的免费 AI 独立盲打分，复核推论 DED-001 经验检验里那 14 个国家的层级数——不图它们更聪明，图它们'错得不一样'…
 - L3-METHODOLOGY [canonical]
 
-## L4 复合推论 composites (14)
+## L4 复合推论 composites (18)
 - L4-001 [verified*] · 国家形成轨迹：从流寇到国家的多条路径 — 流寇变坐寇只是第一步——坐寇最终交出制度型国家、采掘型帝国、还是退化回碎片化， 取决于三股力量的同时拉扯：外面有没有敌人、税是从商人身上收还是农…  ⟵ AXIOM-001, AXIOM-002, AXIOM-003, THEOREM-conflict-cost, THEOREM-power-signal-decay, THEOREM-relation-information-asset, THEOREM-group-identity-decay, THEOREM-cooperation-precondition, THEOREM-exchange-competition-alternative, THEOREM-hierarchy-depth-limit, BR-L2-008, BR-L2-010, BR-L2-004, BR-L2-009, BR-L2-003, BR-L2-006, DED-012, DED-010, DED-006, DED-003
 - L4-002 [verified] · 政体稳定相图 — 政权稳不稳，不是看它"民主不民主"一个指标——是三股力量的同时博弈：输了的人还有没有路走、 裁判是不是自己人、不公平有没有集中到某个群体且让他们…  ⟵ AXIOM-001, THEOREM-position, BR-L2-015, BR-L2-006, BR-L2-013, BR-L2-014, DED-011, DED-014, DED-020, DED-017
 - L4-003 [verified] · 制度共演锁定 — 一个社会用什么样的公平规矩分东西，不是某个人拍板定的——是亲缘远近、人多不多、 资源够不够这三股力量在历史关口上一起决定的  ⟵ AXIOM-001, AXIOM-003, THEOREM-position, THEOREM-group-identity-decay, THEOREM-cooperation-precondition, BR-L2-002, BR-L2-004, BR-L2-006, BR-L2-009, BR-L2-013, BR-L2-015, BR-L2-017, DED-013, DED-016, DED-018, DED-022
@@ -246,8 +288,12 @@
 - L4-012 [verified] · 储备资产地位变迁的网络效应动力学 — 储备货币的改朝换代不是各国各自算账的独立决策——它是网络效应驱动的体制切换  ⟵ AXIOM-001, AXIOM-002, AXIOM-003, THEOREM-value-attribution, THEOREM-exchange-competition-alternative, THEOREM-relation-information-asset, THEOREM-cooperation-precondition, BR-L2-021, BR-L2-022, BR-L2-024, BR-L2-007, BR-L2-011, BR-L2-012, DED-027, DED-028, DED-029
 - L4-013 [verified] · 数字时代价值储藏媒介竞争格局 — 数字交换网络把'什么东西适合当钱/当储备'的六条老规矩重新洗牌了——可分割、可验证、可携带这三条在数字世界里彻底变了含义  ⟵ AXIOM-001, AXIOM-002, AXIOM-003, THEOREM-value-attribution, THEOREM-exchange-competition-alternative, THEOREM-relation-information-asset, THEOREM-cooperation-precondition, BR-L2-021, BR-L2-022, BR-L2-024, DED-027, DED-029
 - L4-014 [candidate] · 平台作为第三组织形态 — 平台(Uber/淘宝/Airbnb)既不是公司(层级命令),也不是菜市场(纯买卖关系)——它是第三种组织:算法当'中层管理'来协调、评分系统当'…  ⟵ AXIOM-002, THEOREM-hierarchy-depth-limit, THEOREM-cooperation-precondition, BR-L2-001, BR-L2-009, BR-L2-010, BR-L2-025, DED-001, DED-006
+- L4-016 [candidate] · 货币危机的双引擎：制度信任崩塌速率×功能解耦窗口 — 钱不值钱了有两个原因同时起作用：一是大家不再信管钱的机构了（制度信任崩了），二是钱的两样功能——买东西和存钱——本来就各走各的（功能解耦）  ⟵ AXIOM-002, THEOREM-value-attribution, THEOREM-relation-information-asset, BR-L2-022, BR-L2-024, BR-L2-031, DED-028, DED-038
+- L4-017 [candidate] · AI增强悖论：判断力退化与意志力增强的同一源头 — AI同时在做两件方向相反的事——帮你做决定时，你自己的判断力偷偷退化（用进废退）；但帮你管钱、盯着预算、自动锁仓时，你的存钱意志力反而变强了  ⟵ BR-L2-026, BR-L2-030, DED-034, DED-045
+- L4-018 [verified] · 注意力贫困：集体行动的数字屏障 — 人要被逼到墙角才会集体闹事——得同时满足三个条件：不公集中在看得见的一群人头上、这群人彼此能通气、没有合法渠道能翻盘  ⟵ BR-L2-013, BR-L2-027, BR-L2-029, DED-017, DED-046
+- L4-019 [candidate] · 数字时代的道德通胀双引擎：受害叙事的病毒传播与旁观者共情的系统性稀薄 — 道德标准在数字时代变得比以前快了——不是人变好了或变坏了，是两件事同时加速了：一方面，受害者的故事以前要靠口口相传、报纸、电视，现在一个帖子就能…  ⟵ BR-L2-014, BR-L2-018, BR-L2-019, BR-L2-025, DED-025, DED-041
 
-## L4 审查 reviews (14)
+## L4 审查 reviews (18)
 - ADV-REVIEW-L4-001 — 对 L4-001(国家形成轨迹:从流寇到国家的多条路径,status=candidate)的 round_1 独立对抗审查
 - ADV-REVIEW-L4-002 — 对 L4-002(政体稳定相图:三股力量的同时博弈——轮替开放度×裁决独立度×透明度×不公集中度 →四区+相变边界)的独立对抗审查记录
 - ADV-REVIEW-L4-003 — 对 L4-003(公平制度演化推论)的 round_1 独立对抗审查
@@ -262,6 +308,10 @@
 - ADV-REVIEW-L4-012 — 对 L4-012（储备资产地位变迁的网络效应动力学）的 round_1 独立对抗审查
 - ADV-REVIEW-L4-013 — L4-013 说的是"数字资产可能在下次信用危机里抢走原本流向黄金的避险钱
 - ADV-REVIEW-L4-014 — L4-014 说"平台(Uber/淘宝)是公司和市场之外的第三种组织
+- ADV-REVIEW-L4-016 — 对 L4-016 的 round_1 独立对抗审查（MiniMax-M3 异血统）
+- ADV-REVIEW-L4-017 — 对 L4-017 的 round_1 独立对抗审查（MiniMax-M3 异血统）
+- ADV-REVIEW-L4-018 — 对 L4-018 的 round_1 独立对抗审查（MiniMax-M3 异血统）
+- ADV-REVIEW-L4-019 — 对 L4-019 的 round_1 独立对抗审查（MiniMax-M3 异血统）
 
 ## L4 其它(经验检验/交叉验证等) (1)
 - L4-METHODOLOGY [canonical]

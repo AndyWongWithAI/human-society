@@ -65,6 +65,7 @@ const REVIEW_OUT = {
     requiredFixes: { type: 'array', items: { type: 'string' } },
     counterexample: { type: 'string' },
     oneline: { type: 'string' },
+    validatorOk: { type: 'boolean' },
   },
   required: ['verdict', 'requiredFixes', 'oneline'],
 }
@@ -83,36 +84,19 @@ async function verifyOne(id, domain) {
   const domainStr = JSON.stringify(domain || [])
   const REVIEW_PATH = `${REVIEWS_DIR}/ADV-REVIEW-${id}.yaml`
 
-  // ---- Phase 1: IEA Survey ----
+  // ---- Phase 1: IEA Survey (免费模型 + Python 算术, v3.0) ----
+  // 此前 IEA 段走 pro agent(来源判定+算术+YAML 全付费)。
+  // v3.0: iea_survey.py 用免费模型(glm-4-flash/智谱独立血统)做来源定性判断,
+  // Python 做系数查表+算术(精确),Agent tool 只当命令执行器(token 量极小)。
   phase('IEA Survey')
+  const ieaProvider = b.ieaProvider || 'zhipu'  // 默认智谱(独立血统),可切 sensenova
   const iea = await agent(
-    `你是 L2 桥接砖的【IEA 调查员】,全新上下文。目标:对下面这条已写好的桥接砖做
-独立来源加权投票(IEA = 独立 agree 当量),把结论写回砖文件的 cross_verification 段。
+    `Run IEA survey for ${id} via free model + Python arithmetic (zero pro LLM cost):
 
-## 审查对象
-桥接砖 ${id}(status 为 candidate;若为 verified/weakly_verified 则本次是【存量回补审查】——同样全流程跑,裁决只能维持或降级,不得因"已 verified"放水)。先用 \`cd ${REPO} && ls L2-bridging/*/${id}-*.yaml\` 定位文件路径,读它。已有 cross_verification 段则以本次重算为准更新。
-domain: ${domainStr}
+cd ${REPO} && python scripts/iea_survey.py ${id} --provider ${ieaProvider}
 
-## 封顶读取(两份,不读无关全文)
-1. ${INDEPENDENCE} —— 来源两两独立系数 + 【instrument_correlation 仪器折扣】(单 LLM 执行时有效独立性低于学科上限,必须披露)。
-2. ${INDEX} 仅在需核对该砖 bridges_to 的 L1 实体(concepts/axioms/theorems)是否存在时打开对应行。
-
-## IEA 调查任务
-- 逐来源验证:对该砖 applicable_sources 列出的每一学科通道(演化生物学/博弈论/文化普适/实验经济学…),
-  独立判断该来源是否 agree,给 status(agree/disagree/mixed)+ weight + 一句 note(证据+为何独立)。
-- 计算加权 IEA:锚源权重 1.0,其余来源按 independence-model 的【成对独立系数】对锚源折算后求和
-  (系数缺失用 default_independence)。避免把高度共享数学结构/语料的来源重复计权。
-- instrument_disclosure:本次投票由单一 LLM 执行,必须在 verdict_note 显式披露"报告 IEA 是学科独立性上限,
-  仪器有效独立性低于此"(照 independence-model 的 discount_rule)。
-- 把 votes(逐源)+ iea(数字)+ verdict_note(含折扣披露)写进砖文件的 cross_verification 段。
-  【本阶段不改 status——status 由 Finalize 阶段按审查裁决翻牌。】
-
-## 硬要求
-- YAML 陷阱:多行叙述段一律用 | 块标量;裸标量里禁 ASCII 冒号+空格(会静默把整块顶飞、实体少一个仍报✅)。
-- 跑 \`cd ${REPO} && python scripts/validate.py\`,确认无 ❌ YAML、实体数不减、引用完整。
-
-## 返回(紧凑){done, ieaScore, sourceBreakdown, validatorOk}`,
-    { label: `iea:${id}`, phase: 'IEA Survey', schema: IEA_OUT, agentType: 'general-purpose' }
+Read the JSON result from stdout (format: {"done": true/false, "ieaScore": N, "sourceBreakdown": "...", "validatorOk": true/false}). Return it.`,
+    { label: `iea:${id}`, phase: 'IEA Survey', schema: IEA_OUT }
   )
 
   if (!iea || !iea.validatorOk) {
@@ -123,40 +107,26 @@ domain: ${domainStr}
 
   // ---- Phase 2: Adversarial Review(1 轮) ----
   phase('Review')
+  // v4.0: Review 段改用 MiniMax-M3 异血统承重墙（ICV 协议）。
+  // Author=glm-5.2(智谱系) × Review=MiniMax-M3(minimax系) = 真正血统独立。
+  // L2 专属重点（brick=conclusion/测量轴正交/anti-talisman/IEA独立性诚实/反例猎捕）已在通用评分卡16红旗覆盖。
+  const reviewRel = REVIEW_PATH.replace(REPO + '/', '')
   const rev = await agent(
-    `你是 L2 桥接砖的【独立对抗审查者】,全新上下文,与写砖者及 IEA 调查员无关。L2 是经验命题、会错,
-你的职责是尽最大努力打穿它,给硬裁决。默认怀疑,宁可错杀不放水(最高原则:方法论 > 任何单条命题)。
+    `Run MiniMax-M3 adversarial review for ${id} round 1 (异血统承重墙, ICV 协议, L2 经验砖):
 
-## 唯一校准来源
-阅读包:${REVIEWER_PACK}(本体系的审查者阅读包——含全部实体索引摘要+通用红旗13条+反例猎捕+裁决语义。读完这份就够了——L2 也是经验命题,通用红旗同样适用;**不要**去读其它参照命题)。
+cd ${REPO} && python scripts/review_minimax.py ${id} \\
+  --review-round 1 \\
+  --review-path '${reviewRel}' \\
+  --layer L2
 
-## 审查对象
-桥接砖 ${id}。用 \`cd ${REPO} && ls L2-bridging/*/${id}-*.yaml\` 定位并读全文(含 IEA 调查刚写入的 cross_verification)。
-如需核对 bridges_to 的 L1 实体,查阅读包实体速览段对应行。仪器折扣规则见 ${INDEPENDENCE} 的 instrument_correlation。
-
-## L2 专属重点(在通用 10 红旗之上)
-1. **brick=conclusion** — 这条砖是不是只在复述某条 L1 定理/公理?非平凡经验内核在哪?(命中=required)
-2. **测量轴正交** — 砖声称的自变量与被观测量是否异源正交?有无隐藏焊点(用结果反推前件)?
-3. **anti-talisman** — 前件判定是否不由结果反推?falsifiability 是可事前测的真证伪条件,还是不可证伪护身符?
-4. **IEA 独立性诚实** — cross_verification 的独立性假设是否诚实?尤其【单 LLM 执行的折扣是否已披露】?
-   有没有把共享数学结构/共享语料的来源当"独立"重复计权而虚高 IEA?
-5. **反例猎捕(必做)** — 主动构造/寻找能证伪核心的干净经验案例(跨文化/历史/跨物种)。净杀→rejected/required;
-   被消化→记录为何;揭出过度伸张→定位到具体预测列 required。判 verified 前必须留下反例猎捕记录。
-
-## 产出
-把本轮完整评审写进 ${REVIEW_PATH} 的 round_1 块(reviewer/verdict/verdict_note/红旗逐条/iea_independence_check/
-counterexample_hunt/若非 verified 的 required_fixes)。目录不存在就先创建。用 | 块标量防中文 ASCII 冒号顶飞。
-跑 \`cd ${REPO} && python scripts/validate.py\` 确认 YAML 不破。
-
-## 裁决语义
-- verified:无 required 级缺陷 + 亲自做过反例猎捕无活反例 + IEA 独立性诚实(单仪器折扣已披露)。
-- needs_revision:有可靠定向修订救活的 required/should(列最小清单,交主循环执行——本管线不自动 revise)。
-- rejected:核心塌陷(brick=conclusion 无解/测量轴焊死/被净杀反例/IEA 虚高无法诚实达标),改措辞救不活。
-
-## 返回(紧凑){verdict, requiredFixes, counterexample, oneline}`,
-    { label: `review:${id}`, phase: 'Review', schema: REVIEW_OUT, agentType: 'general-purpose',
-      ...(b.reviewModel ? { model: b.reviewModel } : {}) }
+Read JSON from stdout ({"done","validatorOk","verdict","requiredFixes":[...],"counterexample","oneline"}).
+If done=false, report the note. Return only: {verdict, requiredFixes, counterexample, oneline, validatorOk}.`,
+    { label: `review:${id}`, phase: 'Review', schema: REVIEW_OUT }
   )
+  if (!rev || rev.validatorOk === false) {
+    return { id, verdict: 'review_failed', reviewPath: REVIEW_PATH,
+             note: rev ? (rev.oneline || '审查档未过校验') : 'review agent 失败' }
+  }
 
   const verdict = (rev && rev.verdict) || 'needs_revision'
   const fixes = (rev && rev.requiredFixes) || []

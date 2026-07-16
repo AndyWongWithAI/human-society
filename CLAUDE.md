@@ -65,18 +65,26 @@ L0-physical/  L1-definitions/  L2-bridging/  L3-deductions/  L4-composites/
 
 ## L2 桥接层验证:IEA(独立 agree 当量)
 
-L2 砖靠多来源加权投票(演化生物学 / 博弈论 / 文化普适),来源间独立系数在 `L2-bridging/independence-model.yaml`。锚源 1.0,其余按成对独立系数打折求和。`IEA ≥ 1.8` = 两个准独立来源(verified);`≥ 1.2` 为下限。`instrument_disclosure` 诚实标注"多路投票实由单一 LLM 执行,有效独立性低于学科上限"。
+L2 砖靠多来源加权投票(演化生物学 / 博弈论 / 文化普适),来源间独立系数在 `sources/independence-model.yaml`。锚源 1.0,其余按成对独立系数打折求和。`IEA ≥ 1.8` = 两个准独立来源(verified);`≥ 1.2` 为下限。`instrument_disclosure` 诚实标注"多路投票实由单一 LLM 执行,有效独立性低于学科上限"。
 
-## 提速管线与 token 纪律
+**v3.0 混合管线(2026-07-16)**:IEA 已卸到 `scripts/iea_survey.py`——免费模型(glm-4-flash/智谱独立血统)做来源定性判断,Python 做系数查表+算术(精确),Agent tool 仅当命令执行器。预期省 ~90% IEA 段 token 成本。
 
-- **碰存量实体先读 `INDEX.md`**(定长紧凑索引,一行一条),别整份扫 L3 全文——读取成本随实体数封顶而非滚雪球。
-- **新增 L3 推论**走 `scripts/ded_pipeline.workflow.js`,`Workflow({scriptPath, args: BRIEF})`,brief 格式见脚本顶部。
-- **新增 L4 复合推论**走 `scripts/l4_pipeline.workflow.js`,流程同 L3 管线但加 L4 专属检查(涌现/L4 评分卡专属红旗第 12–18 条/L4 专属字段)。
-- 两条管线均采用**摘要优先、按需深挖**的读取策略:Author 仅读 INDEX 摘要行定位父推论(起草遇歧义才开全文);Reviewer r2+ 仅读推论文件 `review_summary` 字段(含每轮紧凑摘要,1–2 行/轮),不读全量旧审查档——轮间上下文从 O(N²) 降为 O(N);Revise 每轮必须将裁决压入 `review_summary`。
-- 管线产出在 Workflow 内闭环——重产物(全文 YAML / 全文审查)永不回主循环,只回 `{id, verdict, rounds, paths, core}` 紧凑结构。
-- **模型多样性(可选)**:L2/L3/L4 管线的 brief 支持可选 `reviewModel` 参数(如 `'opus'`/`'haiku'`)。
-  设置后审查 agent 使用指定模型而非默认模型,提供血统级独立性(尤其对经验编码/事实核查)。
-  成本敏感时省略此参数即可(退回同血统审查,仍享上下文独立性)。
+## 多模型混合管线(v3.0, 2026-07-16)
+
+认知深度梯度决定模型分配:
+
+| 阶段 | 认知动作 | 深度 | 执行 | 成本 |
+|---|---|---|---|---|
+| IEA 调查 | 来源定性判断+算术 | 中低 | `iea_survey.py`(免费 API+Python) | 免费 |
+| Author 起草 | 创造性合成 | 高 | pro agent(可配 `freeDraft` 出初稿) | 付费/可部分卸 |
+| Review 审查 | 反例猎捕+对抗式质疑 | **极高** | pro agent(承重墙,不动) | 付费 |
+| Revise 整改 | 按清单修 YAML | 低 | `flash_revise.py --cross-check`(双厂商免费) | 免费 |
+| Finalize 定论 | 翻牌+validate | 零 | `finalize.py`(Python) | 免费 |
+
+- **IEA**: `l2_verify.workflow.js` 已改用 `iea_survey.py`(默认 zhipu 独立血统,可配 `ieaProvider: 'sensenova'`)
+- **Revise**: 双管线(ded/l4)默认走 `--cross-check`(sensenova+zhipu 两家都跑,一致=高置信,不一致=保留主厂商+报告差异)
+- **Author 免费预草稿(实验性)**: brief 设 `freeDraft: true` → `author_draft.py` 用免费模型出初稿 → pro Author agent 编辑而非从零创作。默认关,需 A/B 测试验证省 token 效果
+- **红线不变**: Review 永远是 pro(承重墙),Finalize 永远是脚本
 
 ## 操作约束(不可从代码发现,务必遵守)
 

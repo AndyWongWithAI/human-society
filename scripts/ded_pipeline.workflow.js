@@ -74,6 +74,7 @@ const REVIEW_OUT = {
     requiredFixes: { type: 'array', items: { type: 'string' } },
     counterexample: { type: 'string' },
     oneline: { type: 'string' },
+    validatorOk: { type: 'boolean' },
   },
   required: ['verdict', 'requiredFixes', 'oneline'],
 }
@@ -89,11 +90,31 @@ const REVISE_OUT = {
 
 // ============ Phase 1: Author ============
 // brief.skipAuthor = true 时跳过作者阶段(推论文件已在主循环外写好),直接进审查 loop。
+// brief.freeDraft = true 时(实验性):先调免费模型出初稿,pro Author agent 编辑而非从零创作。
 phase('Author')
+
+// ── 可选:免费模型预草稿(实验性,freeDraft=true 时启用) ──
+let draftNote = ''
+if (b.freeDraft && !b.skipAuthor) {
+  const briefJson = JSON.stringify(b).replace(/'/g, "'\\''")
+  const draft = await agent(
+    `Run free-model author draft (zero pro cost, experimental):
+echo '${briefJson}' > /tmp/brief-${b.id}.json && cd ${REPO} && python scripts/author_draft.py --brief-file /tmp/brief-${b.id}.json
+Read JSON from stdout. Return {done, draftPath, note} — just parse the JSON, no extra thinking.`,
+    { label: `draft:${b.id}`, phase: 'Author', schema: REVISE_OUT }
+  )
+  if (draft && draft.done) {
+    draftNote = `\n\n## ⚠️ 草稿已由免费模型预生成\n文件: ${DED_PATH}\n你的任务从"从零起草"变为"读草稿→修正遗漏→补全必填项→validate"。草稿必有遗漏(primary_suspect/2×2判空/confidence标注),重点检查这些。`
+    log(`free draft done: ${draft.draftPath || DED_PATH}`)
+  } else {
+    log(`free draft failed, Author 从零起草: ${draft ? draft.note : 'agent failed'}`)
+  }
+}
+
 const authored = b.skipAuthor
   ? { done: true, coreOneLine: b.coreClaim || b.title, validatorOk: true }
   : await agent(
-  `你是公理化推论【作者】,全新上下文。目标:把下列推论写成一份【瘦身 canonical】的 candidate YAML。
+  `你是公理化推论【作者${b.freeDraft ? '-编辑者' : ''}】,全新上下文。目标:${b.freeDraft ? '读免费模型的草稿,修正遗漏,补全必填项,产出合格的 candidate YAML' : '把下列推论写成一份【瘦身 canonical】的 candidate YAML'}。${draftNote}
 
 ## 封顶读取(一份阅读包,预编了实体速览+前置清单+瘦身格式)
 1. 读 ${AUTHOR_PACK}(本体系的作者阅读包——含全部实体索引摘要+作者前置清单A-E段+瘦身canonical格式)。读完这份就够了,不用分别读INDEX+checklist。
@@ -131,25 +152,26 @@ let lastOneline = ''
 while (round < MAX) {
   round++
   phase('Review')
+  // v4.0: Review 段改用 MiniMax-M3 异血统承重墙（ICV 协议）。
+  // Author=glm-5.2(智谱系) × Review=MiniMax-M3(minimax系) = 真正血统独立。
+  // workflow agent 只编排+报告，审查推理由 review_minimax.py 调 MiniMax-M3 完成。
+  const reviewRel = REVIEW_PATH.replace(REPO + '/', '')
   const rev = await agent(
-    `你是【独立对抗审查者】(round ${round}),全新上下文,与作者及前几轮审查者无关。
+    `Run MiniMax-M3 adversarial review for ${b.id} round ${round} (异血统承重墙, ICV 协议):
 
-## 唯一校准来源
-阅读包:${REVIEWER_PACK}(本体系的审查者阅读包——含全部实体索引摘要+审查评分卡+通用红旗13条+反例猎捕+裁决语义。读完这份就够了,**不要**去读其它参照推论——那是浪费)。
+cd ${REPO} && python scripts/review_minimax.py ${b.id} \\
+  --review-round ${round} \\
+  --review-path '${reviewRel}' \\
+  --layer L3
 
-## 审查对象
-${DED_PATH}(status: candidate)。
-承重砖如需核对:${bricks}（在 ${REPO}/L2-bridging/verified/,仅在真需核对事实时打开全文）。
-${round > 1 ? `**前轮摘要** (已在 DED 文件的 review_summary 字段,读它即可——不读全量旧审查档,那是浪费):\n读 ${DED_PATH} 的 review_summary 字段,含 r1–r${round - 1} 紧凑结论。仅在 review_summary 有歧义或需核对前轮细节时,再打开 ${REVIEW_PATH} 对应 round。` : ''}
-
-## 任务
-按评分卡红旗逐条攻 + 反例猎捕(必做)。裁决语义、verified 三条门、返回格式全照评分卡。
-把本轮完整评审写进 ${REVIEW_PATH} 的 round_${round} 块。
-跑 \`cd ${REPO} && python scripts/validate.py\` 确认 YAML 不破。
-
-## 返回(紧凑){verdict, requiredFixes, counterexample, oneline}`,
-    { label: `review:${b.id}:r${round}`, phase: 'Review', schema: REVIEW_OUT, agentType: 'general-purpose', ...(b.reviewModel ? { model: b.reviewModel } : {}) }
+Read JSON from stdout ({"done","validatorOk","verdict","requiredFixes":[...],"counterexample","oneline"}).
+If done=false, report the note. Return only: {verdict, requiredFixes, counterexample, oneline, validatorOk}.`,
+    { label: `review:${b.id}:r${round}`, phase: 'Review', schema: REVIEW_OUT }
   )
+  if (!rev || rev.validatorOk === false) {
+    return { id: b.id, verdict: 'review_failed', rounds: round, dedPath: DED_PATH,
+             reviewPath: REVIEW_PATH, note: rev ? (rev.oneline || '审查档未过校验') : 'review agent 失败' }
+  }
 
   verdict = (rev && rev.verdict) || 'needs_revision'
   fixes = (rev && rev.requiredFixes) || []
@@ -162,13 +184,17 @@ ${round > 1 ? `**前轮摘要** (已在 DED 文件的 review_summary 字段,读�
   if (!fixes.length) { log(`round ${round}: needs_revision 但无 required,停(交主循环裁量)`); break }
 
   phase('Revise')
-  // 优先走 SenseNova 免费 flash (机械修改不需要 pro 推理,省 LLM 费用)
+  // v3.0: 双厂商交叉验证(免费+免费=零成本质量门)
+  // sensenova(deepseek-v4-flash) + zhipu(glm-4-flash) 独立血统同时跑
+  // 两家都过且 YAML 一致→高置信;有差异→保留 sensenova,报告差异量
   const reviewRel = REVIEW_PATH.replace(REPO + '/', '')
   const fixesArg = fixes.map(f => f.replace(/'/g, "'\\''")).join(' ||| ')
   const revised = await agent(
-    `Run flash revise for ${b.id} round ${round} (SenseNova free API, zero LLM cost):
+    `Run flash revise for ${b.id} round ${round} (dual-provider cross-check, zero LLM cost):
 
 cd ${REPO} && python scripts/flash_revise.py ${b.id} \\
+  --cross-check \\
+  --mode patch \\
   --fixes '${fixesArg}' \\
   --review-round ${round} \\
   --review-path '${reviewRel}'

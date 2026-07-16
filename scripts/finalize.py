@@ -45,7 +45,7 @@ REPO = Path(__file__).resolve().parent.parent
 
 SEARCH_DIRS = [
     "L3-deductions/corollaries",
-    "L4-composites",
+    "L4-composites/corollaries",
     "L2-bridging/verified",
     "L2-bridging/weakly_verified",
     "L2-bridging/candidate",
@@ -159,6 +159,88 @@ def detect_status(lines: list[str]) -> str | None:
     return None
 
 
+# ============ Q2: 反例猎捕硬门(2026-07-16) ============
+# 翻 verified 前校验审查档该轮 counterexample_hunt 非空,堵"敷衍型 verified"
+# (审查者没认真做反例猎捕就判 verified)。空/敷衍 -> 拒绝翻牌,退回审查。
+# 审查干预只朝严方向(红线),故只在 verified/verified* 时校验,rejected 不校验。
+
+HUNT_MIN_LEN = 20  # 去空白后最少字符数(历史合法最短~26,挡纯空/敷衍词)
+
+
+def find_review_doc(entity_id: str, review_num: str, last_round: str) -> Path | None:
+    """定位审查档(兼容 L3/L4/L2 三种命名 + 多轮分档)。
+
+    L3: ADV-REVIEW-{num}-DED-{id}.yaml
+    L4: ADV-REVIEW-L4-{num}-L4-{id}.yaml
+    L2: ADV-REVIEW-{id}.yaml(无编号)
+    分档: ADV-REVIEW-{num}-{id}-round{N}.yaml
+    """
+    candidates = []
+    for d in ["L3-deductions/reviews", "L4-composites/reviews", "L2-bridging/reviews"]:
+        full = REPO / d
+        if not full.exists():
+            continue
+        for f in full.glob(f"ADV-REVIEW-*{entity_id}*.yaml"):
+            candidates.append(f)
+    if not candidates:
+        return None
+    # 优先1:档名含 round{last_round}(分档命名)
+    for f in candidates:
+        if f"round{last_round}" in f.name or f"round_{last_round}" in f.name:
+            return f
+    # 优先2:档名含 review_num
+    if review_num:
+        for f in candidates:
+            if review_num in f.name and "round" not in f.name:
+                return f
+    # 兜底:不含 round 的单档(多 round 都在档内)
+    for f in candidates:
+        if "round" not in f.name:
+            return f
+    return candidates[0]
+
+
+def check_counterexample_hunt(entity_id: str, review_num: str, chain: str) -> tuple[bool, str]:
+    """Q2: 校验审查档该轮 counterexample_hunt 非空。
+
+    返回 (ok, msg)。空/缺失/过短 -> (False, 原因),拒绝翻牌。
+    """
+    rounds = re.findall(r"r(\d+)", chain)
+    if not rounds:
+        return False, f"无法从 chain 解析轮次: {chain}"
+    last_round = rounds[-1]
+
+    review_path = find_review_doc(entity_id, review_num, last_round)
+    if not review_path:
+        return False, f"找不到审查档(entity={entity_id}, review_num={review_num})"
+
+    txt = review_path.read_text(encoding="utf-8")
+    # 优先:在 round_{last_round}: 块内找
+    marker = f"round_{last_round}:"
+    idx = txt.find(marker)
+    if idx >= 0:
+        next_idx = txt.find("\nround_", idx + len(marker))
+        block = txt[idx:next_idx] if next_idx > 0 else txt[idx:]
+    else:
+        # 分档命名(档内只一轮)或无 round 标记 -> 全档
+        block = txt
+
+    m = re.search(r"counterexample_hunt:\s*\|?\s*\n((?:[ \t]+.*\n)*)", block)
+    if not m:
+        return False, (
+            f"{review_path.name} round_{last_round} 无 counterexample_hunt 字段"
+            f"(反例猎捕硬门未过)"
+        )
+    content = m.group(1)
+    nonws = re.sub(r"\s", "", content)
+    if len(nonws) < HUNT_MIN_LEN:
+        return False, (
+            f"counterexample_hunt 过短({len(nonws)}字符<{HUNT_MIN_LEN},"
+            f"疑似敷衍未做反例猎捕)"
+        )
+    return True, f"round_{last_round} counterexample_hunt ok({len(nonws)}字符)"
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="翻牌最终化:status 翻转 + review_summary 压缩 + validate"
@@ -206,6 +288,7 @@ def main():
 
     # ── 2. 读取 + 探测状态 ──
     lines = open(entity_path, "r", encoding="utf-8").readlines()
+    backup_content = "".join(lines)  # validate 失败时回滚
     old_status = detect_status(lines)
     if old_status is None:
         print(f"❌ 找不到 status 字段")
@@ -221,6 +304,15 @@ def main():
         print(f"❌ 不支持 {old_status} → {args.verdict} 转换")
         print(f"   合法转换: {VALID_TRANSITIONS[old_status]}")
         sys.exit(1)
+
+    # ── Q2: 反例猎捕硬门(仅 verified/verified*,不朝松方向) ──
+    if args.verdict in ("verified", "verified*"):
+        hunt_ok, hunt_msg = check_counterexample_hunt(args.id, args.review_num, args.chain)
+        if not hunt_ok:
+            print(f"❌ 反例猎捕硬门未过: {hunt_msg}")
+            print("   不翻牌,退回审查(审查干预只朝严方向,符合红线)")
+            sys.exit(1)
+        print(f"🛡  反例猎捕硬门: {hunt_msg}")
 
     target_status = args.target_status or args.verdict
     today = date.today().isoformat()
@@ -276,9 +368,10 @@ def main():
         print(result.stdout.strip())
 
     if result.returncode != 0:
+        entity_path.write_text(backup_content, encoding="utf-8")  # 回滚
         if result.stderr.strip():
             print(result.stderr.strip())
-        print(f"❌ validate 失败 (exit {result.returncode})")
+        print(f"❌ validate 失败 (exit {result.returncode}),已回滚备份")
         sys.exit(1)
 
     print("✅ validate 通过")

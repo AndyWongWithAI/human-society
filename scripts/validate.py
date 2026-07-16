@@ -218,9 +218,12 @@ def check_status(es):
                 errs.append(f"{eid}: status='{st}' 无效 (需为 candidate|verified|weakly_verified|rejected)")
             if st == "verified":
                 cv = e.get("cross_verification", {})
-                iea = cv.get("iea")
-                if iea is not None and iea < 1.2:
-                    errs.append(f"{eid}: IEA={iea} 但状态为 verified (需 ≥1.2)")
+                if isinstance(cv, dict):
+                    iea = cv.get("iea")
+                    if iea is not None and iea < 1.2:
+                        errs.append(f"{eid}: IEA={iea} 但状态为 verified (需 ≥1.2)")
+                elif cv:
+                    errs.append(f"{eid}: cross_verification 非 dict(格式坏),无法校验 IEA")
     for e in errs: print(f"❌ {e}")
     print("✅ 状态检查: 通过" if not errs else "")
     return errs

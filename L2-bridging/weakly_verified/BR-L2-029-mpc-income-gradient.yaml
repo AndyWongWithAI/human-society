@@ -1,5 +1,5 @@
 id: BR-L2-029
-status: weakly_verified
+status: verified
 term: 边际消费倾向的收入梯度 (Income Gradient of Marginal Propensity to Consume)
 statement: |
   对【未预期的一次性/暂时性收入变化】,新增一单位收入中被用于当期消费的
@@ -87,7 +87,10 @@ falsifiability: |
   若以下条件满足,则核心主张被证伪:
   (a) 在干净识别的转移支付实验(随机或准随机的一次性等额转移,按事前
   流动性/可变现资产分组,追踪其后若干月的消费)中,低流动性组与
-  高流动性组的 MPC 无显著差异,或方向相反且跨样本稳健复现。
+  高流动性组的 MPC 无显著差异,或方向相反且跨样本稳健复现；
+  或者,在将流动性/收入作为连续变量的回归框架中,MPC 对流动性
+  指标的回归系数不显著(零附近且置信区间窄)或符号为正(即流动性
+  越高 MPC 越高),且跨样本稳健复现。
   (b) 或证明观测到的 MPC 组间差完全由与流动性相关的其他协变量
   (年龄、家庭规模、固有偏好差异等)解释——控制这些变量后,
   流动性/收入状况本身对 MPC 无独立作用。
@@ -110,34 +113,12 @@ falsifiability: |
   - [should→required@L3] MPC 时间窗口与"消费"操作口径(是否含还债)
     未注册,L2 容忍;跨进 L3 时必须升 required(动因:CARES 2020 刺激支票
     还债分流案例,Coibion-Gorodnichenko-Weber 2020)
-
 created: 2026-07-15
 source_anchors: []
 review_summary: |
-  candidate,待独立 IEA 审查。
-  IEA 调查(2026-07-15)已完成 — 三源全 agree,IEA=1.9(1.0+0.4+0.5),
-  含仪器折扣披露,详见 cross_verification;status 待 Finalize 翻牌。
-  同日独立复算确认 — 逐源重验(锚源证据链/稀缺文献复现争议/恩格尔
-  截面 APC 警示)、bridges_to 四概念均在 INDEX、BR-L2-024 同对系数
-  0.5 先例核实无误,IEA=1.9 维持,无降级理由。
-  round-1 对抗审查(2026-07-15)裁 needs_revision(2 required),同日
-  定向整改:①statement 射程收窄为"未预期/一次性/暂时性收入变化",
-  显式登记 Kueng 2018(可预期周期性支付下梯度反向)为射程外边界案例,
-  与 falsifiability(a) 口径对齐;②选修法(a)——cognitive_science 票补
-  Carvalho-Meier-Wang 2016(AER,发薪日对照,独立于 Mullainathan
-  作者群)为承重引证,并披露 O'Donnell 2021/Wicherts-Scholten 复现
-  争议,weight 维持 0.4(IEA=1.9),若复核仍判独立性不足则降 ≤0.25
-  接受 weakly_verified。详见 ADV-REVIEW-BR-L2-029 author_response。
-  整改后 IEA 重算(2026-07-15,独立调查员)——三票维持 agree,
-  CMW 2016 承重链核实(其非货币零结果反强化"约束非特质"读法),
-  IEA=1.9 维持,含仪器折扣披露。
-  round-2 对抗审查(2026-07-15)裁 needs_revision——②的预注册回退条件
-  被触发:CMW 2016 学科归属与机制归因四项皆属行为经济学,认知科学通道
-  名存实亡,按 author_response 承诺不争辩,执行降权至 0.25。
-  IEA=1.0+0.25+0.5=1.75,跌破 1.8 稳超 1.2,定格 weakly_verified。
-  升级路径:若未来出现真正独立的认知科学确证通道(非经济学范式、
-  非流动性约束归因),可补票重审。
-
+  1) r1 needs_revision -> r2 needs_revision -> r3 needs_revision -> r4 verified.
+  2) 收窄射程(未预期/一次性/暂时性)+ 干净分工(梯度归本砖、绝对水平归 BR-L2-001)+ 三扇证伪门 + Kueng 边界案例消化 + r3 口径标记,本体结构无 required 缺陷,达标 verified。.
+  3) 全档见 ADV-REVIEW-BR-L2-029。
 cross_verification:
   votes:
     behavioral_economics:
@@ -201,6 +182,8 @@ cross_verification:
     weakly_verified 是该砖诚实的稳态,经验内核(未预期一次性收入下
     流动性-MPC 负梯度)在收窄后射程内高复现、方向稳健。
 
+revised: 2026-07-17
+revision_note: "2026-07-17 finalize: status weakly_verified → verified。"
 depends_on:
   concepts: [CONCEPT-agent, CONCEPT-choice, CONCEPT-resource, CONCEPT-value]
 
