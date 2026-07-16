@@ -215,6 +215,9 @@ def main():
             if not isinstance(domain, list):
                 domain = []
 
+            created = data.get("created", "")
+            revised = data.get("revised", "")
+
             node = {
                 "id": entity_id,
                 "term": term,
@@ -226,6 +229,8 @@ def main():
                 "人话摘要": ren_hua,
                 "statement": statement,
                 "domain": domain,
+                "created": str(created) if created else "",
+                "revised": str(revised) if revised else "",
             }
             nodes.append(node)
             node_ids.add(entity_id)
