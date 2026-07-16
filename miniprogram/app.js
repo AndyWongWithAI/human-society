@@ -5,6 +5,7 @@ App({
     nodes: [],
     edges: [],
     loaded: false,
+    loadError: false,
     colors: {
       physical_constraint: '#5B8FF9',
       concept: '#5AD8A6',
@@ -32,10 +33,9 @@ App({
       this.globalData.nodes = data.nodes
       this.globalData.edges = data.edges
       this.globalData.loaded = true
-      // Notify index page to refresh
-      const pages = getCurrentPages()
-      const idx = pages.find(p => p.route === 'pages/index/index')
-      if (idx && idx.onDataReady) idx.onDataReady(data)
+    }).catch(err => {
+      console.error('Data load failed:', err)
+      this.globalData.loadError = true
     })
   }
 })

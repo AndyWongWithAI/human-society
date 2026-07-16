@@ -1,6 +1,7 @@
 id: L4-016
 type: composite_deduction
 layer: L4-composites
+deduction_form: composite
 status: candidate
 term: "货币危机的双引擎：制度信任崩塌速率×功能解耦窗口 (Twin Engines of Monetary Crisis: Institutional Trust Collapse Rate × Functional Decoupling Window)"
 
@@ -68,6 +69,10 @@ real_world_anchors:
     - case: "欧元区 2010-2012:制度信任衰减但MOE从未崩塌——窗口无限长?"
       analysis: "希腊/爱尔兰/葡萄牙的主权债务危机涉及制度信任严重衰减(对本国政府),但欧元作为MOE从未在这些国家崩塌——因为ECB的'不惜一切代价'(Draghi 2012)提供了替代制度信任锚。这不推翻推论——而是划出了推论的射程边界:当存在一个'上层制度信任锚'(ECB/IMF/美联储)兜底时,窗口可以无限延长。推论适用于没有上层锚兜底的主权货币危机。"
 
+emergence_demonstration:
+  necessity: "两推论各自不含涌现产物的核心主张。DED-028预测SOV-MOE窗口存在但不预测窗口长度变异。DED-038预测制度信任→SOV逃离加速但不涉及MOE崩塌时序。窗口长度=f(r_trust)的函数形式需要两推论焊接——任一推论单独无法给出此函数。"
+  novelty: "非父推论的AND/OR拼接。窗口作为制度信任状态的函数(而非静态经验值)是焊接产物——DED-028给出窗口的概念(存在性),DED-038给出窗口的驱动量(信任衰减速率),焊接给出窗口的预测函数(窗口长度随r_trust单调递减)。"
+  multi_parent_cell: "格(快衰减,短窗口)需要DED-028+DED-038合力——DED-028单独不区分长短(只预测窗口存在),DED-038单独不涉及MOE时序(只预测SOV逃离)。两推论焊接后此格从'可能填充'变为'必然填充且可定量预测'。"
 depends_on:
   axioms: [AXIOM-002]
   theorems: [THEOREM-value-attribution, THEOREM-relation-information-asset]

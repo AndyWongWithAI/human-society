@@ -40,7 +40,7 @@
     <!-- 上游依赖 -->
     <view wx:if="{{upstream.length > 0}}" class="card">
       <view class="card-title">⬆️ 上游依赖 ({{upstream.length}})</view>
-      <view wx:for="{{upstream}}" wx:key="id" class="dep-link" bindtap="goNode" data-id="{{item.id}}">
+      <view wx:for="{{upstream}}" wx:key="_unique" class="dep-link" bindtap="goNode" data-id="{{item.id}}">
         <view class="mini-dot" style="background:{{item.dotColor}}"></view>
         <view class="dep-info">
           <view class="dep-name">{{item.term_zh || item.term}}</view>
@@ -53,7 +53,7 @@
     <!-- 下游延伸 -->
     <view wx:if="{{downstream.length > 0}}" class="card">
       <view class="card-title">⬇️ 下游延伸 ({{downstream.length}})</view>
-      <view wx:for="{{downstream}}" wx:key="id" class="dep-link" bindtap="goNode" data-id="{{item.id}}">
+      <view wx:for="{{downstream}}" wx:key="_unique" class="dep-link" bindtap="goNode" data-id="{{item.id}}">
         <view class="mini-dot" style="background:{{item.dotColor}}"></view>
         <view class="dep-info">
           <view class="dep-name">{{item.term_zh || item.term}}</view>

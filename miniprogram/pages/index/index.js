@@ -1,4 +1,3 @@
-const api = require('../../utils/api')
 const app = getApp()
 
 const TYPE_COLORS = {
@@ -25,38 +24,65 @@ Page({
     query: '',
     filtered: [],
     activeId: '',
-    meta: null
+    meta: null,
+    loading: true
   },
+
+  _pollTimer: null,
 
   onLoad() {
     this.setData({
-      layers: app.globalData.layerOrder.map(key => ({ key, label: app.globalData.layerLabels[key] || key, count: 0 }))
+      layers: app.globalData.layerOrder.map(key => ({
+        key, label: app.globalData.layerLabels[key] || key, count: 0
+      }))
     })
-    if (app.globalData.loaded) {
-      this.prepareData()
-    }
-  },
-
-  onDataReady() {
-    this.prepareData()
+    this._tryLoad()
   },
 
   onShow() {
+    // Refresh when returning from detail page (NEW badges may have changed)
     if (app.globalData.loaded) {
       this.prepareData()
     }
+  },
+
+  onUnload() {
+    if (this._pollTimer) clearInterval(this._pollTimer)
+  },
+
+  _tryLoad() {
+    if (app.globalData.loaded) {
+      this.prepareData()
+      return
+    }
+    if (app.globalData.loadError) {
+      this.setData({ loading: false })
+      return
+    }
+    // Poll until data is ready
+    this._pollTimer = setInterval(() => {
+      if (app.globalData.loaded) {
+        clearInterval(this._pollTimer)
+        this.prepareData()
+      } else if (app.globalData.loadError) {
+        clearInterval(this._pollTimer)
+        this.setData({ loading: false })
+      }
+    }, 300)
   },
 
   prepareData() {
     const nodes = app.globalData.nodes
-    // Count by layer
     const counts = {}
     nodes.forEach(n => counts[n.layer] = (counts[n.layer] || 0) + 1)
     const layers = app.globalData.layerOrder.map(key => ({
       key, label: app.globalData.layerLabels[key] || key,
       count: counts[key] || 0
     }))
-    this.setData({ layers, meta: api.getData() ? api.getData().meta : null })
+    this.setData({ layers, loading: false })
+    // Get meta from the raw graph-data (access the cached data in api module)
+    const api = require('../../utils/api')
+    this.setData({ meta: api.getData() ? api.getData().meta : null })
     this.filterNodes()
   },
 
@@ -81,6 +107,7 @@ Page({
     layer = layer || this.data.activeLayer
     query = (query !== undefined ? query : this.data.query).toLowerCase()
     const nodes = app.globalData.nodes
+    if (!nodes || nodes.length === 0) return
 
     let filtered = nodes.filter(n => {
       if (query) {
@@ -107,7 +134,6 @@ Page({
     } catch (e) { }
 
     const now = Date.now()
-    // If searching, group by layer
     if (query) {
       const byLayer = {}
       filtered.forEach(n => {
@@ -134,12 +160,17 @@ Page({
     const d = created ? new Date(created) : null
     const dateDisplay = d ? `${d.getMonth() + 1}/${d.getDate()}` : ''
     return {
-      ...n,
+      id: n.id,
+      term: n.term,
+      term_zh: n.term_zh,
+      type: n.type,
+      layer: n.layer,
+      status: n.status,
+      created: n.created,
       _unique: n.id + '_' + (uid !== undefined ? uid : 0),
       dotColor: TYPE_COLORS[n.type] || '#999',
       typeLabel: TYPE_LABELS[n.type] || n.type,
       statusLabel: STATUS_LABELS[n.status] || '',
-      statusClass: 'badge-' + (n.status === 'verified' || n.status === 'verified*' ? 'verified' : (n.status || 'candidate')),
       dateDisplay,
       isNew,
       excerpt: (n['人话摘要'] || '').slice(0, 60)
@@ -157,7 +188,7 @@ Page({
       if (ids.indexOf(id) === -1) {
         ids.push(id)
         wx.setStorageSync('hs-read-ids', ids)
-        this.filterNodes() // re-render to remove NEW badge
+        this.filterNodes()
       }
     } catch (e) { }
 

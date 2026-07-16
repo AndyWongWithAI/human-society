@@ -12,7 +12,7 @@
 
 <scroll-view class="entity-list" scroll-y>
   <block wx:if="{{filtered.length > 0}}">
-    <block wx:for="{{filtered}}" wx:key="unique">
+    <block wx:for="{{filtered}}" wx:key="_unique">
       <view wx:if="{{item._header}}" class="header-row">{{item._label}}</view>
       <view wx:else class="entity-item {{activeId === item.id ? 'active' : ''}}" bindtap="goDetail" data-id="{{item.id}}">
         <view class="dot" style="background:{{item.dotColor}}"></view>
