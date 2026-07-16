@@ -1,7 +1,7 @@
 id: DED-038
 type: deduction
 layer: L3-deductions
-status: candidate
+status: verified
 term: "制度信任崩解×法币功能解耦：恶性通胀的双重时间不对称 (Institutional Trust Collapse × Fiat Function Decoupling: Double Time Asymmetry of Hyperinflation)"
 
 人话摘要: "制度信任崩了之后，钱的两样功能各跑各的——'存钱'功能因为信任掉得快先跑（大家赶紧把钱换成金条、外币），但'标价'功能因为记忆惯性还留在原地（工资合同、商品标价还是用老货币）。这一快一慢之间，大家都想卖、没人想买，单向抛售压着货币继续贬，贬值又进一步砸信任——自己追着自己跑的恶性循环。"
@@ -141,7 +141,7 @@ derivation:
     brick=conclusion审计——以下内容已在砖中，本推论不重复主张：
     "制度信任跌快涨慢"（BR-L2-031 statement(a)-(b)）
     "法币信用是连续谱且记忆滞后"（BR-L2-024 statement(a)-(c)）
-    "SOV与UOA是独立功能维度"（BR-L2-022 statement(b)）
+    "SOV由信心驱动且不可法律强制"（BR-L2-022 statement(b)——该砖仅覆盖SOV-MOE解耦,明确排除UOA独立性）
     "SOV先于MOE崩塌"（DED-028——覆盖不同的功能对）
 
 falsifiability: |
@@ -237,8 +237,11 @@ real_world_anchors:
     - "多货币并行标价（如柬埔寨的美元/瑞尔双币体系）——按本推论操作化：公众日常使用外币标价而非仅用于大额交易时，UOA已部分转移。但柬埔寨的瑞尔仍广泛用于小额零售和工资计价——这是'边界案例'而非反例，因为它恰好展示了UOA转移的渐进性：大额→工资→零售的递进模式与本推论预测的'UOA残存由日常交易记忆锁定'一致"
 
 review_summary: |
-  无。YAML 截断待修复，审查 ADV-REVIEW-043 判 needs_revision。
-
+  1) r1 needs_revision -> r3 verified.
+  2) Round 2 两条 required fixes (YAML截断+review_summary缺失)已修复，本轮独立反例猎捕未发现scope内活反例，13旗无required命中，DED-004/DED-007未复发——判verified。新发现2条should(汇率传导省略+prediction(i) near-tautology风险)及9条累计未处理should记录在案但不挡verified。.
+  3) 全档见 ADV-REVIEW-043。
+revised: 2026-07-16
+revision_note: "2026-07-16 finalize: status candidate → verified。"
 depends_on:
   axioms: [AXIOM-002]
   theorems: [THEOREM-value-attribution, THEOREM-relation-information-asset]

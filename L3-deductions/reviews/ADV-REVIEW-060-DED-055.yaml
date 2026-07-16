@@ -817,3 +817,242 @@ round_2:
 
 domain: ["货币经济学", "行为经济学", "央行沟通"]
 created: 2026-07-16
+
+round_3:
+  reviewer: "独立子 Agent (round 3, 全新独立上下文, 与前两轮审查者及作者无关)"
+  verdict: verified
+  verdict_note: |
+    本轮审查确认:round_2 的 6 条 should 修复已全部执行到位,推论现已满足 verified 的三条标准。
+
+    【修复验证——全部到位】
+    ① 共线性现实+MDE 预注册:在 falsification_trace.primary_suspect 中新增完整段,
+    诚实标注 r≈0.6-0.8/VIF>4-5 的共线性现实,预注册 MDE 计算框架与解读方向锁定
+    (f²>有意义阈值→不可检验;超过 MDE 且显著→证伪)。DED-004 不对称风险已关闭。
+    ② 反例消化预注册约束:anti_talisman_clause(5)预注册了不可接受/可接受的消化理由清单,
+    关闭了 round_1-2 最担心的"所有快速收敛案例均可通过'其他改革'消化"的 DED-004 式软循环。
+    设计精良:窄可接受清单(仅数据质量/外生锚变更/大规模供给冲击三项)为消化关闸,
+    不可接受清单(制度套餐类改革)仅作澄清——任何不落入可接受清单的案例自动判为反例。
+    ③ definition 对齐双边阈值:从"低于目标"→"接近目标的通胀 |CPI−target|≤0.5pp",
+    附加术语说明(低通胀体验年数=近目标通胀体验年数简称)。构念与操作化一致。
+    ④ 日本锚口径对齐:更新为已注册双边阈值语言("CPI 几乎从未进入[1.5%,2.5%]区间"),
+    体验年数≈0 的编码在新口径下正确。
+    ⑤ BOJ 2013 边界案例:新增"言辞vs行动归因"边界案例,附操作性判别标准
+    (保留主回归+剔除稳健性检验)。边界模糊的归因风险已受控。
+    ⑥ ±0.5pp 阈值附 provisional 理论动机:IT 容忍区间半宽~1pp + CPI 测量误差~0.2-0.5pp
+    + 稳健性检验区间[0.25,0.75]pp。理由充分且诚实标注 provisional 性质。
+
+    【反例猎捕——web-search-backed,无净杀】
+    本轮进行了两轮定向 web search:(A)IT 宣布后预期快速收敛的跨国证据;
+    (B)前瞻指引时间距离衰减的实证检验。
+    猎捕结果——实证文献整体支持 DED-055 的方向性主张:
+    - Duggal(BoE 2026):32 国面板,"inflation leads expectations rather than the reverse"——
+      survey expectations exhibit "little systematic adjustment" around IT adoption。
+      这直接支持预测(i)——通胀预期跟随实际通胀而非宣布。
+    - Bhalla et al.(IMF 2023):190 国,仅约 1/3 的 IT 采纳国实现显著通胀收益,
+      IT 与 non-IT 国在通胀锚定程度上无显著均值差异。支持"宣布本身不驱动收敛"。
+    - Jácome et al.(IMF 2025):高通胀遗产"casts a long and persistent shadow"——
+      即使 IT 采纳后,通胀历史仍持续影响预期。直接支持 BR-L2-024 记忆滞后机制。
+    - 认知贴现实证:Ilabaca et al.(2020)/Andrade et al.(2019)/Kolasa et al.(2022)等
+      估计认知贴现因子 0.4-0.85,确认前瞻指引存在显著的时间距离衰减——
+      "forward guidance puzzle"(FG 效应不随 horizon 增长)已是稳健经验发现。
+      支持预测(iii)的方向性主张(远期 FG 效力衰减)。
+    - 印度 post-2016(Financial Express):实际通胀降至 0.25%,但家庭通胀预期仍高 400-800bp——
+      记忆滞后在微观调查数据中的清晰证据。
+    无净杀反例。最接近反例的 Sweden 1993-95 已在 round_1-2 充分讨论,
+    且 anti_talisman_clause(5)的预注册消化规则已锁定其处理路径
+    (消化(3)"预期仅降至 2-3% 区间"属于可接受理由(b)(i);消化(1)"其他制度套餐"已被(5)(a)排除)。
+
+    【DED-004/007 复发检查——未复发】
+    DED-004:anti_talisman_clause(5)的预注册消化规则关闭了瑞典式软循环;
+    MDE 预注册关闭了"不显著→机制成立/显著→共线性→仍不推翻"的双向弹性解读。
+    两条 historic 窄缝均已闭合。推论核心预测(i)(ii)(iii)均有指定的可观测反例形态
+    与事前注册的证伪阈值,符合可证伪性要求。
+    DED-007:自变量(CPI vs 目标/宣布日期)与因变量(调查预期/市场隐含预期)使用
+    完全不同的数据生成过程,构念异源正交,无焊死。
+
+    【minor observation——不构成 required/should】
+    瑞典 counterexample 的 analysis 文字仍保留原消化(1)("财政紧缩/养老金改革/
+    浮动汇率制度/央行独立性立法"),而 anti_talisman_clause(5)(a)已将此类理由列为
+    不可接受。这不构成缺陷——anti_talisman_clause(5)是 governing rule,Sweden analysis
+    是 preliminary assessment,读者应按(5)的规则理解 Sweden 的消化边界。
+    且 Sweden 消化(3)(预期仅降至 2-3% 区间)仍可按(5)(b)(i)成立,不改变 Sweden 的
+    needs_digestion 状态。若将来修订可交叉引用(5)以消除文字上的表层张力,
+    不做亦无碍。
+
+    【裁决:verified】
+    三条标准同时满足:(1)无 required 级缺陷——13 条红旗逐条攻,全部未命中或仅 should 级;
+    (2)反例猎捕完成且未猎到 scope 内活反例——web search 反而增强了推论的实证基础;
+    (3)未重蹈 DED-004(不可证伪循环——anti-talisman(5)+MDE 锁定已闭合)/DED-007
+    (测量轴焊死——自变量/因变量异源正交)。推论骨架坚实,操作化严密,防身条款完备。
+    按既定授权,可自主翻牌为 verified。
+
+  red_flag_findings:
+    brick_conclusion: |
+      未命中(攻不穿,三轮一致)。BR-L2-024 全文不含"前瞻指引""央行沟通""通胀预期"
+      "宣布年数";BR-L2-030 全文不含"货币政策""通胀目标制""体验vs宣布"。DED-055
+      的非平凡内核——"体验年数 vs 宣布年数的竞争性回归+前瞻指引时间距离的双曲贴现
+      衰减签名"——不在任一块砖的原文或近义中。两砖合力的核心增量是真组合,非复述。
+      不判 required,不判 should。
+
+    nontriviality_cell_check: |
+      未命中(攻不穿,三轮一致)。2×2 表标星格"体验长→收敛快,无论宣布长短"是非平凡
+      核心——BR-L2-024 只说预期随体验更新,不说宣布有无增量;BR-L2-030 完全不涉及
+      预期收敛。两砖合力产出的"体验vs宣布竞争性检验"是真增量。
+      "体验短+宣布长→收敛慢"是本推论与理性预期理论(Woodford/Eggertsson)的直接对撞点,
+      可被独立经验检验。
+      不判 required,不判 should。
+
+    measurement_orthogonality: |
+      未重蹈 DED-007(攻不穿,三轮一致)。自变量(CPI vs 目标→体验年数,宣布日期→宣布年数)
+      来自 IMF IFS/各国统计局/央行官方声明;因变量(预期收敛速度)来自专业预测者调查
+      (SPF/Consensus Economics)或市场隐含通胀(BEI/通胀互换)。不同的数据生成过程,
+      不同的测量工具。anti_talisman_clause 四条禁令在概念层保证了测量方向的分离。
+      不判 required,不判 should。
+
+    scope_hook_independent_of_result: |
+      未命中(should 级 BOJ 边界已修复)。四项 excluded_outcomes 均按事前结构特征划:
+      极端危机(量化阈值)/非常规货币政策(行动vs言辞通道)/无 IT 国家(无宣布年数变量
+      →不可操作化)/时间不一致(并行机制)。BOJ 2013 边界模糊问题已通过新增 boundary_case
+      (fix ⑤)解决——保留主回归+剔除稳健性检验的操作性判别标准到位。
+      不判 required,不判 should。
+
+    criterion_tier_match: |
+      未命中(攻不穿)。核心变量均为连续量,使用回归分析。时间距离三档是操作化便利,
+      关键预测(c)使用连续比率检验(衰减超过年数比倒数)。二分化的"体验年"是面板回归
+      中累计计数变量的标准做法。
+      不判 required,不判 should。
+
+    anti_talisman_cashed: |
+      真兑现(五条禁令完整在位,required 裂缝已闭合)。anti_talisman_clause 现含五条:
+      (1)禁由预期未收敛反推体验不够——体验由 CPI vs 目标独立编码,双边阈值修复后
+      构念与操作化一致;(2)禁由宣布贡献显著反推宣布质量好——宣布年数是纯计数;
+      (3)禁由远期预测差反推预测本身不靠谱——理性噪声为零假设;(4)对称保护——禁选择性
+      解释"宣布早"的方向;(5)NEW:反例消化预注册约束——关闭瑞典式 DED-004 软循环。
+      五条禁令覆盖了最危险的五个反推/事后弹性解释方向,且均可被实际操作执行。
+      不判 required,不判 should。
+
+    anchor_fact_check: |
+      未命中(无事实错,日本锚已口径对齐)。三个 supporting anchor 的核心事实陈述均可查证:
+      日本 BOJ 2013 宣布 2% 目标及后续通缩、新西兰 RBNZ 1990 率先 IT 及渐进收敛、
+      新兴市场多国 IT 后预期随实际通胀逐步收敛。日本锚已更新为双边阈值语言
+      (CPI 从未进入[1.5%,2.5%]→体验年数≈0),与已注册操作化一致。
+      新西兰锚的"宣布 vs 体验"因果归因仍混杂制度质量(已诚实标注 moderate confidence)。
+      新兴市场锚的体验年数效应与制度改革效应未完全分离(已诚实标注 weak confidence)。
+      不判 required,不判 should。
+
+    definition_vs_prediction: |
+      未命中(攻不穿,三轮一致)。关键条件(体验年数/宣布年数/时间距离)均为独立于结果的、
+      可事前操作化的构念测量。核心预测(i)(ii)(iii)均为可证伪的经验命题,各有指定的
+      observable condition 和证伪阈值。anti_talisman_clause 五条禁令在概念层防止了
+      "预测不成立就改定义"的循环。
+      不判 required,不判 should。
+
+    enumeration_and_species: |
+      未命中(N/A)。不声称枚举 N 类穷尽的 species。2×2 表穷尽逻辑空间,四格按
+      umbrella criterion(体验年数和宣布年数按注册操作化独立测量)定义。
+      不判 required,不判 should。
+
+    primary_suspect_aim: |
+      未命中(round_2 的 should 级关切已通过 MDE 预注册解决)。primary_suspect 自认
+      "BR-L2-024 腿"准确——预测(b)确是全推论最独特的增量主张,确完全压在记忆滞后上。
+      secondary_suspect(双曲贴现签名)和 unlikely_suspect(两砖本身)排位合理。
+      round_2 的几乎-required 关切——共线性(r≈0.6-0.8)+无 MDE 导致(b)的可证伪性
+      被削弱——已通过 MDE 预注册段(fix ①)解决:若 f²>有意义阈值→(b)不可检验(非证实);
+      若效应量超过 MDE 且显著→(b)被证伪。解读方向已事前锁定,不对称性已消除。
+      平凡化检查:推论的三个非平凡增量(竞争性回归/双重折扣机制分解/体验时长不可压缩)
+      已充分论证,不会被稀释为"央行说话不如做事"的常识。
+      不判 required,不判 should。
+
+    caliber_registration_ambiguity: |
+      未命中(round_2 的三条 should 已全部修复)。口径注册现已完整:
+      (1)体验年数——双边阈值 |CPI−target|≤0.5pp,附 provisional 理论动机
+      (IT 容忍区间半宽/CPI 测量误差),稳健性检验区间[0.25,0.75]pp,一次性注册冻结
+      (fix ⑥+round_1 required);(2)宣布年数——纯计数,正式宣布日起算,目标值调整不重置;
+      (3)收敛速度 β——回归方程指定,调查数据为主体/市场数据为交叉验证;
+      (4)前瞻指引时间距离——定量编码规则(≤1年/1-2年/>2年)+双曲贴现签名比率检验。
+      definition 已对齐双边阈值(fix ③)。±0.5pp 阈值附理论动机(fix ⑥)。
+      不判 required,不判 should。
+
+    data_source_common_root: |
+      未命中(N/A)。CPI 来自 IMF IFS/各国统计局,预期来自调查(SPF/Consensus Economics)
+      或金融市场(BEI/通胀互换)——不同的数据生成过程,无"多源同根"问题。
+      CPI 与预期的数据源无共享底层输入。
+      不判 required,不判 should。
+
+    api_access_vs_epistemic_independence: |
+      未命中(N/A)。不涉及通过 API/MCP 查询多个数据源并声称"多源独立"。
+      不判 required,不判 should。
+
+  counterexample_hunt: |
+    【猎捕策略】三条独立攻击路径,本轮追加 web search 增强猎捕覆盖面:
+    (A)攻(i)——找"体验年数长但预期不向目标收敛"的国家;
+    (B)攻(ii)——找"宣布独立于体验驱动预期收敛"的国家/证据;
+    (C)攻(iii)——找"远期 FG 锚定效果按线性(非双曲)衰减"的实证证据。
+
+    【Web Search A: IT 宣布后预期快速收敛的跨国证据】
+    搜索"inflation targeting adoption rapid expectation convergence"。
+    核心发现:
+    - Duggal(BoE 2026):32 国面板,adaptive learning 模型下"inflation leads expectations
+      rather than the reverse"——survey expectations exhibit "little systematic adjustment"
+      around IT adoption。直接支持预测(i):通胀预期跟随实际通胀,不跟随宣布。
+    - Bhalla et al.(IMF 2023):190 国 SCM,仅~1/3 IT 采纳国有显著通胀收益,
+      IT 与 non-IT 在通胀锚定上无显著均值差异。支持"宣布本身不驱动收敛"。
+    - Jácome et al.(IMF 2025):高通胀遗产"casts a long and persistent shadow"——
+      通胀历史持续影响 IT 采纳后的预期。直接支持 BR-L2-024 记忆滞后。
+    - Johnson(2002):5 国(AU/CA/NZ/SE/UK),IT 宣布后预期下降 1-2pp 但实际通胀
+      降幅更大——预期滞后于实际。支持预测(i)。
+    - India post-2016(Financial Express):实际通胀降至 0.25%,家庭预期仍高 400-800bp——
+      记忆滞后在微观调查中的清晰证据。
+
+    【Web Search B: 前瞻指引时间距离衰减的实证检验】
+    搜索"forward guidance time distance decay hyperbolic discounting empirical test"。
+    核心发现:
+    - Forward guidance puzzle 已是稳健经验发现:标准 NK-DSGE 预测 FG 效应随 horizon
+      指数增长,但实证一致显示 FG 效应不随 horizon 增长(Brubakk et al. 2022 等)。
+    - 认知贴现因子估计:Ilabaca et al.(2020)0.4-0.6(firms)/0.7-0.85(households);
+      Andrade et al.(2019)~0.67;Kolasa et al.(2022)~0.5。一致显著<1,确认时间距离衰减。
+    - Adaptive learning vs RE:Cole(JMP)发现 RE 夸大 FG 效应~113%——理性预期基准
+      系统性高估 FG 效力。
+    上述实证证据与预测(iii)的方向性主张(远期 FG 效力衰减)一致。
+    诚实标注:上述研究使用认知贴现(cognitive discounting)框架而非严格的双曲贴现
+    (hyperbolic discounting),两者在定性预测上同向(衰减超过理性噪声)但函数形式不同。
+    DED-055 的预测(iii)以"衰减超过年数比倒数"为双曲贴现独有签名——这一特定阈值
+    检验在现有文献中尚未被直接执行(文献聚焦认知贴现因子估计而非双曲vs指数贴现的
+    模型选择)。故预测(iii)仍属未独立验证的赌注,consistent with secondary_suspect 排位。
+
+    【desk research 猎捕——延续 round_1-2 的国别案例搜索】
+    - 瑞士(SNB):CPI 常年 0-1%,不在[1.5%,2.5%]→体验年数短,非反例。
+    - 加拿大(1991+):CPI 长期处于[1.5,2.5]→体验长,预期锚定→符合预测,非反例。
+    - 英国(1992+):CPI 长期接近目标,预期锚定→符合预测,非反例。
+    - 欧元区核心(DE/FR/NL):长期低通胀+ECB 目标→预期稳定→符合预测,非反例。
+    - 土耳其(2006+):CPI 长期远离目标→体验短,预期未锚定→符合预测,非反例。
+    - Sweden 1993-95:最接近反例的候选,已在 round_1-2 充分攻辩。
+      anti_talisman_clause(5)的预注册消化规则现对其适用:消化(1)(制度套餐类改革)
+      已被(5)(a)排除;消化(3)(预期仅降至 2-3% 区间而未精确到 2%)属于(5)(b)(i)
+      可接受理由。Sweden 的 needs_digestion 状态不变,但不构成净杀。
+
+    【猎捕总评】无净杀反例。Web search 揭示的实证文献方向整体支持 DED-055:
+    通胀预期跟随实际通胀(非宣布)、IT 采纳不保证预期收敛、通胀历史长期投射阴影、
+    前瞻指引存在稳健的时间距离衰减。推论的三个预测在现有文献中均有方向性支持,
+    且尚无已发表的干净反例。硬门第 2 条(无 scope 内活反例)可通过。
+
+  non_recurrence_of_ded004_007: |
+    DED-004(不可证伪循环):【未复发——两条 historic 窄缝均已闭合】。
+    (a)瑞典消化无预注册约束→anti_talisman_clause(5)已闭合:预注册可接受/不可接受
+    消化理由清单,窄可接受清单为消化关闸。任何不落入可接受清单的快速收敛案例自动
+    判为反例——关闭了"所有快速收敛均可通过'其他改革'消化"的 DED-004 式软循环。
+    (b)共线性+无 MDE→falsification_trace 新增 MDE 预注册段已闭合:若 f²>有意义阈值
+    →(b)不可检验(非证实);若效应量超过 MDE 且显著→(b)被证伪。解读方向已事前锁定,
+    消除了"不显著→援引机制/显著→援引共线性→仍不推翻"的双向弹性。
+    推论核心预测(i)(ii)(iii)均有指定可观测反例形态与事前注册证伪阈值,可证伪性健全。
+    不判 required,不判 should。
+
+    DED-007(焊死测量轴):【未复发】。自变量(CPI vs 目标/宣布日期)与因变量
+    (调查预期/市场隐含预期)使用完全不同的测量工具和数据生成过程——CPI 来自统计
+    机构价格采集,预期来自调查问卷或金融市场定价。anti_talisman_clause 五条禁令
+    保证了测量方向的分离。不存在 DED-007 式"用同一种货币量测自变量和因变量"的焊死。
+    不判 required,不判 should。
+
+  required_fixes: []
+
+  should_fixes: []
