@@ -1,6 +1,6 @@
 # Author Reading Pack（作者阅读包）
 
-> 自动生成于 2026-07-16 11:43。跑 `python scripts/index.py` 重生。
+> 自动生成于 2026-07-16 11:51。跑 `python scripts/index.py` 重生。
 > 用途：起草推论前**只读这一份**——实体速览 + 前置清单 + 瘦身格式，全在这里。
 > 不再需要分别读 INDEX.md + author-checklist.md + 方法论文件。
 

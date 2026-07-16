@@ -1,6 +1,6 @@
 # Reviewer Reading Pack（审查者阅读包）
 
-> 自动生成于 2026-07-16 11:43。跑 `python scripts/index.py` 重生。
+> 自动生成于 2026-07-16 11:51。跑 `python scripts/index.py` 重生。
 > 用途：独立对抗审查前**只读这一份**——实体速览 + 评分卡 + 红旗清单，全在这里。
 > 不再需要分别读 INDEX.md + review-rubric.md。
 
