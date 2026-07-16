@@ -1,7 +1,7 @@
 id: DED-050
 type: deduction
 layer: L3-deductions
-status: verified
+status: candidate
 term: "数字可处理性x制度信任不对称：失信信号永久化与修复信号噪声化 (Digital Processability x Institutional Trust Asymmetry: Permanent Discredit Signals and Noised Repair Signals)"
 
 人话摘要: "对制度的信任有个扎心规律——掉得快、涨得慢。数字时代让这规律变得更扎心：出过事的机构，坏事在搜索引擎里永远挂在首页（每次有新人搜这家机构，第一眼看到的就是当年那件事），但机构事后做的整改、发的道歉、通过的审计——这些'我在改'的信号在信息的汪洋大海里根本冒不出头，搜都搜不到。结果就是：信任跌下去被钉死了，想涨回来却被信息噪声闷住了——整体的信任水平被数字生态往下拽了一层。但这不是必然的——如果搜索引擎和信息平台不是只按'什么最吸引眼球'来排，而是给可验证的修正信息留一条独立通道，这个死结就能解开。"
@@ -479,11 +479,11 @@ discriminant_validity: |
   还可能预测"高DNS→机构有更大动力修复→修复更快",常识对方向不置可否,本推论赌了方向)。
 
 review_summary: |
-  1) r1 verified.
-  2) DED-050 的非平凡内核(DNS独立预测信任修复周期+RV调节)两块桥接砖里都没有、可证伪通道清晰、anti_talisman四锁强韧、红旗13条全攻不穿、未重蹈DED-004/DED-007。反例猎捕三星Note 7为边界案例而非净杀。3条should建议(RV构念拆分+engagement前提标注+多元化实体聚焦)均属细化。Verified。.
-  3) 全档见 ADV-REVIEW-055。
-revised: 2026-07-16
-revision_note: "2026-07-16 finalize: status candidate → verified。"
+  1) 降级(前提rejected连带,非审查裁决).
+  2) 前提 BR-L2-025 rejected(D07死因复发+印刷先例净杀+不可证伪),本推论 verified 地位失效,降级 candidate 待重审.
+  3) 全档见 ADV-REVIEW-N/A。
+revised: 2026-07-17
+revision_note: "2026-07-17 finalize: status verified → candidate。"
 depends_on:
   axioms: [AXIOM-002]
   theorems: [THEOREM-relation-information-asset]

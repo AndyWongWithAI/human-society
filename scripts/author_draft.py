@@ -37,13 +37,21 @@ PROVIDERS = {
 # 精简版作者清单(挑最关键的发,不把完整 author-pack 塞进 prompt)
 SLIM_CHECKLIST = """
 ## 必填项
+- operationalization: 每个关键量(自变量/被预测量)写 definition + measurement(怎么测/分子/分母/切点) + limitations
 - nontriviality_test: 2×2 排列表,每格判空(平凡/非平凡/反例/边界),至少一非平凡格
 - falsification_trace.primary_suspect: 最脆弱环节(一句,定位到具体预测/因果链)
 - falsification_trace.secondary_suspect(可选): 次脆弱环节
 - real_world_anchors: supporting(≥1 条,含 anchor+evidence+confidence) + counterexamples(≥1 条,含 case+analysis+status)
-- falsifiability: 具体的、可事前测的证伪条件(a)(b)(c)...
+- falsifiability: (a)(b)(c) 每条含测量口径+最小效应量,排除钩子必须物理可构造(BR-L2-025 判例)
+- reverse_failure_modes: ≥1 条"命题在相反方向如何失败"(DED-039/047 判例)
 - derivation.from_l2 + from_l3: 父推论引用
 - 人话摘要: 一句非黑话解释
+
+## statement 防不可证伪(BR-L2-025 教训)
+- 区分定义性陈述(analytic)与经验预测(synthetic);核心因果声明必须是经验预测,不能藏在定义里
+- 强主张("质变""独立维度""新玩家")降级为可证伪阈值主张("达阈值X时Y成为可能")
+- 自变量测量轴必须与被预测量正交(DED-007 死因:不能只能通过社会效果反推)
+- 阈值数字标来源(分布/先验/文献/历史基线),禁止无源魔术数字
 
 ## YAML 格式
 - 多行叙述段用 | 块标量
@@ -61,7 +69,7 @@ def load_provider(provider):
     return cfg["api_key"], cfg["base_url"], cfg["model"]
 
 
-def call_free_model(api_key, base_url, model, system, user, max_tokens=8000):
+def call_free_model(api_key, base_url, model, system, user, max_tokens=12000):
     import requests
     resp = requests.post(
         f"{base_url}/chat/completions",
@@ -129,7 +137,8 @@ def main():
         "3. statement 要清晰:核心机制+预测+推导步骤\n"
         "4. nontriviality_test 的 2×2 至少有一个非平凡格\n"
         "5. real_world_anchors 要有具体的 anchor(case+evidence+confidence)\n"
-        "6. falsifiability 要具体可测,不是'可能有其他解释'的模糊护身符\n\n"
+        "6. falsifiability 要具体可测,不是'可能有其他解释'的模糊护身符\n"
+        "7. 防 BR-L2-025/DED-007 死因: 自变量测量轴必须与被预测量正交(不能只能通过社会效果反推); 强主张降级为可证伪阈值主张; 阈值数字标来源\n\n"
         "这是草稿——pro 模型还会编辑修正。优先完整性和可证伪性,措辞可粗糙。"
     )
 

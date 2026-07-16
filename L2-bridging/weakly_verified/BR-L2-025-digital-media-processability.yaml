@@ -1,5 +1,5 @@
 id: BR-L2-025
-status: weakly_verified
+status: rejected
 term: 数字媒介可处理性 (Digital Media Processability)
 statement: |
   数字编码的信息具有一种前数字媒介不具备的属性:可处理性(processability)。
@@ -123,11 +123,9 @@ falsifiability: |
 created: 2026-07-15
 source_anchors: []
 review_summary: |
-  IEA=2.2(media_theory agree 1.0 锚源; api_operations agree 0.6; information_theory partially_agree 0.3; economic_history partially_agree 0.3)→ verified(超过 1.8 阈值)。
-  裁决理由:媒介理论正面支持"媒介属性→社会结构"的质变主张;api_operations(2026-07-16 CNBS 工具实证)提供(b)机器可处理的直接操作化证据——机器约 20 分钟自主完成跨源宏观指标检索与合成,补上了此前 IEA=1.6 时缺失的"质变而非量变"的事件级独立支撑;信息论只证技术可行性、经济史无法区分质变/量变,两票均折半。
-  仪器折扣:四票由单一 LLM 执行,报告 IEA 为学科独立性上限,有效独立性低于此;本命题为新颖综合(非教科书共识),此折扣应视为承重红旗。
-  status 翻牌由 Finalize 阶段按审查裁决执行——cross_verification 判定 verified,待终裁确认是否从 weakly_verified 升级。
-
+  1) r1 rejected.
+  2) DED-007死因复发(测量轴与被预测量焊死)+印刷先例净杀(无机器可处理性的成本暴跌同样产生质变)+falsifiability设计失效(反事实场景物理不可构造).
+  3) 全档见 ADV-REVIEW-1。
 cross_verification:
   votes:
     media_theory:
@@ -211,6 +209,8 @@ cross_verification:
     (单 LLM)生成——进一步确认其非独立性。该 memo 原始目的为 DED-031/DED-033,
     事后改装为 BR-L2-025 验证票,属自引循环。已诚实降权至 0.1。
 
+revised: 2026-07-17
+revision_note: "2026-07-17 finalize: status weakly_verified → rejected。"
 depends_on:
   concepts: [CONCEPT-information, CONCEPT-agent]
   axioms: [AXIOM-002]

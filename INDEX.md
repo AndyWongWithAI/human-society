@@ -112,7 +112,7 @@
 - BR-L2-022 [verified] · 价值储藏作为货币的独立功能维度 — 钱'其实做了三件不同的事——买东西（交易媒介）、标价格（记账单位）、存起来以后用（价值储藏）  ⟵ AXIOM-002, AXIOM-003, THEOREM-value-attribution
 - BR-L2-023 [verified] · 金的非货币需求基底与冷启动 — 金在变成'钱'之前，已经有人想要它了——不是因为它能买东西，而是因为它好看、闪亮、做首饰戴在身上就是地位的象征  ⟵ AXIOM-003, THEOREM-value-attribution
 - BR-L2-024 [verified] · 法币信用的连续可逆性与记忆滞后 — 法币的信用不是开关——不是'信任'或'不信任'二选一  ⟵ AXIOM-002, THEOREM-value-attribution
-- BR-L2-025 [weakly_verified] · 数字媒介可处理性 — 纸上的字要人读了才有用,屏幕上的字机器自己就能读、能搜、能改、能跟别处的信息自动合成——这不是'变快了',是信息从'死物'变成了'活物  ⟵ AXIOM-002
+- BR-L2-025 [rejected] · 数字媒介可处理性 — 纸上的字要人读了才有用,屏幕上的字机器自己就能读、能搜、能改、能跟别处的信息自动合成——这不是'变快了',是信息从'死物'变成了'活物  ⟵ AXIOM-002
 - BR-L2-026 [verified] · AI Agent 信息处理不对称 — AI 不是'更聪明的人'——它在某些事上远超人类(无限记忆、不累、能同时处理海量信息),但在另一些事上根本缺失(没有身体体验、没有真感情、不怕死…  ⟵ AXIOM-002
 - BR-L2-027 [verified] · 注意力稀缺与信息过载 — 脑子只能同时想几件事——信息太少当然不行,但信息太多、被信息淹了,判断力反而下降  ⟵ AXIOM-002
 - BR-L2-028 [verified] · 预防性储蓄 — 天有不测风云,又没人给你兜底,你就得自己留后手——少花点,存点粮
@@ -191,11 +191,11 @@
 - DED-047 [verified] · AI货币功能解耦×社会共识生成：优化器而非奠基者 — AI可以把货币的三大功能（买东西、标价格、存钱）拆开再拼回去的技术做到极致——算法能让钱在不同功能之间无缝切换、自动优化  ⟵ AXIOM-002, AXIOM-003, THEOREM-value-attribution, THEOREM-cooperation-precondition, THEOREM-group-identity-decay, BR-L2-022, BR-L2-026
 - DED-048 [verified] · 算法结算成本×通用媒介收敛：从技术必然到制度选择 — 以前大家非得用同一种钱,不是因为'用同一种钱方便',而是因为不用同一种钱的话,算清楚'我欠你、你欠他、他又欠她'这笔七拐八绕的账实在太贵了——人…  ⟵ AXIOM-002, THEOREM-exchange-competition-alternative, THEOREM-value-attribution, THEOREM-relation-information-asset, BR-L2-012, BR-L2-032
 - DED-049 [verified] · 制度信任不对称衰减×金非货币需求：金价的阶梯式棘轮 — 每次大的制度信任危机（金融海啸、主权违约恐慌、法币信用动摇）都会把金价永久性地推上一个新台阶——危机来时金价急涨，危机过后金价回落，但再也回不到…
-- DED-050 [verified] · 数字可处理性x制度信任不对称：失信信号永久化与修复信号噪声化 — 对制度的信任有个扎心规律——掉得快、涨得慢  ⟵ AXIOM-002, THEOREM-relation-information-asset, BR-L2-025, BR-L2-031
+- DED-050 [candidate] · 数字可处理性x制度信任不对称：失信信号永久化与修复信号噪声化 — 对制度的信任有个扎心规律——掉得快、涨得慢  ⟵ AXIOM-002, THEOREM-relation-information-asset, BR-L2-025, BR-L2-031
 - DED-051 [verified] · 人际信任衰减梯度×通货必要性：社区货币的生态位边界 — 熟人之间不用钱——谁帮了谁、谁欠了谁，大家都记在心里，跑不掉  ⟵ AXIOM-002, AXIOM-003, THEOREM-relation-information-asset, THEOREM-group-identity-decay, THEOREM-cooperation-precondition, BR-L2-009, BR-L2-011
 - DED-052 [verified] · MPC收入梯度×不公平厌恶：消费Gini作为财富Gini的掩码器 — 富人和穷人的收入差N倍,但花的钱只差M倍(M<N)——因为富人大多存起来了  ⟵ AXIOM-001, AXIOM-002, BR-L2-013, BR-L2-029
 - DED-053 [verified] · AI无群体身份与内群体偏好消解 — AI既不是'自己人'也不是'外人'——它根本没有群体身份
-- DED-054 [verified] · 数字可处理性×法币记忆滞后：双向效应与治理条件 — 法币的信用有个惯性——人对通胀的记忆消退得比实际通胀下降慢，大家不信政策、只信自己经历过的（BR-L2-024）  ⟵ AXIOM-002, THEOREM-value-attribution, BR-L2-024, BR-L2-025
+- DED-054 [candidate] · 数字可处理性×法币记忆滞后：双向效应与治理条件 — 法币的信用有个惯性——人对通胀的记忆消退得比实际通胀下降慢，大家不信政策、只信自己经历过的（BR-L2-024）  ⟵ AXIOM-002, THEOREM-value-attribution, BR-L2-024, BR-L2-025
 - DED-055 [verified] · 现时偏向×法币记忆滞后：前瞻指引效力的双重折扣 — 央行说'两年后通胀会降到2%',但老百姓听了并不会当真去买两年后的国债锁定收益——因为人天生就觉得'两年后的事太远了,先顾眼前'(现时偏向)  ⟵ AXIOM-001, AXIOM-002, THEOREM-value-attribution, BR-L2-024, BR-L2-030
 
 ## L3 审查 reviews (61)

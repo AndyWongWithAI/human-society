@@ -53,8 +53,10 @@ SEARCH_DIRS = [
 
 VALID_TRANSITIONS = {
     "candidate": ["verified", "verified*", "weakly_verified", "rejected"],
-    "weakly_verified": ["verified", "rejected"],
+    "weakly_verified": ["verified", "rejected", "candidate"],
+    "verified": ["candidate"],   # 降级:前提 rejected 连带,verified 地位失效
     # weakly_verified 是 L2 标准状态,L2 管线可从 candidate 直翻 weakly_verified(IEA < 1.8)
+    # verified/weakly -> candidate: 前提 rejected 连带降级(非审查裁决,跳过 Q2)
 }
 
 
@@ -249,17 +251,17 @@ def main():
     parser.add_argument(
         "--verdict",
         required=True,
-        choices=["verified", "verified*", "rejected"],
+        choices=["verified", "verified*", "rejected", "candidate"],
         help="目标定论",
     )
     parser.add_argument(
         "--chain",
-        required=True,
+        default="",
         help='审查裁决链 (如 "r1 needs_revision -> r2 verified")',
     )
     parser.add_argument("--why", required=True, help="一句话:为何是这个定论")
     parser.add_argument(
-        "--review-num", required=True, help="ADV-REVIEW 编号 (如 038)"
+        "--review-num", default="", help="ADV-REVIEW 编号 (如 038);降级可省"
     )
     parser.add_argument("--note", default="", help="可选 revision_note(默认自动生成)")
     parser.add_argument(
@@ -292,6 +294,14 @@ def main():
     old_status = detect_status(lines)
     if old_status is None:
         print(f"❌ 找不到 status 字段")
+        sys.exit(1)
+
+    # 降级(candidate)不需要 chain/review-num;翻牌需要
+    if args.verdict == "candidate":
+        args.chain = args.chain or "降级(前提rejected连带,非审查裁决)"
+        args.review_num = args.review_num or "N/A"
+    elif not args.chain or not args.review_num:
+        print("❌ 翻牌需要 --chain 和 --review-num(降级 --verdict candidate 除外)")
         sys.exit(1)
 
     if old_status not in VALID_TRANSITIONS:
