@@ -30,10 +30,10 @@ def get_node(node_id: str):
     data = load()
     node = next((n for n in data["nodes"] if n["id"] == node_id), None)
     if not node: raise HTTPException(404, f"Node {node_id} not found")
-    # 附加上下游
     deps   = [e for e in data["edges"] if e["source"] == node_id]
     dep_by = [e for e in data["edges"] if e["target"] == node_id]
-    return {"node": node, "depends_on": deps, "depended_by": dep_by}
+    articles = data.get("entity_articles", {}).get(node_id, [])
+    return {"node": node, "depends_on": deps, "depended_by": dep_by, "articles": articles}
 
 @app.get("/api/edges")
 def list_edges(relation: str = None, source: str = None, target: str = None):
