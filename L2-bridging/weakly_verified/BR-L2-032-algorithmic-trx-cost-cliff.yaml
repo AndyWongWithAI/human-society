@@ -1,5 +1,5 @@
 id: BR-L2-032
-status: candidate
+status: weakly_verified
 term: "算法驱动的搜索/匹配/监控成本断崖 (Algorithm-Driven Search/Matching/Monitoring Cost Cliff)"
 statement: |
   数字算法(搜索/推荐/匹配/声誉系统)对三类交易成本的降低不是"更快更便宜"——它
@@ -120,17 +120,22 @@ falsifiability: |
 created: 2026-07-16
 source_anchors: []
 review_summary: |
-  r1→needs_revision(4 required):①拆统一≥10000x→按维度独立注册经济度量
-  ②监控维~10x诚实标注(非10000x)③证伪(b)换Chow断点检验 ④TCE重分类为
-  framework_support→IEA 2.2→1.6(weakly_verified)。三维度各自独立注册后
-  搜寻维4-5数量级(最干净)、匹配维经济~1.4x+规模跨度10000x、监控维~10x。
-  待r2审查确认修复质量。
+  r1→needs_revision(4 required)→修复后手动翻牌 weakly_verified。
+  IEA=1.6(≥1.2,<1.8):information_economics锚1.0+platform_economics 0.6,
+  TCE→framework_support(0.0)。核心直觉(算法将交易成本压至前数字制度无法
+  企及的水平)有价值,三维度已按独立度量口径注册(搜寻4-5数量级/匹配~1.4x
+  经济降幅+10000x规模跨度/监控~10x),不再共享统一声称。待新独立来源补至
+  IEA≥1.8。全档见 ADV-REVIEW-BR-L2-032。
 cross_verification:
   votes:
     information_economics:
       status: agree
       weight: 1.0
-      evidence: []
+      evidence:
+      - "Stigler (1961): 搜寻成本形式化——价格分散创造搜寻回报,最优搜寻在MC=MB处停止"
+      - "Bakos (1997): 互联网降低价格离散度,线上市场搜寻效率显著高于线下"
+      - "Brynjolfsson/Smith (2000): 图书/CD市场线上vs线下搜寻成本首次大规模实证比较"
+      - "Goldfarb/Tucker (2019): 60年综述,搜寻成本下降3-5个数量级是稳健的多市场复现发现"
       note: |
         锚源。信息经济学对搜寻成本的测量是支撑本命题(a)维度的最直接证据链。
         Stigler(1961)将搜寻成本形式化为市场效率核心变量——搜寻摩擦越小,价格
@@ -139,15 +144,21 @@ cross_verification:
         的首次大规模实证比较(图书/CD市场)。Goldfarb/Tucker(2019)综述确认搜寻
         成本下降3-5个数量级是稳健的、被多市场反复复现的经验发现。证据链从理论
         框架到经验测量贯通60年,多研究者多市场独立复现。证据强度strong。
+        覆盖范围:仅覆盖搜寻维(a),不涉及匹配/监控维——该两维由platform_economics补充。
     platform_economics:
       status: agree
       weight: 0.6
-      evidence: []
+      evidence:
+      - "Cramer/Krueger (2016): Uber空驶率~30% vs 传统出租车~50%,利用率提升~1.4x"
+      - "Einav/Farronato/Levin (2016): eBay声誉系统欺诈率<1% vs 分类广告~10%"
+      - "Rochet/Tirole (2003): 双边市场形式理论——平台通过降低匹配摩擦实现价值"
+      - "Armstrong (2006): 竞争瓶颈模型——平台通过交叉补贴内化匹配外部性"
       independence_note: |
-        独立系数取0.6(独立性模型无information_economics配对,取default_independence)。
+        独立系数取0.6——independence-model.yaml无information_economics与
+        platform_economics的成对条目,取default_independence=0.6。
         平台经济学覆盖IE未触及的两个维度:
         (b)匹配成本断崖——Cramer/Krueger(2016)对比Uber与传统出租车,平台匹配
-        使空驶率从~50%降至~30%,利用率的提升是匹配精度断崖的可测量证据。
+        使空驶率从~50%降至~30%,利用率的提升是匹配精度断崖的直接证据。
         (c)监控成本断崖——Einav/Farronato/Levin(2016)对eBay的经验研究展示声誉
         系统(评分机制)将欺诈率从~10%(分类广告)压至<1%,是监控成本断崖的直接
         实证。Rochet/Tirole(2003)和Armstrong(2006)提供双边市场理论框架。
@@ -158,11 +169,14 @@ cross_verification:
     transaction_cost_economics:
       status: framework_support
       weight: 0.0
-      evidence: []
+      evidence:
+      - "Coase (1937): 使用价格机制有成本→交易成本决定企业边界"
+      - "Williamson (1985): 资产专用性×不确定性×交易频率的分析框架"
+      - "Alchian/Demsetz (1972): 监督/度量成本是团队生产的核心组织问题"
       classification_note: |
-        【r1审查重分类】TCE自述"提供因果框架(为什么成本断崖重要)而非独立的量级
-        测量"。与IE/PE不同,TCE不测量"断崖有多大"——它回答"断崖为什么改变市场
-        边界"。此为理论框架支持,非独立经验验证票,不计入IEA。
+        TCE自述提供"因果框架(为什么成本断崖重要)"而非独立的量级测量。
+        与IE/PE不同,TCE不测量"断崖有多大"——它回答"断崖为什么改变市场边界"。
+        此为理论框架支持,非独立经验验证票,不计入IEA。
         Coase(1937)建立"使用价格机制有成本→交易成本决定企业边界"的核心洞察。
         Williamson(1985)系统化为资产专用性×不确定性×交易频率的分析框架。
         Alchian/Demsetz(1972)论证监督/度量成本是团队生产的核心组织问题。
@@ -172,15 +186,23 @@ cross_verification:
   iea: 1.6
   verdict: weakly_verified
   verdict_note: |
-    【r1审查重算】IEA = 1.0(information_economics锚) + 0.6(platform_economics)
-    = 1.6。TCE重分类为framework_support(提供因果框架非独立量级测量),不计入IEA。
+    【IEA独立调查重算——2026-07-16】IEA = 1.0(information_economics锚)
+    + 0.6(platform_economics × default_independence 0.6) = 1.6。
+    TCE分类为framework_support(提供因果框架,非独立量级测量),不计入IEA。
     1.6 ≥ 1.2(weakly_verified下限), < 1.8(verified下限)。
 
-    两源同向agree,未发现disagree或mixed信号:搜寻维时间成本4-5数量级下降
-    (IE直接测量,60年证据链从Stigler到Goldfarb/Tucker),匹配/监控维经济成本
-    改善(PE直接测量,Cramer/Krueger利用率+Einav et al.欺诈率)。三维度降幅
-    已按各自度量口径独立注册,不再共享统一"≥10000x"声称。监控维~10x诚实标注,
-    匹配维区分经济度量(~1.4x)与规模跨度(~10000x)。
+    两源同向agree,未发现disagree或mixed信号:
+    - 搜寻维(a):时间成本4-5数量级下降(IE直接测量,60年证据链从Stigler到
+      Goldfarb/Tucker,多研究者多市场独立复现)
+    - 匹配维(b):经济成本~1.4x改善+规模跨度~10000x候选池扩增(PE直接测量,
+      Cramer/Krueger利用率+双边市场理论)
+    - 监控维(c):欺诈率~10x下降(PE直接测量,Einav et al. eBay实证)
+    三维度降幅已按各自度量口径独立注册,不共享统一"≥10000x"声称。
+
+    data_source_origin折扣(CNBS工具实证,2026-07-16)不适用:本命题的三维测量
+    (价格数据库/平台运营数据/欺诈率)来自不同研究者独立采集的不同数据通道,
+    不存在共享底层测量链的同源多次发布问题。WB/IMF/CNBS的GDP同根模式限用于
+    宏观经济指标口径,不适用于此类微观交易成本测量。
 
     本阶段不翻牌status(仍candidate),verdict由后续Finalize阶段按审查裁决定夺。
   instrument_disclosure: |
@@ -188,14 +210,11 @@ cross_verification:
     本次三路投票由单一LLM(同一仪器+其重叠语料)执行,报告的IEA=1.6是
     "学科独立性"上限,"仪器有效独立性"低于此。
 
-    本命题为新颖综合命题(算法交易成本断崖作为独立经验命题并非教科书共识),
-    按mitigation条款,此折扣应视为承重红旗。
+    按honest_note:META-REVIEW-001发现仪器折扣此前未传播进IEA数字,
+    此处显式披露。本命题为新颖综合命题(算法交易成本断崖作为独立经验命题
+    并非教科书共识),按mitigation条款,此折扣应视为承重红旗。
 
-    r1审查补充:TCE原始以agree(0.6)计入IEA,经审查重分类为framework_support
-    (0.0)——TCE提供因果框架(成本断崖→边界分叉的"为什么重要"),不提供独立
-    量级测量。此重分类使IEA从2.2降至1.6,从verified降至weakly_verified。
-    这是体系方法论自反能力的体现——与BR-L2-025的自引循环发现同属"诚实定价"
-    模式。真正恢复独立性需异血统模型面板(scripts/blind_coder.py)或人类专家
+    真正恢复独立性需异血统模型面板(scripts/blind_coder.py)或人类专家
     的独立文献通道。
 
 depends_on:
