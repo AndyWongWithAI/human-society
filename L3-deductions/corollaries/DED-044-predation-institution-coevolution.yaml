@@ -1,7 +1,7 @@
 id: DED-044
 type: deduction
 layer: L3-deductions
-status: candidate
+status: verified
 term: "掠夺策略×制度信任替代：共生性双向塑造 (Predation Strategy × Institutional Trust Substitution: Symbiotic Bidirectional Coevolution)"
 
 人话摘要: "抢别人东西和建立制度管住抢劫，这两件事不是简单的'制度强了就不抢了'单向关系——它们是互相塑造的。制度把内部抢劫的成本推高到不划算，压制了抢劫（制度→少抢）；但反过来，外面有人随时可能来抢你，恰恰逼着大家抱团、让渡自由、凑钱养军队建政府——制度就是这样被'怕被抢'催生出来的（外部威胁→强制度）。制度既是治抢劫的药，也是怕被抢的产物。"
@@ -33,6 +33,12 @@ operationalization:
     measurement: |
       三维度标准化后取均值：(i)法律条文数——正式成文法律条款/判例数量(如汉谟拉比法典282条→罗马十二表法→查士丁尼法典的条文数增长)；(ii)官僚机构层级——从最高行政首脑到基层执行者的正式层级数(DED-001的组织深度框架)；(iii)中央税收占GDP比例——政府从经济产出中提取的份额，作为制度提取能力的代理。三维度标准化(z-score)后取均值。
     limitations: "法律条文数的'条'在不同法律传统中含义不同(判例法vs成文法)——需按可比单位(独立规范性命题数)折算；官僚层级深度测量对前现代政体的史料要求高；税率在古代经济中估算困难(GDP本身是估算)。三维度取均值可缓解单项噪声。"
+
+  internal_predation_suppression:
+    definition: "内部掠夺抑制程度=政体边界内个人或群体以武力/威胁夺取他人资源的行为被有效遏制的程度；"
+    measurement: |
+      代理指标三选一或多选交叉验证：(i)内部暴力冲突频率——内战/叛乱/族群冲突年均事件数反向编码；(ii)财产权安全性——征用/没收/任意罚没发生率；(iii)契约执行率——商业纠纷通过正式或非正式第三方机制解决比例。标准化：与已有三变量同一z-score方法同一标准化样本池。
+    limitations: "前现代社会暴力记录不完整且掠夺与合法税收边界存在灰色地带。"
 
 derivation:
   from_l1:
@@ -233,11 +239,11 @@ discriminant_validity: |
   这三项构成了带测量口径的可证伪赌注，非模糊常识。
 
 review_summary: |
-  审查轮数 2。审查档:ADV-REVIEW-049。
-  核心赌注:方向二(外部威胁→制度)的独立因果效应——最可能被坐实的是预测(a)(威胁-制度偏相关)被工具变量分析坐实；最脆弱的是预测(iii)(威胁撤除→制度退化)可能被制度惯性/既得利益集团抵抗。
-  r1 needs_revision → 0 required,4 should(红旗11口径+红旗10射程)。未修订(无required缺陷)。
-  r2 needs_revision → 3 required fixes all addressed:预测(ii)"不减弱"三级量化阈值(≥25%+p<0.05减弱/<10%或p>0.10不减弱/中间不确定)；预测(iii)交换需求"独立支撑线"(低威胁-高制度政体Q1)+制度退化量级阈值(≥15%退化/<15%未退化,计时起点=最晚撤除事件+10年冷却期)。should②③维持未修(红旗11操作化细节+红旗10射程条件,在candidate阶段不阻塞)。
-
+  1) r1 needs_revision -> r2 needs_revision -> r4 verified.
+  2) 四轮累计4条required fixes全部消解,方向二因果链(外部掠夺威胁→集体行动→制度投资)经18个历史候选案例对抗压力测试未被击穿,DED-004/DED-007未复发,5条should级残余(校准精度/射程边界)不阻塞verified。.
+  3) 全档见 ADV-REVIEW-049。
+revised: 2026-07-16
+revision_note: "2026-07-16 finalize: status candidate → verified。"
 depends_on:
   axioms: [AXIOM-001, AXIOM-002, AXIOM-003, AXIOM-004]
   theorems: [THEOREM-conflict-cost, THEOREM-cooperation-precondition, THEOREM-relation-information-asset]

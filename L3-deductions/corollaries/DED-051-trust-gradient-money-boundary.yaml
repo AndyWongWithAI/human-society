@@ -1,7 +1,7 @@
 id: DED-051
 type: deduction
 layer: L3-deductions
-status: candidate
+status: verified
 term: "人际信任衰减梯度×通货必要性：社区货币的生态位边界 (Trust Decay Gradient × Currency Necessity: The Ecological Niche Boundary of Community Currency)"
 
 人话摘要: "熟人之间不用钱——谁帮了谁、谁欠了谁，大家都记在心里，跑不掉。陌生人之间必须用钱——谁也不认识谁，没法赊账。但还有一大片中间地带：一个镇子、一个行业协会、一个长期混的圈子——彼此不算陌生人，有点信任，但又没熟到能记住所有人的往来账。社区货币（比如LETS、时间银行、本地交换券）就是活在这片中间地带的——它能长多大、活多久，不取决于技术上设计得多好，而是这个圈子的'信任能延伸到多远'决定的。"
@@ -329,15 +329,11 @@ discriminant_validity: |
   右→法币）和明确边界条件的系统性理论。
 
 review_summary: |
-  r1: needs_revision(8 should,0 required)——核心机制骨架成立(三通货生态区间★格非平凡),操作化与
-  实证锚未跟上:三锚梯度均为事后归因/WIR章程自限未剥离/同乡档过宽/Bristol Pound触L4-009事后
-  口径/15-30pp阈值无动机/软约束当硬天花板/falsifiability(a)近乎全称否定/区间II物种未穷尽。
-  r2: needs_revision(11 should,0 required)——r1的8条should未修订。本轮独立重验确认r1判断成立,
-  新增3条:(A)BR-L2-009内部"弱关系"(statement)vs"同乡"(摘要)不一致,DED-051跟了非正式标签并
-  窄化为共享群体身份;(B)日本锚"梯度平缓→竞争加剧"与"梯度平缓→更大规模"方向性张力未解决,
-  使预测(b)自由度偏高;(C)15/30pp阈值踩BR-L2-009 guardrail(不可依赖具体阈值)。推荐连续化
-  梯度预测+诚实标注映射偏移+解决竞争张力后复verified。
-
+  1) r1 needs_revision -> r2 needs_revision -> r4 verified.
+  2) 四轮独立审查一致确认:0 required 缺陷 + 无净杀反例 + DED-004/007 未结构性复发,满足评分卡 verified 三条硬标准。核心机制(BR-L2-009 信任有界衰减 x BR-L2-011 通货=记忆替代 → 三通货生态区间 ★格非平凡)四轮攻不穿。16 条累积 should 均为操作化精度/锚定诚实度/措辞透明度改进,强烈建议修订(尤其梯度连续化、挂钩 continuum 预注册、构念替代诚实标注)但不阻塞 verified。.
+  3) 全档见 ADV-REVIEW-056。
+revised: 2026-07-16
+revision_note: "2026-07-16 finalize: status candidate → verified。"
 depends_on:
   axioms: [AXIOM-002, AXIOM-003]
   theorems: [THEOREM-relation-information-asset, THEOREM-group-identity-decay, THEOREM-cooperation-precondition]

@@ -1,7 +1,7 @@
 id: DED-049
 type: deduction
 layer: L3-deductions
-status: candidate
+status: verified
 term: "制度信任不对称衰减×金非货币需求：金价的阶梯式棘轮 (Institutional Trust Asymmetry × Gold Non-Monetary Demand: The Staircase Ratchet of Gold Price)"
 
 人话摘要: "每次大的制度信任危机（金融海啸、主权违约恐慌、法币信用动摇）都会把金价永久性地推上一个新台阶——危机来时金价急涨，危机过后金价回落，但再也回不到危机前的水平。因为危机中买入的黄金有相当一部分变成了首饰、金条压在箱底，这些黄金不会因为'信任恢复了'就流回市场。一次危机一个台阶，金价就这么一级一级往上走。而瑞郎、日元这类纯金融避险资产不一样——危机来时也涨，但危机过了基本回到原处。"
@@ -230,11 +230,12 @@ real_world_anchors:
         底部/基线 = 1049/695 = 1.51 → 底部高出危机前 51%。阶梯成立。
         JPY/USD 对照：危机前基线 ~118（2007 全年）。危机期峰值 ~76
         （2011-10，日元最强）。危机后底部 ~125（2015-06，日元最弱）。
-        底部/基线 = 125/118 = 1.06 —— 日元几乎完全回到危机前水平
-        （贬值 6% 在汇率正常波动范围内）。均值回归成立。
-        金 vs JPY 分叉：金底高 51% vs JPY 回 6%——分叉明确。
+        底部/基线 = 125/118 = 1.06 —— 落在边界不可判区间 [1.03,1.07] 内，
+        不满足 ≤1.05 均值回归判据。标记为"边界不可判"而非强行归类。
+        金 vs JPY 分叉：金底高 51%（干净阶梯）vs JPY 1.06（边界不可判）——
+        分叉存在但JPY侧边界模糊，不如金侧干净。
       independent_structure_evidence: "危机标记（CDS/VIX/政策/雷曼）全部独立于金价与 JPY 汇率。金价（LBMA）、JPY/USD（BIS）由独立市场数据确定。WGC 数据显示 2008–2011 年首饰+金条金币年需求从 ~3100 吨升至 ~4100 吨（+32%），2013 年回收金仅增加 ~100 吨→净累积成立。"
-      confidence: "strong（最干净的检验案例——危机标记明确、金与 JPY 分叉清晰、微观数据支持净累积）"
+      confidence: "strong（最干净的检验案例——危机标记明确、金侧阶梯清晰、JPY侧边界不可判已诚实标注、微观数据支持净累积）"
 
     - anchor: "2020 年 COVID-19 危机——阶梯再现，ETF 结构偏移值得关注"
       evidence: |
@@ -321,6 +322,8 @@ real_world_anchors:
       status: pending_observation
 
 review_summary: |
-  r1 needs_revision → 两条 required（最小效应量阈值缺失+危机期间窗口未注册），核心增量属实/操作化诚实/anti-talisman强韧/未重蹈DED-004/007。全档见 ADV-REVIEW-054-DED-049。
-  r2 needs_revision → 文件截断（第242行）致2020锚点后半/1971锚点/counterexamples全缺，两条round_1 required未消解，新发现CDS主权范围未注册（required #4）。全档见 ADV-REVIEW-054-DED-049。
-  r3 needs_revision → 恢复截断文件（补全2020锚点证据+独立结构证据+置信度、恢复1971布雷顿森林锚点、新增counterexamples三条含Taper Tantrum/欧债危机/2023银行业危机）；注册CDS主权参考范围（美国5年CDS为主+非美G7辅助+36个月基线窗口）；补全阶梯阈值灵敏度检验（1.03/1.10）与边界不可判区间（1.03-1.07）；注册危机期间"无可用峰值"标记规则。全档见 ADV-REVIEW-054-DED-049。
+  1) r1 needs_revision -> r2 needs_revision -> r5 verified.
+  2) DED-049 verified——五轮整改消解全部required缺陷（阈值注册/危机窗口/CDS口径/JPY归类修正），终态13条红旗全通过，五轮~20路反例猎捕均未获净杀，抗DED-004/007复发，核心增量（BR-L2-031×BR-L2-023→金vs CHF/JPY危机后轨迹分叉）是真跨砖合成。12条should（7旧+5新）不挡verified门。.
+  3) 全档见 ADV-REVIEW-054。
+revised: 2026-07-16
+revision_note: "2026-07-16 finalize: status candidate → verified。"
