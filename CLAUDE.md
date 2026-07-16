@@ -16,6 +16,27 @@ python scripts/index.py       # 重生 INDEX.md(实体紧凑索引)。增删改�
 - `validate.py` 是唯一的门。它遍历所有含 `id` 的 YAML(跳过 `docs/ iterations/ __pycache__/` 与 `independence-model.yaml`/`META.yaml`),检查:ID 唯一、引用完整、无循环依赖、状态合法、**Rule D confidence_floor**(子推论 status 不得高于父推论允许的上限)、L3 推论必须有 `falsification_trace.primary_suspect` + `real_world_anchors`、L2 verified 必须 `IEA ≥ 1.2`。退出码非 0 即有错。
 - **没有单元测试框架**;正确性靠 `validate.py` + 独立对抗审查(见下)。
 
+```bash
+python scripts/export_graph.py   # 导出图谱数据 → visualization/graph-data.js + graph-data.json + articles.js
+```
+
+- `export_graph.py` 读取全部 5 层 YAML 实体,提取节点/边/文章引用,生成前端用的 JS 和 API 用的 JSON。**增删实体或改 articles.yaml 后必跑**。
+
+## ID 与文件命名约定
+
+| 实体类型 | ID 模式 | 文件名 |
+|---|---|---|
+| 物理约束 | `PHY-NNN` | `PHY-NNN-slug.yaml` |
+| 概念 | `CONCEPT-name` | `CONCEPT-name.yaml` |
+| 公理 | `AXIOM-NNN-slug` | `AXIOM-NNN-slug.yaml` |
+| 定理 | `THEOREM-slug` | `THEOREM-slug.yaml` |
+| 桥接命题 | `BR-L2-NNN-slug` | `BR-L2-NNN-slug.yaml` |
+| 推论 | `DED-NNN-slug` | `DED-NNN-slug.yaml` |
+| 复合推论 | `L4-NNN-slug` | `L4-NNN-slug.yaml` |
+| 审查档 | `ADV-REVIEW-NNN-{DED\|L4}-NNN` | `ADV-REVIEW-NNN-{DED\|L4}-NNN-*.yaml` |
+
+status 枚举:L3/L4 = `candidate|verified|verified*|rejected`;L2 = `candidate|verified|weakly_verified|rejected`。
+
 ## 五层架构(核心不变量)
 
 ```
@@ -67,6 +88,24 @@ L2 砖靠多来源加权投票(演化生物学 / 博弈论 / 文化普适),来�
 - **YAML 陷阱(踩过两次)**:多行叙述段一律用 `|` 字面块标量;裸标量里的 ASCII 冒号+空格(如 `三 species:`)会被当 mapping、**静默**把整块顶飞、实体少一个却仍报"✅通过"——改完务必核对 `validate.py` 的实体数 +1 且无 `❌ YAML`。
 - **管线重跑纪律(2026-07-16 制定)**:管线故障重跑时,必须用 `resumeFromRunId` 白拿已完成阶段的缓存结果,禁止整重跑——已完成 agent 的缓存结果不花钱,整重跑等于把已完成的 IEA/审查段又付一遍费。判例:BR-L2-029 首跑挂掉后整重跑浪费了已完成的 IEA 段。
 - **标准管线强制(2026-07-16 制定)**:所有推论/桥接砖的审查-整改-定论循环必须走标准管线脚本(`ded_pipeline`/`l2_verify`/`l4_pipeline`),禁止为此编写自定义一次性 Workflow。YAML 已存在的实体用 `skipAuthor: true`(ded/l4)或直接调用(l2_verify)。自定义 Workflow 绕过标准管线的 flash_revise/finalize 脚本/摘要复用等所有优化,是上一轮 900K token 浪费的根因。仅当任务无法映射到标准管线时(如一次性调研/批量跨实体扫描)才允许自定义脚本。
+
+## 可视化系统与部署
+
+三层:导出脚本 → 前端单页 → API 服务,部署于华为云 `124.71.219.208`,域名 `human-society.intelab.cn`。
+
+- **`scripts/export_graph.py`**(已纳入上方常用命令):读全部 YAML → `visualization/graph-data.js`(前端用 `window.GRAPH_DATA`)、`visualization/graph-data.json`(API 用)、`visualization/articles.js`(文章引用,前端独立加载,不进 API)。处理 6 种依赖格式(`depends_on`/`bridges_to`/`derived_from_concepts`/`l0_grounding`/`l0_constraints`/`derivation.from_l1/from_l2/from_l3`)。
+- **`visualization/index.html`**:零构建单文件,层标签+实体列表+详情面板(人话摘要/陈述/上下游/文章)。移动端(<767px)自动切栈式导航。NEW 标签用 localStorage 追踪已读。
+- **`api.py`**:FastAPI,7 个 GET 端点(`/api/nodes`/`/api/edges`/`/api/search`/`/api/stats`/`/api/health`/`/api/nodes/{id}`)。纯只读,无 POST/PUT/DELETE。自动文档已禁用。部署为 systemd 服务 `human-society-api`,nginx 反代 `/api/* → 127.0.0.1:8090`。
+- **部署**:push `main` 触发 `.github/workflows/deploy-visualization.yml`,通过 ssh-deploy 把 `visualization/` rsync 到 `/var/www/human-society.intelab.cn/`,`api.py` 到 `/opt/services/human-society-api/`,自动 `systemctl restart`。触发路径:L0-L4 YAML、`export_graph.py`、`index.html`、`articles.yaml`、`api.py`。
+- **凭据**:`SSH_KEY`/`SSH_USER` 在仓库外(`~/.ssh/github_actions_arch_platform` + `~/.claude/secrets.json`),通过 gh-secrets-setter 写入 GH Actions secrets。
+
+## 文章引用系统(`articles.yaml`)
+
+公众号文章与知识图谱实体的多对多关联。只在页面上展示(`📰 相关文章`卡片),不通过 API 暴露。
+
+- **格式**:`articles:` 列表,每项含 `url`/`title`/`date`/`entity_ids`(可多个)。
+- **修改**:仅 Claude 可编辑 `articles.yaml`。改动后跑 `export_graph.py` → 生成 `articles.js` → 提交 → push 自动部署。
+- **安全边界**:`/api/nodes/{id}` 和 `/graph-data.json` 均不含文章数据;前端通过独立 `<script src="articles.js">` 加载 `window.ARTICLE_DATA`。
 
 ## 目录速览
 
