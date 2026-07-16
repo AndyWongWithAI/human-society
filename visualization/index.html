@@ -344,9 +344,9 @@ async function loadData() {
     if (upstreamMap[e.source]) upstreamMap[e.source].push({ id: e.target, relation: e.relation_label });
   });
 
-  // Merge article references (from articles.js, not in API)
-  articleMap = {};
-  if (window.ARTICLE_DATA && window.ARTICLE_DATA.entity_articles) {
+  // Merge article references (from API/graph-data.json, fallback to articles.js)
+  articleMap = data.entity_articles || {};
+  if (Object.keys(articleMap).length === 0 && window.ARTICLE_DATA && window.ARTICLE_DATA.entity_articles) {
     articleMap = window.ARTICLE_DATA.entity_articles;
   }
 }

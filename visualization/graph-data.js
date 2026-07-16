@@ -10818,7 +10818,7 @@ window.GRAPH_DATA = {
   "meta": {
     "total_nodes": 140,
     "total_edges": 1357,
-    "generated_at": "2026-07-16T19:48:42.141120",
+    "generated_at": "2026-07-16T19:52:21.185514",
     "layers": {
       "L0": 3,
       "L1": 38,
@@ -10835,5 +10835,17 @@ window.GRAPH_DATA = {
       "deduction": 52,
       "composite_deduction": 15
     }
+  },
+  "entity_articles": {
+    "DED-042": [
+      {
+        "url": "https://mp.weixin.qq.com/s/bgKQiO8qvrwuBs_8_oFxqQ",
+        "title": "算法透明才是数字时代最坚硬的铠甲",
+        "date": "2026-07-16",
+        "entity_ids": [
+          "DED-042"
+        ]
+      }
+    ]
   }
 };

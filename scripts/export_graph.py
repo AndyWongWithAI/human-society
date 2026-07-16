@@ -185,15 +185,15 @@ def parse_yaml_file(filepath: Path) -> dict | None:
 
 
 def export_articles(valid_node_ids: set):
-    """Export articles.yaml → visualization/articles.js (not included in API)."""
+    """Export articles.yaml → visualization/articles.js, return entity_articles for API."""
     articles_yaml = PROJECT_ROOT / "articles.yaml"
     if not articles_yaml.exists():
         print("  No articles.yaml found, skipping article export")
-        return
+        return {}
 
     data = parse_yaml_file(articles_yaml)
     if data is None:
-        return
+        return {}
 
     raw_articles = data.get("articles", [])
     if not isinstance(raw_articles, list):
@@ -230,6 +230,7 @@ def export_articles(valid_node_ids: set):
     with open(articles_js, "w", encoding="utf-8") as f:
         f.write(f"window.ARTICLE_DATA = {json_str};\n")
     print(f"  Wrote {articles_js} ({len(valid_articles)} articles, {len(entity_articles)} entities referenced)")
+    return entity_articles
 
 
 def main():
@@ -347,6 +348,11 @@ def main():
 
     VIS_DIR.mkdir(parents=True, exist_ok=True)
 
+    # Export article references (included in graph-data JSON / API)
+    entity_articles = export_articles(node_ids)
+    if entity_articles:
+        output["entity_articles"] = entity_articles
+
     js_path = VIS_DIR / "graph-data.js"
     json_str = json.dumps(output, ensure_ascii=False, indent=2)
     with open(js_path, "w", encoding="utf-8") as f:
@@ -357,9 +363,6 @@ def main():
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
     print(f"  Wrote {json_path}")
-
-    # Export article references (separate from API data)
-    export_articles(node_ids)
 
     skipped = len(unique_edges) - len(valid_edges)
     print(f"\nDone! {len(nodes)} nodes, {len(valid_edges)} edges.")
