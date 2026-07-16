@@ -5,7 +5,7 @@
 </scroll-view>
 
 <view class="search-bar">
-  <image src="/images/search.png" style="width:14px;height:14px;opacity:0.4"/>
+  <text style="opacity:0.4">🔍</text>
   <input placeholder="搜索 ID / 术语 / 摘要..." bindinput="onSearch" value="{{query}}" confirm-type="search"/>
   <text wx:if="{{query}}" class="clear-btn" bindtap="clearSearch">✕</text>
 </view>

@@ -9,15 +9,6 @@
     "navigationBarTextStyle": "black",
     "backgroundColor": "#f8f9fa"
   },
-  "tabBar": {
-    "color": "#718096",
-    "selectedColor": "#5B8FF9",
-    "backgroundColor": "#ffffff",
-    "borderStyle": "white",
-    "list": [
-      { "pagePath": "pages/index/index", "text": "知识图谱" }
-    ]
-  },
   "networkTimeout": {
     "request": 10000
   }
