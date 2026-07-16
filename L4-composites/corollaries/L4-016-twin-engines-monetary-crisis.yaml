@@ -78,7 +78,7 @@ depends_on:
   theorems: [THEOREM-value-attribution, THEOREM-relation-information-asset]
   bridging: [BR-L2-022, BR-L2-024, BR-L2-031]
   deductions: [DED-028, DED-038]
-  concepts: [CONCEPT-value, CONCEPT-exchange, CONCEPT-trust, CONCEPT-institution]
+  concepts: [CONCEPT-value, CONCEPT-exchange, CONCEPT-relation]
 
 domain: ["货币危机", "制度信任", "经济动力学"]
 created: 2026-07-16
