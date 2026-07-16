@@ -32,9 +32,9 @@ jobs:
       - name: 部署到华为云
         uses: easingthemes/ssh-deploy@v5
         with:
-          SSH_PRIVATE_KEY: ${{ secrets.HUAWEI_SSH_KEY }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
           ARGS: "-avz --delete"
           SOURCE: "visualization/"
           REMOTE_HOST: "124.71.219.208"
-          REMOTE_USER: "root"
+          REMOTE_USER: ${{ secrets.SSH_USER }}
           TARGET: "/var/www/human-society.intelab.cn/"
