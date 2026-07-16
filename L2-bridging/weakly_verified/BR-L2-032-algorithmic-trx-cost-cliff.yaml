@@ -92,8 +92,10 @@ applicable_sources:
       外部性/交叉补贴),default_independence 各取 0.6。
 
 falsifiability: |
-  本命题的核心主张是:算法对交易成本的降低是【断崖式下降】(数量级≥10000x)
-  而非【连续递减】。若以下条件成立,则核心主张被推翻:
+  本命题的核心主张是:算法对交易成本的降低是【断崖式下降】而非【连续递减】
+  ——各维度断崖幅度因度量口径而异(搜寻维~4-5数量级/匹配维~1.4x经济降幅
+  +10000x规模跨度/监控维~10x),不共享同一数量级声称。若以下条件成立,则
+  核心主张被推翻:
 
   (a) 展示任一前数字制度安排(黄页/分类广告/行会口碑/商业信用报告/人际
   推荐网络/猎头/中介)在【可比的规模】上实现了算法搜索/匹配/监控的相近
@@ -120,12 +122,10 @@ falsifiability: |
 created: 2026-07-16
 source_anchors: []
 review_summary: |
-  r1→needs_revision(4 required)→修复后手动翻牌 weakly_verified。
-  IEA=1.6(≥1.2,<1.8):information_economics锚1.0+platform_economics 0.6,
-  TCE→framework_support(0.0)。核心直觉(算法将交易成本压至前数字制度无法
-  企及的水平)有价值,三维度已按独立度量口径注册(搜寻4-5数量级/匹配~1.4x
-  经济降幅+10000x规模跨度/监控~10x),不再共享统一声称。待新独立来源补至
-  IEA≥1.8。全档见 ADV-REVIEW-BR-L2-032。
+  r1→needs_revision(4 required)→r2→3/4修复到位+1残余(falsifiability对齐)。
+  IEA=1.6:IE锚1.0+PE 0.6,TCE→framework_support。三维度独立度量口径已注册,
+  falsifiability开篇已与statement对齐(不共享统一数量级)。weakly_verified,
+  待新独立来源补至IEA≥1.8。全档见ADV-REVIEW-BR-L2-032。
 cross_verification:
   votes:
     information_economics:
