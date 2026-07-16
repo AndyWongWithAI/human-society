@@ -1,6 +1,6 @@
 # Author Reading Pack（作者阅读包）
 
-> 自动生成于 2026-07-16 11:51。跑 `python scripts/index.py` 重生。
+> 自动生成于 2026-07-16 16:51。跑 `python scripts/index.py` 重生。
 > 用途：起草推论前**只读这一份**——实体速览 + 前置清单 + 瘦身格式，全在这里。
 > 不再需要分别读 INDEX.md + author-checklist.md + 方法论文件。
 
@@ -8,7 +8,7 @@
 
 ## 1. 实体速览
 
-**199 实体**（同 INDEX.md，一行一条）
+**239 实体**（同 INDEX.md，一行一条）
 
 
 ## L0 物理约束 (3)
@@ -105,7 +105,7 @@
 - BR-L2-031 [weakly_verified] · 制度信任的不对称衰减 — 对制度的信任有个扎心的规律——掉得快、涨得慢  ⟵ AXIOM-002, THEOREM-relation-information-asset
 - BR-L2-032 [weakly_verified] · 算法驱动的搜索/匹配/监控成本断崖 — 算法不是让交易'更快'——它把搜索成本压低了上万倍、把匹配和监控成本压到了从前在大规模匿名交易中无法企及的水平,压低到了没有算法时不管花多少钱都…  ⟵ AXIOM-002
 
-## L3 推论 corollaries (35)
+## L3 推论 corollaries (55)
 - DED-001 [verified] · 组织深度天花板推论 — 光靠人嘴对嘴传话的组织，管理层级最多也就5到7层——再深，最高层掌握的情况就和基层实际严重脱节了；想再大，只能把信息写下来（官僚化）或把权力下放…  ⟵ AXIOM-002, THEOREM-hierarchy-depth-limit, BR-L2-001, BR-L2-004
 - DED-002 [verified] · 规范成文化阈值推论 — 口口相传的规矩有个复杂度上限；社会一大、规矩一多，要么把规矩写下来、分层、或找专人记诵来突破上限，要么干脆分裂成一堆小单元、让每份规矩都不超上限…  ⟵ AXIOM-003, THEOREM-norm-energy-saver, THEOREM-cooperation-precondition, BR-L2-001, BR-L2-005
 - DED-003 [verified*] · 内聚-外竞耦合推论 — 大群体的内部团结，和‘有没有一个外部对手’是绑在一起的——因为‘我们不同于他们’是最省力的团结方式；一旦外敌消失、又不肯改用别的方式（如民主参与…  ⟵ AXIOM-001, AXIOM-003, THEOREM-group-identity-decay, THEOREM-competition-norm, BR-L2-003, BR-L2-006
@@ -141,8 +141,28 @@
 - DED-033 [weakly_verified] · 社保-消费释放的信任约束 — 国家把医保、养老金铺开了，按说老百姓后顾之忧少了、就敢花钱了——这是教科书上的'无摩擦'预测  ⟵ AXIOM-001, AXIOM-002, BR-L2-028, BR-L2-031, BR-L2-024
 - DED-034 [verified] · AI代理决策与个体判断力退化 — AI帮你做决定做多了,你自己做判断的能力会退化——不是AI坏,是用进废退  ⟵ AXIOM-002, BR-L2-026, BR-L2-027
 - DED-035 [candidate] · 数据协调成本不对称冲击与企业边界分叉 — 数字数据+算法让做买卖和管公司都变便宜了,但便宜的程度不一样——能标准化、能量化的事,做买卖的成本降得比管公司更狠,所以企业把这类事外包出去;但…  ⟵ AXIOM-002, THEOREM-hierarchy-depth-limit, THEOREM-cooperation-precondition, BR-L2-001, BR-L2-009, BR-L2-010, DED-001, DED-006
+- DED-036 [verified] · 算法成本断崖×货币物理筛选：从发现到设计 — 算法把搜索和评估成本压低了上万倍之后，'什么东西适合当钱'这件事的玩法彻底变了——以前是大自然花上千年慢慢筛选（金、银、铜，试了无数种东西才找到…  ⟵ AXIOM-001, AXIOM-002, THEOREM-exchange-competition-alternative, THEOREM-value-attribution, BR-L2-021, BR-L2-032
+- DED-037 [candidate] · AI陪伴×道德发育窗口：道德他者模型偏移 — 小孩子怎么学会'伤害别人是不对的'？不是大人讲道理讲会的——是看到别人被自己弄疼时脸上的表情、听到对方声音发抖，这些真实的情绪反馈慢慢在孩子心里…
+- DED-038 [candidate] · 制度信任崩解×法币功能解耦：恶性通胀的双重时间不对称 — 制度信任崩了之后，钱的两样功能各跑各的——'存钱'功能因为信任掉得快先跑（大家赶紧把钱换成金条、外币），但'标价'功能因为记忆惯性还留在原地（工…  ⟵ AXIOM-002, THEOREM-value-attribution, THEOREM-relation-information-asset, BR-L2-031, BR-L2-024
+- DED-039 [candidate] · AI共享代码×大规模合作：想象秩序的必要性降级 — 人类大规模合作一直靠'大家都信同一个故事'——国家、宗教、市场都是靠人们共同相信一套叙事才让陌生人愿意合作  ⟵ AXIOM-002, AXIOM-003, THEOREM-cooperation-precondition, BR-L2-003, BR-L2-026
+- DED-040 [candidate] · 算法监控成本断崖×第三方惩罚：惩罚通胀与惩罚疲劳的分叉 — 算法让发现别人违规的成本断崖式下降后,大量以前看不见的小违规全进了'可罚池'——这触发两种相反的走向:要么举报太多、每条举报越来越不值钱(惩罚通…  ⟵ AXIOM-001, AXIOM-002, AXIOM-003, THEOREM-competition-norm, THEOREM-cooperation-precondition, THEOREM-conflict-cost, THEOREM-moral-third-party-enforcement, BR-L2-014, BR-L2-032
+- DED-041 [verified] · 数字可处理性×道德内化：具身共情的系统性削弱 — 屏幕上的伤害没有血肉、没有颤抖的声音、没有真实的眼神接触——你知道对方受伤了，但你感受不到
+- DED-042 [candidate] · 算法监控×制度信任不对称：修复斜率的系统性拉陡 — 制度信任有个扎心规律——掉得快、涨得慢
+- DED-043 [candidate] · AI协调与层级压缩：150人阈值的条件化 — 一群人超过150人就得出领导、分上下级——因为人脑的社交关系和处理信息的能力有天花板
+- DED-044 [candidate] · 掠夺策略×制度信任替代：共生性双向塑造 — 抢别人东西和建立制度管住抢劫，这两件事不是简单的'制度强了就不抢了'单向关系——它们是互相塑造的  ⟵ AXIOM-001, AXIOM-002, AXIOM-003, AXIOM-004, THEOREM-conflict-cost, THEOREM-cooperation-precondition, THEOREM-relation-information-asset, BR-L2-008, BR-L2-010
+- DED-045 [verified] · AI承诺装置×现时偏向：财务命运的分叉放大器 — AI同时是帮人存钱的最强工具和诱人花钱的最强工具——同一套技术,用在帮你管钱上能自动存、自动锁、自动盯着预算,比你自己咬牙坚持靠谱得多;但用在让…  ⟵ AXIOM-001, AXIOM-002, BR-L2-026, BR-L2-030
+- DED-046 [verified] · 注意力稀缺xMPC收入梯度：注意力-消费的恶性螺旋 — 穷人不是大手大脚——是脑子被生存焦虑占满了,没余力抵抗算法精准推送的消费诱惑  ⟵ AXIOM-001, AXIOM-002, BR-L2-027, BR-L2-029
+- DED-047 [candidate] · AI货币功能解耦×社会共识生成：优化器而非奠基者 — AI可以把货币的三大功能（买东西、标价格、存钱）拆开再拼回去的技术做到极致——算法能让钱在不同功能之间无缝切换、自动优化  ⟵ AXIOM-002, AXIOM-003, THEOREM-value-attribution, THEOREM-cooperation-precondition, THEOREM-group-identity-decay, BR-L2-022, BR-L2-026
+- DED-048 [candidate] · 算法结算成本×通用媒介收敛：从技术必然到制度选择 — 以前大家非得用同一种钱,不是因为'用同一种钱方便',而是因为不用同一种钱的话,算清楚'我欠你、你欠他、他又欠她'这笔七拐八绕的账实在太贵了——人…  ⟵ AXIOM-002, THEOREM-exchange-competition-alternative, THEOREM-value-attribution, THEOREM-relation-information-asset, BR-L2-012, BR-L2-032
+- DED-049 [candidate] · 制度信任不对称衰减×金非货币需求：金价的阶梯式棘轮 — 每次大的制度信任危机（金融海啸、主权违约恐慌、法币信用动摇）都会把金价永久性地推上一个新台阶——危机来时金价急涨，危机过后金价回落，但再也回不到…
+- DED-050 [verified] · 数字可处理性x制度信任不对称：失信信号永久化与修复信号噪声化 — 对制度的信任有个扎心规律——掉得快、涨得慢  ⟵ AXIOM-002, THEOREM-relation-information-asset, BR-L2-025, BR-L2-031
+- DED-051 [candidate] · 人际信任衰减梯度×通货必要性：社区货币的生态位边界 — 熟人之间不用钱——谁帮了谁、谁欠了谁，大家都记在心里，跑不掉  ⟵ AXIOM-002, AXIOM-003, THEOREM-relation-information-asset, THEOREM-group-identity-decay, THEOREM-cooperation-precondition, BR-L2-009, BR-L2-011
+- DED-052 [candidate] · MPC收入梯度×不公平厌恶：消费Gini作为财富Gini的掩码器 — 富人和穷人的收入差N倍,但花的钱只差M倍(M<N)——因为富人大多存起来了  ⟵ AXIOM-001, AXIOM-002, BR-L2-013, BR-L2-029
+- DED-053 [candidate] · AI无群体身份与内群体偏好消解 — AI既不是'自己人'也不是'外人'——它根本没有群体身份
+- DED-054 [verified] · 数字可处理性×法币记忆滞后：双向效应与治理条件 — 法币的信用有个惯性——人对通胀的记忆消退得比实际通胀下降慢，大家不信政策、只信自己经历过的（BR-L2-024）  ⟵ AXIOM-002, THEOREM-value-attribution, BR-L2-024, BR-L2-025
+- DED-055 [candidate] · 现时偏向×法币记忆滞后：前瞻指引效力的双重折扣 — 央行说'两年后通胀会降到2%',但老百姓听了并不会当真去买两年后的国债锁定收益——因为人天生就觉得'两年后的事太远了,先顾眼前'(现时偏向)  ⟵ AXIOM-001, AXIOM-002, THEOREM-value-attribution, BR-L2-024, BR-L2-030
 
-## L3 审查 reviews (41)
+## L3 审查 reviews (61)
 - ADV-REVIEW-001 [needs_revision] — 这是对推论 DED-001（组织层级深到一定程度，高层就再也管不清底层）的第一轮挑刺审查：审查者挑出四个毛病——关键数字（信息每传一层损耗多少）…
 - ADV-REVIEW-002 [needs_revision] — 这是对推论 DED-002（纯靠口口相传的规矩，社会一大就承载不下、必须借助文字等手段）的第一轮挑刺审查：审查者搬出冰岛这类反例、质疑'一条规矩…
 - ADV-REVIEW-003 [needs_revision] — 这是对推论 DED-003（外部没有对手了，内部凝聚力就会慢慢松散）的第一轮挑刺审查，也是三条推论里被批得最狠的一次：瑞士等一批长期和平却依旧团…
@@ -183,6 +203,26 @@
 - ADV-REVIEW-038 — 对 DED-033(社保-消费释放的信任约束)的 round_1 独立对抗审查
 - ADV-REVIEW-039 — 对 DED-034(AI代理决策与个体判断力退化)的 round_1 独立对抗审查
 - ADV-REVIEW-040 — 对 DED-035(数据协调成本不对称冲击与企业边界分叉)的 round_1 独立对抗审查
+- ADV-REVIEW-041-DED-036 — DED-036（算法成本断崖×货币物理筛选：从发现到设计）round_1 独立对抗审查—— needs_revision
+- ADV-REVIEW-042 — 对 DED-037(AI陪伴×道德发育窗口：道德他者模型偏移)的 round_1 独立对抗审查
+- ADV-REVIEW-043 — 对 DED-038(制度信任崩解×法币功能解耦:恶性通胀的双重时间不对称)的 round_1 独立对抗审查
+- ADV-REVIEW-044 — 对 DED-039(AI共享代码×大规模合作:想象秩序的必要性降级)的 round_1 独立对抗审查
+- ADV-REVIEW-045 — 对 DED-040(算法监控成本断崖×第三方惩罚:惩罚通胀与惩罚疲劳的分叉)的 round_1 独立对抗审查
+- ADV-REVIEW-046 — 对 DED-041(数字可处理性×道德内化:具身共情的系统性削弱)的 round_1 独立对抗审查
+- ADV-REVIEW-047 — 对 DED-042(算法监控×制度信任不对称:修复斜率的系统性拉陡)的 round_1 独立对抗审查
+- ADV-REVIEW-048 — 对 DED-043(AI协调与层级压缩:150人阈值的条件化)的独立对抗审查记录
+- ADV-REVIEW-049 — 对 DED-044(掠夺策略×制度信任替代:共生性双向塑造)的 round_1 独立对抗审查
+- ADV-REVIEW-050-DED-045 — DED-045（AI承诺装置×现时偏向：财务命运的分叉放大器）对抗审查 round_1 存档
+- ADV-REVIEW-051 — 对 DED-046(注意力稀缺xMPC收入梯度:注意力-消费恶性螺旋)的 round_1 独立对抗审查
+- ADV-REVIEW-052 — 对 DED-047(AI货币功能解耦×社会共识生成:优化器而非奠基者)的 round_1 独立对抗审查
+- ADV-REVIEW-053 — 对 DED-048(算法结算成本×通用媒介收敛:从技术必然到制度选择)的 round_1 独立对抗审查
+- ADV-REVIEW-054-DED-049 — DED-049（制度信任不对称衰减×金非货币需求：金价的阶梯式棘轮）对抗审查 round_1 存档
+- ADV-REVIEW-055 [verified] — DED-050 是新推论'数字可处理性x制度信任不对称：失信信号永久化与修复信号噪声化'的首轮独立对抗审查
+- ADV-REVIEW-056 — 对 DED-051(人际信任衰减梯度×通货必要性：社区货币的生态位边界)的第一轮独立对抗审查
+- ADV-REVIEW-057 — 对 DED-052(MPC收入梯度作为财富Gini的消费掩码器)的 round_1 独立对抗审查
+- ADV-REVIEW-058 — 对 DED-053(AI无群体身份与内群体偏好消解)的 round_1 独立对抗审查
+- ADV-REVIEW-059-DED-054 — DED-054（数字可处理性×法币记忆滞后：双向效应与治理条件）对抗审查 round_1 存档
+- ADV-REVIEW-060 — 对 DED-055(现时偏向×法币记忆滞后：前瞻指引效力的双重折扣)的第一轮独立对抗审查
 - META-REVIEW-001 — 这份文件记录了一次"自我审查":我(负责推理的 AI)先用第一性原理给整个体系挑了 四个毛病,然后请另一个独立的 AI 拼命反驳我
 
 ## L3 其它(经验检验/交叉验证等) (6)

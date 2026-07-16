@@ -132,7 +132,10 @@ def upsert_review_summary(
 
 
 def upsert_scalar(lines: list[str], key: str, value: str) -> None:
-    """写入/覆写一个简单标量字段。"""
+    """写入/覆写一个简单标量字段。自动引用含 ': ' 的值以免 YAML 解析错误。"""
+    # 若值含 ASCII 冒号+空格,引用以免被 YAML 当做嵌套 mapping
+    if ": " in value:
+        value = f'"{value}"'
     for i, line in enumerate(lines):
         if line.startswith(f"{key}:"):
             lines[i] = f"{key}: {value}\n"

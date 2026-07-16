@@ -58,7 +58,7 @@ def call_flash(api_key, base_url, model, system_prompt, user_prompt, max_tokens=
             "max_tokens": max_tokens,
             "temperature": 0.3,  # 机械修改，低温度
         },
-        timeout=120,
+        timeout=300,
     )
     if resp.status_code != 200:
         return None, f"API error {resp.status_code}: {resp.text[:500]}"
