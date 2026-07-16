@@ -150,6 +150,9 @@ body {
 .status-dot.weakly_verified { background: #ECC94B; }
 .status-dot.candidate, .status-dot.rejected { background: #A0AEC0; }
 
+/* Mobile back button — hidden by default, shown only on mobile detail view */
+.mobile-back-btn { display: none; }
+
 /* ===== Right Detail ===== */
 .detail {
   flex: 1; overflow-y: auto; padding: 24px 32px;
@@ -232,8 +235,47 @@ body {
 
 .empty-hint { font-size: 12px; color: var(--text2); padding: 12px; text-align: center; }
 
-@media (max-width: 768px) {
-  .sidebar { width: 220px; }
+@media (max-width: 767px) {
+  /* Top bar: compact */
+  .top-bar { padding: 0 10px; gap: 6px; }
+  .top-bar h1 { font-size: 13px; }
+  .top-bar .search-wrap { max-width: none; flex: 1; }
+  .top-bar .stats { display: none; }
+  .top-bar .api-btn { font-size: 11px; padding: 5px 8px; }
+
+  /* Main layout: stack vertically */
+  .main-layout { flex-direction: column; position: relative; }
+  .sidebar { width: 100%; }
+
+  /* Layer tabs: horizontal scroll */
+  .layer-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .layer-tabs::-webkit-scrollbar { display: none; }
+  .layer-tab { flex: none; min-width: 56px; padding: 12px 10px; white-space: nowrap; font-size: 12px; }
+
+  /* Entity items: touch-friendly */
+  .entity-item { padding: 14px 16px; min-height: 44px; }
+
+  /* Detail: hidden by default */
+  .detail { display: none; }
+
+  /* Mobile: showing detail view */
+  body.mobile-showing-detail .sidebar { display: none; }
+  body.mobile-showing-detail .detail { display: block; width: 100%; padding: 0; }
+
+  /* Back button: sticky top */
+  body.mobile-showing-detail .mobile-back-btn {
+    display: flex; align-items: center; gap: 6px;
+    padding: 12px 16px; font-size: 15px; font-weight: 600;
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    cursor: pointer; min-height: 44px; position: sticky; top: 0;
+    z-index: 5; color: var(--primary);
+  }
+  body.mobile-showing-detail #detailContent { padding: 16px; }
+
+  /* API modal: fit screen */
+  .api-modal { width: 95vw; max-width: 95vw; padding: 20px; max-height: 90vh; }
+
+  /* Dependencies: single column */
   .dep-section { grid-template-columns: 1fr; }
   .detail { padding: 16px; }
 }
@@ -260,6 +302,7 @@ body {
 
   <!-- Right Detail -->
   <div class="detail" id="detail">
+    <div class="mobile-back-btn" id="mobileBackBtn" onclick="goBackToList()">← 返回</div>
     <div class="detail-empty" id="detailEmpty">
       <div class="icon">📋</div>
       <div>选择左侧实体查看详情</div>
@@ -332,6 +375,25 @@ let activeLayer = "L0";
 let activeNodeId = null;
 let searchQuery = "";
 
+// ===== Mobile detection =====
+let isMobile = false;
+let entityListScrollTop = 0;
+const mobileMediaQuery = window.matchMedia('(max-width: 767px)');
+
+function handleMobileChange(e) {
+  isMobile = e.matches;
+  if (!isMobile) {
+    document.body.classList.remove('mobile-showing-detail');
+  }
+}
+
+if (mobileMediaQuery.addEventListener) {
+  mobileMediaQuery.addEventListener('change', handleMobileChange);
+} else {
+  mobileMediaQuery.addListener(handleMobileChange);
+}
+isMobile = mobileMediaQuery.matches;
+
 // ===== Read tracking (localStorage) =====
 function getReadIds() {
   try {
@@ -376,6 +438,10 @@ function switchLayer(layer) {
   activeLayer = layer;
   activeNodeId = null;
   document.querySelectorAll(".layer-tab").forEach(b => b.classList.toggle("active", b.dataset.layer === layer));
+  // On mobile, go back to entity list
+  if (isMobile) {
+    document.body.classList.remove('mobile-showing-detail');
+  }
   renderEntityList();
   showEmptyDetail();
 }
@@ -484,6 +550,11 @@ function selectNode(id) {
   // Mark as read — NEW badge disappears
   markRead(id);
 
+  // On mobile, save scroll position before re-rendering
+  if (isMobile) {
+    entityListScrollTop = document.getElementById('entityList').scrollTop;
+  }
+
   document.getElementById("detailEmpty").style.display = "none";
   document.getElementById("detailContent").style.display = "block";
   document.getElementById("entityList").querySelectorAll(".entity-item").forEach(
@@ -562,6 +633,12 @@ function selectNode(id) {
   }
 
   document.getElementById("detailContent").innerHTML = html;
+
+  // On mobile, switch to detail view
+  if (isMobile) {
+    document.body.classList.add('mobile-showing-detail');
+    document.getElementById('detail').scrollTop = 0;
+  }
 }
 
 function renderDepLink(e, dir) {
@@ -583,6 +660,11 @@ function renderDepLink(e, dir) {
 function showEmptyDetail() {
   document.getElementById("detailEmpty").style.display = "flex";
   document.getElementById("detailContent").style.display = "none";
+}
+
+function goBackToList() {
+  document.body.classList.remove('mobile-showing-detail');
+  document.getElementById('entityList').scrollTop = entityListScrollTop;
 }
 
 // ===== Statement toggle =====
@@ -609,6 +691,10 @@ function handleSearch() {
     document.querySelectorAll(".layer-tab").forEach(b => b.classList.remove("active"));
   } else {
     document.querySelectorAll(".layer-tab").forEach(b => b.classList.toggle("active", b.dataset.layer === activeLayer));
+  }
+  // On mobile, go back to entity list to show results
+  if (isMobile) {
+    document.body.classList.remove('mobile-showing-detail');
   }
   renderEntityList();
 }
