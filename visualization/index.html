@@ -60,6 +60,49 @@ body {
 .top-bar .search-wrap input:focus { border-color: var(--primary); }
 .top-bar .search-wrap .icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text2); font-size: 13px; }
 .top-bar .stats { font-size: 12px; color: var(--text2); white-space: nowrap; }
+.top-bar .api-btn {
+  padding: 5px 12px; border: 1px solid var(--border); border-radius: 5px;
+  background: var(--surface); cursor: pointer; font-size: 12px; font-weight: 600;
+  color: var(--primary); white-space: nowrap; font-family: inherit;
+}
+.top-bar .api-btn:hover { background: #eef2ff; }
+
+/* ===== API Modal ===== */
+.api-modal-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4); z-index: 100; display: none;
+  align-items: center; justify-content: center;
+}
+.api-modal-overlay.show { display: flex; }
+.api-modal {
+  background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow-lg);
+  width: 720px; max-height: 80vh; overflow-y: auto; padding: 32px;
+}
+.api-modal h2 { font-size: 20px; margin-bottom: 6px; }
+.api-modal .subtitle { font-size: 12px; color: var(--text2); margin-bottom: 20px; }
+.api-modal .endpoint {
+  margin-bottom: 16px; border: 1px solid var(--border); border-radius: 6px; overflow: hidden;
+}
+.api-modal .endpoint .ep-head {
+  display: flex; align-items: center; gap: 10px; padding: 10px 14px;
+  background: #f7fafc; font-family: monospace; font-size: 13px;
+}
+.api-modal .endpoint .ep-head .method {
+  padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 11px;
+  color: #fff; text-transform: uppercase;
+}
+.method.get { background: #48BB78; }
+.method.post { background: #ED8936; }
+.api-modal .endpoint .ep-body { padding: 10px 14px; font-size: 13px; line-height: 1.6; }
+.api-modal .endpoint .ep-body code {
+  background: #edf2f7; padding: 1px 6px; border-radius: 3px; font-size: 12px;
+}
+.api-modal .badge-ro { display: inline-block; padding: 1px 7px; border-radius: 8px;
+  font-size: 10px; font-weight: 700; background: #C6F6D5; color: #22543D; }
+.api-modal .close-btn {
+  float: right; background: none; border: none; font-size: 22px;
+  cursor: pointer; color: var(--text2); line-height: 1;
+}
 
 /* ===== Main Layout ===== */
 .main-layout { display: flex; flex: 1; overflow: hidden; }
@@ -205,6 +248,7 @@ body {
     <input type="text" id="searchInput" placeholder="搜索 ID / 术语 / 摘要..." />
   </div>
   <div class="stats" id="stats"></div>
+  <button class="api-btn" onclick="toggleApiModal()">📡 API</button>
 </div>
 
 <div class="main-layout">
@@ -569,5 +613,53 @@ function debounce(fn, ms) {
 
 document.addEventListener("DOMContentLoaded", init);
 </script>
-</body>
+<!-- API 文档弹窗 -->
+<div class="api-modal-overlay" id="apiModal" onclick="if(event.target===this) toggleApiModal()">
+  <div class="api-modal">
+    <button class="close-btn" onclick="toggleApiModal()">✕</button>
+    <h2>📡 API 接口文档 <span class="badge-ro" style="margin-left:8px">只读</span></h2>
+    <p class="subtitle">所有接口均为 GET，无需认证。修改操作由 Claude 代理执行，不对外暴露。</p>
+
+    <div class="endpoint">
+      <div class="ep-head"><span class="method get">GET</span> /api/health</div>
+      <div class="ep-body">健康检查。返回节点数、边数、最后更新时间。<br><code>curl https://human-society.intelab.cn/api/health</code></div>
+    </div>
+
+    <div class="endpoint">
+      <div class="ep-head"><span class="method get">GET</span> /api/nodes</div>
+      <div class="ep-body">节点列表，支持过滤：<code>?layer=L3</code> <code>&type=deduction</code> <code>&status=verified</code> <code>&q=搜索词</code><br><code>curl "https://human-society.intelab.cn/api/nodes?layer=L4&status=verified"</code></div>
+    </div>
+
+    <div class="endpoint">
+      <div class="ep-head"><span class="method get">GET</span> /api/nodes/{id}</div>
+      <div class="ep-body">单节点详情 + 上游依赖（depends_on）+ 下游被依赖（depended_by）。<br><code>curl https://human-society.intelab.cn/api/nodes/DED-001</code></div>
+    </div>
+
+    <div class="endpoint">
+      <div class="ep-head"><span class="method get">GET</span> /api/edges</div>
+      <div class="ep-body">边列表，支持过滤：<code>?relation=depends_on</code> <code>&source=DED-001</code> <code>&target=AXIOM-002</code><br><code>curl "https://human-society.intelab.cn/api/edges?source=DED-001"</code></div>
+    </div>
+
+    <div class="endpoint">
+      <div class="ep-head"><span class="method get">GET</span> /api/search</div>
+      <div class="ep-body">全文搜索节点（ID/术语/人话摘要）。<code>?q=搜索词</code> 必填。<br><code>curl "https://human-society.intelab.cn/api/search?q=国家"</code></div>
+    </div>
+
+    <div class="endpoint">
+      <div class="ep-head"><span class="method get">GET</span> /api/stats</div>
+      <div class="ep-body">图谱统计信息：总节点数、各层/各类型分布、生成时间。<br><code>curl https://human-society.intelab.cn/api/stats</code></div>
+    </div>
+
+    <div class="endpoint">
+      <div class="ep-head"><span class="method get">GET</span> /graph-data.json</div>
+      <div class="ep-body">完整数据集（全部节点 + 全部边），适合批量处理。<br><code>curl https://human-society.intelab.cn/graph-data.json</code></div>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleApiModal() {
+  document.getElementById('apiModal').classList.toggle('show');
+}
+</script>
 </html>
