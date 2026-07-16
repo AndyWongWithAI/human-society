@@ -225,24 +225,37 @@ body {
   </div>
 </div>
 
-<script src="graph-data.js"></script>
 <script>
-// ===== Data =====
-const data = window.GRAPH_DATA;
-const nodes = data.nodes;
-const edges = data.edges;
+// ===== Data (loaded via API — /graph-data.json 也可直接访问) =====
+let data = null;
+let nodes = [];
+let edges = [];
+let nodeMap = {};
+let downstreamMap = {};
+let upstreamMap = {};
 
-// Build lookup maps
-const nodeMap = {};
-nodes.forEach(n => nodeMap[n.id] = n);
-
-const downstreamMap = {}; // node id -> list of nodes that depend on it
-const upstreamMap = {};   // node id -> list of nodes it depends on
-nodes.forEach(n => { downstreamMap[n.id] = []; upstreamMap[n.id] = []; });
-edges.forEach(e => {
-  if (downstreamMap[e.target]) downstreamMap[e.target].push({ id: e.source, relation: e.relation_label });
-  if (upstreamMap[e.source]) upstreamMap[e.source].push({ id: e.target, relation: e.relation_label });
-});
+async function loadData() {
+  // 尝试 API，失败则回退到静态 JSON
+  try {
+    const resp = await fetch('/graph-data.json');
+    if (!resp.ok) throw new Error('fetch failed');
+    data = await resp.json();
+  } catch {
+    // 回退：从 graph-data.js 的全局变量加载
+    if (window.GRAPH_DATA) data = window.GRAPH_DATA;
+    else throw new Error('无法加载数据');
+  }
+  nodes = data.nodes;
+  edges = data.edges;
+  nodeMap = {};
+  nodes.forEach(n => nodeMap[n.id] = n);
+  downstreamMap = {}; upstreamMap = {};
+  nodes.forEach(n => { downstreamMap[n.id] = []; upstreamMap[n.id] = []; });
+  edges.forEach(e => {
+    if (downstreamMap[e.target]) downstreamMap[e.target].push({ id: e.source, relation: e.relation_label });
+    if (upstreamMap[e.source]) upstreamMap[e.source].push({ id: e.target, relation: e.relation_label });
+  });
+}
 
 // ===== Type config =====
 const TYPE_COLORS = {
@@ -276,7 +289,8 @@ let activeNodeId = null;
 let searchQuery = "";
 
 // ===== Init =====
-function init() {
+async function init() {
+  await loadData();
   const genDate = data.meta?.generated_at ? new Date(data.meta.generated_at).toLocaleString("zh-CN") : "未知";
   document.getElementById("stats").innerHTML = `实体 ${nodes.length} · 关系 ${edges.length} · <span style="font-size:11px">更新于 ${genDate}</span>`;
   buildLayerTabs();
