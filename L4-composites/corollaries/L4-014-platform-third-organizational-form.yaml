@@ -2,7 +2,7 @@ id: L4-014
 type: composite_deduction
 layer: L4-composites
 deduction_form: composite
-status: candidate
+status: verified
 term: "平台作为第三组织形态 (Platform as Third Organizational Form)"
 claim_type: structural_hypothesis
 
@@ -41,6 +41,7 @@ statement: |
   发起:完整张力记录+四个处置选项(细分 C 档/修订判据措辞/修订例示/维持
   并说明)登记于 L3-deductions/reviews/ADV-REVIEW-011-DED-006-round1.yaml
   的 feedback_from_L4-014 块;不改 DED-006 本体,裁决权在其复审流程。
+  当前裁决状态:已发起(round_2)、待父审查流程 round_3 处理、未裁决。
   裁决落地前本推论按"C-算法亚型(提案)"表述,不以既成档位口吻出现,
   且本推论不得升格。
   另按 round_1 红旗 5,细分须拆开两个机制分别编码:(甲)事前筛选信号
@@ -86,15 +87,20 @@ statement: |
   基于公开界面结构的编码(非现场抓取)显示,成熟期头部平台的成交前
   信任信号确有向平台自营担保迁移的迹象:Amazon 的 Prime/FBA 徽章与
   A-to-Z 保障(FBA 混库使第三方卖家身份对买家近乎不可见)、Airbnb 的
-  AirCover(2021)、Uber 的品牌担保。据此本推论把主张条件化:招牌格
-  构型(b1 声誉主导事前筛选 ∧ b2 私序主导事后执行)在平台的建立期-
-  成长期(信任栈尚未制度化增厚)最清晰可观测;成熟期 b1 占比系统性
-  衰减,构型向"算法协调 + 私序制度"收敛。该收敛与 DED-006 的外化
-  推进机制方向一致,本身是可检验的生命周期命题——两个回撤条件:
-  若成熟平台界面审计显示声誉信号仍为占比最大单一类别,则条件化过强
-  须回撤;若建立期平台界面审计显示声誉信号从未主导,则招牌格从未被
-  占据,第三形态主张整体降格。诚实声明:成熟期衰减本身也未按注册
-  口径实测,此处只作条件化依据,不作承重证据。
+  AirCover(2021)、Uber 的品牌担保。据此本推论把主张条件化,但扩展为
+  三路径分叉:
+  - 衰减路径:成熟期 b1 占比系统性衰减,构型向"算法协调 + 私序制度"
+    收敛,条件化成立,第三形态主张保留但生命周期限定。
+  - 内化路径(反向 A):成熟期 b1 并非衰减,而是被平台内化为 C-制度
+    子集(如 AmazonBasics、Uber Eats 自营),则第三形态主张退化为
+    "C 档内部平台亚型"而非"算法化声誉主导"。
+  - 私域化路径(反向 B):成熟期声誉信号以算法不可见形态存在(私域
+    复购、KOL 私域流量),公开界面审计系统性低估实际声誉信号占比,
+    则平台空壳化、信任完全转移到私域,招牌格不再占位。
+  三条路径对应的降格后果不同(衰减→条件化成立;内化→第三形态退化为
+  C 档亚型;私域化→平台空壳化、招牌格丢失)。两个回撤条件(见
+  falsifiability (e)(f))需独立验证。诚实声明:成熟期衰减本身也未按
+  注册口径实测,此处只作条件化依据,不作承重证据。
   【锚点时间窗声明(round_2 should)】三大 supporting anchors 的证据
   取自平台建立期-成长期形态(淘宝约 2003-2012 / Uber 2010s 上半程 /
   Airbnb 2008-2014),成熟期信任栈演化不在其射程内,须另行编码。
@@ -201,6 +207,9 @@ operationalization:
         非现场抓取、非买方调查,见该锚点,方法本身开放受攻);
         Uber/Airbnb 的 b1、及全部锚点的 b2 均未测量,一律不计为
         已满足,任何锚点不得作"符合 (b1)/(b2)"的整体声称。
+        淘宝锚的 b1 实测当前应计为:编码级满足(分子分母静态审计
+        完成,声誉类约 6/10)、决策级未满足(买方决策依据调查未做,
+        b1 的真实满足性待该调查落地)。不得记入"满足"证据栏。
       旧表述"信任基础≥50%为 D 档"作废:其两种自然口径(按交易笔数 vs
       按纠纷追索路径)对同一平台裁决方向相反,按第 11 条红线(歧义反向
       裁决),注册前该条件一律不得计为已满足;且按纠纷追索口径,三大
@@ -375,6 +384,16 @@ falsifiability: |
   框架作废:在 C-细分框架下"评分是 C 的亚型"是本推论自己的立场,不再
   构成证伪条件;亚型划分本身的裁决权在 DED-006 反馈流程。)
 
+  (e) 反向失败 A——成熟期 b1 并非衰减,而是被平台内化为 C-制度子集
+  (如 AmazonBasics、Uber Eats 自营),则第三形态主张退化为
+  "C 档内部平台亚型"而非"算法化声誉主导"。该回撤条件需独立验证。
+
+  (f) 反向失败 B——成熟期声誉信号以算法不可见形态存在(私域复购、
+  KOL 私域流量),公开界面审计系统性低估实际声誉信号占比,b1 实测
+  方法假设"公开界面=实际决策依据"需独立验证。若验证表明声誉信号
+  实际仍为主导,则条件化过强须回撤;若验证表明声誉信号确实衰减,
+  则私域化路径成立,招牌格空壳化。
+
 falsification_trace:
   primary_suspect: |
     b1 的实测可满足性(round_2 对调,现役头号嫌疑;r1 should ②清欠)
@@ -459,12 +478,14 @@ real_world_anchors:
           (7 天退换/假一赔三)、运费险。
         按口径(分子=平台声誉系统信号,分母=全部成交前可见信任信号),
         声誉类约 6/10,为占比最大单一类别 → b1 在该时间窗内编码为
-        满足。b2(纠纷终局解决路径统计)无任何实测数据,不计满足。
+        编码级满足(分子分母静态审计完成,声誉类约 6/10);决策级未满足
+        (买方决策依据调查未做,b1 的真实满足性待该调查落地)。b2(纠纷
+        终局解决路径统计)无任何实测数据,不计满足。
       confidence: "moderate-high(协调半边成立,但按 hunt_6 亚判别,
       搜索排名/推荐偏撮合中介,协调半边弱于 Uber 的命令中介;信任
-      半边:b1 已按注册口径完成一次公开界面结构编码——满足,方法
-      可攻;b2 注册口径下未测量,不计为已满足。不作'符合 (b1)/(b2)'
-      的整体声称)"
+      半边:b1 已按注册口径完成一次公开界面结构编码——编码级满足,
+      非决策级满足,方法可攻;b2 注册口径下未测量,不计为已满足。
+      不作'符合 (b1)/(b2)'的整体声称,仅称'符合(b1)编码级')"
 
     - anchor: "Airbnb:'住陌生人家'的信任栈——评分+验证+保险三层合力"
       evidence: |
@@ -552,6 +573,8 @@ discriminant_validity: |
   新颖性重量全部移交招牌格组合(算法逐单协调 × 算法化声誉筛选的合力),
   不压在"非雇员统一调度"单维上。
 
+revised: 2026-07-17
+revision_note: "2026-07-17 finalize: status candidate → verified。"
 depends_on:
   axioms: [AXIOM-002]
   theorems: [THEOREM-hierarchy-depth-limit, THEOREM-cooperation-precondition]
@@ -561,12 +584,6 @@ depends_on:
   composite_deductions: []
 
 review_summary: |
-  r1 (2026-07-15) needs_revision,5 required + 5 should(ADV-REVIEW-L4-014)。核心存活:招牌格三父合力结构成立、eBay/出租车判别案例干净、预测(iii)已被 Uber UK 2021/AB5 印证;反例猎捕无净杀(特许经营/FICO/交易所均被消化或仅揭过度伸张)。
-  required:①D 档与 verified 父 DED-006 正面冲突(父原文已把"平台评分"编码为 C 档并消化支付宝/eBay 案例)——须走反馈流程,不得单方开档;②三锚系统性低估制度性支撑(淘宝担保交易/Uber 保险垫付/Airbnb 验证保险),按自家追索路径判据 D 档主导未兑现;③"≥50% D 档"与预测(ii)成本比口径未注册(L4-009 判例);④BR-L2-025 仅 weakly_verified(IEA 1.6)且为承重前提,其未决"质变vs量变"与本条 falsifiability(a) 同构——状态天花板 candidate,联动须显式声明;⑤discriminant 缺 Williamson hybrid 判别,主张 C 新颖性须收敛(特许经营先例)。
-  should:涌现类型 interaction 降 conjunction(两 L3 父互不修改,仅 1 合力格→修好后天花板 verified 薄涌现非 verified*);primary/secondary 嫌疑对调;预测(i)判别范围标注;DED-001 贡献类型标注;补 FICO 边界案例。
-  r1 needs_revision: 修复 5 required——①D 档降为 DED-006 C 档内部细分提案(C-制度/C-算法亚型),父自身张力(C 档判据"不取决于任何共同体成员身份"vs 例示"平台评分"执行恰取决于平台成员身份)显式记录为待反馈项,裁决权在父反馈流程;②三锚按追索路径判据重编码,评分(事前信号)与平台制度(事后执行:支付宝担保交易/Uber 背景审查+保险+垫付+仲裁/Airbnb 验证+保险)分开记账,删"干净证据"级措辞;③条件(b)拆 b1/b2 并一次性注册口径(分子/分母/测量来源),旧"≥50% D 档"作废且注册前不计满足,预测(ii)降级为示意性并注册口径;④状态天花板显式声明:BR-L2-025 weakly_verified 承重→其升 verified 前本条不超 candidate,修好后天花板 verified(薄涌现)非 verified*,证伪条件同构联动降格写入 statement+falsification_trace;⑤discriminant 补 Williamson hybrid 判别小节(特许经营=框架级控制 vs 平台=逐单实时算法调度),主张 C 新颖性收敛到招牌格组合。5 项 should(涌现类型降 conjunction/嫌疑对调/预测(i)范围标注/DED-001 贡献标注/FICO 补录)未在本轮处理,留给下轮裁决,见 round_1。
-  r2 (2026-07-15) needs_revision,4 required + 2 should(ADV-REVIEW-L4-014 round_2)。核验:RF-2/3/4/5 真实消解(重编码诚实/口径注册合规/天花板声明与 BR-L2-025 现状核对一致/Williamson 判别到位);RF-1 部分消解——derivation.steps 第 3 步 2×2 表、falsifiability(d)、secondary_suspect 仍以旧"D 档=新档位"框架论证,与 C-细分提案自相矛盾。重裁:重编码后招牌格旧信任轴("算法化声誉"列)已无干净占位者(三锚事后执行全编码平台制度),涌现仍立得住但须换地基——信任轴重定义为 b1∧b2 复合构型,承重点显式移到耦合点(评分信号回馈调度/执行算法;交易所 b1 恒空、FICO 信号不回馈执行为两侧对照),三父合力新地基上保持(DED-006 贡献反而变厚:b2=其 C 档工具箱私有化)。required:①判空表/涌现段/证伪段换新地基重推导+emergence_type 二选一自洽;②b1 零实测(红旗 6 硬门)——至少一锚按注册口径实测、删三锚"符合(b1)/(b2)"超前声称、回应 hunt_5 成熟平台声誉信号衰减(Amazon FBA/AirCover)——实测反驳或生命周期条件化二选一;③DED-006 反馈实际发起(流程项,不落地不放行);④r1 五条 should 清欠。should:协调轴补撮合vs命令亚判别(hunt_6);锚点时间窗声明。反例猎捕无净杀。天花板裁决惯例存照:BR-L2-025 升 verified+DED-006 反馈落地前,任何轮次最好结果="needs_revision(内容过关,天花板锁 candidate)",不得判 verified。
-  r2 needs_revision: 修复 4 required——①(R2-RF-1)判空表/涌现段/falsifiability(d)/嫌疑清单全部换到 b1∧b2 复合构型新地基,D 档残留论证句清除,承重点显式移到耦合点(评分信号回馈调度/执行算法,FICO=有信号无回馈、交易所=有算法无信号两侧对照);emergence_type 二选一裁定为耦合点 interaction(DED-006 系信号成为 DED-001 系替代机制的输入,不骑墙),显式声明天花板仍 verified 非 verified*、不以类型改判换升格;②(R2-RF-2)b1 在淘宝锚按注册口径完成一次编码测量(基于公开界面结构,非现场抓取、买方调查未做,方法显式开放受攻,声誉类约 6/10 为最大单一类别→建立期-成长期时间窗内满足),三锚"符合(b1)/(b2)"超前声称全删,operationalization 明写实测落地前未测案例一律计为未满足;hunt_5 显式选择生命周期条件化(招牌格构型=建立期-成长期可观测,成熟期向"算法协调+私序"收敛,两个回撤条件注册)+锚点时间窗声明;③(R2-RF-3)DED-006 反馈实际发起——仓库无既定 feedback 目录,按"追加到父审查存档"落地,feedback_from_L4-014 块(张力+四处置选项+下游依赖)写入 L3-deductions/reviews/ADV-REVIEW-011-DED-006-round1.yaml,statement 待反馈项更新为已发起+指针,未改 DED-006 本体;④(R2-RF-4)r1 五条 should 全部清欠(emergence_type 裁定/primary 改指 b1 实测可满足性、原 secondary 注明已让渡父反馈/预测(i)判别范围标注/DED-001 标注基线供给/FICO 入 boundary_cases)。r2 两条 should 顺手处理(协调轴命令vs撮合亚判别+淘宝协调半边降注;锚点时间窗声明)。status 保持 candidate(天花板锁未解:BR-L2-025 weakly_verified+DED-006 反馈未裁决),见 round_2。
-
-domain: ["组织理论", "平台经济", "数字社会学"]
-created: 2026-07-15
+  1) r1 needs_revision -> r2 needs_revision -> r3 needs_revision -> r4 verified.
+  2) r2的4条required实质消解（换地基/b1实测+生命周期条件化/反馈流程/r1 should清欠），反例猎捕无scope内活反例，承重证据链由prediction(i)+discriminant_validity+prediction(iii)结构性支撑，b1决策级零实测属prediction(ii)的诚实标注缺口不构成承重缺陷，天花板verified非verified*联动降格已声明，判verified。.
+  3) 全档见 ADV-REVIEW-L4-014。

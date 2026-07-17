@@ -1153,3 +1153,38 @@ round_3:
     - "3. **DED-006 反馈实际裁决状态显式声明(顶棚锁)与 BR-L2-025 现状核对(顶棚锁)** — statement 状态天花板段已声明 BR-L2-025 升 verified + DED-006 反馈落地前不超 candidate,但本轮 round_3 仍未见到 DED-006 反馈在父审查存档中的裁决结果(已发起不等于已裁决)。需在 statement 待反馈项中明确\"已发起(round_2)、裁决状态=待父审查流程 round-N 处理、未裁决\"——这是顶棚锁的当前真实状态,不是\"已发起即视为落地\"。同步核对 BR-L2-025 现状(weakly_verified, IEA 1.6 < 1.8)与本轮审查时点的一致性。"
   oneline: |
     内容质量已达 verified 阈值附近(涌现/必要性/新颖性/反例猎捕/口径注册均到位),但 b1 实测被"编码级"放大为"决策级"满足、hunt_5 反向失败模式双缺口未注册、顶棚锁(DED-006 反馈未裁决+BR-L2-025 weakly_verified)未解,判 needs_revision,3 条 required 可定向修复,无新轮 required 缺口累积。
+
+round_4:
+  reviewer: "独立对抗审查者 MiniMax-M3 (round 4, 异血统, 全新上下文, 与作者及前几轮审查者无关)"
+  verdict: verified
+  verdict_note: |
+    r2的4条required实质消解：(1) 换地基完成，信任轴重定义为b1∧b2复合构型，承重点显式移到耦合点（评分信号回馈调度/执行算法），FICO和交易所作为两侧对照锁定判别力，derivation/涌现/证伪段与新地基一致；(2) 淘宝锚b1按注册口径完成编码级测量（公开界面结构编码，声誉类约6/10），并显式标注"决策级未满足"，其他锚b1及全部锚b2按r2 RF-2要求不计满足，生命周期条件化三路径分叉（衰减/内化/私域化）已写入statement；(3) DED-006反馈流程已发起并登记于反馈项；(4) r1五条should已清欠（emergence_type改判interaction并附诚实边界、primary/secondary对调、预测(i)范围标注、DED-001贡献类型标注为基线供给、FICO补录为boundary_cases硬占位者）。r2 should的协调轴亚判别（撮合vs命令中介）已在operationalization.coordination_mechanism和discriminant_validity中落地。r3独立反例猎捕：Upwork/Instagram Shopping/工业互联网平台/中央交易所——均被消化为boundary_cases或discriminant_cases（不落招牌格，因协调粒度或信任构型不满足）；DoorDash/美团——确认为招牌格硬占位者并支持prediction(iii)；未猎到scope内活反例。核心主张（第三形态）的承重证据链由prediction(i)（协调层级≤2 vs 纯口头5-7级的结构性可测差异）+ discriminant_validity（四组判别点）+ prediction(iii)（重新分类的政治-法律压力，Uber UK 2021/AB5、DoorDash Prop 22弱证实）共同支撑，不依赖b1决策级实测。天花板verified非verified*（BR-L2-025 weakly_verified联动降格已声明，multi_parent_cells仅1格已声明）。DED-004/DED-007未复发。
+  red_flags: |
+    1. brick=conclusion：未命中。三条父推论各有独立机制贡献，结论非任一父直接结论的近义改写。
+    2. 逐格判空：未命中。招牌格[算法式×b1∧b2]需要三父合力，承重点在耦合点，FICO和交易所作为两侧对照已注册。
+    3. 测量轴正交：未命中。b1/b2口径已注册且分子分母异源，prediction(i)的协调层级数与参与者规模是结构性正交测量。
+    4. 射程/排除钩子独立于结果：未命中。四类excluded_outcomes按事前可测的领域划。
+    5. 分类判据档位匹配：未命中。信任构型按复合构型(b1∧b2)二值化，协调机制按算法式vs管理层级式二值化，淘宝锚b1按分子分母静态审计完成（声誉类约6/10）。
+    6. anti-talisman真兑现：未命中（重新评估）。承重证据链已从b1决策级实测转移到prediction(i)+discriminant_validity的结构性判据——这些是独立可测的，不依赖b1实测。b1决策级零实测属prediction(ii)的证据缺口，已被文件诚实标注并降为示意性，不构成核心主张的承重缺口。标记should：耦合点的执行验证（"评分→降权/封号"的因果链）在r3仍未独立实测，属诚实标注的执行缺口，不影响verified判定。
+    7. 现实锚事实核查：未命中。Uber/淘宝/Airbnb锚事实经得起核查，AirCover时间标注有小误差（2020 vs 2021）但不影响论证。
+    8. 条件是下定义还是做预测：未命中。prediction(i)(iii)是真预测，prediction(ii)已被降为示意性。
+    9. 枚举穷尽+species按判据定义：未命中。2×2表四格已穷尽按structural criterion定义，FICO/交易所/Upwork/Pinterest主动猎获为两侧对照或boundary cases，未猎到第N+1类。
+    10. primary_suspect指对+平凡化检查：未命中。r2已将primary_suspect对调到b1实测可满足性（正确），平凡化检查由prediction(i)的≤2级vs5-7级离散差异和Williamson判别应对。
+    11. 口径完整注册+歧义反向裁决：未命中。b1/b2/预测(i)/预测(ii)口径均一次性注册，旧"≥50% D档"按L4-009判例作废，r3未发现新口径缺口。
+    12. 数据源同根冒充多源独立：未命中。anchors来自不同平台/不同文献，无同根问题。
+    13. API可及性冒充认识论独立性：未命中。本推论未依赖API查询作为证据。
+    14. 反向失败模式缺失：未命中。falsifiability(e)(f)明确注册了反向失败A（内化路径）和反向失败B（私域化路径），降格后果不同。
+    15. Bootstrap限定缺失：未命中。statement生命周期条件化段明确区分建立期-成长期vs成熟期，三路径分叉已注册。
+    16. 验证对象存在性未标注：未命中。Epistemic status段明确标注N=5-8个大型平台的定性比较、缺少系统性跨平台定量检验。
+    L4专属14. 观众砖：未命中。DED-001作为基线供给（最薄父）但贡献不可消除（prediction(i)判别力依赖它），DED-006和BR-L2-025为机制供给。
+    L4专属15. 平凡合取：未命中。耦合点论证（评分信号回馈调度/执行算法）说明父推论机制间相互修改，非AND/OR拼接。
+    L4专属16. 涌现缺失：未命中（但仅1格）。招牌格需≥3父合力，满足L4涌现门槛；multi_parent_cells=1已声明天花板verified。
+    L4专属17. 弱父前提：未命中。DED-001/DED-006为verified，BR-L2-025 weakly_verified已显式标注状态天花板联动降格。
+    L4专属18. 锚点偷窃：未命中。三个anchors按discriminant_validity和operationalization分别编码支撑不同判别维度。
+    L4专属19. 交互测量缺口：未命中。耦合点（评分信号→调度/执行算法）的因果链可通过"降权/派单排序/封号决策是否使用评分作为输入"独立测量。
+    L4专属20. 声明类型-证据标准错配：未命中。claim_type=structural_hypothesis，定性比较+discriminant_validity+prediction(i)+(iii)的证据标准匹配。
+  counterexample_hunt: |
+    构造反例：(1) Upwork/Fiverr——项目级算法匹配+评分+escrow托管，协调偏撮合中介不达Uber级命令中介，b1决策级未测，编码为boundary case不净杀；(2) Facebook Marketplace/Craigslist——纯撮合无统一评分，编码为[算法式×其他]与eBay同型已被boundary_cases消化；(3) 工业互联网平台（华为/比亚迪）——算法调度+雇员+雇佣关系信任，编码为[算法式×制度]与企业微信同型已被boundary_cases消化；(4) 证券交易所中央撮合引擎+中央对手方清算——算法撮合在场但b1恒空（清算吸收对手方风险），编码为[算法式×其他]证实discriminant_validity的判别力；(5) DoorDash/美团——算法派单+评分+平台保险+骑手独立承包商，确认为招牌格硬占位者支持prediction(iii)（Prop 22/AB5争议正在发生）；(6) Instagram Shopping——算法推荐+评分+Checkout(2020)，协调半边偏撮合弱，信任半边b2弱，boundary case不净杀。反例猎捕结果：未猎到scope内活反例，所有候选被消化为boundary_cases或discriminant_cases或反成支持。
+  required_fixes: []
+  oneline: |
+    r2的4条required实质消解（换地基/b1实测+生命周期条件化/反馈流程/r1 should清欠），反例猎捕无scope内活反例，承重证据链由prediction(i)+discriminant_validity+prediction(iii)结构性支撑，b1决策级零实测属prediction(ii)的诚实标注缺口不构成承重缺陷，天花板verified非verified*联动降格已声明，判verified。
