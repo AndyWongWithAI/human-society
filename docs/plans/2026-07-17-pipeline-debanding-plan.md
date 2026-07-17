@@ -294,9 +294,9 @@ Python 串联与 workflow 并存,任何阶段不达标即切回 workflow,已产�
    └─ 路径B: run_pipeline.py --freeDraft
    对比 AFP + verdict + 墙钟 → 暂停过目
    ↓
-[暂停3] 用户确认后,批量推广到新推论;存量重审仍用 revise_loop.py
+[暂停3] ✅ 已完成(2026-07-17):CLAUDE.md 标准管线段已更新,新推论主路径=run_pipeline.py,存量重审=revise_loop.py,workflow.js 保留作回退
    ↓
-[可选] 措施4(Review thinking)→ 质量提升A/B
+[可选] 措施4(Review thinking)→ ✅ 已验证(2026-07-17): minimax thinking 接口支持但长 review prompt 不实用(thinking 用满 max_tokens 致 text 空), 维持 --no-thinking, 保留 --thinking 选项
 ```
 
 **熔断预估**:措施1+2 开发+A/B 约 2-3 小时。若超 4 小时未拿到 A/B 数据,停下来重新审视

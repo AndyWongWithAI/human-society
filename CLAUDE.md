@@ -95,7 +95,7 @@ L2 砖靠多来源加权投票(演化生物学 / 博弈论 / 文化普适),来�
 - **提交策略**:单研究者仓库,直接提交 `main`。仅在用户明说"提交"时提交;例外——独立审查判 `verified` 的推论可按既定授权自主翻牌 + 提交,`rejected` 则上报用户。凭据在仓库外(`~/.claude/secrets.json`),永不入库。
 - **YAML 陷阱(踩过两次)**:多行叙述段一律用 `|` 字面块标量;裸标量里的 ASCII 冒号+空格(如 `三 species:`)会被当 mapping、**静默**把整块顶飞、实体少一个却仍报"✅通过"——改完务必核对 `validate.py` 的实体数 +1 且无 `❌ YAML`。
 - **管线重跑纪律(2026-07-16 制定)**:管线故障重跑时,必须用 `resumeFromRunId` 白拿已完成阶段的缓存结果,禁止整重跑——已完成 agent 的缓存结果不花钱,整重跑等于把已完成的 IEA/审查段又付一遍费。判例:BR-L2-029 首跑挂掉后整重跑浪费了已完成的 IEA 段。
-- **标准管线强制(2026-07-16 制定)**:所有推论/桥接砖的审查-整改-定论循环必须走标准管线脚本(`ded_pipeline`/`l2_verify`/`l4_pipeline`),禁止为此编写自定义一次性 Workflow。YAML 已存在的实体用 `skipAuthor: true`(ded/l4)或直接调用(l2_verify)。自定义 Workflow 绕过标准管线的 flash_revise/finalize 脚本/摘要复用等所有优化,是上一轮 900K token 浪费的根因。仅当任务无法映射到标准管线时(如一次性调研/批量跨实体扫描)才允许自定义脚本。
+- **标准管线强制**:新推论(L3/L4)主路径=`run_pipeline.py`(Python 全串联,去包裹层,降本 73-80%,2026-07-17):`author_pro.py`(Author,glm-5.2 直调)->`revise_loop.py`(Review-Revise-Finalize);存量重审=`revise_loop.py`(实体已存在,skipAuthor 等价);L2 桥接=`l2_verify.workflow.js`;`ded_pipeline`/`l4_pipeline`.workflow.js 保留作回退(返回结构兼容)。调用:`python scripts/run_pipeline.py --brief-file <brief> --layer L3 --review-num <n> [--freeDraft]`。禁止自定义 Workflow 绕过标准管线(上一轮 900K token 浪费根因);仅一次性调研/批量扫描允许自定义。去包裹层原理见 `docs/plans/2026-07-17-pipeline-debanding-plan.md`(workflow agent 包裹层用 glm-5.2 当命令执行器是 108 倍成本根因,Python 串联去 7 个包裹层)。
 
 ## 可视化系统与部署
 

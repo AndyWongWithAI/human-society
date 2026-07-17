@@ -53,9 +53,24 @@ def load_minimax_config():
     return cfg["api_key"], cfg["base_url"], cfg.get("model", "MiniMax-M3")
 
 
-def call_minimax(api_key, base_url, model, system_prompt, user_prompt, max_tokens=8000):
-    """调 MiniMax-M3（Anthropic 兼容格式）。"""
+def call_minimax(api_key, base_url, model, system_prompt, user_prompt, max_tokens=12000, thinking=False, thinking_budget=4096):
+    """调 MiniMax-M3（Anthropic 兼容格式）。thinking=True 启用思维链(措施4)。
+
+    措施4 验证结论(2026-07-17): minimax thinking 接口支持(简短 prompt 正常),
+    但对长 review prompt(reviewer-pack 74KB+推论全文)不实用--thinking 过度消耗,
+    用满 max_tokens 致 text block 空输出(budget_tokens 不被严格遵守)。
+    故默认 thinking=False。--thinking 仅短 prompt 场景可用。
+    """
     import requests
+    body = {
+        "model": model,
+        "max_tokens": max_tokens,
+        "system": system_prompt,
+        "messages": [{"role": "user", "content": user_prompt}],
+    }
+    if thinking:
+        # Anthropic thinking: max_tokens 须 > budget_tokens; budget 给思考, 剩余给输出
+        body["thinking"] = {"type": "enabled", "budget_tokens": thinking_budget}
     resp = requests.post(
         f"{base_url}/v1/messages",
         headers={
@@ -63,12 +78,7 @@ def call_minimax(api_key, base_url, model, system_prompt, user_prompt, max_token
             "anthropic-version": "2023-06-01",
             "content-type": "application/json",
         },
-        json={
-            "model": model,
-            "max_tokens": max_tokens,
-            "system": system_prompt,
-            "messages": [{"role": "user", "content": user_prompt}],
-        },
+        json=body,
         timeout=600,
     )
     if resp.status_code != 200:
@@ -263,7 +273,11 @@ def main():
     parser.add_argument("--review-path", required=True, help="审查档相对路径")
     parser.add_argument("--layer", default="L3", choices=["L3", "L4", "L2"],
                         help="推论层级（L4 追加专属评分卡）")
-    parser.add_argument("--max-tokens", type=int, default=8000)
+    parser.add_argument("--max-tokens", type=int, default=12000,
+                        help="含 thinking budget + 输出")
+    parser.add_argument("--thinking", action=argparse.BooleanOptionalAction, default=False,
+                        help="启用 minimax thinking(措施4: 接口支持但长 review prompt 不实用--thinking 用满 max_tokens 致 text 空, default 关)")
+    parser.add_argument("--thinking-budget", type=int, default=4096)
     args = parser.parse_args()
 
     entity_path = locate_entity(args.entity_id)
@@ -281,7 +295,8 @@ def main():
     system, user = build_review_prompt(entity_path, args.entity_id, args.review_round,
                                         prev_summary, args.layer)
 
-    raw, usage = call_minimax(api_key, base_url, model, system, user, args.max_tokens)
+    raw, usage = call_minimax(api_key, base_url, model, system, user, args.max_tokens,
+                              thinking=args.thinking, thinking_budget=args.thinking_budget)
     if raw is None:
         print(json.dumps({"done": False, "note": f"minimax 调用失败: {usage}"}, ensure_ascii=False))
         return

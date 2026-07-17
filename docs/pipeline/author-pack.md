@@ -1,6 +1,6 @@
 # Author Reading Pack（作者阅读包）
 
-> 自动生成于 2026-07-17 08:17。跑 `python scripts/index.py` 重生。
+> 自动生成于 2026-07-17 12:42。跑 `python scripts/index.py` 重生。
 > 用途：起草推论前**只读这一份**——实体速览 + 前置清单 + 瘦身格式，全在这里。
 > 不再需要分别读 INDEX.md + author-checklist.md + 方法论文件。
 
@@ -137,7 +137,7 @@
 - BR-L2-043 [candidate] · 礼物交换中的层级自发形成 — 持续送礼而不等价回礼，会让送礼者积累社会信用，从而在群体中获得非正式权力
 - BR-L2-044 [verified] · 竞合关系的稳定性条件 — 当合作和竞争能在时间或空间上分开时，双方才能既合作又竞争而不崩盘
 - BR-L2-045 [verified] · 多任务目标干扰效应 — 同时做几件评判标准冲突的事，比按顺序做更慢、更累，因为脑子里总在切换想法，而且一件事没做完会一直干扰你
-- BR-L2-046 [candidate] · 信息衰减速率的经验测量方法 — 通过三种实验方法（口传代际、抄写错误、数字位翻转）可以测量信息在复制中丢失的速度，这些方法互相验证  ⟵ AXIOM-002
+- BR-L2-046 [candidate] · 信息衰减速率的经验测量方法 — 通过三种代表性实验方法（口传代际、抄写错误、数字位翻转）可以测量信息在复制中丢失的速度，这些方法在各自物理域内独立观测到信息衰减趋势，构成定性会…  ⟵ AXIOM-002
 - BR-L2-047 [rejected] · 冲突催化规范涌现 — 当两个群体反复争夺资源且谁也灭不了谁时，他们会比和平时期更快地形成关于“谁该得多少”的规矩  ⟵ AXIOM-003
 - BR-L2-048 [candidate] · 深层层级中的权力扩散 — 组织层级越深，高层名义权力与实际掌控力之间的差距越大，这是信息在层层传递中必然失真和衰减的物理结果，与顶层的主观意愿无关  ⟵ THEOREM-hierarchy-depth-limit
 - BR-L2-049 [candidate] · 道德内化与群体认同的绑定 — 一个人越认同某个群体，就越容易把该群体提倡的道德规则变成自己的内心准则；反之，对不认同的群体，即使知道它的规则，也不会真心接受
@@ -180,7 +180,7 @@
 - DED-032 [verified] · 消费信贷的自噬循环 — 让借钱变容易，头一两年大家确实多花了；但天生看重'现在'的人会借过头，接下来几年工资一到手先还债，手头反而更紧——而且吃过紧日子的人还会额外多存…  ⟵ AXIOM-001, BR-L2-028, BR-L2-030
 - DED-033 [weakly_verified] · 社保-消费释放的信任约束 — 国家把医保、养老金铺开了，按说老百姓后顾之忧少了、就敢花钱了——这是教科书上的'无摩擦'预测  ⟵ AXIOM-001, AXIOM-002, BR-L2-028, BR-L2-031, BR-L2-024
 - DED-034 [verified] · AI代理决策与个体判断力退化 — AI帮你做决定做多了,你自己做判断的能力会退化——不是AI坏,是用进废退  ⟵ AXIOM-002, BR-L2-026, BR-L2-027
-- DED-035 [candidate] · 数据协调成本不对称冲击与企业边界分叉 — 数字数据+算法让做买卖和管公司都变便宜了,但便宜的程度不一样——能标准化、能量化的事,做买卖的成本降得比管公司更狠,所以企业把这类事外包出去;但…  ⟵ AXIOM-002, THEOREM-hierarchy-depth-limit, THEOREM-cooperation-precondition, BR-L2-001, BR-L2-009, BR-L2-010, DED-001, DED-006
+- DED-035 [candidate] · 数据协调成本不对称冲击与企业边界分叉 — 数字化让买东西和管公司都变便宜了，但便宜的程度不一样——能算清楚、能量化的事 （比如造螺丝），做买卖的成本降得比管公司狠，所以企业把这类事外包出…  ⟵ AXIOM-002, THEOREM-hierarchy-depth-limit, THEOREM-cooperation-precondition, BR-L2-001, BR-L2-009, BR-L2-010, DED-001, DED-006
 - DED-036 [verified] · 算法成本断崖×货币物理筛选：从发现到设计 — 算法把搜索和评估成本压低了上万倍之后，'什么东西适合当钱'这件事的玩法彻底变了——以前是大自然花上千年慢慢筛选（金、银、铜，试了无数种东西才找到…  ⟵ AXIOM-001, AXIOM-002, THEOREM-exchange-competition-alternative, THEOREM-value-attribution, BR-L2-021, BR-L2-032
 - DED-037 [verified] · AI陪伴×道德发育窗口：道德他者模型偏移 — 小孩子怎么学会'伤害别人是不对的'？不是大人讲道理讲会的——是看到别人被自己弄疼时脸上的表情、听到对方声音发抖，这些真实的情绪反馈慢慢在孩子心里…
 - DED-038 [verified] · 制度信任崩解×法币功能解耦：恶性通胀的双重时间不对称 — 制度信任崩了之后，钱的两样功能各跑各的——'存钱'功能因为信任掉得快先跑（大家赶紧把钱换成金条、外币），但'标价'功能因为记忆惯性还留在原地（工…  ⟵ AXIOM-002, THEOREM-value-attribution, THEOREM-relation-information-asset, BR-L2-031, BR-L2-024
@@ -242,7 +242,6 @@
 - ADV-REVIEW-037 — 对 DED-032(消费信贷的自噬循环)的 round_1 独立对抗审查
 - ADV-REVIEW-038 — 对 DED-033(社保-消费释放的信任约束)的 round_1 独立对抗审查
 - ADV-REVIEW-039 — 对 DED-034(AI代理决策与个体判断力退化)的 round_1 独立对抗审查
-- ADV-REVIEW-040 — 对 DED-035(数据协调成本不对称冲击与企业边界分叉)的 round_1 独立对抗审查
 - ADV-REVIEW-041-DED-036 — DED-036（算法成本断崖×货币物理筛选：从发现到设计）round_1 独立对抗审查—— needs_revision
 - ADV-REVIEW-042 — 对 DED-037(AI陪伴×道德发育窗口：道德他者模型偏移)的 round_1 独立对抗审查
 - ADV-REVIEW-043 — 对 DED-038(制度信任崩解×法币功能解耦:恶性通胀的双重时间不对称)的 round_1 独立对抗审查
@@ -263,6 +262,7 @@
 - ADV-REVIEW-058 — 对 DED-053(AI无群体身份与内群体偏好消解)的 round_1 独立对抗审查
 - ADV-REVIEW-059-DED-054 — DED-054（数字可处理性×法币记忆滞后：双向效应与治理条件）对抗审查 round_1 存档
 - ADV-REVIEW-060 — 对 DED-055(现时偏向×法币记忆滞后：前瞻指引效力的双重折扣)的第一轮独立对抗审查
+- ADV-REVIEW-DED-035 — 对 DED-035 的 round_1 独立对抗审查（MiniMax-M3 异血统）
 - META-REVIEW-001 — 这份文件记录了一次"自我审查":我(负责推理的 AI)先用第一性原理给整个体系挑了 四个毛病,然后请另一个独立的 AI 拼命反驳我
 
 ## L3 其它(经验检验/交叉验证等) (6)
@@ -287,7 +287,7 @@
 - L4-011 [rejected] · 主权信用事件的储蓄端传导链 — 当一个大国储备资产被冻结（≥全球储备1%），钱跑的路线是可预测的——央行先动（换黄金、调结构），老百姓后跟（买金条金币），最后金价重估  ⟵ AXIOM-001, AXIOM-002, THEOREM-value-attribution, BR-L2-022, BR-L2-024, DED-028, DED-029
 - L4-012 [verified] · 储备资产地位变迁的网络效应动力学 — 储备货币的改朝换代不是各国各自算账的独立决策——它是网络效应驱动的体制切换  ⟵ AXIOM-001, AXIOM-002, AXIOM-003, THEOREM-value-attribution, THEOREM-exchange-competition-alternative, THEOREM-relation-information-asset, THEOREM-cooperation-precondition, BR-L2-021, BR-L2-022, BR-L2-024, BR-L2-007, BR-L2-011, BR-L2-012, DED-027, DED-028, DED-029
 - L4-013 [verified] · 数字时代价值储藏媒介竞争格局 — 数字交换网络把'什么东西适合当钱/当储备'的六条老规矩重新洗牌了——可分割、可验证、可携带这三条在数字世界里彻底变了含义  ⟵ AXIOM-001, AXIOM-002, AXIOM-003, THEOREM-value-attribution, THEOREM-exchange-competition-alternative, THEOREM-relation-information-asset, THEOREM-cooperation-precondition, BR-L2-021, BR-L2-022, BR-L2-024, DED-027, DED-029
-- L4-014 [candidate] · 平台作为第三组织形态 — 平台(Uber/淘宝/Airbnb)既不是公司(层级命令),也不是菜市场(纯买卖关系)——它是第三种组织:算法当'中层管理'来协调、评分系统当'…  ⟵ AXIOM-002, THEOREM-hierarchy-depth-limit, THEOREM-cooperation-precondition, BR-L2-001, BR-L2-009, BR-L2-010, BR-L2-025, DED-001, DED-006
+- L4-014 [verified] · 平台作为第三组织形态 — 平台(Uber/淘宝/Airbnb)既不是公司(层级命令),也不是菜市场(纯买卖关系)——它是第三种组织:算法当'中层管理'来协调、评分系统当'…  ⟵ AXIOM-002, THEOREM-hierarchy-depth-limit, THEOREM-cooperation-precondition, BR-L2-001, BR-L2-009, BR-L2-010, BR-L2-025, DED-001, DED-006
 - L4-016 [candidate] · 货币危机的双引擎：制度信任崩塌速率×功能解耦窗口 — 钱不值钱了有两个原因同时起作用：一是大家不再信管钱的机构了（制度信任崩了），二是钱的两样功能——买东西和存钱——本来就各走各的（功能解耦）  ⟵ AXIOM-002, THEOREM-value-attribution, THEOREM-relation-information-asset, BR-L2-022, BR-L2-024, BR-L2-031, DED-028, DED-038
 - L4-017 [candidate] · AI增强悖论：判断力退化与意志力增强的同一源头 — AI同时在做两件方向相反的事——帮你做决定时，你自己的判断力偷偷退化（用进废退）；但帮你管钱、盯着预算、自动锁仓时，你的存钱意志力反而变强了  ⟵ BR-L2-026, BR-L2-030, DED-034, DED-045
 - L4-018 [verified] · 注意力贫困：集体行动的数字屏障 — 人要被逼到墙角才会集体闹事——得同时满足三个条件：不公集中在看得见的一群人头上、这群人彼此能通气、没有合法渠道能翻盘  ⟵ BR-L2-013, BR-L2-027, BR-L2-029, DED-017, DED-046
