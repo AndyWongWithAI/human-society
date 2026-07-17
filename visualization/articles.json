@@ -1,4 +1,4 @@
-window.ARTICLE_DATA = {
+{
   "articles": [
     {
       "url": "https://mp.weixin.qq.com/s/bgKQiO8qvrwuBs_8_oFxqQ",
@@ -21,4 +21,4 @@ window.ARTICLE_DATA = {
       }
     ]
   }
-};
+}

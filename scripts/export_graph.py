@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
-Export the human-society axiomatic system to graph-data.js for D3.js visualization.
+Export the human-society axiomatic system to graph-data.json for visualization.
 
 Reads all YAML entity files across 5 layers, extracts nodes and edges,
-and writes visualization/graph-data.js (and graph-data.json for reference).
+and writes visualization/graph-data.json (pure graph data). Article
+references are exported separately to visualization/articles.json.
 
 Usage:
     python scripts/export_graph.py
@@ -185,7 +186,7 @@ def parse_yaml_file(filepath: Path) -> dict | None:
 
 
 def export_articles(valid_node_ids: set):
-    """Export articles.yaml → visualization/articles.js, return entity_articles for API."""
+    """Export articles.yaml -> visualization/articles.json (standalone, shared by frontend & API)."""
     articles_yaml = PROJECT_ROOT / "articles.yaml"
     if not articles_yaml.exists():
         print("  No articles.yaml found, skipping article export")
@@ -225,11 +226,10 @@ def export_articles(valid_node_ids: set):
         "entity_articles": entity_articles,
     }
 
-    articles_js = VIS_DIR / "articles.js"
-    json_str = json.dumps(articles_output, ensure_ascii=False, indent=2)
-    with open(articles_js, "w", encoding="utf-8") as f:
-        f.write(f"window.ARTICLE_DATA = {json_str};\n")
-    print(f"  Wrote {articles_js} ({len(valid_articles)} articles, {len(entity_articles)} entities referenced)")
+    articles_json = VIS_DIR / "articles.json"
+    with open(articles_json, "w", encoding="utf-8") as f:
+        json.dump(articles_output, f, ensure_ascii=False, indent=2)
+    print(f"  Wrote {articles_json} ({len(valid_articles)} articles, {len(entity_articles)} entities referenced)")
     return entity_articles
 
 
@@ -282,6 +282,7 @@ def main():
                 "id": entity_id,
                 "term": term,
                 "term_zh": term_zh or term,
+                "term_en": term_en,
                 "type": canonical_type,
                 "layer": layer,
                 "layer_label": layer_label,
@@ -348,16 +349,10 @@ def main():
 
     VIS_DIR.mkdir(parents=True, exist_ok=True)
 
-    # Export article references (included in graph-data JSON / API)
-    entity_articles = export_articles(node_ids)
-    if entity_articles:
-        output["entity_articles"] = entity_articles
-
-    js_path = VIS_DIR / "graph-data.js"
-    json_str = json.dumps(output, ensure_ascii=False, indent=2)
-    with open(js_path, "w", encoding="utf-8") as f:
-        f.write(f"window.GRAPH_DATA = {json_str};\n")
-    print(f"  Wrote {js_path}")
+    # Export article references to standalone articles.json
+    # (B2: 文章退出 graph-data.json -- 前端与 API 共用 articles.json，
+    #  graph-data.json 保持纯图谱数据)
+    export_articles(node_ids)
 
     json_path = VIS_DIR / "graph-data.json"
     with open(json_path, "w", encoding="utf-8") as f:

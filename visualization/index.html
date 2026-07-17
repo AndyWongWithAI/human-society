@@ -27,17 +27,6 @@ body {
   flex-direction: column;
 }
 
-/* ===== Color tokens per type ===== */
-.type-colors {
-  --c-physical_constraint: #5B8FF9;
-  --c-concept: #5AD8A6;
-  --c-definitional_axiom: #F6BD16;
-  --c-theorem: #9270CA;
-  --c-bridging_proposition: #5D9CEC;
-  --c-deduction: #F08080;
-  --c-composite_deduction: #E8684A;
-}
-
 /* ===== Top Bar ===== */
 .top-bar {
   height: 52px;
@@ -323,16 +312,10 @@ let upstreamMap = {};
 let articleMap = {};
 
 async function loadData() {
-  // 尝试 API，失败则回退到静态 JSON
-  try {
-    const resp = await fetch('/graph-data.json');
-    if (!resp.ok) throw new Error('fetch failed');
-    data = await resp.json();
-  } catch {
-    // 回退：从 graph-data.js 的全局变量加载
-    if (window.GRAPH_DATA) data = window.GRAPH_DATA;
-    else throw new Error('无法加载数据');
-  }
+  // graph-data.json: 纯图谱数据（节点+边）
+  const resp = await fetch('/graph-data.json');
+  if (!resp.ok) throw new Error('无法加载图谱数据');
+  data = await resp.json();
   nodes = data.nodes;
   edges = data.edges;
   nodeMap = {};
@@ -344,10 +327,13 @@ async function loadData() {
     if (upstreamMap[e.source]) upstreamMap[e.source].push({ id: e.target, relation: e.relation_label });
   });
 
-  // Merge article references (from API/graph-data.json, fallback to articles.js)
-  articleMap = data.entity_articles || {};
-  if (Object.keys(articleMap).length === 0 && window.ARTICLE_DATA && window.ARTICLE_DATA.entity_articles) {
-    articleMap = window.ARTICLE_DATA.entity_articles;
+  // articles.json: 文章引用（独立于 graph-data.json，B2 关注点分离）
+  try {
+    const artResp = await fetch('/articles.json');
+    if (artResp.ok) articleMap = (await artResp.json()).entity_articles || {};
+    else articleMap = {};
+  } catch {
+    articleMap = {};
   }
 }
 
@@ -512,7 +498,7 @@ function createEntityItem(n) {
   div.innerHTML = `
     <span class="dot" style="background:${TYPE_COLORS[n.type]||'#999'}"></span>
     <div class="info">
-      <div class="name">${highlightMatch(n.term_zh || n.term)}</div>
+      <div class="name">${highlightMatch(n.term_zh)}</div>
       <div class="meta-line">
         <span>${n.id}</span>
         <span>·</span>
@@ -592,14 +578,14 @@ function selectNode(id) {
   const hasDependents = dependents.length > 0;
 
   let html = `
-    <div class="breadcrumb">${LAYER_LABELS[n.layer]} <span>›</span> ${n.id}</div>
+    <div class="breadcrumb">${n.layer_label || LAYER_LABELS[n.layer]} <span>›</span> ${n.id}</div>
     <div class="entity-header">
-      <h2>${n.term_zh || n.term}</h2>
-      ${n.term !== (n.term_zh||n.term) ? `<div style="font-size:12px;color:var(--text2);margin-bottom:4px">${n.term}</div>` : ""}
+      <h2>${n.term_zh}</h2>
+      ${n.term_en ? `<div style="font-size:12px;color:var(--text2);margin-bottom:4px">${n.term_en}</div>` : ""}
       <div class="meta">
         <span>ID: <strong>${n.id}</strong></span>
         <span class="badge" style="background:${TYPE_COLORS[n.type]}">${TYPE_LABELS[n.type]||n.type}</span>
-        <span>${LAYER_LABELS[n.layer]}</span>
+        <span>${n.layer_label || LAYER_LABELS[n.layer]}</span>
         ${n.status ? `<span class="status-tag ${statusClass}">${STATUS_LABELS[n.status]||n.status}</span>` : ""}
       </div>
       ${dateInfo ? `<div style="margin:8px 0">${dateInfo}</div>` : ""}
@@ -670,8 +656,8 @@ function renderDepLink(e, dir) {
     <div class="dep-link" onclick="event.stopPropagation(); selectNode('${n.id}')">
       <span class="mini-dot" style="background:${TYPE_COLORS[n.type]||'#999'}"></span>
       <div class="dep-info">
-        <div class="dep-name">${n.term_zh || n.term}</div>
-        <div class="dep-id">${n.id} · ${TYPE_LABELS[n.type]||n.type} · ${LAYER_LABELS[n.layer]}</div>
+        <div class="dep-name">${n.term_zh}</div>
+        <div class="dep-id">${n.id} · ${TYPE_LABELS[n.type]||n.type} · ${n.layer_label || LAYER_LABELS[n.layer]}</div>
         <div class="dep-rel">${arrow} ${e.relation}</div>
         ${n["人话摘要"] ? `<div class="dep-excerpt">${n["人话摘要"]}</div>` : ""}
       </div>
@@ -761,6 +747,11 @@ document.addEventListener("DOMContentLoaded", init);
     </div>
 
     <div class="endpoint">
+      <div class="ep-head"><span class="method get">GET</span> /api/articles</div>
+      <div class="ep-body">文章引用列表。<code>?node_id=DED-042</code> 过滤某实体相关文章；省略返回全部。<br><code>curl "https://human-society.intelab.cn/api/articles?node_id=DED-042"</code></div>
+    </div>
+
+    <div class="endpoint">
       <div class="ep-head"><span class="method get">GET</span> /api/search</div>
       <div class="ep-body">全文搜索节点（ID/术语/人话摘要）。<code>?q=搜索词</code> 必填。<br><code>curl "https://human-society.intelab.cn/api/search?q=国家"</code></div>
     </div>
@@ -782,6 +773,5 @@ function toggleApiModal() {
   document.getElementById('apiModal').classList.toggle('show');
 }
 </script>
-<script src="articles.js"></script>
 </body>
 </html>

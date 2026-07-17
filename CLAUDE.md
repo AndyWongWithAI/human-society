@@ -17,10 +17,10 @@ python scripts/index.py       # 重生 INDEX.md(实体紧凑索引)。增删改�
 - **没有单元测试框架**;正确性靠 `validate.py` + 独立对抗审查(见下)。
 
 ```bash
-python scripts/export_graph.py   # 导出图谱数据 → visualization/graph-data.js + graph-data.json + articles.js
+python scripts/export_graph.py   # 导出图谱数据 → visualization/graph-data.json + articles.json
 ```
 
-- `export_graph.py` 读取全部 5 层 YAML 实体,提取节点/边/文章引用,生成前端用的 JS 和 API 用的 JSON。**增删实体或改 articles.yaml 后必跑**。
+- `export_graph.py` 读取全部 5 层 YAML 实体,提取节点/边,生成 graph-data.json(图谱) + articles.json(文章)。**增删实体或改 articles.yaml 后必跑**。
 
 ## ID 与文件命名约定
 
@@ -101,19 +101,19 @@ L2 砖靠多来源加权投票(演化生物学 / 博弈论 / 文化普适),来�
 
 三层:导出脚本 → 前端单页 → API 服务,部署于华为云 `124.71.219.208`,域名 `human-society.intelab.cn`。
 
-- **`scripts/export_graph.py`**(已纳入上方常用命令):读全部 YAML → `visualization/graph-data.js`(前端用 `window.GRAPH_DATA`)、`visualization/graph-data.json`(API 用)、`visualization/articles.js`(文章引用,前端独立加载,不进 API)。处理 6 种依赖格式(`depends_on`/`bridges_to`/`derived_from_concepts`/`l0_grounding`/`l0_constraints`/`derivation.from_l1/from_l2/from_l3`)。
+- **`scripts/export_graph.py`**(已纳入上方常用命令):读全部 YAML → `visualization/graph-data.json`(纯图谱数据,前端+API 共用)、`visualization/articles.json`(文章引用,前端+API 共用,独立于 graph-data.json)。处理 6 种依赖格式(`depends_on`/`bridges_to`/`derived_from_concepts`/`l0_grounding`/`l0_constraints`/`derivation.from_l1/from_l2/from_l3`)。
 - **`visualization/index.html`**:零构建单文件,层标签+实体列表+详情面板(人话摘要/陈述/上下游/文章)。移动端(<767px)自动切栈式导航。NEW 标签用 localStorage 追踪已读。
-- **`api.py`**:FastAPI,7 个 GET 端点(`/api/nodes`/`/api/edges`/`/api/search`/`/api/stats`/`/api/health`/`/api/nodes/{id}`)。纯只读,无 POST/PUT/DELETE。自动文档已禁用。部署为 systemd 服务 `human-society-api`,nginx 反代 `/api/* → 127.0.0.1:8090`。
+- **`api.py`**:FastAPI,8 个 GET 端点(`/api/nodes`/`/api/edges`/`/api/search`/`/api/stats`/`/api/health`/`/api/nodes/{id}`/`/api/articles`)。纯只读,无 POST/PUT/DELETE。读 graph-data.json + articles.json,内存缓存按 mtime 失效。自动文档已禁用。部署为 systemd 服务 `human-society-api`,nginx 反代 `/api/* → 127.0.0.1:8090`。
 - **部署**:push `main` 触发 `.github/workflows/deploy-visualization.yml`,通过 ssh-deploy 把 `visualization/` rsync 到 `/var/www/human-society.intelab.cn/`,`api.py` 到 `/opt/services/human-society-api/`,自动 `systemctl restart`。触发路径:L0-L4 YAML、`export_graph.py`、`index.html`、`articles.yaml`、`api.py`。
 - **凭据**:`SSH_KEY`/`SSH_USER` 在仓库外(`~/.ssh/github_actions_arch_platform` + `~/.claude/secrets.json`),通过 gh-secrets-setter 写入 GH Actions secrets。
 
 ## 文章引用系统(`articles.yaml`)
 
-公众号文章与知识图谱实体的多对多关联。只在页面上展示(`📰 相关文章`卡片),不通过 API 暴露。
+公众号文章与知识图谱实体的多对多关联。页面上展示(`📰 相关文章`卡片),也通过 `/api/articles` 对外提供。
 
 - **格式**:`articles:` 列表,每项含 `url`/`title`/`date`/`entity_ids`(可多个)。
-- **修改**:仅 Claude 可编辑 `articles.yaml`。改动后跑 `export_graph.py` → 生成 `articles.js` → 提交 → push 自动部署。
-- **安全边界**:`/api/nodes/{id}` 和 `/graph-data.json` 均不含文章数据;前端通过独立 `<script src="articles.js">` 加载 `window.ARTICLE_DATA`。
+- **修改**:仅 Claude 可编辑 `articles.yaml`。改动后跑 `export_graph.py` → 生成 `articles.json` → 提交 → push 自动部署。
+- **数据归属**:文章数据在 `visualization/articles.json`(独立于 `graph-data.json`),前端 fetch 加载,API 经 `/api/articles` 与 `/api/nodes/{id}` 提供。`graph-data.json` 仅含图谱节点/边,不含文章。
 
 ## 目录速览
 
