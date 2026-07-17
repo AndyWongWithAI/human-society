@@ -1,5 +1,5 @@
 id: BR-L2-032
-status: weakly_verified
+status: verified
 term: "算法驱动的搜索/匹配/监控成本断崖 (Algorithm-Driven Search/Matching/Monitoring Cost Cliff)"
 statement: |
   数字算法(搜索/推荐/匹配/声誉系统)对三类交易成本的降低不是"更快更便宜"——它
@@ -27,10 +27,12 @@ statement: |
 
   (c) 监控(验证/执行)成本断崖——数字声誉系统(eBay 信用评分/Uber 双向评价/
   智能合约)将合同执行的验证成本从"事后追查+第三方裁决"的高成本通道
-  压至"实时数字化可验证"的低成本通道。经济度量:争议率(dispute rate)从前数字分类广告
+  压至"实时数字化可验证"的低成本通道。经济度量:争议率(dispute rate)定义
+  为买家发起争议并进入纠纷解决程序的交易占总交易量的比例。从前数字分类广告
   ~10%降至eBay式声誉系统<1%(Einav/Farronato/Levin 2016,该研究使用eBay平台的争议率口径),
   降幅约10x——显著但远小于搜寻维的10000x。前数字分类广告~10%争议率的数据来源
-  为Einav/Farronato/Levin(2016)所引用的分类广告欺诈率研究(具体见该文注引)。
+  为Einav/Farronato/Levin(2016)所引用的具体分类广告欺诈率研究(如Pew Research Center 2004
+  或FTC 2004,详见该论文参考文献)。
   这不是"信任替代"——声誉系统替代的是信息(关于过往行为的可验证记录),其成本优势在于
   数字记录的可检索/不可篡改/自动聚合。
   诚实标注:前数字声誉网络在特定条件下可达同等低争议率(如纽约钻石商人的
@@ -132,12 +134,9 @@ falsifiability: |
 created: 2026-07-16
 source_anchors: []
 review_summary: |
-  r1→needs_revision(4 required)→r2→3/4修复到位+1残余(falsifiability对齐)。
-  IEA=1.6:IE锚1.0+PE 0.6,TCE→framework_support。三维度独立度量口径已注册,
-  falsifiability开篇已与statement对齐(不共享统一数量级)。weakly_verified,
-  待新独立来源补至IEA≥1.8。全档见ADV-REVIEW-BR-L2-032。
-  r2 needs_revision -> falsifiability开篇对齐至statement(移除统一数量级声称,替换为"各维度均构成成本函数上的不连续点,断崖幅度因度量口径而异")
-  r3 needs_revision -> (c)维明确断崖判据为联合条件(匿名×大规模×低重复博弈);falsifiability注册K值口径(top-10精确率≥0.9);注册反向失败模式(赢家通吃导致市场收缩)
+  1) r1 needs_revision -> r2 needs_revision -> r3 needs_revision -> r4 needs_revision -> r5 verified.
+  2) 核心机制成立、三维度独立度量、反例均被消化、falsifiability 操作化达标，verified；should 项（Pew/FTC 数据精度、Cramer 单市场、IEA 评分天花板）不阻塞。.
+  3) 全档见 ADV-REVIEW-BR-L2-032。
 cross_verification:
   votes:
     information_economics:
@@ -229,6 +228,8 @@ cross_verification:
     真正恢复独立性需异血统模型面板(scripts/blind_coder.py)或人类专家
     的独立文献通道。
 
+revised: 2026-07-17
+revision_note: "2026-07-17 finalize: status weakly_verified → verified。"
 depends_on:
   concepts: [CONCEPT-information, CONCEPT-exchange, CONCEPT-agent]
   axioms: [AXIOM-002]

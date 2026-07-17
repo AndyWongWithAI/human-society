@@ -1,7 +1,7 @@
 id: DED-054
 type: deduction
 layer: L3-deductions
-status: candidate
+status: rejected
 term: "数字可处理性×法币记忆滞后：双向效应与治理条件 (Digital Processability × Fiat Memory Lag: Bidirectional Effects and Governance Conditions)"
 
 人话摘要: "法币的信用有个惯性——人对通胀的记忆消退得比实际通胀下降慢，大家不信政策、只信自己经历过的（BR-L2-024）。数字时代来了，信息机器能自己读、自己搜（BR-L2-025），这给记忆滞后装了相反的引擎：一边是实时数据（债券收益率、搜索指数、社交情绪）让央行和市场能瞬间看清通胀预期、技术上消灭滞后；另一边是深度伪造央行行长讲话、算法专推历史上的恐慌记忆、信息茧房让修正信号传不到人眼前——数字反而让记忆滞后更严重了。到底哪一个引擎转得更快，不由技术决定，由信息生态有没有'多种声音互相校对、假的能被戳穿'的治理结构决定。"
@@ -193,11 +193,11 @@ nontriviality_test: |
   砖的边际贡献诚实标注：BR-L2-024 = 提供被干预的结构（记忆滞后的存在与组成：感知滞后+信念滞后）；BR-L2-025 = 提供干预的工具（数字信息的四项能力：实时采集/语义提取/聚合合成/低成本复制）；推论 = 提供干预生效的方向性条件（信息生态治理结构决定正向vs负向渠道的占优关系）。三块砖各司其职，没有近定义砖冒充发动机。
 
 review_summary: |
-  1) 降级(前提rejected连带,非审查裁决).
-  2) 前提 BR-L2-025 rejected(D07死因复发+印刷先例净杀+不可证伪),本推论 verified 地位失效,降级 candidate 待重审.
-  3) 全档见 ADV-REVIEW-N/A。
+  1) r2 rejected.
+  2) 前提BR-L2-025 rejected(砖已死)+测量轴子维度焊死+反例猎捕两端暴露(欧元区横盘/阿根廷)+双向过度伸张.
+  3) 全档见 ADV-REVIEW-059。
 revised: 2026-07-17
-revision_note: "2026-07-17 finalize: status verified → candidate。"
+revision_note: "2026-07-17 finalize: status candidate → rejected。"
 depends_on:
   axioms: [AXIOM-002]
   theorems: [THEOREM-value-attribution]

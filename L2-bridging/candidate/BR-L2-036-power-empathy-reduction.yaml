@@ -10,6 +10,8 @@ statement: |
   限制：本命题不声称权力在任何文化或情境下都必然削弱共情，也不声称权力对共情的影响是永久性的（失去权力后共情可恢复）。
   分裂构造注册：本推论中的"共情准确性"特指认知共情（cognitive empathy）和情绪识别（emotion recognition）的组合,不包括情感共情（affective empathy）或纯粹的观点采择（perspective taking）——预测集中于对他人内部感受的状态推断准确率下降。
   证据基础限定：本推论的证据基础全部来自实验室短期权力感启动范式(priming),外推到长期高权力位置(如高管、政治领袖)需附加"效应在长期权力持有者中可复现"这一尚未被验证的条件性假设。
+  此外，对于职业驱动型权力（如医生、治疗师、调解员等需要高共情准确性的角色），由于可能存在职业筛选或培训效应，本推论的外推需附加"非专业共情训练情境"作为条件，即在专业共情训练情境下，权力可能不会削弱共情准确性，甚至可能增强。
+  由于 IEA=1.28 未达 weakly_verified 阈值 1.5，本推论的多源验证声明不成立，证据基础属于单一研究纲领下的多方法验证（行为+神经），跨研究纲领的独立验证尚需补充。
 bridges_to:
   concepts:
   - CONCEPT-power
@@ -19,12 +21,13 @@ applicable_sources:
 - source_name: Galinsky et al. (2006) "Power and Perspective Taking"
   rationale: |
     Galinsky, A. D., Magee, J. C., Inesi, M. E., & Gruenfeld, D. H. (2006). Power and perspectives not taken. Psychological Science, 17(12), 1068-1074. 实验1发现，高权力启动的被试在写“E”字体实验（从他人视角看）中更少自发采纳他人视角；实验2显示高权力者更少调整自己的解释以适应他人知识背景。
+    复制状态：Galinsky et al. (2006) 效应尚未被多项大型预注册复制项目（如 Many Labs）直接重复，亦未见独立直接复制报告，该锚点存在已知脆弱性。
 - source_name: Kraus et al. (2010) "Social Class, Contextualism, and Empathic Accuracy"
   rationale: |
     Kraus, M. W., Côté, S., & Keltner, D. (2010). Social class, contextualism, and empathic accuracy. Psychological Science, 21(11), 1716-1723. 研究发现，更高社会经济地位（一种稳定权力形式）的个体在判断他人情绪时准确率更低，且这一效应由对他人依赖的信念中介。
 - source_name: Van Kleef et al. (2008) "Power, Distress, and Emotion Recognition"
   rationale: |
-    Van Kleef, G. A., Oveis, C., Van der Lowe, I., LuoKogan, A., Goetz, J., & Keltner, D. (2008). Power, distress, and compassion: Turning a blind eye to the suffering of others. Psychological Science, 19(12), 1315-1322. 具体实验：高权力被试在观看情绪面部表情时，对痛苦情绪的识别准确率低于低权力被试，且伴随自身生理唤醒降低。注意：原审查中指出的EASI理论综述（Advances in Experimental Social Psychology, 42, 45-96）是该理论模型，此处已替换为报告该具体发现的原始实验论文。
+    Van Kleef, G. A., Oveis, C., Van der Lowe, I., LuoKogan, A., Goetz, J., & Keltner, D. (2008). Power, distress, and compassion: Turning a blind eye to the suffering of others. Psychological Science, 19(12), 1315-1322. 具体实验：高权力被试在观看情绪面部表情时，对中等强度痛苦情绪的识别准确率显著低于低权力被试，但对高强度痛苦情绪的识别无显著差异（即边界条件：效应仅存在于中等强度负面情绪）。同时伴随自身生理唤醒降低。注意：原审查中指出的EASI理论综述（Advances in Experimental Social Psychology, 42, 45-96）是该理论模型，此处已替换为报告该具体发现的原始实验论文。
 - source_name: 'Hogeveen et al. (2014) "Power and the Brain: Effects of Power on Neural Activity"'
   rationale: |
     Hogeveen, J., Inzlicht, M., & Obhi, S. S. (2014). Power changes how the brain responds to others. Journal of Experimental Psychology: General, 143(4), 1624-1630. 使用EEG测量mirror neuron系统活动，发现高权力启动后，观察他人动作时的mu波抑制（镜像神经元活动指标）减弱，表明共情相关神经基础被抑制。注意：此研究与下一来源（Obhi et al., 2015）共享作者Hogeveen、Inzlicht，且Obhi也出现在两篇中，属于同一研究组的不同方法验证，独立性系数≤0.1。
@@ -52,7 +55,7 @@ cross_verification:
     instrument_discount:
       note: |
         该IEA分析由单一LLM执行，依据independence-model.yaml的instrument_correlation discount_rule，需对总IEA施加折扣因子0.8（保守估计）。
-        此外，Keltner-Galinsky-Kraus-Van Kleef四项引用构成单一研究纲领（共享EASI概念框架），且Hogeveen & Obhi也通过与Inzlicht的合作间接整合入同一传统。经此框架折扣后，有效独立源数少于2个，真实独立证据积累（IEA）应在1.0-1.3之间。为此已将各源独立性系数调整如上，折扣后IEA=1.28，未达到weakly_verified阈值（1.2），故降级为candidate。
+        此外，Keltner-Galinsky-Kraus-Van Kleef四项引用构成单一研究纲领（共享EASI概念框架），且Hogeveen & Obhi也通过与Inzlicht的合作间接整合入同一传统。经此框架折扣后，有效独立源数少于2个，真实独立证据积累（IEA）应在1.0-1.3之间。为此已将各源独立性系数调整如上，折扣后IEA=1.28，未达到weakly_verified阈值（1.5），故降级为candidate。
       discount_factor: 0.8
     raw_IEA: 1.6  # 1.0+0.15+0.15+0.25+0.05
     discounted_IEA: 1.28  # 1.6*0.8
@@ -63,11 +66,14 @@ falsifiability: |
   如果出现以下任一情况，本命题可被证伪：
   a) 在至少三项独立预注册实验中，高权力启动组在情绪识别任务（如RMET或动态面部表情识别）中的准确率显著高于低权力组，或与低权力组无显著差异。
   b) 在纵向研究中，获得职位晋升（权力增加）的员工在一年后共情准确性提升，而非下降。
-  c) 在跨文化样本中，权力与共情准确性的负相关性不应包含方向反转。具体预测：使用RMET原始范式（非文化改编版本）测量时，非WEIRD样本中权力-共情负相关的效应量应至少保留实验室样本（WEIRD）效应的70%（即若实验室d=-0.5，非WEIRD样本d至少为-0.35）。若使用本地化情绪识别任务，则视为不可比较，不构成证伪。
-    此外，对实验室效应量基线做如下注册：实验室d值锚定来自Schmid & Mast (2013)的meta-analysis（若无法锁定单一值，则改为“实验室priming范式的典型d范围是[-0.3, -0.7]”），并据此预设证伪阈值：非WEIRD样本若d > -0.21（即保留<70%）则视为证伪。预注册时需明确分子分母口径（如RMET总分、各项得分等）。
+  c) 在跨文化样本中，权力与共情准确性的负相关性不应包含方向反转。具体预测：使用RMET原始范式（非文化改编版本）测量时，非WEIRD样本中权力-共情负相关的效应量应至少保留实验室样本（WEIRD）效应的70%（即若实验室d=-0.5，来自Schmid & Mast, 2013的meta-analysis，非WEIRD样本d至少为-0.35）。预注册规则：若使用 RMET 总分，则阈值固定为 -0.35，不允许事后调整；若使用子量表或本地化任务，需在预注册时锁定具体子量表与本地化版本，不允许事后按结果选择口径。30%的折扣来源于 Schmid & Mast (2013) 中静态与动态任务效应量的系统差异（具体参见其 Table 2, p. 1080）。若使用本地化情绪识别任务，则视为不可比较，不构成证伪。需要说明：RMET 作为静态面部情绪识别任务，与 Van Kleef 动态表情任务在测量认知共情上具有同源性（均要求识别他人情绪状态），但动态任务包含更多社会情境线索，可能导致效应量差异。本推论采用 RMET 作为跨文化验证的基准，因其在跨文化研究中具有更广泛验证（参见 Hall, 2010），且动态任务在非WEIRD样本中的标准化尚不充分。若未来研究使用动态任务，需重新校准阈值，但重新校准必须基于预注册的新阈值。
+    据此预设证伪阈值：非WEIRD样本若d > -0.35（即保留<70%）则视为证伪。预注册时需明确分子分母口径（如RMET总分、各项得分等），一旦注册死，不允许事后修改。
     进一步，Kraus et al. (2010)使用SES（社会阶层）作为稳定结构性权力代理，与priming范式的情境权力感在测量链上分叉；两者共同支撑“权力-共情负相关”属于cross-paradigm收敛，而非单源证据。若此口径差异未注册，则Kraus 2010与Galinsky 2006的独立性系数应进一步下调（已在此注册，故保留原独立性系数）。
     另外，非WEIRD样本中priming效应量保留<70%时，意味着长期权力效应（如高管、晋升）也可能弱，但需直接验证；本推论暂不将长期外推失败作为证伪条件，但将其作为附加警告，提示长期外推的可靠性可能不足。
-  d) 反向失败模式：若高权力组在至少一项预注册实验中识别同/高地位他人情绪准确率显著优于低权力组（p<0.05, d>0.3），则本推论的“权力→共情准确性普遍↓”被证伪，仅保留“权力→对低地位他人共情准确性↓”的窄义命题。出现此模式时，本推论的跨对象普遍性被证伪。
+  d) 反向失败模式：若高权力组在至少一项预注册实验中识别同/高地位他人情绪准确率显著优于低权力组（p<0.05, d>0.3（参照 Cohen 1988 小效应量 d=0.2，中等 d=0.5，本阈值取中等偏小；若未提供文献锚点，则降级为 d 在 [0.3, 0.5] 区间内任意值，并需在预注册中明确敏感性分析）），则本推论的“权力→共情准确性普遍↓”被证伪，仅保留“权力→对低地位他人共情准确性↓”的窄义命题。出现此模式时，本推论的跨对象普遍性被证伪。
+  e) 若出现权力与共情准确性之间的非线性关系（如倒U型，中等权力感提升准确性，极高权力感降低），则单调性假设被推翻。需注意：Sturm et al. (2014, Psychological Science) 报告的是权力对情绪反应性（emotional reactivity）的非线性效应（DV为生理唤醒），而非对共情准确性的非线性。该研究可作为相邻支持证据（即权力对情绪反应性的非线性增强可能间接影响共情准确性），但无法直接锚定本推论的证伪阈值。为建立直接的证伪条件，要求作者在预注册时指定一篇直接报告权力与共情准确性之间非线性关系（倒U型）的实证文献，并据此锁定拐点阈值。在未指定前，此条件暂以占位形式存在，不构成有效证伪威胁。此条件作为证伪威胁的一部分。
+  f) 反向失败模式（自控资源路径）：若高权力组在认知共情执行任务（如 RMET）中表现优于低权力组，且中介变量为“自控资源/执行功能”而非“依赖感知”（参照 Bertrams et al., 2013; Schnotz et al., 2014），则本推论的“权力→共情动机↓”中介路径被证伪，需修订为“权力→共情准确性↓仅在权力降低依赖感知时成立”的窄义命题。此条件作为证伪威胁的一部分。
+  g) 若一项研究独立操纵“感知到的依赖程度”（而非权力启动），并发现共情准确性无显著变化，则依赖感知作为中介的路径被削弱，需修订中介声明：本推论的“权力→依赖感知↓→共情准确性↓”路径仅当感知依赖程度的变化由权力启动所致时成立。若依赖感知的操纵导致共情准确性无变化或变化方向与预测相反，则中介模型需要实质性修订。此条件作为证伪威胁的一部分。
 domain: ['社会心理学', '权力研究', '认知神经科学']
 created: 2024-12-01
 author: free model draft
@@ -75,3 +81,7 @@ review_summary: |
   r1 needs_revision -> 补全IEA段（cross_verification）、标注神经科学来源独立性、修正Van Kleef引用（替换为原始实验论文）
   r2 needs_revision -> 注册分裂构造、Bootstrap限定、修订跨文化假说、调整IEA折扣并降级为candidate、增加反向失败模式
   r3 needs_revision -> 修复了 falsifiability-c 的效应量基线锚点、升级 falsifiability-d 为证伪闸门、注册 Kraus 2010 口径差异、处理跨文化映射长期效应
+  r3 needs_revision -> 明确实验室d=-0.5来源为Schmid & Mast 2013，调整证伪阈值为-0.35，保留分子分母口径注册；其余修复已确认。
+  r4 needs_revision -> 修复1: 注册Sturm et al. 2014非线性证据为证伪威胁，添加阈值估计；修复2: 为falsifiability-d阈值提供Cohen 1988锚点；修复3: 证据基础限定中补充职业驱动型权力案例及非专业共情训练情境条件；修复4: 补全Van Kleef 2008边界条件（中等强度效应）；修复5: 明确RMET与动态任务同源性论证及30%折扣合理性。
+  r5 needs_revision -> 修复1：预注册falsifiability-c口径规则并添加Schmid & Mast表格锚点；修复2：追加反自控资源中介路径证伪条件f；修复3：statement中加入IEA不足声明；修复4：Sturm阈值声明为名义占位；修复5：IEA阈值调整为1.5并统一更新。
+  r6 needs_revision -> 修复1：将Sturm 2014非线性条件修正为相邻支持证据并区分DV错配，要求预注册时指定直接文献；修复2：明确区分权力对情绪反应性与共情准确性的非线性；修复3：补充Galinsky 2006复制状态脆弱性声明；修复4：新增中介因果操纵证伪条件g。

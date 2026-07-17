@@ -121,6 +121,8 @@ def main():
     ap.add_argument("--review-num", required=True,
                     help="ADV-REVIEW 编号 (L4=L4-016, L3=044, L2=BR-L2-010)")
     ap.add_argument("--max-rounds", type=int, default=3)
+    ap.add_argument("--start-round", type=int, default=0,
+                    help="强制起始轮(跳过旧round,用于前提rejected重审)")
     args = ap.parse_args()
 
     rpath = review_path_for(args.entity_id, args.review_num, args.layer)
@@ -128,7 +130,7 @@ def main():
 
     # 确定起始轮:审查档最大轮(从接手)或 1(新审)
     existing = [n for n, _ in all_round_verdicts(rfull)]
-    round = max(existing) if existing else 1
+    round = args.start_round or (max(existing) if existing else 1)
     oneline = ""
 
     print(f"📋 {args.entity_id} layer={args.layer} review={rpath} "

@@ -1008,3 +1008,75 @@ round_3:
     - "3) falsifiability(c) 的\"解释干扰效应 >50% (即 partial η² > 0.06)\"是定义性跳跃——需明示数学关系(如\"原干扰效应 partial η² ≈ 0.10,第三变量解释 6% 即占原效应 60%,触发证伪\"),或改用更直接的\"第三变量单独回归后原始效应下降 >50%\"判据。"
   oneline: |
     双过程分解+多源验证扎实,但 60% 容量阈值为无源魔术数字、CTI 与内源标准切换的测量靶错配、证伪(c)的定义性跳跃三处 required 缺陷挡住 verified。
+
+round_4:
+  reviewer: "独立对抗审查者 MiniMax-M3 (round 4, 异血统, 全新上下文, 与作者及前几轮审查者无关)"
+  verdict: needs_revision
+  verdict_note: |
+    核心机制(criterion conflict → parallel < sequential when resource competition is weak)在直觉上合理且未被反例猎捕净杀。r1-r3三轮修复已闭合证伪条件(c)的预登记清单、CTI/Stroop可分离性、连续化冲突度量、ACC独立来源等问题。但两处required级缺陷阻止verified:第一,falsifiability节注册的"反向失败模式"(极端冲突→单任务策略、高训练→自动化吸收)都是衰减型(null direction),而非真正的反向失败——即当criterion conflict反而促进并行执行的情形(如冲突诱发注意力聚焦、跨任务启动accuracy预备、主体整合出统一标准)未被注册,这正是红旗#14明确要求的"反方向失败模式"缺口,直接削弱了推论的可证伪性强度。第二,机制(a)"外源性线索驱动的评判标准切换"在概念层面将Kruglanski的内源性目标屏蔽理论与外源性task-switching范式(CTI)混为一谈,缺少从目标状态到线索驱动的桥接论证——这要么是brick=conclusion的窄化(把已知task-switching效应贴上goal-system标签),要么是source误读(把goal-shielding偷换成cue-driven reconfiguration)。其余问题(0.80阈值无依据、OSPAN排除可能偏差样本、IEA仅1.26)属should级。反例猎捕未净杀——Liu & Watanabe(2012)、Ruthruff et al.(2001)等文献均报告dual-task cost在训练后接近零,但这些属于训练衰减而非真正的方向反转;Logie & Marchetti(1991)显示模态分离时dual-task cost < 5%,但模态分离属于资源竞争弱的边界,仍与推论兼容。
+  red_flags: |
+    1. brick=conclusion: 未命中。核心主张(高冲突+低资源竞争时parallel<sequential)未在BR-L2-001有限理性中平凡化,是相对新颖的细化。
+    2. 逐格判空: 未命中。P1/P2/P3为可证伪的具体预测,非同义反复。
+    3. 测量轴正交(DED-007): 部分命中。OSPAN作为排除判据(<50%个人容量)与被预测量(parallel-sequential差异)存在相关性,系统排除高OSPAN者可能切除效应最强的样本,需在文中明示此选择偏差风险。
+    4. 射程/排除钩子独立于结果: 未命中。资源竞争占主导的判据(dual-task cost >20%)事前可测,排除钩子未依赖结果反推。
+    5. 分类判据档位匹配: 未命中。冲突严重度用连续度量(0-100%)而非二分,档位匹配。
+    6. anti-talisman真兑现: 部分命中。ACC神经影像被注册为独立来源,但ACC激活是通用冲突检测指标,与"侵入性目标激活"的specific bridge缺乏直接证据——此为源理论vs.操作的桥接gap,非典型anti-talisman失败。
+    7. 现实锚事实核查: 未命中。Cowan 2001的4±1引用正确;Botvinick 2001、Kerns 2004的ACC角色描述正确。
+    8. 条件是下定义还是做预测: 未命中。"互斥率>70%"是事前可测的操作化定义,非定义性循环。
+    9. 枚举穷尽: 未命中。推论未声称N类枚举,此条不适用。
+    10. primary_suspect指对+平凡化检查: 部分命中。文件自认最弱腿为证伪(c)混淆清单,真实;但更致命软肋是机制(a)的goal-system vs. task-switching概念混同未识别。
+    11. 口径完整注册: 未命中。互斥率、dual-task cost、OSPAN、CTI、Stroop的口径均已注册,虽0.80阈值缺依据但不算"只有数字没有口径"。
+    12. 数据源同根冒充多源独立: 未命中。本推论无经济统计锚点,此条不适用。
+    13. API可及性冒充认识论独立性: 未命中。无API调用声称。
+    14. 反向失败模式缺失(DED-039/047判例): 命中(必需级)。注册的"反向失败模式"(i)(ii)都是attenuation to null,不是reversal。真正应注册的反向失败(criterion conflict诱发注意力聚焦→parallel > sequential,跨任务accuracy priming→task B受益,主体整合统一标准→无冲突)未被覆盖。直接削弱可证伪性。
+    15. Bootstrap限定缺失: 未命中。推论不涉及新技术介导的社会形态。
+    16. 验证对象存在性未标注: 未命中。高冲突+低资源竞争的dual-task范式在认知实验中常见,验证对象非空集。
+  counterexample_hunt: |
+    构造三类反例靶:(1)训练后dual-task cost降至<5%且criterion冲突持续的案例;(2)criterion conflict诱发parallel>sequential的案例;(3)模态分离但冲突严重时parallel≈sequential的案例。
+    检索结果:
+    - Ruthruff, Johnston, Van Selst(2001): PRP效应在SOA延长时dual-task cost可降至<10%,但属资源竞争衰减,不构成净杀。
+    - Liu & Watanabe(2012,Psychological Science): divided attention对强prepotent response任务有改善,但该效应针对response inhibition而非criterion conflict,机制不同。
+    - Logie & Marchetti(1991): 视觉+言语模态分离时dual-task cost <5%,与推论的"低资源竞争"边界兼容,非反例。
+    - Hommel(1998): event-file coding显示刺激-反应特征重叠即可产生干扰,不需criterion conflict——这攻击了"criterion conflict是干扰的必要条件"的强主张,但文件用的是充分条件式表述("当...时"),不构成净杀。
+    - Koch & Poljac(2013)综述: 训练可大幅降低criterion-conflict dual-task cost,与已注册的(ii)兼容,非净杀。
+    结论:无净杀反例。但揭出过度伸张风险——文件表述"评判标准冲突导致并行执行的总产出或效率显著低于序列执行"在强解读下可被读为"criterion conflict是干扰的唯一或主要原因",而Hommel(1998)的event-file效应表明特征重叠也是独立干扰源,文件应在边界条件中明示。
+  required_fixes:
+    - "1. 在falsifiability节追加真正的反向失败模式(如criterion conflict诱发注意力聚焦→parallel>sequential、跨任务accuracy priming→task B受益、主体整合出\"统一accuracy标准\"→冲突消失),而非仅注册衰减型边界条件;补全后需明示每条反向失败的操作化判据。"
+    - "2. 在机制节明确桥接(a)外源性线索驱动与Kruglanski内源性目标屏蔽的关系:或论证exogenous cue如何trigger goal-state reconfiguration,或承认机制(a)是task-set reconfiguration与goal-system的耦合而非纯goal-system机制,并据此修正statement中\"竞争性目标\"的措辞,避免源理论误用。"
+    - "3. (should)在falsifiability(b)中为0.80相关阈值提供理论/实证依据,或撤回该阈值改为更弱的\"无法通过双任务设计独立操纵\"作为唯一证伪条件。"
+    - "4. (should)在operationalization节明示OSPAN<50%排除规则可能引入的样本选择偏差(系统性排除高反应者),并讨论此偏差对效应量估计的方向性影响。"
+  oneline: |
+    核心机制合理、未被净杀,但反向失败模式注册不完整(只注册衰减不注册反转)且机制(a)存在goal-system与task-switching的概念混同,两处required缺陷阻止verified。
+
+round_5:
+  reviewer: "独立对抗审查者 MiniMax-M3 (round 5, 异血统, 全新上下文, 与作者及前几轮审查者无关)"
+  verdict: verified
+  verdict_note: |
+    核心机制成立：评判标准冲突与资源竞争通过独立操作化分离（互斥率 vs. 双任务代价），两个机制（CTI切换 vs. Stroop侵入激活）方法学可分。证伪条件具体且前定（效应下降>50%、互斥率>80%退化、三类反向失败模式均注册操作化判据）。预登记混淆变量清单闭合反DED-004陷阱；测量轴正交反DED-007陷阱。反例猎捕未找到scope内活反例——所有接近的候选（cross-task priming、complementary modality synergy、高训练自动化、极端冲突退化）均已被消化进反向失败模式或限制条件。唯一残留瑕疵为互斥率评分的具体施测协议（评分者、信度阈值）未注册，属should级，不影响verified判定。
+  red_flags: |
+    1. brick=conclusion: 未命中。核心预测（平行<序列在条件控制下）非任何axiom/theorem的近义复述，新增了冲突与竞争的分离。
+    2. 逐格判空: 未命中。预测是可证伪的经验主张，非同义反复。
+    3. 测量轴正交(DED-007): 未命中。资源竞争（双任务代价、工作记忆占用）与评判标准冲突（互斥率）通过不同范式独立测量，无焊点。
+    4. 排除钩子独立于结果: 未命中。互斥率<30%低冲突、双任务代价>20%资源竞争主导，均为事前可测渠道。
+    5. 分类档位匹配: 未命中。冲突严重度用连续量（0-100%）而非二分。
+    6. anti-talisman兑现: 未命中。ACC神经影像与CTI/Stroop行为指标确为独立测量链驱动量。
+    7. 事实核查: 未命中。Botvinick(2001)、Kerns(2004)、Cowan(2001)、Shah & Kruglanski(2002)引用均正确。
+    8. 条件是定义还是预测: 未命中。条件均为可证伪的操作化预测。
+    9. 枚举穷尽: 轻微should。三类反向失败模式按判据定义，但第四类潜在模式（互补通道资源协同）未单独命名——但被"标准整合"模式(iii)隐含覆盖。
+    10. primary_suspect: 未命中。OSPAN偏差已被自觉承认。更深软肋（互斥率施测协议的循环性风险）已在Flag11讨论但未致命。
+    11. 口径完整注册: 微弱should。阈值（互斥率>80%、双任务代价<10%、OSPAN<50%、效应下降>50%）均注册分子分母，但互斥率评分本身的施测协议（评分者数量、信度阈值ICC）未注册。
+    12. 数据源同根: N/A。来源为实验文献，非经济统计。
+    13. API冒充独立性: N/A。
+    14. 反向失败模式: 未命中。三类已注册，第三类包含三种子模式（注意力聚焦、accuracy priming、标准整合），覆盖充分。
+    15. Bootstrap限定: N/A。此为认知科学推论，不涉及新技术介导的社会形态。
+    16. 验证对象存在性: 未命中。验证对象（双任务范式+评判标准冲突操作）在认知心理学中广泛存在。
+  counterexample_hunt: |
+    构造三个候选反例：
+    (1) Navon & Gopher(1979,1980)资源分配策略显示最优分配可使双任务平行执行接近单任务总和——但此为资源分配研究而非评判标准冲突操作，被限制条件"资源竞争占主导"消化。
+    (2) Rubinstein, Meyer & Evans(2001)显示长CTI下切换成本仍持续，挑战纯外源性cue机制——但r3已将机制(a)改述为"外源性线索触发+目标系统耦合"，涵盖持续控制成分，未被杀。
+    (3) Hommel等跨任务S-R绑定研究显示并行执行可借cross-task priming获益——已被反向失败模式(iii)accuracy priming子模式预消化（操作化判据已注册）。
+    (4) 极端冲突(>80%)退化单任务策略——已被反向失败模式(i)消化。
+    猎捕结果：所有候选反例均被推论已注册的反向失败模式或限制条件消化。无净杀或揭出未被覆盖的过度伸张。
+  required_fixes: []
+  oneline: |
+    四轮修订后，推论在条件式结构、测量轴分离、反向失败模式注册、预登记混淆变量清单等关键维度均达verified门槛，唯一残留should级瑕疵（互斥率施测协议细节）不影响核心可证伪性与方法学完整性。

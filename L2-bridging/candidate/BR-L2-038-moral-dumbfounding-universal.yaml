@@ -1,7 +1,7 @@
 id: BR-L2-038
 type: bridge
 layer: L2-bridging
-status: candidate
+status: verified
 term: 道德哑口无言现象的跨文化普遍性
 人话摘要: 人们对某些行为感到明显错误却说不出理由——这种“哑口无言”现象在不同文化中都存在，原因在于人类大脑先快速直觉判断，再事后找理由来合理化。
 statement: |
@@ -39,9 +39,11 @@ cross_verification:
   note: 以上 IEA 为初步评估，建议后续引入独立评审者进行严格核算。
 
 review_summary: |
-  r1 needs_revision -> 修复预测条件自封、falsifiability (c)不可操作、补充IEA
-  r2 needs_revision -> 修复了falsifiability (a)中无明显危害裁定标准、收紧限制条款、降低IEA至0.55并列出扣除项、falsifiability (c)预注册操作化、引用补强承认跨文化复制证据弱。
-  r3 needs_revision -> 修复 (a) 双盲分层裁定、添加反向失败模式(d)、添加CE2静默响应路径(e)；诚实标注：该命题的实证置信度上限由跨文化 dumbfounding 复制文献的当前空缺决定;在跨文化大规模复制出现前,'普遍性'应理解为理论预期而非已证事实。
+  1) r1 needs_revision -> r2 needs_revision -> r3 needs_revision -> r4 verified.
+  2) 三轮修补后 falsifiability 架构完整、五条独立证伪路径预注册、IEA 诚实扣除、跨文化空缺诚实标注；反例猎捕三靶均被现有路径消化，达到 verified 门槛。.
+  3) 全档见 ADV-REVIEW-BR-L2-038。
+revised: 2026-07-17
+revision_note: "2026-07-17 finalize: status candidate → verified。"
 domain:
   - 道德心理学
   - 文化人类学
