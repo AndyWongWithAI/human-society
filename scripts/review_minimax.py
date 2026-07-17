@@ -176,15 +176,25 @@ verified 或 needs_revision 或 rejected
 
 
 def parse_segments(raw):
-    """解析 minimax 分段输出。"""
+    """解析 minimax 分段输出。容错 2/3 尖括号 + VERDICT 段缺失 fallback。"""
     import re
     labels = ["VERDICT", "VERDICT_NOTE", "RED_FLAGS",
               "COUNTEREXAMPLE_HUNT", "REQUIRED_FIXES", "ONELINE"]
     out = {}
     for lab in labels:
-        pat = rf"<<<{lab}>>>\s*\n(.*?)(?=<<<\w+>>>|\Z)"
+        # 容错 2 或 3 尖括号(minimax 偶发用 <<>> 而非 <<<>>>)
+        pat = rf"<{{2,3}}{lab}>{{2,3}}\s*\n(.*?)(?=<{{2,3}}\w+>{{2,3}}|\Z)"
         m = re.search(pat, raw, re.DOTALL)
         out[lab] = m.group(1).strip() if m else ""
+    # fallback: VERDICT 段缺失时从 VERDICT_NOTE 推断(minimax 偶发跳过 VERDICT 段)
+    if not out.get("VERDICT") and out.get("VERDICT_NOTE"):
+        note = out["VERDICT_NOTE"].lower()
+        if "rejected" in note and "needs_revision" not in note:
+            out["VERDICT"] = "rejected"
+        elif "verified" in note and "needs_revision" not in note and "未越过" not in note and "未通过" not in note:
+            out["VERDICT"] = "verified"
+        else:
+            out["VERDICT"] = "needs_revision"
     return out
 
 
