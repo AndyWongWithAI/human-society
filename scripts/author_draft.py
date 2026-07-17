@@ -82,6 +82,7 @@ def call_free_model(api_key, base_url, model, system, user, max_tokens=12000):
             ],
             "max_tokens": max_tokens,
             "temperature": 0.4,  # 略高温度,鼓励合成(pro 会修)
+            "reasoning_effort": "none",  # 免费骨架,关思维链(措施3,去包裹层plan)
         },
         timeout=300,
     )

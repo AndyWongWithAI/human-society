@@ -200,7 +200,6 @@ If done=false, report the note. Return only: {verdict, requiredFixes, counterexa
 
   phase('Revise')
   // v3.0: 双厂商交叉验证(免费+免费=零成本质量门)
-  const reviewRel = REVIEW_PATH.replace(REPO + '/', '')
   const fixesArg = fixes.map(f => f.replace(/'/g, "'\\''")).join(' ||| ')
   const revised = await agent(
     `Run flash revise for ${b.id} round ${round} (dual-provider cross-check, zero LLM cost):

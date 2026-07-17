@@ -60,6 +60,7 @@ def call_free_model(api_key, base_url, model, system, user, max_tokens=3000):
             ],
             "max_tokens": max_tokens,
             "temperature": 0.3,
+            "reasoning_effort": "none",  # 来源定性+算术,关思维链(措施3,去包裹层plan)
         },
         timeout=180,
     )

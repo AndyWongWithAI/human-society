@@ -96,6 +96,7 @@ def call_flash(api_key, base_url, model, system_prompt, user_prompt, max_tokens=
             ],
             "max_tokens": max_tokens,
             "temperature": 0.3,  # 机械修改，低温度
+            "reasoning_effort": "none",  # 机械段关思维链(措施3,去包裹层plan)
         },
         timeout=300,
     )
